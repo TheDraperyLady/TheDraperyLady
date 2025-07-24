@@ -1,6 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import ModernHomeView from '../views/ModernHomeView.vue'
 import ElegantHomeView from '../views/ElegantHomeView.vue'
 
 const router = createRouter({
@@ -8,17 +6,7 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'warm-home',
-      component: HomeView,
-    },
-    {
-      path: '/modern',
-      name: 'modern-home',
-      component: ModernHomeView,
-    },
-    {
-      path: '/elegant',
-      name: 'elegant-home',
+      name: 'home',
       component: ElegantHomeView,
     },
     {
