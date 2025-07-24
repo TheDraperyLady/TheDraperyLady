@@ -544,7 +544,7 @@
             <div class="link-group">
               <h4>Contact</h4>
               <a href="tel:+14089811874">(408) 981-1874</a>
-              <a href="mailto:christine@thedraperylady.com">christine@thedraperylady.com</a>
+              <a href="mailto:christine@thedraperylady.com">christine@draperylady.net</a>
               <a href="#">Schedule Consultation</a>
             </div>
           </div>

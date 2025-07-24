@@ -128,6 +128,33 @@ All three designs are fully responsive and optimized for:
 npm run build
 ```
 
+## 🚀 Deployment
+
+### Automatic Deployment (GitHub Actions)
+
+This project is configured for automatic deployment to GitHub Pages. When you push changes to the `main` branch, the site will automatically build and deploy.
+
+**Prerequisites:**
+1. Enable GitHub Pages in your repository settings
+2. Set the source to "Deploy from a branch"
+3. Select the `gh-pages` branch as the source
+
+**Manual Deployment:**
+```bash
+npm run deploy
+```
+
+This command will:
+1. Build the project for production
+2. Deploy the built files to the `gh-pages` branch
+3. Make the site available at `https://yourusername.github.io/TheDraperyLady/`
+
+### Custom Domain
+
+The deployment is configured to use the custom domain `draperylady.net`. Make sure to:
+1. Configure your domain's DNS settings to point to GitHub Pages
+2. Add a `CNAME` file in the `public` folder with your domain name
+
 ## 📝 License
 
 This project is created for The Drapery Lady client. All rights reserved.
