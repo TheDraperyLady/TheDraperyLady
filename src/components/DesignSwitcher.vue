@@ -1,11 +1,29 @@
 <template>
   <div
+    v-if="!isMobile && isVisible"
     class="design-switcher"
     :style="{ top: position.y + 'px', left: position.x + 'px' }"
     @mousedown="startDrag"
     @touchstart="startDrag"
   >
     <div class="switcher-container">
+      <button class="close-button" @click="closeSwitcher" title="Close">
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M18 6L6 18M6 6L18 18"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </button>
       <div class="drag-handle">
         <svg
           width="16"
@@ -71,6 +89,8 @@ const currentScheme = ref('gold')
 const position = ref({ x: 20, y: 20 })
 const isDragging = ref(false)
 const dragOffset = ref({ x: 0, y: 0 })
+const isVisible = ref(true)
+const isMobile = ref(false)
 
 const setColorScheme = (scheme) => {
   currentScheme.value = scheme
@@ -151,7 +171,18 @@ const stopDrag = () => {
   localStorage.setItem('drapery-switcher-position', JSON.stringify(position.value))
 }
 
+const closeSwitcher = () => {
+  isVisible.value = false
+}
+
+const checkMobile = () => {
+  isMobile.value = window.innerWidth < 768
+}
+
 onMounted(() => {
+  // Check mobile on mount
+  checkMobile()
+
   // Load saved preference
   const savedScheme = localStorage.getItem('drapery-color-scheme') || 'gold'
   setColorScheme(savedScheme)
@@ -165,6 +196,9 @@ onMounted(() => {
       console.log('Could not parse saved position, using default')
     }
   }
+
+  // Add resize listener for mobile detection
+  window.addEventListener('resize', checkMobile)
 })
 
 onUnmounted(() => {
@@ -173,6 +207,7 @@ onUnmounted(() => {
   document.removeEventListener('touchmove', onDrag)
   document.removeEventListener('mouseup', stopDrag)
   document.removeEventListener('touchend', stopDrag)
+  window.removeEventListener('resize', checkMobile)
 })
 </script>
 
@@ -287,6 +322,32 @@ onUnmounted(() => {
 .design-option span {
   font-size: 0.9rem;
   font-weight: 500;
+}
+
+.close-button {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #999;
+  padding: 4px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.close-button:hover {
+  color: #666;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.close-button:active {
+  color: #333;
+  background: rgba(0, 0, 0, 0.1);
 }
 
 @media (max-width: 768px) {
