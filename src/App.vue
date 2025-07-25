@@ -1,11 +1,9 @@
 <script setup>
 import { RouterView } from 'vue-router'
-import DesignSwitcher from './components/DesignSwitcher.vue'
 </script>
 
 <template>
   <RouterView />
-  <DesignSwitcher />
 </template>
 
 <style>

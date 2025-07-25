@@ -7,7 +7,7 @@
           <img src="../assets/TDL_logo.png" alt="The Drapery Lady" class="logo-image" />
           <div class="logo-text">
             <h2>The Drapery Lady</h2>
-            <span class="tagline">Artistry in Fabric</span>
+            <span class="tagline">Classic, Simple and Elegant</span>
           </div>
         </div>
         <div class="nav-links">
@@ -52,8 +52,8 @@
       <div class="container">
         <div class="about-content">
           <div class="about-text">
-            <h2>Meet Christine St. Clair</h2>
-            <h3>The Drapery Lady</h3>
+            <h2>Meet The Drapery Lady</h2>
+            <h3>Christine St. Clair</h3>
             <p class="about-intro">
               Christine St. Clair is the daughter of an international businessman, who grew up in
               several different countries on three different continents of the world. It was
@@ -85,7 +85,7 @@
             </p>
             <div class="about-stats">
               <div class="stat-item">
-                <span class="stat-number">15+</span>
+                <span class="stat-number">35+</span>
                 <span class="stat-label">Years Experience</span>
               </div>
               <div class="stat-item">
@@ -105,7 +105,7 @@
                   />
                   <div class="anniversary-text-inline">
                     <span class="anniversary-date">June 10, 2024</span>
-                    <span class="anniversary-message">15 years of business</span>
+                    <span class="anniversary-message">16 years of business</span>
                   </div>
                 </div>
               </div>
@@ -139,7 +139,7 @@
             <div class="product-content">
               <h3>Custom Draperies</h3>
               <p>Elegant custom draperies tailored to your style and space</p>
-              <span class="price">Custom Pricing</span>
+              <!-- <span class="price">Custom Pricing</span> -->
             </div>
           </div>
           <div class="product-card">
@@ -147,9 +147,8 @@
               <img src="../assets/service-3.webp" alt="Premium Blinds" class="service-image" />
             </div>
             <div class="product-content">
-              <h3>Premium Blinds</h3>
-              <p>High-quality blinds for light control and privacy</p>
-              <span class="price">Custom Pricing</span>
+              <h3>Window Shades</h3>
+              <p>Versatile shades for modern window treatments</p>
             </div>
           </div>
           <div class="product-card">
@@ -157,9 +156,8 @@
               <img src="../assets/service-2.webp" alt="Window Shades" class="service-image" />
             </div>
             <div class="product-content">
-              <h3>Window Shades</h3>
-              <p>Versatile shades for modern window treatments</p>
-              <span class="price">Custom Pricing</span>
+              <h3>Premium Blinds</h3>
+              <p>High-quality blinds for light control and privacy</p>
             </div>
           </div>
           <div class="product-card">
@@ -167,9 +165,8 @@
               <img src="../assets/service-1.webp" alt="Custom Shutters" class="service-image" />
             </div>
             <div class="product-content">
-              <h3>Custom Shutters</h3>
+              <h3>Plantation Shutters</h3>
               <p>Timeless shutters for classic elegance</p>
-              <span class="price">Custom Pricing</span>
             </div>
           </div>
         </div>
@@ -483,10 +480,10 @@
                   </svg>
                 </div>
                 <div class="service-details">
-                  <h3>Expert Installation</h3>
+                  <h3>Professional Installation</h3>
                   <p>
-                    Professional installation by our skilled craftsmen with attention to every
-                    detail.
+                    Installation by professional window covering installers who are licensed, bonded
+                    and insured.
                   </p>
                 </div>
               </div>
@@ -521,7 +518,7 @@
           <div class="footer-brand">
             <img src="../assets/TDL_logo.png" alt="The Drapery Lady" class="footer-logo" />
             <h3>The Drapery Lady</h3>
-            <p class="tagline">Artistry in Fabric</p>
+            <p class="tagline">Classic, Simple and Elegant</p>
             <!-- <p class="description">
               Creating timeless elegance through exceptional drapery design and craftsmanship.
             </p> -->
@@ -550,7 +547,7 @@
           </div>
         </div>
         <div class="footer-bottom">
-          <p>&copy; 2025 The Drapery Lady. All rights reserved. | Artistry in Fabric</p>
+          <p>Classic, Simple and Elegant</p>
         </div>
       </div>
     </footer>

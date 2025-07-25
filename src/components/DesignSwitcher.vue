@@ -85,7 +85,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 
-const currentScheme = ref('gold')
+const currentScheme = ref('burgundy')
 const position = ref({ x: 20, y: 20 })
 const isDragging = ref(false)
 const dragOffset = ref({ x: 0, y: 0 })
@@ -184,7 +184,7 @@ onMounted(() => {
   checkMobile()
 
   // Load saved preference
-  const savedScheme = localStorage.getItem('drapery-color-scheme') || 'gold'
+  const savedScheme = localStorage.getItem('drapery-color-scheme') || 'burgundy'
   setColorScheme(savedScheme)
 
   // Load saved position
