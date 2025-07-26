@@ -16,6 +16,7 @@
           <a href="#products">Products</a>
           <a href="#portfolio">Portfolio</a>
           <a href="#testimonials">Testimonials</a>
+          <a href="#faq">FAQ</a>
           <a href="#contact">Contact</a>
         </div>
       </div>
@@ -388,118 +389,82 @@
     </section>
 
     <!-- Services Showcase -->
-    <section class="services-showcase">
+    <section id="faq" class="faq-section">
       <div class="container">
-        <div class="services-content">
-          <div class="services-text">
-            <h2>Bespoke Services</h2>
-            <p>
-              From initial consultation to final installation, we provide a comprehensive service
-              experience that ensures your complete satisfaction.
+        <div class="section-header">
+          <h2>Frequently Asked Questions</h2>
+        </div>
+        <div class="faq-list">
+          <div class="faq-item">
+            <h3 class="faq-question">How Long Does The Consultation Take?</h3>
+            <p class="faq-answer">
+              The average consultation lasts 2 hours. Larger homes usually require longer
+              consultations.
             </p>
-            <div class="service-list">
-              <div class="service-item">
-                <div class="service-icon">
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z"
-                      fill="currentColor"
-                    />
-                    <path
-                      d="M19 15L19.74 17.74L22.5 18.5L19.74 19.26L19 22L18.26 19.26L15.5 18.5L18.26 17.74L19 15Z"
-                      fill="currentColor"
-                    />
-                    <path
-                      d="M5 6L5.5 7.5L7 8L5.5 8.5L5 10L4.5 8.5L3 8L4.5 7.5L5 6Z"
-                      fill="currentColor"
-                    />
-                  </svg>
-                </div>
-                <div class="service-details">
-                  <h3>Custom Design</h3>
-                  <p>
-                    Personalized designs created specifically for your space and style preferences.
-                  </p>
-                </div>
-              </div>
-              <div class="service-item">
-                <div class="service-icon">
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M12 2L15.09 8.26L22 9L15.09 9.74L12 16L8.91 9.74L2 9L8.91 8.26L12 2Z"
-                      fill="currentColor"
-                    />
-                    <path d="M7 14L8.5 15.5L10 14L8.5 12.5L7 14Z" fill="currentColor" />
-                    <path d="M14 14L15.5 15.5L17 14L15.5 12.5L14 14Z" fill="currentColor" />
-                  </svg>
-                </div>
-                <div class="service-details">
-                  <h3>Premium Materials</h3>
-                  <p>
-                    Only the finest fabrics and hardware, sourced from world-renowned suppliers.
-                  </p>
-                </div>
-              </div>
-              <div class="service-item">
-                <div class="service-icon">
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z"
-                      fill="currentColor"
-                    />
-                    <path
-                      d="M3 21L6 18L9 21L12 18L15 21L18 18L21 21"
-                      stroke="currentColor"
-                      stroke-width="1.5"
-                      fill="none"
-                    />
-                    <path
-                      d="M3 3L6 6L9 3L12 6L15 3L18 6L21 3"
-                      stroke="currentColor"
-                      stroke-width="1.5"
-                      fill="none"
-                    />
-                  </svg>
-                </div>
-                <div class="service-details">
-                  <h3>Professional Installation</h3>
-                  <p>
-                    Installation by professional window covering installers who are licensed, bonded
-                    and insured.
-                  </p>
-                </div>
-              </div>
-            </div>
           </div>
-          <div class="services-visual">
-            <div class="ornate-frame">
-              <div class="image-placeholder">Service Showcase</div>
-            </div>
+          <div class="faq-item">
+            <h3 class="faq-question">Where Are Your Draperies Made?</h3>
+            <p class="faq-answer">
+              Draperies, valances and Roman shades are fabricated in California.
+            </p>
+          </div>
+          <div class="faq-item">
+            <h3 class="faq-question">Where Are Your Blinds, Shades and Shutters Made?</h3>
+            <p class="faq-answer">They are made in the U.S.A., Mexico and China.</p>
+          </div>
+          <div class="faq-item">
+            <h3 class="faq-question">I have my fabric. Will you work with my own fabric?</h3>
+            <p class="faq-answer">In most cases we can work with your own fabric.</p>
+          </div>
+          <div class="faq-item">
+            <h3 class="faq-question">
+              How long does it take to have custom window treatments made?
+            </h3>
+            <p class="faq-answer">
+              The time that it takes to complete an order is dependent upon the time of year but for
+              most of the year this is how long it takes for an order to be completed:
+            </p>
+            <ul class="faq-list-detail">
+              <li>
+                Custom draperies, valances, Roman shades, bedding and accessories take four to six
+                weeks from the time of placing your order to the time of installation.
+              </li>
+              <li>
+                Custom plantation shutters take eight to ten weeks from the time of placing your
+                order to the time of installation.
+              </li>
+              <li>
+                Custom blinds and shades take two to four weeks from the time of placing your order
+                to the time of installation.
+              </li>
+            </ul>
+          </div>
+          <div class="faq-item">
+            <h3 class="faq-question">
+              What is the difference between ready–made draperies and custom made draperies?
+            </h3>
+            <p class="faq-answer">
+              Ready-made draperies are mass produced in a factory and are available in a limited
+              number of fabrics, colors, styles and sizes. Custom made draperies and window
+              treatments are like getting a custom suit made specifically for your window. There are
+              a large variety of fabrics, colors and styles that are available to select from and
+              they are sized specifically for your windows. Please note that there are higher
+              standards that are used in making custom draperies and window treatments as well.
+            </p>
+          </div>
+          <div class="faq-item">
+            <h3 class="faq-question">Who does your installation?</h3>
+            <p class="faq-answer">
+              The installation is done by professional installers who are licensed, bonded and
+              insured.
+            </p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Consultation CTA -->
-    <section class="consultation-cta">
+    <section id="contact" class="consultation-cta">
       <div class="container">
         <div class="cta-content">
           <h2>Begin Your Transformation</h2>
@@ -594,13 +559,13 @@ onMounted(() => {
   const sections = document.querySelectorAll('section[id]')
 
   const observerOptions = {
-    threshold: 0.3,
+    threshold: [0.1, 0.5],
     rootMargin: '-100px 0px -100px 0px',
   }
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
-      if (entry.isIntersecting) {
+      if (entry.isIntersecting && entry.intersectionRatio > 0.1) {
         const id = entry.target.getAttribute('id')
         navLinks.forEach((link) => {
           link.classList.remove('active')
@@ -620,4 +585,93 @@ onMounted(() => {
 
 <style scoped>
 @import '../assets/elegant-home.css';
+
+.faq-section {
+  background: #faf8f6;
+  padding: 60px 0 40px 0;
+  border-radius: 16px;
+  margin: 48px 0;
+  box-shadow: 0 2px 16px 0 rgba(60, 40, 20, 0.06);
+}
+.faq-section .section-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+.faq-list {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.faq-item {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 1px 8px 0 rgba(60, 40, 20, 0.04);
+  padding: 28px 32px 20px 32px;
+  transition: box-shadow 0.2s;
+}
+.faq-item:hover {
+  box-shadow: 0 4px 24px 0 rgba(60, 40, 20, 0.1);
+}
+.faq-question {
+  font-size: 1.18rem;
+  font-weight: 600;
+  color: #800020;
+  margin-bottom: 10px;
+  font-family: 'Georgia', 'Times New Roman', serif;
+}
+.faq-answer {
+  font-size: 1.05rem;
+  color: #3d2b1f;
+  margin-bottom: 0;
+  line-height: 1.7;
+}
+.faq-list-detail {
+  margin: 12px 0 0 18px;
+  padding: 0;
+  color: #3d2b1f;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+.faq-list-detail li {
+  margin-bottom: 6px;
+  list-style: disc inside;
+}
+
+/* Add new testimonial card styles */
+.testimonial-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+  padding: 32px;
+}
+
+.testimonial-card p {
+  flex-grow: 1;
+  margin-bottom: 24px;
+}
+
+.client-info {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.client-info h4 {
+  margin: 0;
+  color: #800020;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 600px) {
+  .faq-item {
+    padding: 18px 12px 14px 12px;
+  }
+  .faq-section {
+    padding: 32px 0 20px 0;
+    margin: 24px 0;
+  }
+}
 </style>
