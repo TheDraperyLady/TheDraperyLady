@@ -1,26 +1,6 @@
 <template>
   <div class="elegant-home">
-    <!-- Navigation -->
-    <nav class="elegant-nav">
-      <div class="nav-container">
-        <div class="logo">
-          <img src="../assets/TDL_logo.png" alt="The Drapery Lady" class="logo-image" />
-          <div class="logo-text">
-            <h2>The Drapery Lady</h2>
-            <span class="tagline">Classic, Simple and Elegant</span>
-          </div>
-        </div>
-        <div class="nav-links">
-          <a href="#home" class="active">Home</a>
-          <a href="#about">About</a>
-          <a href="#products">Products</a>
-          <a href="#portfolio">Portfolio</a>
-          <a href="#testimonials">Testimonials</a>
-          <a href="#faq">FAQ</a>
-          <a href="#contact">Contact</a>
-        </div>
-      </div>
-    </nav>
+    <ElegantNav />
 
     <!-- Hero Section -->
     <section id="home" class="hero">
@@ -125,47 +105,47 @@
       </div>
     </section>
 
-    <!-- Products Section -->
-    <section id="products" class="products-section">
+    <!-- Services Section -->
+    <section id="services" class="services-section">
       <div class="container">
         <div class="section-header">
           <h2>Our Services</h2>
           <p>Comprehensive window treatment solutions for every home</p>
         </div>
-        <div class="products-grid">
-          <div class="product-card">
-            <div class="product-image">
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-image-container">
               <img src="../assets/service-4.webp" alt="Custom Draperies" class="service-image" />
             </div>
-            <div class="product-content">
+            <div class="service-content">
               <h3>Custom Draperies</h3>
               <p>Elegant custom draperies tailored to your style and space</p>
               <!-- <span class="price">Custom Pricing</span> -->
             </div>
           </div>
-          <div class="product-card">
-            <div class="product-image">
+          <div class="service-card">
+            <div class="service-image-container">
               <img src="../assets/service-3.webp" alt="Premium Blinds" class="service-image" />
             </div>
-            <div class="product-content">
+            <div class="service-content">
               <h3>Window Shades</h3>
               <p>Versatile shades for modern window treatments</p>
             </div>
           </div>
-          <div class="product-card">
-            <div class="product-image">
+          <div class="service-card">
+            <div class="service-image-container">
               <img src="../assets/service-2.webp" alt="Window Shades" class="service-image" />
             </div>
-            <div class="product-content">
+            <div class="service-content">
               <h3>Premium Blinds</h3>
               <p>High-quality blinds for light control and privacy</p>
             </div>
           </div>
-          <div class="product-card">
-            <div class="product-image">
+          <div class="service-card">
+            <div class="service-image-container">
               <img src="../assets/service-1.webp" alt="Custom Shutters" class="service-image" />
             </div>
-            <div class="product-content">
+            <div class="service-content">
               <h3>Plantation Shutters</h3>
               <p>Timeless shutters for classic elegance</p>
             </div>
@@ -388,7 +368,7 @@
       </div>
     </section>
 
-    <!-- Services Showcase -->
+    <!-- FAQ Section -->
     <section id="faq" class="faq-section">
       <div class="container">
         <div class="section-header">
@@ -521,6 +501,7 @@
 
 <script setup>
 import { onMounted } from 'vue'
+import ElegantNav from '../components/ElegantNav.vue'
 
 const scrollToPortfolio = () => {
   const portfolioSection = document.getElementById('portfolio')
@@ -531,56 +512,6 @@ const scrollToPortfolio = () => {
     })
   }
 }
-
-onMounted(() => {
-  // Smooth scrolling for navigation links
-  const navLinks = document.querySelectorAll('.nav-links a[href^="#"]')
-
-  navLinks.forEach((link) => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault()
-      const targetId = link.getAttribute('href').substring(1)
-      const targetSection = document.getElementById(targetId)
-
-      if (targetSection) {
-        targetSection.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start',
-        })
-
-        // Update active nav link
-        navLinks.forEach((l) => l.classList.remove('active'))
-        link.classList.add('active')
-      }
-    })
-  })
-
-  // Update active nav link on scroll
-  const sections = document.querySelectorAll('section[id]')
-
-  const observerOptions = {
-    threshold: [0.1, 0.5],
-    rootMargin: '-100px 0px -100px 0px',
-  }
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting && entry.intersectionRatio > 0.1) {
-        const id = entry.target.getAttribute('id')
-        navLinks.forEach((link) => {
-          link.classList.remove('active')
-          if (link.getAttribute('href') === `#${id}`) {
-            link.classList.add('active')
-          }
-        })
-      }
-    })
-  }, observerOptions)
-
-  sections.forEach((section) => {
-    observer.observe(section)
-  })
-})
 </script>
 
 <style scoped>

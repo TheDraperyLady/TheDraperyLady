@@ -1,0 +1,91 @@
+From: <Saved by Blink>
+Snapshot-Content-Location: http://localhost:4174/
+Subject: Card B - Micro Frontend
+Date: Sun, 27 Jul 2025 08:53:24 -0700
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----MultipartBoundary--FfxumoIRqroLA5Wx3WfHOzhQ7AtbVRaZcjhAJEKoOB----"
+
+
+------MultipartBoundary--FfxumoIRqroLA5Wx3WfHOzhQ7AtbVRaZcjhAJEKoOB----
+Content-Type: text/html
+Content-ID: <frame-D96811C3FED1CAEEC7C2605F244621DF@mhtml.blink>
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://localhost:4174/
+
+<!DOCTYPE html><html lang=3D"en"><head><meta http-equiv=3D"Content-Type" co=
+ntent=3D"text/html; charset=3DUTF-8">
+   =20
+    <link rel=3D"icon" type=3D"image/svg+xml" href=3D"http://localhost:4174=
+/vite.svg">
+    <meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=
+=3D1.0">
+    <title>Card B - Micro Frontend</title>
+   =20
+    <link rel=3D"stylesheet" crossorigin=3D"" href=3D"http://localhost:4174=
+/assets/style-B4NhD4rr.css">
+  </head>
+  <body data-new-gr-c-s-check-loaded=3D"14.1246.0" data-gr-ext-installed=3D=
+"" data-gr-ext-disabled=3D"forever">
+    <div id=3D"root"><div style=3D"padding: 40px; background: linear-gradie=
+nt(135deg, rgb(245, 247, 250) 0%, rgb(195, 207, 226) 100%); min-height: 100=
+vh; display: flex; justify-content: center; align-items: center;"><div styl=
+e=3D"max-width: 400px; width: 100%;"><h1 style=3D"text-align: center; margi=
+n-bottom: 30px; color: rgb(51, 51, 51); font-size: 2rem;">Card B - Local Pr=
+eview</h1><div class=3D"card-b"><div class=3D"card-content"><p>This is a fe=
+derated component from micro-frontend-2</p><p>Demonstrates Module Federatio=
+n capabilities with clean, modern styling and seamless integration.</p><div=
+ class=3D"card-actions"><button class=3D"px-4 py-2 rounded font-medium tran=
+sition-colors bg-blue-500 text-white hover:bg-blue-600 disabled:bg-gray-300=
+">Card B Action</button><button class=3D"px-4 py-2 rounded font-medium tran=
+sition-colors bg-gray-200 text-gray-800 hover:bg-gray-300 disabled:bg-gray-=
+100">Learn More</button></div></div></div></div></div></div>
+
+ =20
+ </body></html>
+------MultipartBoundary--FfxumoIRqroLA5Wx3WfHOzhQ7AtbVRaZcjhAJEKoOB----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://localhost:4174/assets/style-B4NhD4rr.css
+
+@charset "utf-8";
+
+.card-b { background: linear-gradient(135deg, rgb(240, 147, 251) 0%, rgb(24=
+5, 87, 108) 100%); color: white; border-radius: 12px; padding: 24px; box-sh=
+adow: rgba(240, 147, 251, 0.3) 0px 8px 32px; border: 1px solid rgba(255, 25=
+5, 255, 0.2); height: 100%; display: flex; flex-direction: column; position=
+: relative; overflow: hidden; }
+
+.card-b::before { content: ""; position: absolute; top: 0px; left: 0px; rig=
+ht: 0px; height: 3px; background: linear-gradient(135deg, rgb(102, 126, 234=
+) 0%, rgb(118, 75, 162) 100%); }
+
+.card-b .card-content { flex: 1 1 0%; display: flex; flex-direction: column=
+; position: relative; z-index: 1; padding: 24px; background: transparent; b=
+order: none; margin: 0px; }
+
+.card-b .card-content p { margin: 0px 0px 20px; line-height: 1.6; color: rg=
+ba(255, 255, 255, 0.9); font-size: 1.1rem; font-weight: 400; flex: 1 1 0%; =
+letter-spacing: 0.01em; text-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px; }
+
+.card-b .card-content p:first-child { font-size: 2.2rem; font-weight: 500; =
+color: white; margin-bottom: 24px; line-height: 1.5; }
+
+.card-b .card-content p:last-of-type { font-size: 1rem; color: rgba(255, 25=
+5, 255, 0.7); font-style: italic; margin-bottom: 16px; line-height: 1.5; }
+
+.card-b .card-actions { display: flex; gap: 10px; margin-top: auto; positio=
+n: relative; z-index: 1; padding-top: 16px; border-top: 1px solid rgba(255,=
+ 255, 255, 0.2); }
+
+:root { font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif=
+; line-height: 1.5; font-weight: 400; color-scheme: light dark; color: rgba=
+(255, 255, 255, 0.87); background-color: rgb(36, 36, 36); font-synthesis: n=
+one; text-rendering: optimizelegibility; -webkit-font-smoothing: antialiase=
+d; text-size-adjust: 100%; }
+
+* { box-sizing: border-box; }
+
+body { margin: 0px; min-width: 320px; min-height: 100vh; }
+------MultipartBoundary--FfxumoIRqroLA5Wx3WfHOzhQ7AtbVRaZcjhAJEKoOB------
