@@ -9,9 +9,7 @@
         </div>
       </div>
       <div class="nav-links" @mouseleave="handleNavLeave">
-        <router-link to="/" @mouseenter="handleNavEnter('home')" :class="{ active: isHome }">
-          Home
-        </router-link>
+        <router-link to="/" @mouseenter="handleNavEnter('home')"> Home </router-link>
         <transition name="expand">
           <div class="section-links" v-show="isHome && expandNav && activeNav === 'home'">
             <a href="#about">About</a>
@@ -22,11 +20,7 @@
             <a href="#contact">Contact</a>
           </div>
         </transition>
-        <router-link
-          to="/products"
-          @mouseenter="handleNavEnter('products')"
-          :class="{ active: isProducts }"
-        >
+        <router-link to="/products" @mouseenter="handleNavEnter('products')">
           Products
         </router-link>
         <transition name="expand">
@@ -252,9 +246,16 @@ const setupScrollObserver = (sectionSelector, linkPrefix) => {
   color: var(--primary-color);
 }
 
-/* Remove the underline from Home when it's the active route */
-.nav-links > .router-link-exact-active:first-child::after {
-  display: none;
+/* Style for exact route match (Home) */
+.nav-links .router-link-exact-active {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+/* Style for active route and its children (Products) */
+.nav-links .router-link-active {
+  color: var(--primary-color);
+  font-weight: 600;
 }
 
 /* Section links styles */
