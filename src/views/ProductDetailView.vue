@@ -44,7 +44,7 @@
               class="feature-card"
             >
               <div class="feature-icon">
-                <font-awesome-icon :icon="feature.icon" size="2x" />
+                <FontAwesomeIcon :icon="['fas', feature.icon]" size="2x" />
               </div>
               <h3>{{ feature.title }}</h3>
               <p>{{ feature.description }}</p>

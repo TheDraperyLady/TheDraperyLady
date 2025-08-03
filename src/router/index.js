@@ -15,6 +15,11 @@ const router = createRouter({
       component: ElegantHomeView,
     },
     {
+      path: '/articles',
+      name: 'articles',
+      component: () => import('../views/ArticlesView.vue'),
+    },
+    {
       path: '/about',
       name: 'about',
       // route level code-splitting

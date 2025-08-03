@@ -1,38 +1,9 @@
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import {
-  faPalette,
-  faRuler,
-  faWrench,
-  faScrewdriverWrench,
-  faShield,
-  faLightbulb,
-  faLeaf,
-  faSwatchbook,
-  faGears,
-  faSun,
-  faEye,
-  faTemperatureLow,
-  faWandMagicSparkles,
-  faHouse,
-} from '@fortawesome/free-solid-svg-icons'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { far } from '@fortawesome/free-regular-svg-icons'
 
-// Add icons to the library
-library.add(
-  faPalette,
-  faRuler,
-  faWrench,
-  faScrewdriverWrench,
-  faShield,
-  faLightbulb,
-  faLeaf,
-  faSwatchbook,
-  faGears,
-  faSun,
-  faEye,
-  faTemperatureLow,
-  faWandMagicSparkles,
-  faHouse,
-)
+// Add all icons to the library
+library.add(fas, far)
 
 export { FontAwesomeIcon }

@@ -17,6 +17,7 @@
             <a href="#portfolio">Portfolio</a>
             <a href="#testimonials">Testimonials</a>
             <a href="#faq">FAQ</a>
+            <a href="#service-area">Service Area</a>
             <a href="#contact">Contact</a>
           </div>
         </transition>
@@ -40,8 +41,14 @@
             <router-link :to="{ name: 'product-detail', params: { type: 'shades' } }"
               >Shades</router-link
             >
+            <router-link :to="{ name: 'product-detail', params: { type: 'motorization' } }"
+              >Motorization</router-link
+            >
           </div>
         </transition>
+        <router-link to="/articles" @mouseenter="handleNavEnter('articles')">
+          Articles
+        </router-link>
       </div>
     </div>
   </nav>

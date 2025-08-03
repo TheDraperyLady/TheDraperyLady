@@ -3,17 +3,17 @@ const commonFeatures = {
   customDesign: {
     title: 'Custom Design',
     description: 'Personalized consultation to create the perfect design for your space',
-    icon: ['fas', 'palette'],
+    icon: 'palette',
   },
   expertCraftsmanship: {
     title: 'Expert Craftsmanship',
     description: 'Meticulously crafted by experienced artisans',
-    icon: ['fas', 'screwdriver-wrench'],
+    icon: 'screwdriver-wrench',
   },
   professionalInstallation: {
     title: 'Professional Installation',
     description: 'Precise installation by our trained professionals',
-    icon: ['fas', 'wrench'],
+    icon: 'wrench',
   },
 }
 
@@ -29,7 +29,7 @@ export const productDetails = {
       {
         title: 'Premium Fabrics',
         description: 'Wide selection of high-quality fabrics from renowned manufacturers',
-        icon: ['fas', 'swatchbook'],
+        icon: 'swatchbook',
       },
       commonFeatures.expertCraftsmanship,
       commonFeatures.professionalInstallation,
@@ -64,18 +64,18 @@ export const productDetails = {
       {
         title: 'Superior Materials',
         description: 'Choose from premium wood, composite, or vinyl materials',
-        icon: ['fas', 'shield'],
+        icon: 'shield',
       },
       commonFeatures.customDesign,
       {
         title: 'Light Control',
         description: 'Adjustable louvers for perfect light management',
-        icon: ['fas', 'lightbulb'],
+        icon: 'lightbulb',
       },
       {
         title: 'Energy Efficient',
         description: 'Excellent insulation properties for energy savings',
-        icon: ['fas', 'leaf'],
+        icon: 'leaf',
       },
     ],
     options: [
@@ -108,18 +108,18 @@ export const productDetails = {
       {
         title: 'Versatile Design',
         description: 'Multiple styles and materials to match any décor',
-        icon: ['fas', 'swatchbook'],
+        icon: 'swatchbook',
       },
       {
         title: 'Light Control',
         description: 'Precise adjustment for optimal lighting conditions',
-        icon: ['fas', 'lightbulb'],
+        icon: 'lightbulb',
       },
       commonFeatures.professionalInstallation,
       {
         title: 'Smart Home Ready',
         description: 'Optional motorization with smart home integration',
-        icon: ['fas', 'gears'],
+        icon: 'gears',
       },
     ],
     options: [
@@ -152,17 +152,17 @@ export const productDetails = {
       {
         title: 'UV Protection',
         description: '99% UV ray blocking capability',
-        icon: ['fas', 'sun'],
+        icon: 'sun',
       },
       {
         title: 'Energy Saving',
         description: 'Reduce cooling costs by up to 30%',
-        icon: ['fas', 'leaf'],
+        icon: 'leaf',
       },
       {
         title: 'View Preservation',
         description: 'Maintain your view while reducing glare',
-        icon: ['fas', 'eye'],
+        icon: 'eye',
       },
       commonFeatures.professionalInstallation,
     ],
@@ -197,12 +197,12 @@ export const productDetails = {
       {
         title: 'Insulation',
         description: 'Superior thermal and acoustic insulation',
-        icon: ['fas', 'temperature-low'],
+        icon: 'temperature-low',
       },
       {
         title: 'Style Options',
         description: 'Vast selection of patterns and materials',
-        icon: ['fas', 'wand-magic-sparkles'],
+        icon: 'wand-magic-sparkles',
       },
       commonFeatures.professionalInstallation,
     ],
@@ -224,6 +224,62 @@ export const productDetails = {
       { src: 'https://picsum.photos/seed/shade1/600/400', alt: 'Roman Shade Installation' },
       { src: 'https://picsum.photos/seed/shade2/600/400', alt: 'Cellular Shade Detail' },
       { src: 'https://picsum.photos/seed/shade3/600/400', alt: 'Motorized Shade Operation' },
+    ],
+  },
+  motorization: {
+    title: 'Smart Motorization',
+    subtitle: 'Automated Window Treatment Solutions',
+    description:
+      'Upgrade your window treatments with our smart motorization solutions. Control your draperies and shades effortlessly using your smart device, perfect for those who want convenience, safety, and modern functionality in their San Jose home.',
+    mainImage: 'https://picsum.photos/seed/motorization/800/600',
+    features: [
+      {
+        title: 'Smart Device Control',
+        description: 'Control your window treatments from your smartphone or tablet',
+        icon: 'mobile-screen',
+      },
+      {
+        title: 'Safety & Convenience',
+        description: 'Perfect for hard-to-reach windows and elderly or mobility-impaired users',
+        icon: 'shield-heart',
+      },
+      {
+        title: 'Smart Home Integration',
+        description: 'Compatible with major smart home systems',
+        icon: 'house-signal',
+      },
+      commonFeatures.professionalInstallation,
+    ],
+    options: [
+      {
+        category: 'Compatible Products',
+        items: ['Draperies', 'Shades', 'Blinds', 'Shutters', 'Solar Screens'],
+      },
+      {
+        category: 'Control Options',
+        items: [
+          'Smartphone App',
+          'Remote Control',
+          'Voice Control',
+          'Scheduled Operation',
+          'Scene Programming',
+        ],
+      },
+      {
+        category: 'Smart Home Systems',
+        items: [
+          'Amazon Alexa',
+          'Google Home',
+          'Apple HomeKit',
+          'Samsung SmartThings',
+          'Custom Integration',
+        ],
+      },
+    ],
+    gallery: [
+      { src: 'https://picsum.photos/seed/motor1/600/400', alt: 'Smart Home Integration' },
+      { src: 'https://picsum.photos/seed/motor2/600/400', alt: 'Motorized Drapery System' },
+      { src: 'https://picsum.photos/seed/motor3/600/400', alt: 'Mobile App Control' },
     ],
   },
 }

@@ -152,6 +152,10 @@
           </div>
         </div>
 
+        <div class="text-center" style="margin-top: 3rem">
+          <router-link to="/products" class="primary-btn">View All Products</router-link>
+        </div>
+
         <!-- Carousel (commented out for future use)
         <div class="carousel-container">
           <div class="carousel-track" ref="carouselTrack">
@@ -443,6 +447,9 @@
       </div>
     </section>
 
+    <!-- Service Area Component -->
+    <ServiceArea />
+
     <!-- Consultation CTA -->
     <section id="contact" class="consultation-cta">
       <div class="container">
@@ -502,6 +509,11 @@
 <script setup>
 import { onMounted } from 'vue'
 import ElegantNav from '../components/ElegantNav.vue'
+import ServiceArea from '../components/ServiceArea.vue'
+
+onMounted(() => {
+  // Any other initialization if needed
+})
 
 const scrollToPortfolio = () => {
   const portfolioSection = document.getElementById('portfolio')

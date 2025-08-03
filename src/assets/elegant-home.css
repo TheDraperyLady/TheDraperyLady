@@ -158,11 +158,12 @@ section {
 
 .primary-btn {
   background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-  color: var(--text-dark);
+  color: white;
   border: none;
   padding: 1.2rem 2.5rem;
+  text-decoration: none;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 1px;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -192,7 +193,7 @@ section {
 
 .secondary-btn:hover {
   background: var(--primary-color);
-  color: var(--text-dark);
+  color: white;
 }
 
 .hero-visual {
@@ -911,6 +912,11 @@ section {
   font-size: 1.2rem;
   color: var(--primary-color);
   font-style: italic;
+}
+
+/* Utility Classes */
+.text-center {
+  text-align: center;
 }
 
 /* Responsive Design */

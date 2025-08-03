@@ -27,9 +27,9 @@
               <div class="product-actions">
                 <router-link
                   :to="{ name: 'product-detail', params: { type: 'draperies' } }"
-                  class="primary-btn"
+                  class="secondary-btn"
                 >
-                  Learn More About Draperies
+                  View Drapery Details
                 </router-link>
               </div>
             </div>
@@ -52,9 +52,9 @@
               <div class="product-actions">
                 <router-link
                   :to="{ name: 'product-detail', params: { type: 'shutters' } }"
-                  class="primary-btn"
+                  class="secondary-btn"
                 >
-                  Learn More About Shutters
+                  View Shutter Details
                 </router-link>
               </div>
             </div>
@@ -77,9 +77,9 @@
               <div class="product-actions">
                 <router-link
                   :to="{ name: 'product-detail', params: { type: 'blinds' } }"
-                  class="primary-btn"
+                  class="secondary-btn"
                 >
-                  Learn More About Blinds
+                  View Blind Details
                 </router-link>
               </div>
             </div>
@@ -102,9 +102,39 @@
               <div class="product-actions">
                 <router-link
                   :to="{ name: 'product-detail', params: { type: 'shades' } }"
-                  class="primary-btn"
+                  class="secondary-btn"
                 >
-                  Learn More About Shades
+                  View Shade Details
+                </router-link>
+              </div>
+            </div>
+          </div>
+
+          <!-- Motorization -->
+          <div class="product-section product-card" data-section="motorization">
+            <div class="product-image-container">
+              <img
+                src="@/assets/motorization.webp"
+                alt="Smart Motorization"
+                class="product-image"
+              />
+            </div>
+            <div class="product-content">
+              <div class="product-text">
+                <h3>Smart Motorization</h3>
+                <p>
+                  Upgrade your window treatments with smart motorization. Control your draperies and
+                  shades effortlessly using your smart device, perfect for convenience, safety, and
+                  modern functionality in your San Jose home.
+                </p>
+                <div class="price">Starting from $199/window</div>
+              </div>
+              <div class="product-actions">
+                <router-link
+                  :to="{ name: 'product-detail', params: { type: 'motorization' } }"
+                  class="secondary-btn"
+                >
+                  View Motorization Details
                 </router-link>
               </div>
             </div>
@@ -215,16 +245,25 @@ import ElegantNav from '../components/ElegantNav.vue'
   margin-top: auto;
 }
 
-.product-actions .primary-btn {
-  width: 100%;
+.product-actions .secondary-btn {
+  display: inline-block;
   text-align: center;
-  font-size: 1.1rem;
-  padding: 1.5rem;
+  font-size: 0.95rem;
+  padding: 0.8rem 1.5rem;
   text-decoration: none;
-  color: #fff;
+  color: var(--primary-color);
   font-family: 'Crimson Text', 'Georgia', serif;
   letter-spacing: 0.5px;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  border: 2px solid var(--primary-color);
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  background: transparent;
+}
+
+.product-actions .secondary-btn:hover {
+  background: var(--primary-color);
+  color: white;
+  transform: translateY(-2px);
 }
 
 @media (max-width: 768px) {
