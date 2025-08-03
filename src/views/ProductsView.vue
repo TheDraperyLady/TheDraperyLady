@@ -12,7 +12,7 @@
           <!-- Draperies -->
           <div class="product-section product-card" data-section="draperies">
             <div class="product-image-container">
-              <img src="@/assets/service-1.webp" alt="Luxury Draperies" class="product-image" />
+              <img src="@/assets/service-4.webp" alt="Luxury Draperies" class="product-image" />
             </div>
             <div class="product-content">
               <div class="product-text">
@@ -22,7 +22,7 @@
                   selection of fabrics, patterns, and styles to create the perfect window treatment
                   for your home.
                 </p>
-                <div class="price">Starting from $299/panel</div>
+                <div class="price">Starting from $199/panel</div>
               </div>
               <div class="product-actions">
                 <router-link
@@ -38,16 +38,16 @@
           <!-- Shutters -->
           <div class="product-section product-card" data-section="shutters">
             <div class="product-image-container">
-              <img src="@/assets/service-2.webp" alt="Premium Shutters" class="product-image" />
+              <img src="@/assets/service-1.webp" alt="Premium Shutters" class="product-image" />
             </div>
             <div class="product-content">
               <div class="product-text">
-                <h3>Premium Shutters</h3>
+                <h3>Plantation Shutters</h3>
                 <p>
-                  Add timeless elegance with our premium shutters. Available in wood, composite, and
-                  vinyl materials, our shutters offer both beauty and functionality.
+                  Add timeless elegance with our plantation shutters. Available in wood, composite,
+                  and vinyl materials, our shutters offer both beauty and functionality.
                 </p>
-                <div class="price">Starting from $399/window</div>
+                <div class="price">Starting from $199/window</div>
               </div>
               <div class="product-actions">
                 <router-link
@@ -63,7 +63,7 @@
           <!-- Blinds -->
           <div class="product-section product-card" data-section="blinds">
             <div class="product-image-container">
-              <img src="@/assets/service-3.webp" alt="Designer Blinds" class="product-image" />
+              <img src="@/assets/service-2.webp" alt="Designer Blinds" class="product-image" />
             </div>
             <div class="product-content">
               <div class="product-text">
@@ -85,35 +85,10 @@
             </div>
           </div>
 
-          <!-- Screens -->
-          <div class="product-section product-card" data-section="screens">
-            <div class="product-image-container">
-              <img src="@/assets/service-4.webp" alt="Solar Screens" class="product-image" />
-            </div>
-            <div class="product-content">
-              <div class="product-text">
-                <h3>Solar Screens</h3>
-                <p>
-                  Protect your home from harsh sunlight while maintaining your view. Our solar
-                  screens offer superior UV protection and energy efficiency.
-                </p>
-                <div class="price">Starting from $249/window</div>
-              </div>
-              <div class="product-actions">
-                <router-link
-                  :to="{ name: 'product-detail', params: { type: 'screens' } }"
-                  class="primary-btn"
-                >
-                  Learn More About Screens
-                </router-link>
-              </div>
-            </div>
-          </div>
-
           <!-- Shades -->
           <div class="product-section product-card" data-section="shades">
             <div class="product-image-container">
-              <img src="@/assets/service-5.webp" alt="Luxury Shades" class="product-image" />
+              <img src="@/assets/service-3.webp" alt="Luxury Shades" class="product-image" />
             </div>
             <div class="product-content">
               <div class="product-text">
@@ -122,7 +97,7 @@
                   Experience the perfect balance of light control and style with our luxury shades.
                   Available in roller, roman, and cellular styles.
                 </p>
-                <div class="price">Starting from $279/window</div>
+                <div class="price">Starting from $199/window</div>
               </div>
               <div class="product-actions">
                 <router-link
