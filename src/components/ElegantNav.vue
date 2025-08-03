@@ -25,7 +25,7 @@
           Products
         </router-link>
         <transition name="expand">
-          <div class="section-links" v-show="isProducts">
+          <div class="section-links" v-show="isProducts && expandNav">
             <router-link :to="{ name: 'product-detail', params: { type: 'draperies' } }"
               >Draperies</router-link
             >
@@ -79,9 +79,11 @@ watch(
 )
 
 const handleNavEnter = (nav) => {
+  console.log('handleNavEnter', nav, isProducts.value)
   activeNav.value = nav
-  // Only collapse on home page when hovering over non-home items
-  if (isHome.value && nav !== 'home') {
+  // Collapse on home page when hovering over non-home items
+  // and collapse product details when hovering over Articles
+  if ((isHome.value && nav !== 'home') || (isProducts.value && nav === 'articles')) {
     expandNav.value = false
   } else {
     expandNav.value = true
