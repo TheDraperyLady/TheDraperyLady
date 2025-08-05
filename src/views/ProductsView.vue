@@ -1,6 +1,5 @@
 <template>
   <div class="elegant-home">
-    <ElegantNav />
     <section class="services-section">
       <div class="container">
         <div class="section-header">
@@ -18,11 +17,10 @@
               <div class="product-text">
                 <h3>Custom Draperies</h3>
                 <p>
-                  Transform your space with our luxurious custom draperies. Choose from a vast
-                  selection of fabrics, patterns, and styles to create the perfect window treatment
-                  for your home.
+                  A wide variety of custom draperies are available - Pinch pleated draperies, rod
+                  pocket draperies and ripplefold draperies to name a few.
                 </p>
-                <div class="price">Starting from $199/panel</div>
+                <div class="price">Timeless Elegance, Tailored to Your Vision</div>
               </div>
               <div class="product-actions">
                 <router-link
@@ -44,10 +42,10 @@
               <div class="product-text">
                 <h3>Plantation Shutters</h3>
                 <p>
-                  Add timeless elegance with our plantation shutters. Available in wood, composite,
-                  and vinyl materials, our shutters offer both beauty and functionality.
+                  Elevate your windows with plantation shutters that blend timeless sophistication
+                  with modern functionality. The perfect marriage of elegance and light control.
                 </p>
-                <div class="price">Starting from $199/window</div>
+                <div class="price">Classic Style Meets Modern Sophistication</div>
               </div>
               <div class="product-actions">
                 <router-link
@@ -69,10 +67,10 @@
               <div class="product-text">
                 <h3>Designer Blinds</h3>
                 <p>
-                  Discover our collection of designer blinds, including wood, faux wood, and
-                  cellular options. Perfect for any room and style preference.
+                  Where precision meets style. Our designer blinds offer the perfect blend of form
+                  and function, with options to complement any interior vision.
                 </p>
-                <div class="price">Starting from $199/window</div>
+                <div class="price">Precision Engineering for Perfect Light Control</div>
               </div>
               <div class="product-actions">
                 <router-link
@@ -94,10 +92,10 @@
               <div class="product-text">
                 <h3>Luxury Shades</h3>
                 <p>
-                  Experience the perfect balance of light control and style with our luxury shades.
-                  Available in roller, roman, and cellular styles.
+                  Discover the art of light mastery with our luxury shades. From gentle filtering to
+                  total privacy, create your perfect ambiance with sophisticated style.
                 </p>
-                <div class="price">Starting from $199/window</div>
+                <div class="price">Effortless Elegance for Every Window</div>
               </div>
               <div class="product-actions">
                 <router-link
@@ -110,31 +108,62 @@
             </div>
           </div>
 
-          <!-- Motorization -->
-          <div class="product-section product-card" data-section="motorization">
+          <!-- Valances -->
+          <div class="product-section product-card" data-section="valances">
             <div class="product-image-container">
               <img
-                src="@/assets/motorization.webp"
-                alt="Smart Motorization"
+                src="@/assets/valances/valance-1.jpg"
+                alt="Custom Valances"
                 class="product-image"
               />
             </div>
             <div class="product-content">
               <div class="product-text">
-                <h3>Smart Motorization</h3>
+                <h3>Custom Valances</h3>
                 <p>
-                  Upgrade your window treatments with smart motorization. Control your draperies and
-                  shades effortlessly using your smart device, perfect for convenience, safety, and
-                  modern functionality in your San Jose home.
+                  Add a finishing touch to your windows with our custom valances. From classic swags
+                  to modern straight valances, our designs perfectly frame your windows while adding
+                  architectural interest.
                 </p>
-                <div class="price">Starting from $199/window</div>
+                <div class="price">Elegant Window Top Treatments</div>
               </div>
               <div class="product-actions">
                 <router-link
-                  :to="{ name: 'product-detail', params: { type: 'motorization' } }"
+                  :to="{ name: 'product-detail', params: { type: 'valances' } }"
                   class="secondary-btn"
                 >
-                  View Motorization Details
+                  View Valance Details
+                </router-link>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hardware & Motorization -->
+          <div class="product-section product-card" data-section="accessories">
+            <div class="product-image-container">
+              <img
+                src="@/assets/motorization.webp"
+                alt="Hardware and Motorization"
+                class="product-image"
+              />
+            </div>
+            <div class="product-content">
+              <div class="product-text">
+                <h3>Accessories & Motorization</h3>
+                <p>
+                  Enhance your window treatments with our premium selection of hardware and smart
+                  motorization solutions. From decorative rods to automated controls, we offer
+                  everything to complete your perfect window design with both style and modern
+                  convenience.
+                </p>
+                <div class="price">Smart Solutions & Elegant Finishes</div>
+              </div>
+              <div class="product-actions">
+                <router-link
+                  :to="{ name: 'product-detail', params: { type: 'accessories' } }"
+                  class="secondary-btn"
+                >
+                  View Accessories & Motorization
                 </router-link>
               </div>
             </div>
@@ -149,7 +178,7 @@
         <div class="cta-content">
           <h2>Find Your Perfect Window Treatment</h2>
           <p>Schedule a free consultation with our design experts</p>
-          <button class="primary-btn">Book Consultation</button>
+          <router-link to="/consultation" class="primary-btn">Book Consultation</router-link>
         </div>
       </div>
     </section>
@@ -168,7 +197,7 @@ import ElegantNav from '../components/ElegantNav.vue'
 }
 
 .services-section {
-  padding: 2rem 0; /* Add vertical padding */
+  padding: 4rem 0; /* Add vertical padding */
 }
 
 .product-cards {
@@ -237,8 +266,9 @@ import ElegantNav from '../components/ElegantNav.vue'
 .price {
   color: var(--primary-color);
   font-weight: 600;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   margin-bottom: 2rem;
+  font-style: italic;
 }
 
 .product-actions {

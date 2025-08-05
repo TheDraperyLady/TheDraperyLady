@@ -1,6 +1,5 @@
 <template>
   <div class="elegant-home">
-    <ElegantNav />
     <section class="product-detail-section">
       <div class="container">
         <!-- Hero Section -->
@@ -15,7 +14,9 @@
                 {{ productDetails[productType]?.description || 'Loading product details...' }}
               </p>
               <div class="cta-group">
-                <button class="primary-btn">Schedule Consultation</button>
+                <router-link to="/consultation" class="primary-btn"
+                  >Schedule Consultation</router-link
+                >
                 <button class="secondary-btn" @click="scrollToGallery">View Gallery</button>
               </div>
             </div>
@@ -65,6 +66,7 @@
               class="gallery-item"
             >
               <img :src="image.src" :alt="image.alt" class="gallery-image" />
+              <div class="gallery-caption">{{ image.alt }}</div>
             </div>
           </div>
         </div>
@@ -97,7 +99,9 @@
         <div class="cta-content">
           <h2>Ready to Transform Your Space?</h2>
           <p>Schedule a consultation with our design experts</p>
-          <button class="primary-btn">Book Your Consultation Today</button>
+          <router-link to="/consultation" class="primary-btn"
+            >Book Your Consultation Today</router-link
+          >
         </div>
       </div>
     </section>
@@ -250,7 +254,7 @@ const scrollToGallery = () => {
 
 /* Gallery Section */
 .gallery-section {
-  padding: 4rem 0;
+  padding: 4rem 2rem;
   background: linear-gradient(135deg, var(--background-light) 0%, var(--background-lighter) 100%);
   border-radius: 30px;
 }
@@ -278,6 +282,32 @@ const scrollToGallery = () => {
 
 .gallery-item:hover .gallery-image {
   transform: scale(1.05);
+}
+
+.gallery-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(44, 44, 44, 0.9));
+  color: white;
+  padding: 2rem 1.5rem;
+  font-size: 1.1rem;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: all 0.3s ease;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  font-family: 'Crimson Text', 'Georgia', serif;
+  font-style: italic;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+.gallery-item:hover .gallery-caption {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Options Section */

@@ -1,5 +1,5 @@
 <template>
-  <section id="service-area" class="service-area-section">
+  <div class="service-area-section">
     <div class="container">
       <div class="section-header">
         <h2>Our Service Area</h2>
@@ -24,7 +24,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </div>
 </template>
 
 <script setup>
@@ -50,24 +50,23 @@ const initMap = () => {
     { name: 'Fremont', lat: 37.5485, lng: -122.0085 },
   ]
 
-  // Define service area boundaries including all of San Jose
+  // Define service area boundaries following city outlines with padding
   const serviceAreaBoundaries = [
-    { lat: 37.4849, lng: -122.2305 }, // Menlo Park
-    { lat: 37.4419, lng: -122.143 }, // Palo Alto
-    { lat: 37.3852, lng: -122.0813 }, // Mountain View
-    { lat: 37.3688, lng: -122.0363 }, // Sunnyvale
-    { lat: 37.3541, lng: -121.9552 }, // Santa Clara
-    { lat: 37.4591, lng: -121.8805 }, // Northeast San Jose
-    { lat: 37.404, lng: -121.7681 }, // East San Jose
-    { lat: 37.2867, lng: -121.776 }, // Evergreen
-    { lat: 37.2255, lng: -121.7964 }, // Southeast San Jose
-    { lat: 37.2074, lng: -121.8584 }, // South San Jose
-    { lat: 37.2267, lng: -121.9269 }, // Almaden Valley
-    { lat: 37.2872, lng: -121.95 }, // Campbell
-    { lat: 37.2638, lng: -122.023 }, // Saratoga
-    { lat: 37.3852, lng: -122.1161 }, // Los Altos
-    { lat: 37.5485, lng: -122.0085 }, // Fremont
-    { lat: 37.4849, lng: -122.2305 }, // Back to Menlo Park
+    { lat: 37.5785, lng: -122.2105 }, // Start beyond Menlo Park
+    { lat: 37.5885, lng: -122.0485 }, // Curve towards Fremont
+    { lat: 37.5785, lng: -121.9785 }, // Beyond Fremont
+    { lat: 37.4891, lng: -121.8305 }, // Northeast curve
+    { lat: 37.424, lng: -121.7481 }, // East of San Jose
+    { lat: 37.3087, lng: -121.726 }, // Southeast curve
+    { lat: 37.1974, lng: -121.7764 }, // South of Evergreen
+    { lat: 37.1874, lng: -121.8584 }, // South San Jose
+    { lat: 37.1974, lng: -121.9469 }, // South of Almaden
+    { lat: 37.2238, lng: -122.053 }, // Southwest curve
+    { lat: 37.2938, lng: -122.083 }, // Beyond Saratoga
+    { lat: 37.3552, lng: -122.1461 }, // Curve towards Los Altos
+    { lat: 37.4152, lng: -122.1761 }, // Beyond Los Altos
+    { lat: 37.4749, lng: -122.1905 }, // Curve towards Menlo Park
+    { lat: 37.5785, lng: -122.2105 }, // Back to start
   ]
 
   map = new google.maps.Map(mapRef.value, {

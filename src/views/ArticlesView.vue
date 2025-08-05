@@ -1,7 +1,5 @@
 <template>
   <div class="elegant-home">
-    <ElegantNav />
-
     <!-- Articles Hero Section -->
     <section class="articles-hero">
       <div class="container">
@@ -105,7 +103,7 @@
         <div class="cta-content">
           <h2>Ready to Transform Your Windows?</h2>
           <p>Schedule a consultation with our expert team today.</p>
-          <button class="primary-btn">Call For Consultation 408-981-1874</button>
+          <router-link to="/consultation" class="primary-btn">Book Consultation</router-link>
         </div>
       </div>
     </section>

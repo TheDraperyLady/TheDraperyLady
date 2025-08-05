@@ -1,85 +1,170 @@
 <template>
-  <nav class="elegant-nav">
+  <nav class="elegant-nav elegant-home">
     <div class="nav-container">
       <div class="logo">
         <img src="../assets/TDL_logo.png" alt="The Drapery Lady" class="logo-image" />
         <div class="logo-text">
           <h2>The Drapery Lady</h2>
-          <span class="tagline">Classic, Simple and Elegant</span>
         </div>
       </div>
       <div class="nav-links" @mouseleave="handleNavLeave">
         <router-link to="/" @mouseenter="handleNavEnter('home')"> Home </router-link>
         <transition name="expand">
-          <div class="section-links" v-show="isHome && expandNav && activeNav === 'home'">
+          <div
+            class="section-links"
+            v-show="
+              !isNavigating &&
+              isHome &&
+              (isInitialMount ? isHome : expandNav && activeNav === 'home')
+            "
+          >
             <a href="#about">About</a>
             <a href="#services">Services</a>
             <a href="#portfolio">Portfolio</a>
             <a href="#testimonials">Testimonials</a>
             <a href="#faq">FAQ</a>
-            <a href="#service-area">Service Area</a>
-            <a href="#contact">Contact</a>
           </div>
         </transition>
         <router-link to="/products" @mouseenter="handleNavEnter('products')">
           Products
         </router-link>
         <transition name="expand">
-          <div class="section-links" v-show="isProducts && expandNav">
-            <router-link :to="{ name: 'product-detail', params: { type: 'draperies' } }"
+          <div
+            class="section-links"
+            v-show="
+              !isNavigating &&
+              (isProducts || currentProductType) &&
+              (isInitialMount ? isProducts || currentProductType : expandNav)
+            "
+          >
+            <router-link
+              :to="{ name: 'product-detail', params: { type: 'draperies' } }"
+              :class="{ 'product-active': currentProductType === 'draperies' }"
               >Draperies</router-link
             >
-            <router-link :to="{ name: 'product-detail', params: { type: 'shutters' } }"
+            <router-link
+              :to="{ name: 'product-detail', params: { type: 'shutters' } }"
+              :class="{ 'product-active': currentProductType === 'shutters' }"
               >Shutters</router-link
             >
-            <router-link :to="{ name: 'product-detail', params: { type: 'blinds' } }"
+            <router-link
+              :to="{ name: 'product-detail', params: { type: 'blinds' } }"
+              :class="{ 'product-active': currentProductType === 'blinds' }"
               >Blinds</router-link
             >
-            <router-link :to="{ name: 'product-detail', params: { type: 'screens' } }"
-              >Screens</router-link
-            >
-            <router-link :to="{ name: 'product-detail', params: { type: 'shades' } }"
+            <router-link
+              :to="{ name: 'product-detail', params: { type: 'shades' } }"
+              :class="{ 'product-active': currentProductType === 'shades' }"
               >Shades</router-link
             >
-            <router-link :to="{ name: 'product-detail', params: { type: 'motorization' } }"
-              >Motorization</router-link
+            <router-link
+              :to="{ name: 'product-detail', params: { type: 'valances' } }"
+              :class="{ 'product-active': currentProductType === 'valances' }"
+              >Valances</router-link
+            >
+            <router-link
+              :to="{ name: 'product-detail', params: { type: 'accessories' } }"
+              :class="{ 'product-active': currentProductType === 'accessories' }"
+              >Accessories</router-link
             >
           </div>
         </transition>
         <router-link to="/articles" @mouseenter="handleNavEnter('articles')">
           Articles
         </router-link>
+        <router-link to="/consultation" class="consultation-btn"> Book Consultation </router-link>
       </div>
     </div>
   </nav>
 </template>
 
 <script setup>
-import { ref, onMounted, computed, watch } from 'vue'
+import { ref, onMounted, onUnmounted, computed, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
 const route = useRoute()
 const router = useRouter()
-const isHome = computed(() => route.path === '/')
-const isProducts = computed(
-  () => route.path.startsWith('/products') || route.path.startsWith('/product/'),
-)
+const isHome = computed(() => {
+  // Remove the base URL if present and check if it's the home route
+  const path = route.path.replace('/TheDraperyLady', '')
+  const result = path === '/' || path === ''
+  console.log('[Debug] isHome computed:', {
+    originalPath: route.path,
+    cleanPath: path,
+    isHome: result,
+  })
+  return result
+})
+
+const isProducts = computed(() => {
+  // Remove the base URL if present and check if it's a products route
+  const path = route.path.replace('/TheDraperyLady', '')
+  const result = path.startsWith('/products') // Only true for products listing page
+  console.log('[Debug] isProducts computed:', {
+    originalPath: route.path,
+    cleanPath: path,
+    isProducts: result,
+  })
+  return result
+})
+
+const currentProductType = computed(() => {
+  const path = route.path.replace('/TheDraperyLady', '')
+  if (path.startsWith('/product/')) {
+    return path.split('/').pop()
+  }
+  return null
+})
+
+// Watch for product type changes to clear section-active classes
+watch(currentProductType, (newType) => {
+  if (newType) {
+    // Clear all section-active classes when on a product detail page
+    document.querySelectorAll('.section-links a').forEach((link) => {
+      link.classList.remove('section-active')
+    })
+  }
+})
+
 const expandNav = ref(true)
 const activeNav = ref(null)
+const isInitialMount = ref(true) // Add flag to track initial mount
+const isNavigating = ref(true) // Add flag to track initial navigation
+let currentObserver = null // Declare observer reference before watch
+
+// Wait for initial navigation to complete
+router.isReady().then(() => {
+  console.log('[Debug] Router ready, current route:', route.path)
+  isNavigating.value = false
+})
 
 // Reset expansion state when route changes
 watch(
   route,
   () => {
+    console.log('[Debug] Route changed:', {
+      path: route.path,
+      isProducts: isProducts.value,
+      isHome: isHome.value,
+    })
     expandNav.value = true
     // Set initial active nav based on current route
     activeNav.value = isHome.value ? 'home' : isProducts.value ? 'products' : null
+    console.log('[Debug] Nav state after route change:', {
+      expandNav: expandNav.value,
+      activeNav: activeNav.value,
+    })
   },
   { immediate: true },
 )
 
 const handleNavEnter = (nav) => {
-  console.log('handleNavEnter', nav, isProducts.value)
+  console.log('[Debug] handleNavEnter triggered:', {
+    nav,
+    isProducts: isProducts.value,
+    expandNav: expandNav.value,
+    activeNav: activeNav.value,
+  })
   activeNav.value = nav
   // Collapse on home page when hovering over non-home items
   // and collapse product details when hovering over Articles
@@ -96,92 +181,176 @@ const handleNavLeave = () => {
   activeNav.value = isHome.value ? 'home' : isProducts.value ? 'products' : null
 }
 
+// Watch for route changes to set up observers after view updates
+watch(
+  [route, isNavigating],
+  () => {
+    // Clean up existing observer
+    if (currentObserver) {
+      console.log('[Debug] Cleaning up observer')
+      currentObserver.disconnect()
+      currentObserver = null
+    }
+
+    if (isNavigating.value) return // Skip setup while navigating
+
+    // Wait for view to update before setting up observers
+    setTimeout(() => {
+      if (isHome.value) {
+        setupScrollObserver('section[id]', '#')
+      } else if (isProducts.value && !currentProductType.value) {
+        // Only set up product section observer on the products listing page
+        setupScrollObserver('.product-section', '/products/')
+      }
+    }, 100)
+  },
+  { immediate: true },
+)
+
+// Clean up observers when component unmounts
+
 onMounted(() => {
-  // Set up scroll observation for both home and products pages
+  // Initial setup
   if (isHome.value) {
     setupScrollObserver('section[id]', '#')
   } else if (isProducts.value) {
     setupScrollObserver('.product-section', '/products/')
   }
+
+  // Reset initial mount flag after a brief delay
+  setTimeout(() => {
+    console.log('[Debug] Resetting initial mount flag')
+    isInitialMount.value = false
+  }, 100)
 })
 
 const setupScrollObserver = (sectionSelector, linkPrefix) => {
-  const sections = document.querySelectorAll(sectionSelector)
-  let intersectingEntries = new Map()
-
-  const observerOptions = {
-    threshold: Array.from({ length: 11 }, (_, i) => i / 10),
-    rootMargin: '-100px 0px -100px 0px',
+  console.log('[Debug] Setting up scroll observer:', {
+    sectionSelector,
+    linkPrefix,
+    isProducts: isProducts.value,
+    isHome: isHome.value,
+  })
+  // Clean up previous observer if it exists
+  if (currentObserver) {
+    console.log('[Debug] Disconnecting previous observer')
+    currentObserver.disconnect()
   }
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      const sectionId = entry.target.id || entry.target.dataset.section
-      if (entry.isIntersecting) {
-        intersectingEntries.set(sectionId, entry.intersectionRatio)
-      } else {
-        intersectingEntries.delete(sectionId)
-      }
+  // Wait for sections to be available in the DOM
+  setTimeout(() => {
+    const sections = document.querySelectorAll(sectionSelector)
+    if (!sections.length) return // Exit if no sections found
 
-      // Find the section with highest visibility ratio
-      let maxRatio = 0
-      let mostVisibleId = ''
+    let intersectingEntries = new Map()
 
-      intersectingEntries.forEach((ratio, id) => {
-        if (ratio > maxRatio) {
-          maxRatio = ratio
-          mostVisibleId = id
-        }
-      })
+    const observerOptions = {
+      threshold: Array.from({ length: 11 }, (_, i) => i / 10),
+      rootMargin: '-100px 0px -100px 0px',
+    }
 
-      // Update active state for section links
-      const sectionLinks = document.querySelectorAll('.section-links a')
-      sectionLinks.forEach((link) => {
-        const href = link.getAttribute('href')
-        const linkId = href.startsWith('#') ? href.substring(1) : href.split('/').pop()
-
-        if (linkId === mostVisibleId) {
-          link.classList.add('section-active')
+    currentObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const sectionId = entry.target.id || entry.target.dataset.section
+        if (entry.isIntersecting) {
+          intersectingEntries.set(sectionId, entry.intersectionRatio)
         } else {
-          link.classList.remove('section-active')
+          intersectingEntries.delete(sectionId)
+        }
+
+        // Find the section with highest visibility ratio
+        let maxRatio = 0
+        let mostVisibleId = ''
+
+        intersectingEntries.forEach((ratio, id) => {
+          if (ratio > maxRatio) {
+            maxRatio = ratio
+            mostVisibleId = id
+          }
+        })
+
+        // Update active state for section links only if not on a product detail page
+        if (!currentProductType.value) {
+          const sectionLinks = document.querySelectorAll('.section-links a')
+          sectionLinks.forEach((link) => {
+            const href = link.getAttribute('href')
+            if (!href) return // Skip if no href attribute
+
+            const linkId = href.startsWith('#') ? href.substring(1) : href.split('/').pop()
+
+            // Only update if we have a valid linkId and mostVisibleId
+            if (linkId && mostVisibleId) {
+              if (linkId === mostVisibleId) {
+                link.classList.add('section-active')
+              } else {
+                link.classList.remove('section-active')
+              }
+            }
+          })
         }
       })
-    })
-  }, observerOptions)
+    }, observerOptions)
 
-  sections.forEach((section) => {
-    observer.observe(section)
-  })
+    // Observe all sections
+    sections.forEach((section) => {
+      if (section) {
+        // Make sure section exists
+        currentObserver.observe(section)
+      }
+    })
+  }, 100) // End of setTimeout
 
   // Handle smooth scrolling
-  document.addEventListener('click', (e) => {
+  const handleSmoothScroll = (e) => {
     const link = e.target.closest(`a[href^="${linkPrefix}"]`)
-    if (link && (isHome.value || isProducts.value)) {
+    if (!link) return
+
+    const href = link.getAttribute('href')
+    if (!href) return
+
+    // If it's a hash link on the same page
+    if (href.startsWith('#')) {
+      const targetId = href.substring(1)
+      const targetSection = document.getElementById(targetId)
+
+      if (targetSection) {
+        e.preventDefault()
+        targetSection.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        })
+        // Adjust for fixed header
+        window.scrollBy(0, -100)
+      }
+    }
+    // For product sections
+    else if (isProducts.value && href.startsWith('/products/')) {
       e.preventDefault()
-      const targetId = link.getAttribute('href').replace(linkPrefix, '')
-      const targetSection =
-        linkPrefix === '#'
-          ? document.getElementById(targetId)
-          : document.querySelector(`[data-section="${targetId}"]`)
+      const targetId = href.replace('/products/', '')
+      const targetSection = document.querySelector(`[data-section="${targetId}"]`)
 
       if (targetSection) {
         targetSection.scrollIntoView({
           behavior: 'smooth',
           block: 'start',
         })
+        // Adjust for fixed header
+        window.scrollBy(0, -100)
       }
     }
+  }
+
+  document.addEventListener('click', handleSmoothScroll)
+
+  // Clean up event listener when component unmounts
+  onUnmounted(() => {
+    document.removeEventListener('click', handleSmoothScroll)
   })
 }
 </script>
 
 <style scoped>
-:root {
-  --primary-color: #8b2635;
-  --secondary-color: #c44569;
-  --text-dark: #2c2c2c;
-  --text-light: #666;
-}
+@import '../assets/elegant-home.css';
 
 .elegant-nav {
   background: rgba(255, 255, 255, 0.98);
@@ -222,19 +391,12 @@ const setupScrollObserver = (sectionSelector, linkPrefix) => {
   color: var(--text-dark);
   margin-bottom: 0.2rem;
   letter-spacing: 1px;
-}
-
-.logo-text .tagline {
-  font-size: 0.8rem;
-  color: var(--primary-color);
-  font-style: italic;
-  letter-spacing: 2px;
-  text-transform: uppercase;
+  font-family: 'Crimson Text', 'Georgia', serif;
 }
 
 .nav-links {
   display: flex;
-  gap: 2.5rem;
+  gap: 1.5rem;
   align-items: center;
 }
 
@@ -248,6 +410,7 @@ const setupScrollObserver = (sectionSelector, linkPrefix) => {
   position: relative;
   padding: 0.5rem 0;
   white-space: nowrap;
+  font-family: 'Crimson Text', 'Georgia', serif;
 }
 
 .nav-links a:hover,
@@ -270,14 +433,18 @@ const setupScrollObserver = (sectionSelector, linkPrefix) => {
 /* Section links styles */
 .section-links {
   display: flex;
-  gap: 2.5rem;
+  gap: 1.5rem;
   overflow: hidden;
 }
 
 /* Transition classes */
-.expand-enter-active,
+.expand-enter-active {
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  max-width: 800px;
+}
+
 .expand-leave-active {
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   max-width: 800px;
 }
 
@@ -309,27 +476,68 @@ const setupScrollObserver = (sectionSelector, linkPrefix) => {
 .nav-links a:hover::after,
 .nav-links .router-link-active::after,
 .section-links a:hover::after,
-.section-links a.section-active::after {
+.section-links a.section-active::after,
+.section-links a.product-active::after {
   width: 100%;
 }
 
-.section-links a.section-active {
+.section-links a.section-active,
+.section-links a.product-active {
   color: var(--primary-color);
+}
+
+/* Consultation Button */
+.consultation-btn {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  color: white !important;
+  padding: 0.8rem 1.5rem !important;
+  border-radius: 50px;
+  font-weight: 600 !important;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 0.85rem !important;
+  box-shadow: 0 4px 15px var(--shadow-color, rgba(139, 38, 53, 0.2));
+  transition: all 0.3s ease !important;
+  margin-left: 1rem;
+  font-family: 'Crimson Text', 'Georgia', serif;
+}
+
+.consultation-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(139, 38, 53, 0.3);
+}
+
+.consultation-btn::after {
+  display: none;
+}
+
+/* Hide section links for medium screens */
+@media (max-width: 1350px) {
+  .section-links {
+    display: none !important;
+  }
 }
 
 /* Mobile responsive styles */
 @media (max-width: 768px) {
   .nav-container {
-    flex-direction: column;
-    gap: 1rem;
+    justify-content: center;
   }
 
   .nav-links {
-    gap: 1.5rem;
+    display: none;
   }
 
-  .section-links {
-    gap: 1.5rem;
+  .logo {
+    justify-content: center;
+  }
+
+  .logo-text h2 {
+    font-size: 1.5rem;
+  }
+
+  .logo-image {
+    height: 50px;
   }
 }
 </style>

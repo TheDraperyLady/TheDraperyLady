@@ -22,8 +22,8 @@ export const productDetails = {
     title: 'Custom Draperies',
     subtitle: 'Elegant Custom Window Treatments',
     description:
-      'Transform your space with our luxurious custom draperies. Each piece is meticulously crafted to your exact specifications, using the finest fabrics and materials available.',
-    mainImage: 'https://picsum.photos/seed/draperies/800/600',
+      'A wide variety of custom draperies are available - Pinch pleated draperies,  rod pocket draperies and ripplefold draperies to name a few.',
+    mainImage: new URL('@assets/draperies/drapery-11.jpg', import.meta.url).href,
     features: [
       commonFeatures.customDesign,
       {
@@ -49,9 +49,66 @@ export const productDetails = {
       },
     ],
     gallery: [
-      { src: 'https://picsum.photos/seed/drapery1/600/400', alt: 'Luxury Drapery Installation' },
-      { src: 'https://picsum.photos/seed/drapery2/600/400', alt: 'Custom Drapery Detail' },
-      { src: 'https://picsum.photos/seed/drapery3/600/400', alt: 'Drapery Living Room' },
+      {
+        src: new URL('@assets/draperies/drapery-2.jpg', import.meta.url).href,
+        alt: 'Arched Draperies in Bathroom',
+      },
+      {
+        src: new URL('@assets/draperies/drapery-3.jpg', import.meta.url).href,
+        alt: 'Bay Window Cornice Drapes and Shutters',
+      },
+      {
+        src: new URL('@assets/draperies/drapery-4.jpg', import.meta.url).href,
+        alt: 'Classic Home Drapery',
+      },
+      {
+        src: new URL('@assets/draperies/drapery-5.jpg', import.meta.url).href,
+        alt: 'Long Ripplefold Draperies',
+      },
+      {
+        src: new URL('@assets/draperies/drapery-6.jpg', import.meta.url).href,
+        alt: 'Custom Drapery Installation',
+      },
+      {
+        src: new URL('@assets/draperies/drapery-7.jpg', import.meta.url).href,
+        alt: 'Elegant Panel Draperies',
+      },
+      {
+        src: new URL('@assets/draperies/drapery-8.jpg', import.meta.url).href,
+        alt: 'Ripplefold Patterned Sheers',
+      },
+      {
+        src: new URL('@assets/draperies/drapery-9.jpg', import.meta.url).href,
+        alt: 'Ripplefold Sheer Draperies',
+      },
+      {
+        src: new URL('@assets/draperies/drapery-10.jpg', import.meta.url).href,
+        alt: 'Sheer Side Panels on Bay Window',
+      },
+      {
+        src: new URL('@assets/draperies/drapery-1.jpg', import.meta.url).href,
+        alt: 'Angled Draperies on Wrought Iron',
+      },
+      {
+        src: new URL('@assets/draperies/drapery-12.jpg', import.meta.url).href,
+        alt: 'Periwinkle Print Draperies',
+      },
+      {
+        src: new URL('@assets/draperies/drapery-13.jpg', import.meta.url).href,
+        alt: 'Cornice and Side Panels',
+      },
+      {
+        src: new URL('@assets/draperies/drapery-14.jpg', import.meta.url).href,
+        alt: 'Custom Window Treatment Design',
+      },
+      {
+        src: new URL('@assets/draperies/drapery-15.jpg', import.meta.url).href,
+        alt: 'French Returns Sliding Glass Door',
+      },
+      {
+        src: new URL('@assets/draperies/drapery-16.jpg', import.meta.url).href,
+        alt: 'Two Fold Banded Over Draperies',
+      },
     ],
   },
   shutters: {
@@ -59,7 +116,7 @@ export const productDetails = {
     subtitle: 'Timeless Window Solutions',
     description:
       'Add a touch of timeless elegance to your home with our premium shutters. Crafted from the finest materials, our shutters provide both beauty and functionality.',
-    mainImage: 'https://picsum.photos/seed/shutters/800/600',
+    mainImage: new URL('@assets/shutters/shutter-1.jpg', import.meta.url).href,
     features: [
       {
         title: 'Superior Materials',
@@ -93,9 +150,26 @@ export const productDetails = {
       },
     ],
     gallery: [
-      { src: 'https://picsum.photos/seed/shutter1/600/400', alt: 'Premium Shutter Installation' },
-      { src: 'https://picsum.photos/seed/shutter2/600/400', alt: 'Custom Shutter Detail' },
-      { src: 'https://picsum.photos/seed/shutter3/600/400', alt: 'Plantation Shutters' },
+      {
+        src: new URL('@assets/shutters/shutter-1.jpg', import.meta.url).href,
+        alt: 'Bay Window Shutters',
+      },
+      {
+        src: new URL('@assets/shutters/shutter-2.jpg', import.meta.url).href,
+        alt: 'Round Window Shutters',
+      },
+      {
+        src: new URL('@assets/shutters/shutter-3.jpg', import.meta.url).href,
+        alt: 'Bypass Shutters on Patio Door',
+      },
+      {
+        src: new URL('@assets/shutters/shutter-4.jpg', import.meta.url).href,
+        alt: 'Front Window Shutters',
+      },
+      {
+        src: new URL('@assets/shutters/shutter-5.jpg', import.meta.url).href,
+        alt: 'Bay Window Cornice with Shutters',
+      },
     ],
   },
   blinds: {
@@ -142,50 +216,7 @@ export const productDetails = {
       { src: 'https://picsum.photos/seed/blinds3/600/400', alt: 'Modern Vertical Blinds' },
     ],
   },
-  screens: {
-    title: 'Solar Screens',
-    subtitle: 'Advanced Sun Protection',
-    description:
-      'Protect your home and reduce energy costs with our advanced solar screens. Enjoy the view while blocking harmful UV rays and reducing glare.',
-    mainImage: 'https://picsum.photos/seed/screens/800/600',
-    features: [
-      {
-        title: 'UV Protection',
-        description: '99% UV ray blocking capability',
-        icon: 'sun',
-      },
-      {
-        title: 'Energy Saving',
-        description: 'Reduce cooling costs by up to 30%',
-        icon: 'leaf',
-      },
-      {
-        title: 'View Preservation',
-        description: 'Maintain your view while reducing glare',
-        icon: 'eye',
-      },
-      commonFeatures.professionalInstallation,
-    ],
-    options: [
-      {
-        category: 'Screen Types',
-        items: ['Solar Screens', 'Privacy Screens', 'Blackout Screens', 'Dual Screens'],
-      },
-      {
-        category: 'Openness Factors',
-        items: ['1%', '3%', '5%', '10%', 'Custom'],
-      },
-      {
-        category: 'Colors',
-        items: ['Charcoal', 'Gray', 'Bronze', 'Beige', 'Custom Colors'],
-      },
-    ],
-    gallery: [
-      { src: 'https://picsum.photos/seed/screen1/600/400', alt: 'Solar Screen Installation' },
-      { src: 'https://picsum.photos/seed/screen2/600/400', alt: 'Privacy Screen Detail' },
-      { src: 'https://picsum.photos/seed/screen3/600/400', alt: 'UV Protection Demonstration' },
-    ],
-  },
+
   shades: {
     title: 'Luxury Shades',
     subtitle: 'Sophisticated Window Fashion',
@@ -226,47 +257,149 @@ export const productDetails = {
       { src: 'https://picsum.photos/seed/shade3/600/400', alt: 'Motorized Shade Operation' },
     ],
   },
-  motorization: {
-    title: 'Smart Motorization',
-    subtitle: 'Automated Window Treatment Solutions',
+  valances: {
+    title: 'Custom Valances',
+    subtitle: 'Elegant Window Top Treatments',
     description:
-      'Upgrade your window treatments with our smart motorization solutions. Control your draperies and shades effortlessly using your smart device, perfect for those who want convenience, safety, and modern functionality in their San Jose home.',
-    mainImage: 'https://picsum.photos/seed/motorization/800/600',
+      'Add a finishing touch to your windows with our custom valances. From classic swags to modern straight valances, our designs perfectly frame your windows while adding architectural interest.',
+    mainImage: new URL('@assets/valances/valance-1.jpg', import.meta.url).href,
     features: [
+      commonFeatures.customDesign,
       {
-        title: 'Smart Device Control',
-        description: 'Control your window treatments from your smartphone or tablet',
-        icon: 'mobile-screen',
+        title: 'Versatile Styles',
+        description: 'Wide range of valance styles to match any decor theme',
+        icon: 'wand-magic-sparkles',
       },
+      commonFeatures.expertCraftsmanship,
       {
-        title: 'Safety & Convenience',
-        description: 'Perfect for hard-to-reach windows and elderly or mobility-impaired users',
-        icon: 'shield-heart',
+        title: 'Perfect Proportions',
+        description: 'Custom sized to achieve ideal visual balance for your windows',
+        icon: 'ruler',
       },
-      {
-        title: 'Smart Home Integration',
-        description: 'Compatible with major smart home systems',
-        icon: 'house-signal',
-      },
-      commonFeatures.professionalInstallation,
     ],
     options: [
       {
-        category: 'Compatible Products',
-        items: ['Draperies', 'Shades', 'Blinds', 'Shutters', 'Solar Screens'],
+        category: 'Valance Styles',
+        items: ['Box Pleated', 'Swag and Cascade', 'Straight', 'Balloon', 'Scalloped'],
       },
       {
-        category: 'Control Options',
+        category: 'Fabric Options',
+        items: ['Silk', 'Linen', 'Cotton', 'Velvet', 'Designer Prints'],
+      },
+      {
+        category: 'Mounting Options',
+        items: ['Board Mounted', 'Rod Pocket', 'Decorative Hardware', 'Hidden Mounts'],
+      },
+    ],
+    gallery: [
+      {
+        src: new URL('@assets/valances/valance-1.jpg', import.meta.url).href,
+        alt: 'Arched Continental Valance',
+      },
+      {
+        src: new URL('@assets/valances/valance-2.jpg', import.meta.url).href,
+        alt: 'Arched Continental with Honeycomb Shade',
+      },
+      {
+        src: new URL('@assets/valances/valance-3.jpg', import.meta.url).href,
+        alt: 'Balloon Valances',
+      },
+      {
+        src: new URL('@assets/valances/valance-4.jpg', import.meta.url).href,
+        alt: 'Box Pleated Valance on Bay Window',
+      },
+      {
+        src: new URL('@assets/valances/valance-5.jpg', import.meta.url).href,
+        alt: 'Contemporary Kitchen Valance',
+      },
+      {
+        src: new URL('@assets/valances/valance-6.jpg', import.meta.url).href,
+        alt: 'Cornice on Small Window',
+      },
+      {
+        src: new URL('@assets/valances/valance-7.jpg', import.meta.url).href,
+        alt: 'Cornice over Sliding Glass Door',
+      },
+      {
+        src: new URL('@assets/valances/valance-8.jpg', import.meta.url).href,
+        alt: 'Dining Room Silk Swags',
+      },
+      {
+        src: new URL('@assets/valances/valance-9.jpg', import.meta.url).href,
+        alt: 'Hexagon Valances',
+      },
+      {
+        src: new URL('@assets/valances/valance-10.jpg', import.meta.url).href,
+        alt: 'Custom Valance Design',
+      },
+      {
+        src: new URL('@assets/valances/valance-11.jpg', import.meta.url).href,
+        alt: 'Elegant Window Treatment',
+      },
+      {
+        src: new URL('@assets/valances/valance-12.jpg', import.meta.url).href,
+        alt: 'Kitchen Cornice',
+      },
+      {
+        src: new URL('@assets/valances/valance-13.jpg', import.meta.url).href,
+        alt: 'Living Room Cornice with Side Panels and Silhouette',
+      },
+      {
+        src: new URL('@assets/valances/valance-14.jpg', import.meta.url).href,
+        alt: 'Classic Valance Design',
+      },
+    ],
+  },
+
+  accessories: {
+    title: 'Accessories & Motorization',
+    subtitle: 'Smart Solutions & Elegant Finishes',
+    description:
+      'Enhance your window treatments with our premium selection of hardware and smart motorization solutions. From decorative rods to automated controls, we offer everything to complete your perfect window design.',
+    mainImage: new URL('@assets/accessories/accessory-1.jpg', import.meta.url).href,
+    features: [
+      {
+        title: 'Premium Hardware',
+        description: 'High-quality materials and finishes for lasting beauty',
+        icon: 'gem',
+      },
+      {
+        title: 'Smart Integration',
+        description: 'Advanced motorization with smart home compatibility',
+        icon: 'house-signal',
+      },
+      {
+        title: 'Custom Finishes',
+        description: 'Various finishes to complement your decor',
+        icon: 'paint-brush',
+      },
+      {
+        title: 'Convenience & Safety',
+        description: 'Perfect for hard-to-reach windows and enhanced safety',
+        icon: 'shield-heart',
+      },
+    ],
+    options: [
+      {
+        category: 'Hardware Types',
+        items: ['Decorative Rods', 'Finials', 'Brackets', 'Holdbacks', 'Motorized Tracks'],
+      },
+      {
+        category: 'Smart Features',
         items: [
-          'Smartphone App',
-          'Remote Control',
-          'Voice Control',
+          'Smartphone Control',
+          'Voice Commands',
           'Scheduled Operation',
+          'Remote Control',
           'Scene Programming',
         ],
       },
       {
-        category: 'Smart Home Systems',
+        category: 'Finishes & Styles',
+        items: ['Antique Brass', 'Brushed Nickel', 'Oil-Rubbed Bronze', 'Matte Black', 'Chrome'],
+      },
+      {
+        category: 'Smart Systems',
         items: [
           'Amazon Alexa',
           'Google Home',
@@ -277,9 +410,22 @@ export const productDetails = {
       },
     ],
     gallery: [
-      { src: 'https://picsum.photos/seed/motor1/600/400', alt: 'Smart Home Integration' },
-      { src: 'https://picsum.photos/seed/motor2/600/400', alt: 'Motorized Drapery System' },
-      { src: 'https://picsum.photos/seed/motor3/600/400', alt: 'Mobile App Control' },
+      {
+        src: new URL('@assets/accessories/accessory-1.jpg', import.meta.url).href,
+        alt: 'Bay Window Accessories',
+      },
+      {
+        src: new URL('@assets/accessories/accessory-2.jpg', import.meta.url).href,
+        alt: 'Bay Window Cornice and Accessories',
+      },
+      {
+        src: new URL('@assets/accessories/accessory-3.jpg', import.meta.url).href,
+        alt: 'Custom Quilted Bedspread',
+      },
+      {
+        src: new URL('@assets/accessories/accessory-4.jpg', import.meta.url).href,
+        alt: 'Window Seat Cushions',
+      },
     ],
   },
 }

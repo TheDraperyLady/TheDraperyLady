@@ -1,7 +1,5 @@
 <template>
   <div class="elegant-home">
-    <ElegantNav />
-
     <!-- Hero Section -->
     <section id="home" class="hero">
       <div class="hero-background">
@@ -9,14 +7,14 @@
       </div>
       <div class="hero-content">
         <div class="hero-text">
-          <h1>Where Elegance Meets Craftsmanship</h1>
+          <h1>Classic, Simple, Elegant</h1>
           <p class="hero-subtitle">Exquisite custom drapery</p>
           <p class="hero-description">
             Each piece is a testament to timeless beauty, meticulously crafted to transform your
             houses into homes.
           </p>
           <div class="cta-group">
-            <button class="primary-btn">Call For Consultation <br />408-981-1874</button>
+            <router-link to="/consultation" class="primary-btn">Book Your Consultation</router-link>
             <button class="secondary-btn" @click="scrollToPortfolio">View Portfolio</button>
           </div>
         </div>
@@ -217,6 +215,11 @@
         </div>
         -->
       </div>
+
+      <!-- Service Area Component -->
+      <div class="service-area-container">
+        <ServiceArea />
+      </div>
     </section>
 
     <!-- Portfolio Section -->
@@ -227,58 +230,167 @@
           <p>A showcase of our finest custom drapery installations</p>
         </div>
         <div class="portfolio-grid">
+          <!-- Draperies Showcase -->
           <div class="portfolio-item">
             <div class="portfolio-image">
-              <img src="../assets/gallery-1.webp" alt="Portfolio Image 1" class="portfolio-img" />
+              <img
+                src="../assets/draperies/drapery-1.jpg"
+                alt="Elegant Custom Draperies"
+                class="portfolio-img"
+              />
             </div>
             <div class="portfolio-overlay">
-              <h3>Portfolio Item 1</h3>
-              <p>Custom window treatment showcase</p>
+              <h3>Elegant Drapery</h3>
+              <p>Angled Draperies on Wrought Iron</p>
             </div>
           </div>
           <div class="portfolio-item">
             <div class="portfolio-image">
-              <img src="../assets/gallery-2.webp" alt="Portfolio Image 2" class="portfolio-img" />
+              <img
+                src="../assets/draperies/drapery-5.jpg"
+                alt="Premium Drapery Installation"
+                class="portfolio-img"
+              />
             </div>
             <div class="portfolio-overlay">
-              <h3>Portfolio Item 2</h3>
-              <p>Elegant drapery installation</p>
+              <h3>Premium Drapery</h3>
+              <p>Long Ripplefold Draperies</p>
             </div>
           </div>
           <div class="portfolio-item">
             <div class="portfolio-image">
-              <img src="../assets/gallery-3.webp" alt="Portfolio Image 3" class="portfolio-img" />
+              <img
+                src="../assets/draperies/drapery-8.jpg"
+                alt="Custom Drapery Design"
+                class="portfolio-img"
+              />
             </div>
             <div class="portfolio-overlay">
-              <h3>Portfolio Item 3</h3>
-              <p>Premium window treatment design</p>
+              <h3>Custom Drapery</h3>
+              <p>Ripplefold Patterned Sheers</p>
+            </div>
+          </div>
+
+          <!-- Plantation Shutters Showcase -->
+          <div class="portfolio-item">
+            <div class="portfolio-image">
+              <img
+                src="../assets/shutters/shutter-1.jpg"
+                alt="Plantation Shutters"
+                class="portfolio-img"
+              />
+            </div>
+            <div class="portfolio-overlay">
+              <h3>Classic Shutter</h3>
+              <p>Bay Window Shutters</p>
             </div>
           </div>
           <div class="portfolio-item">
             <div class="portfolio-image">
-              <div class="image-placeholder">Portfolio Item 4</div>
+              <img
+                src="../assets/shutters/shutter-3.jpg"
+                alt="Custom Wood Shutters"
+                class="portfolio-img"
+              />
             </div>
             <div class="portfolio-overlay">
-              <h3>Portfolio Item 4</h3>
-              <p>Custom window treatment showcase</p>
+              <h3>Premium Shutter</h3>
+              <p>Bypass Shutters on a Patio Door</p>
             </div>
           </div>
           <div class="portfolio-item">
             <div class="portfolio-image">
-              <div class="image-placeholder">Portfolio Item 5</div>
+              <img
+                src="../assets/shutters/shutter-5.jpg"
+                alt="Interior Shutters"
+                class="portfolio-img"
+              />
             </div>
             <div class="portfolio-overlay">
-              <h3>Portfolio Item 5</h3>
-              <p>Elegant drapery installation</p>
+              <h3>Interior Shutter</h3>
+              <p>Bay Window Cornice Drapes & Shutters</p>
+            </div>
+          </div>
+
+          <!-- Valances Showcase -->
+          <div class="portfolio-item">
+            <div class="portfolio-image">
+              <img
+                src="../assets/valances/valance-2.jpg"
+                alt="Custom Valances"
+                class="portfolio-img"
+              />
+            </div>
+            <div class="portfolio-overlay">
+              <h3>Decorative Valance</h3>
+              <p>Arched Continental with Honeycomb Shade</p>
             </div>
           </div>
           <div class="portfolio-item">
             <div class="portfolio-image">
-              <div class="image-placeholder">Portfolio Item 6</div>
+              <img
+                src="../assets/valances/valance-6.jpg"
+                alt="Designer Valance"
+                class="portfolio-img"
+              />
             </div>
             <div class="portfolio-overlay">
-              <h3>Portfolio Item 6</h3>
-              <p>Premium window treatment design</p>
+              <h3>Designer Valance</h3>
+              <p>Cornice on a Small Window</p>
+            </div>
+          </div>
+          <div class="portfolio-item">
+            <div class="portfolio-image">
+              <img
+                src="../assets/valances/valance-10.jpg"
+                alt="Luxury Valances"
+                class="portfolio-img"
+              />
+            </div>
+            <div class="portfolio-overlay">
+              <h3>Luxury Valance</h3>
+              <p>Premium valances for refined window styling</p>
+            </div>
+          </div>
+
+          <!-- Additional Showcase Items -->
+          <div class="portfolio-item">
+            <div class="portfolio-image">
+              <img
+                src="../assets/draperies/drapery-12.jpg"
+                alt="Living Room Draperies"
+                class="portfolio-img"
+              />
+            </div>
+            <div class="portfolio-overlay">
+              <h3>Living Room Drapery</h3>
+              <p>Peri-Winkle Print</p>
+            </div>
+          </div>
+          <div class="portfolio-item">
+            <div class="portfolio-image">
+              <img
+                src="../assets/valances/valance-14.jpg"
+                alt="Bedroom Valances"
+                class="portfolio-img"
+              />
+            </div>
+            <div class="portfolio-overlay">
+              <h3>Premium Valance</h3>
+              <p>Coordinated valances for elegant spaces</p>
+            </div>
+          </div>
+          <div class="portfolio-item">
+            <div class="portfolio-image">
+              <img
+                src="../assets/draperies/drapery-16.jpg"
+                alt="Formal Draperies"
+                class="portfolio-img"
+              />
+            </div>
+            <div class="portfolio-overlay">
+              <h3>Formal Drapery</h3>
+              <p>Two-Fold Banded Over Draperies</p>
             </div>
           </div>
         </div>
@@ -447,9 +559,6 @@
       </div>
     </section>
 
-    <!-- Service Area Component -->
-    <ServiceArea />
-
     <!-- Consultation CTA -->
     <section id="contact" class="consultation-cta">
       <div class="container">
@@ -458,57 +567,15 @@
           <p>
             Experience the art of custom drapery design. Call for your private consultation today.
           </p>
-          <button class="primary-btn">Call For Consultation 408-981-1874</button>
+          <router-link to="/consultation" class="primary-btn">Book Your Consultation</router-link>
         </div>
       </div>
     </section>
-
-    <!-- Footer -->
-    <footer class="elegant-footer">
-      <div class="container">
-        <div class="footer-content">
-          <div class="footer-brand">
-            <img src="../assets/TDL_logo.png" alt="The Drapery Lady" class="footer-logo" />
-            <h3>The Drapery Lady</h3>
-            <p class="tagline">Classic, Simple and Elegant</p>
-            <!-- <p class="description">
-              Creating timeless elegance through exceptional drapery design and craftsmanship.
-            </p> -->
-          </div>
-          <div class="footer-links">
-            <div class="link-group">
-              <h4>Services</h4>
-              <a href="#about">About Christine</a>
-              <a href="#products">Custom Drapery</a>
-              <a href="#portfolio">Portfolio</a>
-              <a href="#testimonials">Testimonials</a>
-            </div>
-            <div class="link-group">
-              <h4>Products</h4>
-              <a href="#">Silk Panels</a>
-              <a href="#">Linen Drapes</a>
-              <a href="#">Velvet Panels</a>
-              <a href="#">Roman Shades</a>
-            </div>
-            <div class="link-group">
-              <h4>Contact</h4>
-              <a href="tel:+14089811874">(408) 981-1874</a>
-              <a href="mailto:christine@thedraperylady.com">christine@draperylady.net</a>
-              <a href="#">Schedule Consultation</a>
-            </div>
-          </div>
-        </div>
-        <div class="footer-bottom">
-          <p>Classic, Simple and Elegant</p>
-        </div>
-      </div>
-    </footer>
   </div>
 </template>
 
 <script setup>
 import { onMounted } from 'vue'
-import ElegantNav from '../components/ElegantNav.vue'
 import ServiceArea from '../components/ServiceArea.vue'
 
 onMounted(() => {
@@ -528,6 +595,12 @@ const scrollToPortfolio = () => {
 
 <style scoped>
 @import '../assets/elegant-home.css';
+
+.service-area-container {
+  margin-top: 60px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
 
 .faq-section {
   background: #faf8f6;
@@ -606,6 +679,50 @@ const scrollToPortfolio = () => {
   margin: 0;
   color: #800020;
   font-size: 1.1rem;
+}
+
+/* Portfolio Overlay - Match Gallery Caption Style */
+.portfolio-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(44, 44, 44, 0.9));
+  color: white;
+  padding: 2rem 1.5rem;
+  font-size: 1.1rem;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: all 0.3s ease;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  font-family: 'Crimson Text', 'Georgia', serif;
+  font-style: italic;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+.portfolio-item:hover .portfolio-overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.portfolio-overlay h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: white;
+  font-family: 'Crimson Text', 'Georgia', serif;
+  font-style: italic;
+}
+
+.portfolio-overlay p {
+  margin: 0;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-family: 'Crimson Text', 'Georgia', serif;
+  font-style: italic;
 }
 
 @media (max-width: 600px) {
