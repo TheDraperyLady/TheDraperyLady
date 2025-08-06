@@ -7,7 +7,9 @@
           <h2>The Drapery Lady</h2>
         </div>
       </div>
-      <div class="nav-links" @mouseleave="handleNavLeave">
+      
+      <!-- Desktop Navigation -->
+      <div class="nav-links desktop-nav" @mouseleave="handleNavLeave">
         <router-link to="/" @mouseenter="handleNavEnter('home')"> Home </router-link>
         <transition name="expand">
           <div
@@ -74,6 +76,34 @@
         </router-link>
         <router-link to="/consultation" class="consultation-btn"> Book Consultation </router-link>
       </div>
+      
+      <!-- Mobile Hamburger Menu -->
+      <div class="mobile-nav">
+        <button class="hamburger-btn" @click="toggleMobileMenu" :class="{ 'active': isMobileMenuOpen }">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+        
+        <transition name="mobile-menu">
+          <div class="mobile-menu" v-show="isMobileMenuOpen">
+            <div class="mobile-menu-content">
+              <router-link to="/" @click="closeMobileMenu" class="mobile-nav-link">
+                Home
+              </router-link>
+              <router-link to="/products" @click="closeMobileMenu" class="mobile-nav-link">
+                Products
+              </router-link>
+              <router-link to="/articles" @click="closeMobileMenu" class="mobile-nav-link">
+                Articles
+              </router-link>
+              <router-link to="/consultation" @click="closeMobileMenu" class="mobile-nav-link consultation-link">
+                Book a Consultation
+              </router-link>
+            </div>
+          </div>
+        </transition>
+      </div>
     </div>
   </nav>
 </template>
@@ -130,6 +160,7 @@ const expandNav = ref(true)
 const activeNav = ref(null)
 const isInitialMount = ref(true) // Add flag to track initial mount
 const isNavigating = ref(true) // Add flag to track initial navigation
+const isMobileMenuOpen = ref(false) // Mobile menu state
 let currentObserver = null // Declare observer reference before watch
 
 // Wait for initial navigation to complete
@@ -179,6 +210,15 @@ const handleNavLeave = () => {
   expandNav.value = true
   // Reset to current page's nav
   activeNav.value = isHome.value ? 'home' : isProducts.value ? 'products' : null
+}
+
+// Mobile menu functions
+const toggleMobileMenu = () => {
+  isMobileMenuOpen.value = !isMobileMenuOpen.value
+}
+
+const closeMobileMenu = () => {
+  isMobileMenuOpen.value = false
 }
 
 // Watch for route changes to set up observers after view updates
@@ -518,18 +558,134 @@ const setupScrollObserver = (sectionSelector, linkPrefix) => {
   }
 }
 
+/* Mobile Navigation Styles */
+.mobile-nav {
+  display: none;
+}
+
+.hamburger-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: all 0.3s ease;
+}
+
+.hamburger-line {
+  width: 25px;
+  height: 3px;
+  background: var(--primary-color);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.hamburger-btn.active .hamburger-line:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.hamburger-btn.active .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-btn.active .hamburger-line:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+.mobile-menu {
+  position: fixed;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+}
+
+.mobile-menu-content {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.mobile-nav-link {
+  color: var(--text-dark);
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 500;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  font-family: 'Crimson Text', 'Georgia', serif;
+}
+
+.mobile-nav-link:last-child {
+  border-bottom: none;
+}
+
+.mobile-nav-link:hover,
+.mobile-nav-link.router-link-active {
+  color: var(--primary-color);
+}
+
+.mobile-nav-link.consultation-link {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 50px;
+  text-align: center;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 1rem;
+  box-shadow: 0 4px 15px var(--shadow-color, rgba(139, 38, 53, 0.2));
+}
+
+.mobile-nav-link.consultation-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(139, 38, 53, 0.3);
+}
+
+/* Mobile menu transition */
+.mobile-menu-enter-active,
+.mobile-menu-leave-active {
+  transition: all 0.3s ease;
+}
+
+.mobile-menu-enter-from,
+.mobile-menu-leave-to {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.mobile-menu-enter-to,
+.mobile-menu-leave-from {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* Mobile responsive styles */
 @media (max-width: 768px) {
   .nav-container {
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
   }
 
-  .nav-links {
+  .desktop-nav {
     display: none;
   }
 
+  .mobile-nav {
+    display: block;
+  }
+
   .logo {
-    justify-content: center;
+    justify-content: flex-start;
   }
 
   .logo-text h2 {

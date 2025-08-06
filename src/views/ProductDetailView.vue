@@ -100,7 +100,7 @@
           <h2>Ready to Transform Your Space?</h2>
           <p>Schedule a consultation with our design experts</p>
           <router-link to="/consultation" class="primary-btn"
-            >Book Your Consultation Today</router-link
+            >Book Consultation</router-link
           >
         </div>
       </div>

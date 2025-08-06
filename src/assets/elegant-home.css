@@ -1005,4 +1005,28 @@ section {
   .anniversary-message {
     font-size: 0.85rem;
   }
+
+  /* Consultation CTA Mobile Fixes */
+  .consultation-cta {
+    padding: 4rem 2rem;
+  }
+
+  .cta-content h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .cta-content p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+  }
+
+  .consultation-cta .primary-btn {
+    padding: 1rem 2rem;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
