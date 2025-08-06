@@ -1,37 +1,20 @@
-# The Drapery Lady - Vue3 Website
+# The Drapery Lady - Professional Vue3 Website
 
-A Vue3 website for The Drapery Lady, featuring three distinct home page designs to showcase different aesthetic approaches for custom drapery services.
+A sophisticated Vue3 website for The Drapery Lady, showcasing Christine St. Clair's premium custom window treatment services. The site features an elegant design with comprehensive product galleries, client testimonials, and professional consultation booking.
 
-## 🎨 Design Variations
+## 🏡 About The Drapery Lady
 
-This project includes three completely different home page designs, each with its own unique style and CSS file:
+Christine St. Clair, "The Drapery Lady," brings over 25 years of experience in custom draperies. Having worked internationally and with Silicon Valley's finest homes, she established her business in 2009.
 
-### 1. Warm & Inviting Design (`/`)
+## 🎨 Website Features
 
-- **File**: `src/views/HomeView.vue` + `src/assets/warm-home.css`
-- **Style**: Cozy, welcoming, and approachable
-- **Colors**: Warm earth tones, cream, and brown
-- **Typography**: Georgia serif font
-- **Features**: Soft gradients, rounded corners, warm color palette
-- **Target Audience**: Traditional homeowners seeking comfort and warmth
-
-### 2. Sleek & Modern Design (`/modern`)
-
-- **File**: `src/views/ModernHomeView.vue` + `src/assets/modern-home.css`
-- **Style**: Contemporary, minimalist, and sophisticated
-- **Colors**: Black, white, and gray with clean accents
-- **Typography**: Inter sans-serif font
-- **Features**: Clean lines, geometric shapes, modern typography
-- **Target Audience**: Modern homeowners with contemporary tastes
-
-### 3. Fancy & Elegant Design (`/elegant`)
-
+### Current Design: Elegant & Luxurious
 - **File**: `src/views/ElegantHomeView.vue` + `src/assets/elegant-home.css`
-- **Style**: Luxurious, sophisticated, and premium
-- **Colors**: Rich golds, deep browns, and cream
-- **Typography**: Playfair Display serif font
-- **Features**: Ornate patterns, elegant frames, premium styling
-- **Target Audience**: High-end clients seeking luxury and refinement
+- **Style**: Sophisticated, premium, and luxurious
+- **Colors**: Rich golds, deep browns, and elegant creams
+- **Typography**: Crimson Text serif font for elegance
+- **Features**: Ornate patterns, client testimonials, comprehensive galleries
+- **Target Audience**: Discerning clients seeking luxury and refinement
 
 ## 🚀 Getting Started
 
@@ -63,69 +46,112 @@ npm run dev
 
 4. Open your browser and navigate to `http://localhost:5173`
 
-## 🎯 Navigation
+## 🧭 Site Navigation
 
-Use the design switcher in the top-right corner to navigate between the three different home page designs:
+The website includes the following main sections:
 
-- **Warm & Inviting**: `/` (default)
-- **Sleek & Modern**: `/modern`
-- **Fancy & Elegant**: `/elegant`
+- **Home** (`/`) - Elegant homepage with hero section, about Christine, services, and testimonials
+- **Products** (`/products`) - Comprehensive gallery of all window treatment categories
+- **Product Details** (`/product/:type`) - Detailed pages for each product category with galleries
+- **About** (`/about`) - Additional information about The Drapery Lady
+- **Articles** (`/articles`) - Educational content and design inspiration
+- **Consultation** (`/consultation`) - Professional consultation booking form
 
 ## 📁 Project Structure
 
 ```
 src/
 ├── views/
-│   ├── HomeView.vue          # Warm & Inviting design
-│   ├── ModernHomeView.vue    # Sleek & Modern design
-│   └── ElegantHomeView.vue   # Fancy & Elegant design
-├── assets/
-│   ├── warm-home.css         # Warm design styles
-│   ├── modern-home.css       # Modern design styles
-│   └── elegant-home.css      # Elegant design styles
+│   ├── ElegantHomeView.vue      # Main homepage with elegant design
+│   ├── ProductsView.vue         # Product category overview
+│   ├── ProductDetailView.vue    # Individual product galleries
+│   ├── AboutView.vue            # About page
+│   ├── ArticlesView.vue         # Articles and blog content
+│   └── ConsultationView.vue     # Consultation booking form
 ├── components/
-│   └── DesignSwitcher.vue    # Navigation component
+│   ├── ElegantNav.vue           # Main navigation component
+│   ├── ElegantFooter.vue        # Site footer
+│   ├── ServiceArea.vue          # Service area component
+│   └── DesignSwitcher.vue       # Design switching utility
+├── data/
+│   └── productDetails.js        # Product information and galleries
+├── assets/
+│   ├── elegant-home.css         # Main stylesheet
+│   ├── base.css                 # Base styles
+│   ├── main.css                 # Global styles
+│   ├── draperies/               # Drapery gallery images
+│   ├── shutters/                # Shutter gallery images
+│   ├── valances/                # Valance gallery images
+│   └── accessories/             # Accessory gallery images
+├── plugins/
+│   └── fontawesome.js           # FontAwesome icon configuration
 └── router/
-    └── index.js              # Route configuration
+    └── index.js                 # Vue Router configuration
 ```
 
-## 🛠️ Customization
+## 🛠️ Key Technologies & Features
 
-Each design is completely independent with its own CSS file, making it easy to:
+### Frontend Technologies
+- **Vue 3** - Modern reactive framework with Composition API
+- **Vue Router 4** - Client-side routing with smooth scrolling
+- **FontAwesome** - Professional icon library
+- **Vite** - Fast build tool and development server
 
-- Modify colors and typography
-- Adjust layouts and spacing
-- Add new sections or components
-- Customize animations and effects
+### Design Features
+- **Responsive Design** - Optimized for all device sizes
+- **Professional Typography** - Crimson Text for elegant readability
+- **Image Optimization** - WebP format for fast loading
+- **Smooth Animations** - CSS transitions and scroll behaviors
+- **SEO Friendly** - Proper meta tags and semantic HTML
 
 ## 📱 Responsive Design
 
-All three designs are fully responsive and optimized for:
+The website is fully responsive and optimized for all devices:
 
-- Desktop (1200px+)
-- Tablet (768px - 1199px)
-- Mobile (320px - 767px)
+- **Desktop** (1200px+) - Full-featured layout with multi-column grids
+- **Tablet** (768px - 1199px) - Adapted layouts with touch-friendly navigation
+- **Mobile** (320px - 767px) - Single-column layout with optimized images
 
-## 🎨 Design Features
+## 🎯 Content Highlights
 
-### Common Elements Across All Designs:
+### Homepage Sections
+- **Hero Section** - Elegant introduction with call-to-action buttons
+- **About Christine** - Professional background and expertise
+- **Services Overview** - Four main service categories with images
+- **Product Collections** - Featured drapery styles and installations
+- **Client Testimonials** - Real customer reviews with 5-star ratings
+- **FAQ Section** - Common questions about consultations and services
 
-- Navigation menu
-- Hero section with call-to-action
-- Services showcase
-- Contact/consultation section
-- Footer with company information
+### Product Categories
+- **Draperies** - 16 gallery images showcasing various styles and installations
+- **Shutters** - 5 images of premium plantation shutters and specialty shapes
+- **Valances** - 14 images of custom valances and cornices
+- **Accessories** - 4 images of hardware and motorization solutions
 
-### Unique Elements:
+### Professional Features
+- **Consultation Booking** - Professional contact form for appointments
+- **Comprehensive Galleries** - High-quality images of completed projects
+- **Educational Content** - Articles section for design inspiration
+- **Service Area Information** - Coverage details for potential clients
 
-- **Warm Design**: Feature cards with icons, service previews
-- **Modern Design**: Statistics section, process steps, clean cards
-- **Elegant Design**: Collections showcase, testimonials, ornate patterns
+## 🔧 Available Scripts
 
-## 🔧 Build for Production
-
+### Development
 ```bash
-npm run build
+npm run dev          # Start development server
+npm run preview      # Preview production build locally
+```
+
+### Code Quality
+```bash
+npm run lint         # Run ESLint with auto-fix
+npm run format       # Format code with Prettier
+```
+
+### Production & Deployment
+```bash
+npm run build        # Build for production
+npm run deploy       # Build and deploy to GitHub Pages
 ```
 
 ## 🚀 Deployment
@@ -155,10 +181,31 @@ The deployment is configured to use the custom domain `draperylady.net`. Make su
 1. Configure your domain's DNS settings to point to GitHub Pages
 2. Add a `CNAME` file in the `public` folder with your domain name
 
+## 🏗️ Technical Details
+
+### Dependencies
+- **Vue 3.5.17** - Latest stable Vue.js framework
+- **Vue Router 4.5.1** - Official router for Vue.js
+- **FontAwesome 7.0.0** - Complete icon library
+- **Vite 7.0.0** - Next generation frontend tooling
+
+### Development Tools
+- **ESLint** - Code linting with Vue and Prettier configurations
+- **Prettier** - Code formatting
+- **Vue DevTools** - Enhanced debugging experience
+- **GitHub Pages** - Automated deployment workflow
+
+## 📞 Contact Information
+
+**The Drapery Lady - Christine St. Clair**
+- Serving Silicon Valley and surrounding areas
+- Specializing in custom window treatments since 2009
+- Professional consultation and installation services
+
 ## 📝 License
 
-This project is created for The Drapery Lady client. All rights reserved.
+This project is created for The Drapery Lady business. All rights reserved.
 
-## 🤝 Support
+---
 
-For questions or support regarding the website designs, please contact the development team.
+*Built with ❤️ using Vue.js - Showcasing 25+ years of window treatment expertise*
