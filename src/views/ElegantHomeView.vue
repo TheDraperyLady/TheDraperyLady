@@ -1,5 +1,6 @@
 <template>
   <div class="elegant-home">
+    <DesignSwitcher />
     <!-- Hero Section -->
     <section id="home" class="hero">
       <div class="hero-background">
@@ -223,179 +224,7 @@
     </section>
 
     <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio-section">
-      <div class="container">
-        <div class="section-header">
-          <h2>Portfolio</h2>
-          <p>A showcase of our finest custom drapery installations</p>
-        </div>
-        <div class="portfolio-grid">
-          <!-- Draperies Showcase -->
-          <div class="portfolio-item">
-            <div class="portfolio-image">
-              <img
-                src="../assets/draperies/drapery-1.jpg"
-                alt="Elegant Custom Draperies"
-                class="portfolio-img"
-              />
-            </div>
-            <div class="portfolio-overlay">
-              <h3>Elegant Drapery</h3>
-              <p>Angled Draperies on Wrought Iron</p>
-            </div>
-          </div>
-          <div class="portfolio-item">
-            <div class="portfolio-image">
-              <img
-                src="../assets/draperies/drapery-5.jpg"
-                alt="Premium Drapery Installation"
-                class="portfolio-img"
-              />
-            </div>
-            <div class="portfolio-overlay">
-              <h3>Premium Drapery</h3>
-              <p>Long Ripplefold Draperies</p>
-            </div>
-          </div>
-          <div class="portfolio-item">
-            <div class="portfolio-image">
-              <img
-                src="../assets/draperies/drapery-8.jpg"
-                alt="Custom Drapery Design"
-                class="portfolio-img"
-              />
-            </div>
-            <div class="portfolio-overlay">
-              <h3>Custom Drapery</h3>
-              <p>Ripplefold Patterned Sheers</p>
-            </div>
-          </div>
-
-          <!-- Plantation Shutters Showcase -->
-          <div class="portfolio-item">
-            <div class="portfolio-image">
-              <img
-                src="../assets/shutters/shutter-1.jpg"
-                alt="Plantation Shutters"
-                class="portfolio-img"
-              />
-            </div>
-            <div class="portfolio-overlay">
-              <h3>Classic Shutter</h3>
-              <p>Bay Window Shutters</p>
-            </div>
-          </div>
-          <div class="portfolio-item">
-            <div class="portfolio-image">
-              <img
-                src="../assets/shutters/shutter-3.jpg"
-                alt="Custom Wood Shutters"
-                class="portfolio-img"
-              />
-            </div>
-            <div class="portfolio-overlay">
-              <h3>Premium Shutter</h3>
-              <p>Bypass Shutters on a Patio Door</p>
-            </div>
-          </div>
-          <div class="portfolio-item">
-            <div class="portfolio-image">
-              <img
-                src="../assets/shutters/shutter-5.jpg"
-                alt="Interior Shutters"
-                class="portfolio-img"
-              />
-            </div>
-            <div class="portfolio-overlay">
-              <h3>Interior Shutter</h3>
-              <p>Bay Window Cornice Drapes & Shutters</p>
-            </div>
-          </div>
-
-          <!-- Valances Showcase -->
-          <div class="portfolio-item">
-            <div class="portfolio-image">
-              <img
-                src="../assets/valances/valance-2.jpg"
-                alt="Custom Valances"
-                class="portfolio-img"
-              />
-            </div>
-            <div class="portfolio-overlay">
-              <h3>Decorative Valance</h3>
-              <p>Arched Continental with Honeycomb Shade</p>
-            </div>
-          </div>
-          <div class="portfolio-item">
-            <div class="portfolio-image">
-              <img
-                src="../assets/valances/valance-6.jpg"
-                alt="Designer Valance"
-                class="portfolio-img"
-              />
-            </div>
-            <div class="portfolio-overlay">
-              <h3>Designer Valance</h3>
-              <p>Cornice on a Small Window</p>
-            </div>
-          </div>
-          <div class="portfolio-item">
-            <div class="portfolio-image">
-              <img
-                src="../assets/valances/valance-10.jpg"
-                alt="Luxury Valances"
-                class="portfolio-img"
-              />
-            </div>
-            <div class="portfolio-overlay">
-              <h3>Luxury Valance</h3>
-              <p>Premium valances for refined window styling</p>
-            </div>
-          </div>
-
-          <!-- Additional Showcase Items -->
-          <div class="portfolio-item">
-            <div class="portfolio-image">
-              <img
-                src="../assets/draperies/drapery-12.jpg"
-                alt="Living Room Draperies"
-                class="portfolio-img"
-              />
-            </div>
-            <div class="portfolio-overlay">
-              <h3>Living Room Drapery</h3>
-              <p>Peri-Winkle Print</p>
-            </div>
-          </div>
-          <div class="portfolio-item">
-            <div class="portfolio-image">
-              <img
-                src="../assets/valances/valance-14.jpg"
-                alt="Bedroom Valances"
-                class="portfolio-img"
-              />
-            </div>
-            <div class="portfolio-overlay">
-              <h3>Premium Valance</h3>
-              <p>Coordinated valances for elegant spaces</p>
-            </div>
-          </div>
-          <div class="portfolio-item">
-            <div class="portfolio-image">
-              <img
-                src="../assets/draperies/drapery-16.jpg"
-                alt="Formal Draperies"
-                class="portfolio-img"
-              />
-            </div>
-            <div class="portfolio-overlay">
-              <h3>Formal Drapery</h3>
-              <p>Two-Fold Banded Over Draperies</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <PortfolioSection />
 
     <!-- Testimonials Section -->
     <section id="testimonials" class="testimonials">
@@ -577,6 +406,8 @@
 <script setup>
 import { onMounted } from 'vue'
 import ServiceArea from '../components/ServiceArea.vue'
+import PortfolioSection from '../components/PortfolioSection.vue'
+import DesignSwitcher from '../components/DesignSwitcher.vue'
 
 onMounted(() => {
   // Any other initialization if needed
@@ -679,50 +510,6 @@ const scrollToPortfolio = () => {
   margin: 0;
   color: #800020;
   font-size: 1.1rem;
-}
-
-/* Portfolio Overlay - Match Gallery Caption Style */
-.portfolio-overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(transparent, rgba(44, 44, 44, 0.9));
-  color: white;
-  padding: 2rem 1.5rem;
-  font-size: 1.1rem;
-  text-align: center;
-  opacity: 0;
-  transform: translateY(100%);
-  transition: all 0.3s ease;
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
-  font-family: 'Crimson Text', 'Georgia', serif;
-  font-style: italic;
-  letter-spacing: 0.5px;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
-}
-
-.portfolio-item:hover .portfolio-overlay {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.portfolio-overlay h3 {
-  margin: 0 0 0.5rem 0;
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: white;
-  font-family: 'Crimson Text', 'Georgia', serif;
-  font-style: italic;
-}
-
-.portfolio-overlay p {
-  margin: 0;
-  font-size: 1rem;
-  color: rgba(255, 255, 255, 0.9);
-  font-family: 'Crimson Text', 'Georgia', serif;
-  font-style: italic;
 }
 
 @media (max-width: 600px) {

@@ -1,5 +1,6 @@
 <template>
   <div class="elegant-home">
+    <DesignSwitcher />
     <section class="product-detail-section">
       <div class="container">
         <!-- Hero Section -->
@@ -33,7 +34,13 @@
         </div>
 
         <!-- Features Section -->
-        <div class="features-section">
+        <div
+          v-if="
+            productDetails[productType]?.features &&
+            productDetails[productType]?.features.length > 0
+          "
+          class="features-section"
+        >
           <div class="section-header">
             <h2>Key Features</h2>
             <p>What Makes Our {{ productDetails[productType]?.title }} Special</p>
@@ -59,15 +66,39 @@
             <h2>Gallery</h2>
             <p>See Our {{ productDetails[productType]?.title }} in Action</p>
           </div>
-          <div class="gallery-grid">
-            <div
+          <div :id="galleryID" class="gallery-grid">
+            <a
               v-for="(image, index) in productDetails[productType]?.gallery"
               :key="index"
-              class="gallery-item"
+              :href="image.src"
+              :data-pswp-width="1200"
+              :data-pswp-height="800"
+              target="_blank"
+              rel="noreferrer"
+              class="gallery-item-link"
             >
-              <img :src="image.src" :alt="image.alt" class="gallery-image" />
-              <div class="gallery-caption">{{ image.alt }}</div>
-            </div>
+              <div class="gallery-item">
+                <img :src="image.src" :alt="image.alt" class="gallery-image" />
+                <div class="gallery-caption">{{ image.alt }}</div>
+                <div class="gallery-overlay">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </a>
           </div>
         </div>
 
@@ -99,9 +130,7 @@
         <div class="cta-content">
           <h2>Ready to Transform Your Space?</h2>
           <p>Schedule a consultation with our design experts</p>
-          <router-link to="/consultation" class="primary-btn"
-            >Book Consultation</router-link
-          >
+          <router-link to="/consultation" class="primary-btn">Book Consultation</router-link>
         </div>
       </div>
     </section>
@@ -109,14 +138,18 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, ref, onMounted, onUnmounted } from 'vue'
 import { useRoute } from 'vue-router'
-import ElegantNav from '../components/ElegantNav.vue'
 import { productDetails } from '../data/productDetails'
 import { FontAwesomeIcon } from '../plugins/fontawesome'
+import DesignSwitcher from '../components/DesignSwitcher.vue'
+import PhotoSwipeLightbox from 'photoswipe/lightbox'
+import 'photoswipe/style.css'
 
 const route = useRoute()
 const productType = computed(() => route.params.type)
+const galleryID = ref('product-gallery')
+const lightbox = ref(null)
 
 const scrollToGallery = () => {
   const gallerySection = document.getElementById('gallery')
@@ -124,6 +157,37 @@ const scrollToGallery = () => {
     gallerySection.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
 }
+
+onMounted(() => {
+  // Initialize PhotoSwipe lightbox
+  if (!lightbox.value) {
+    lightbox.value = new PhotoSwipeLightbox({
+      gallery: '#' + galleryID.value,
+      children: 'a',
+      pswpModule: () => import('photoswipe'),
+      paddingFn: () => {
+        return {
+          top: 40,
+          bottom: 40,
+          left: 40,
+          right: 40,
+        }
+      },
+      showHideAnimationType: 'fade',
+      showAnimationDuration: 300,
+      hideAnimationDuration: 300,
+    })
+    lightbox.value.init()
+  }
+})
+
+onUnmounted(() => {
+  // Clean up PhotoSwipe lightbox
+  if (lightbox.value) {
+    lightbox.value.destroy()
+    lightbox.value = null
+  }
+})
 </script>
 
 <style scoped>
@@ -261,26 +325,49 @@ const scrollToGallery = () => {
 
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2.5rem;
   margin-top: 3rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.gallery-item-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  cursor: pointer;
 }
 
 .gallery-item {
   position: relative;
   border-radius: 15px;
   overflow: hidden;
-  aspect-ratio: 4/3;
+  aspect-ratio: 3/4;
+  background: white;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.gallery-item-link:hover .gallery-item {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
 }
 
 .gallery-image {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s ease;
+  object-fit: contain;
+  transition:
+    transform 0.3s ease,
+    object-fit 0.3s ease;
+  padding: 1rem;
 }
 
-.gallery-item:hover .gallery-image {
+.gallery-item-link:hover .gallery-image {
   transform: scale(1.05);
 }
 
@@ -305,9 +392,31 @@ const scrollToGallery = () => {
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
 }
 
-.gallery-item:hover .gallery-caption {
+.gallery-item-link:hover .gallery-caption {
   opacity: 1;
   transform: translateY(0);
+}
+
+.gallery-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.gallery-item-link:hover .gallery-overlay {
+  opacity: 1;
 }
 
 /* Options Section */
@@ -367,6 +476,20 @@ const scrollToGallery = () => {
   .features-grid,
   .options-grid {
     grid-template-columns: 1fr;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    max-width: 100%;
+  }
+
+  .gallery-item {
+    aspect-ratio: 2/3;
+  }
+
+  .gallery-image {
+    padding: 0.5rem;
   }
 }
 </style>

@@ -43,39 +43,27 @@
           <circle cx="18" cy="18" r="1" fill="currentColor" />
         </svg>
       </div>
-      <h3>Choose Your Color Scheme</h3>
-      <div class="design-options">
+      <h3>Gallery Image Display</h3>
+      <div class="display-options">
         <button
-          class="design-option"
-          :class="{ active: currentScheme === 'gold' }"
-          @click="setColorScheme('gold')"
+          class="display-option"
+          :class="{ active: currentImageFit === 'contain' }"
+          @click="setImageFit('contain')"
         >
-          <div class="option-preview gold-preview"></div>
-          <span>Warm Gold</span>
+          <div class="fit-preview contain-preview">
+            <div class="preview-image"></div>
+          </div>
+          <span>Show Full Image</span>
         </button>
         <button
-          class="design-option"
-          :class="{ active: currentScheme === 'sage' }"
-          @click="setColorScheme('sage')"
+          class="display-option"
+          :class="{ active: currentImageFit === 'cover' }"
+          @click="setImageFit('cover')"
         >
-          <div class="option-preview sage-preview"></div>
-          <span>Elegant Sage</span>
-        </button>
-        <button
-          class="design-option"
-          :class="{ active: currentScheme === 'burgundy' }"
-          @click="setColorScheme('burgundy')"
-        >
-          <div class="option-preview burgundy-preview"></div>
-          <span>Rich Burgundy</span>
-        </button>
-        <button
-          class="design-option"
-          :class="{ active: currentScheme === 'cream' }"
-          @click="setColorScheme('cream')"
-        >
-          <div class="option-preview cream-preview"></div>
-          <span>Soft Cream</span>
+          <div class="fit-preview cover-preview">
+            <div class="preview-image"></div>
+          </div>
+          <span>Fill Container</span>
         </button>
       </div>
     </div>
@@ -85,39 +73,32 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 
-const currentScheme = ref('burgundy')
+const currentImageFit = ref('contain')
 const position = ref({ x: 20, y: 20 })
 const isDragging = ref(false)
 const dragOffset = ref({ x: 0, y: 0 })
 const isVisible = ref(true)
 const isMobile = ref(false)
 
-const setColorScheme = (scheme) => {
-  currentScheme.value = scheme
+const setImageFit = (fit) => {
+  currentImageFit.value = fit
 
-  // Find the main elegant-home container
-  const elegantHome = document.querySelector('.elegant-home')
-  console.log('Found elegant-home element:', elegantHome)
+  // Find all gallery and portfolio images
+  const galleryImages = document.querySelectorAll('.gallery-image')
+  const portfolioImages = document.querySelectorAll('.portfolio-img')
+  console.log('Found gallery images:', galleryImages.length)
+  console.log('Found portfolio images:', portfolioImages.length)
 
-  if (elegantHome) {
-    // Remove existing color scheme classes
-    elegantHome.classList.remove(
-      'color-scheme-gold',
-      'color-scheme-sage',
-      'color-scheme-burgundy',
-      'color-scheme-cream',
-    )
+  galleryImages.forEach((image) => {
+    image.style.objectFit = fit
+  })
 
-    // Add new color scheme class
-    elegantHome.classList.add(`color-scheme-${scheme}`)
-    console.log('Applied color scheme:', `color-scheme-${scheme}`)
-    console.log('Current classes:', elegantHome.className)
-  } else {
-    console.log('Could not find .elegant-home element')
-  }
+  portfolioImages.forEach((image) => {
+    image.style.objectFit = fit
+  })
 
   // Store preference
-  localStorage.setItem('drapery-color-scheme', scheme)
+  localStorage.setItem('drapery-image-fit', fit)
 }
 
 const startDrag = (event) => {
@@ -183,16 +164,16 @@ onMounted(() => {
   // Check mobile on mount
   checkMobile()
 
-  // Load saved preference
-  const savedScheme = localStorage.getItem('drapery-color-scheme') || 'burgundy'
-  setColorScheme(savedScheme)
+  // Load saved preferences
+  const savedImageFit = localStorage.getItem('drapery-image-fit') || 'contain'
+  setImageFit(savedImageFit)
 
   // Load saved position
   const savedPosition = localStorage.getItem('drapery-switcher-position')
   if (savedPosition) {
     try {
       position.value = JSON.parse(savedPosition)
-    } catch (e) {
+    } catch {
       console.log('Could not parse saved position, using default')
     }
   }
@@ -264,13 +245,13 @@ onUnmounted(() => {
   color: #333;
 }
 
-.design-options {
+.display-options {
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
 }
 
-.design-option {
+.display-option {
   display: flex;
   align-items: center;
   gap: 0.8rem;
@@ -285,41 +266,50 @@ onUnmounted(() => {
   font-family: inherit;
 }
 
-.design-option:hover {
+.display-option:hover {
   background: rgba(0, 0, 0, 0.05);
   color: #333;
 }
 
-.design-option.active {
+.display-option.active {
   background: rgba(0, 0, 0, 0.08);
   color: #333;
   border-color: #007bff;
 }
 
-.option-preview {
+.fit-preview {
   width: 40px;
   height: 30px;
   border-radius: 6px;
   border: 1px solid rgba(0, 0, 0, 0.1);
+  background: #f8f9fa;
+  position: relative;
+  overflow: hidden;
 }
 
-.gold-preview {
-  background: linear-gradient(135deg, #b8860b 0%, #daa520 100%);
+.preview-image {
+  width: 20px;
+  height: 25px;
+  background: linear-gradient(45deg, #007bff, #0056b3);
+  border-radius: 2px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-.sage-preview {
-  background: linear-gradient(135deg, #7c9885 0%, #a8c4a0 100%);
+.contain-preview .preview-image {
+  width: 16px;
+  height: 20px;
 }
 
-.burgundy-preview {
-  background: linear-gradient(135deg, #8b2635 0%, #c44569 100%);
+.cover-preview .preview-image {
+  width: 40px;
+  height: 30px;
+  border-radius: 0;
 }
 
-.cream-preview {
-  background: linear-gradient(135deg, #d2b48c 0%, #f5deb3 100%);
-}
-
-.design-option span {
+.display-option span {
   font-size: 0.9rem;
   font-weight: 500;
 }

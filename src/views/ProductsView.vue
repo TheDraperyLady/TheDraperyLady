@@ -61,11 +61,11 @@
           <!-- Blinds -->
           <div class="product-section product-card" data-section="blinds">
             <div class="product-image-container">
-              <img src="@/assets/service-2.webp" alt="Designer Blinds" class="product-image" />
+              <img src="@/assets/service-2.webp" alt="Custom Blinds" class="product-image" />
             </div>
             <div class="product-content">
               <div class="product-text">
-                <h3>Designer Blinds</h3>
+                <h3>Custom Blinds</h3>
                 <p>
                   Where precision meets style. Our designer blinds offer the perfect blend of form
                   and function, with options to complement any interior vision.
@@ -86,11 +86,11 @@
           <!-- Shades -->
           <div class="product-section product-card" data-section="shades">
             <div class="product-image-container">
-              <img src="@/assets/service-3.webp" alt="Luxury Shades" class="product-image" />
+              <img src="@/assets/service-3.webp" alt="Custom Shades" class="product-image" />
             </div>
             <div class="product-content">
               <div class="product-text">
-                <h3>Luxury Shades</h3>
+                <h3>Custom Shades</h3>
                 <p>
                   Discover the art of light mastery with our luxury shades. From gentle filtering to
                   total privacy, create your perfect ambiance with sophisticated style.
@@ -185,9 +185,7 @@
   </div>
 </template>
 
-<script setup>
-import ElegantNav from '../components/ElegantNav.vue'
-</script>
+<script setup></script>
 
 <style scoped>
 @import '../assets/elegant-home.css';

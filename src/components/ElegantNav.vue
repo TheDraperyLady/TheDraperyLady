@@ -7,7 +7,7 @@
           <h2>The Drapery Lady</h2>
         </div>
       </div>
-      
+
       <!-- Desktop Navigation -->
       <div class="nav-links desktop-nav" @mouseleave="handleNavLeave">
         <router-link to="/" @mouseenter="handleNavEnter('home')"> Home </router-link>
@@ -76,15 +76,19 @@
         </router-link>
         <router-link to="/consultation" class="consultation-btn"> Book Consultation </router-link>
       </div>
-      
+
       <!-- Mobile Hamburger Menu -->
       <div class="mobile-nav">
-        <button class="hamburger-btn" @click="toggleMobileMenu" :class="{ 'active': isMobileMenuOpen }">
+        <button
+          class="hamburger-btn"
+          @click="toggleMobileMenu"
+          :class="{ active: isMobileMenuOpen }"
+        >
           <span class="hamburger-line"></span>
           <span class="hamburger-line"></span>
           <span class="hamburger-line"></span>
         </button>
-        
+
         <transition name="mobile-menu">
           <div class="mobile-menu" v-show="isMobileMenuOpen">
             <div class="mobile-menu-content">
@@ -97,7 +101,11 @@
               <router-link to="/articles" @click="closeMobileMenu" class="mobile-nav-link">
                 Articles
               </router-link>
-              <router-link to="/consultation" @click="closeMobileMenu" class="mobile-nav-link consultation-link">
+              <router-link
+                to="/consultation"
+                @click="closeMobileMenu"
+                class="mobile-nav-link consultation-link"
+              >
                 Book a Consultation
               </router-link>
             </div>

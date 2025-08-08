@@ -117,36 +117,18 @@ export const productDetails = {
     description:
       'Add a touch of timeless elegance to your home with our premium shutters. Crafted from the finest materials, our shutters provide both beauty and functionality.',
     mainImage: new URL('@assets/shutters/shutter-1.jpg', import.meta.url).href,
-    features: [
-      {
-        title: 'Superior Materials',
-        description: 'Choose from premium wood, composite, or vinyl materials',
-        icon: 'shield',
-      },
-      commonFeatures.customDesign,
-      {
-        title: 'Light Control',
-        description: 'Adjustable louvers for perfect light management',
-        icon: 'lightbulb',
-      },
-      {
-        title: 'Energy Efficient',
-        description: 'Excellent insulation properties for energy savings',
-        icon: 'leaf',
-      },
-    ],
     options: [
       {
         category: 'Materials',
-        items: ['Hardwood', 'Composite', 'Vinyl', 'Premium Wood', 'Waterproof Options'],
+        items: ['Wood', 'Composite', 'Vinyl'],
       },
       {
         category: 'Styles',
-        items: ['Full Height', 'Tier-on-Tier', 'Café Style', 'Special Shapes'],
+        items: ['Plantation Shutters', 'Traditional Shutters', 'Cafe Shutters', 'Specialty Shapes'],
       },
       {
         category: 'Colors',
-        items: ['Custom Paint Colors', 'Wood Stains', 'White Finishes', 'Custom Color Match'],
+        items: ['Paint', 'Stain', 'Osmo'],
       },
     ],
     gallery: [
@@ -173,7 +155,7 @@ export const productDetails = {
     ],
   },
   blinds: {
-    title: 'Designer Blinds',
+    title: 'Custom Blinds',
     subtitle: 'Modern Light Control Solutions',
     description:
       'Experience superior light control with our designer blinds collection. From classic wood blinds to modern automated solutions, find the perfect match for your windows.',
@@ -218,21 +200,28 @@ export const productDetails = {
   },
 
   shades: {
-    title: 'Luxury Shades',
+    title: 'Custom Shades',
     subtitle: 'Sophisticated Window Fashion',
     description:
       'Discover our collection of luxury shades, combining style with functionality. From classic roman shades to modern cellular designs, find your perfect window covering.',
     mainImage: 'https://picsum.photos/seed/shades/800/600',
     features: [
-      commonFeatures.customDesign,
+      {
+        title: 'Custom Design',
+        description:
+          'There are a variety of shades and sheer shadings available to fit your design aesthetic and lifestyle.',
+        icon: 'palette',
+      },
       {
         title: 'Insulation',
-        description: 'Superior thermal and acoustic insulation',
+        description:
+          'Superior insulating properties that increase the energy efficiency of your double pane windows and help regulate the temperature in your building.',
         icon: 'temperature-low',
       },
       {
         title: 'Style Options',
-        description: 'Vast selection of patterns and materials',
+        description:
+          'Extensive selection of fabrics and styles, Top down / Bottom Up, Cordless, Continuous Cord Loop, Specialty Shapes & Application, Almost total room darkening solutions.',
         icon: 'wand-magic-sparkles',
       },
       commonFeatures.professionalInstallation,
@@ -240,7 +229,12 @@ export const productDetails = {
     options: [
       {
         category: 'Shade Types',
-        items: ['Roman Shades', 'Cellular Shades', 'Roller Shades', 'Woven Wood Shades'],
+        items: [
+          'Roman Shades & Woven Shades',
+          'Honeycomb Shades',
+          'Roller Shades & Sun Screens',
+          'Sheer Shadings',
+        ],
       },
       {
         category: 'Operating Systems',
@@ -425,6 +419,12 @@ export const productDetails = {
       {
         src: new URL('@assets/accessories/accessory-4.jpg', import.meta.url).href,
         alt: 'Window Seat Cushions',
+      },
+      {
+        src: new URL('@assets/accessories/accessory-5.jpg', import.meta.url).href,
+      },
+      {
+        src: new URL('@assets/accessories/accessory-6.jpg', import.meta.url).href,
       },
     ],
   },
