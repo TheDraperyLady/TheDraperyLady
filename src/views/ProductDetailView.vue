@@ -174,8 +174,20 @@ onMounted(() => {
         }
       },
       showHideAnimationType: 'fade',
-      showAnimationDuration: 300,
-      hideAnimationDuration: 300,
+      showAnimationDuration: 0,
+      hideAnimationDuration: 0,
+      allowPanToNext: false,
+      allowMouseDrag: false,
+      allowTouchDrag: false,
+      closeOnVerticalDrag: false,
+      pinchToClose: false,
+      closeOnScroll: false,
+      imageClickAction: 'close',
+      tapAction: 'close',
+      doubleTapAction: 'zoom',
+      indexIndicatorSep: ' / ',
+      preloaderDelay: 2000,
+      easing: 'cubic-bezier(0.4, 0, 0.22, 1)',
     })
     lightbox.value.init()
   }
