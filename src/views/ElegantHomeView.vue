@@ -1,6 +1,5 @@
 <template>
   <div class="elegant-home">
-    <DesignSwitcher />
     <!-- Hero Section -->
     <section id="home" class="hero">
       <div class="hero-background">
@@ -407,7 +406,6 @@
 import { onMounted } from 'vue'
 import ServiceArea from '../components/ServiceArea.vue'
 import PortfolioSection from '../components/PortfolioSection.vue'
-import DesignSwitcher from '../components/DesignSwitcher.vue'
 
 onMounted(() => {
   // Any other initialization if needed

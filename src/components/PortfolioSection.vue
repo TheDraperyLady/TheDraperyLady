@@ -9,8 +9,8 @@
         <!-- Draperies Showcase -->
         <a
           :href="drapery1Url"
-          :data-pswp-width="1200"
-          :data-pswp-height="800"
+          :data-pswp-width="imageDimensions[drapery1Url]?.width || 800"
+          :data-pswp-height="imageDimensions[drapery1Url]?.height || 600"
           target="_blank"
           rel="noreferrer"
           class="portfolio-item-link"
@@ -43,8 +43,8 @@
 
         <a
           :href="drapery5Url"
-          :data-pswp-width="1200"
-          :data-pswp-height="800"
+          :data-pswp-width="imageDimensions[drapery5Url]?.width || 800"
+          :data-pswp-height="imageDimensions[drapery5Url]?.height || 600"
           target="_blank"
           rel="noreferrer"
           class="portfolio-item-link"
@@ -77,8 +77,8 @@
 
         <a
           :href="drapery8Url"
-          :data-pswp-width="1200"
-          :data-pswp-height="800"
+          :data-pswp-width="imageDimensions[drapery8Url]?.width || 800"
+          :data-pswp-height="imageDimensions[drapery8Url]?.height || 600"
           target="_blank"
           rel="noreferrer"
           class="portfolio-item-link"
@@ -112,8 +112,8 @@
         <!-- Plantation Shutters Showcase -->
         <a
           :href="shutter1Url"
-          :data-pswp-width="1200"
-          :data-pswp-height="800"
+          :data-pswp-width="imageDimensions[shutter1Url]?.width || 800"
+          :data-pswp-height="imageDimensions[shutter1Url]?.height || 600"
           target="_blank"
           rel="noreferrer"
           class="portfolio-item-link"
@@ -146,8 +146,8 @@
 
         <a
           :href="shutter3Url"
-          :data-pswp-width="1200"
-          :data-pswp-height="800"
+          :data-pswp-width="imageDimensions[shutter3Url]?.width || 800"
+          :data-pswp-height="imageDimensions[shutter3Url]?.height || 600"
           target="_blank"
           rel="noreferrer"
           class="portfolio-item-link"
@@ -180,8 +180,8 @@
 
         <a
           :href="shutter5Url"
-          :data-pswp-width="1200"
-          :data-pswp-height="800"
+          :data-pswp-width="imageDimensions[shutter5Url]?.width || 800"
+          :data-pswp-height="imageDimensions[shutter5Url]?.height || 600"
           target="_blank"
           rel="noreferrer"
           class="portfolio-item-link"
@@ -215,8 +215,8 @@
         <!-- Valances Showcase -->
         <a
           :href="valance2Url"
-          :data-pswp-width="1200"
-          :data-pswp-height="800"
+          :data-pswp-width="imageDimensions[valance2Url]?.width || 800"
+          :data-pswp-height="imageDimensions[valance2Url]?.height || 600"
           target="_blank"
           rel="noreferrer"
           class="portfolio-item-link"
@@ -249,8 +249,8 @@
 
         <a
           :href="valance6Url"
-          :data-pswp-width="1200"
-          :data-pswp-height="800"
+          :data-pswp-width="imageDimensions[valance6Url]?.width || 800"
+          :data-pswp-height="imageDimensions[valance6Url]?.height || 600"
           target="_blank"
           rel="noreferrer"
           class="portfolio-item-link"
@@ -283,8 +283,8 @@
 
         <a
           :href="valance10Url"
-          :data-pswp-width="1200"
-          :data-pswp-height="800"
+          :data-pswp-width="imageDimensions[valance10Url]?.width || 800"
+          :data-pswp-height="imageDimensions[valance10Url]?.height || 600"
           target="_blank"
           rel="noreferrer"
           class="portfolio-item-link"
@@ -318,8 +318,8 @@
         <!-- Additional Showcase Items -->
         <a
           :href="drapery12Url"
-          :data-pswp-width="1200"
-          :data-pswp-height="800"
+          :data-pswp-width="imageDimensions[drapery12Url]?.width || 800"
+          :data-pswp-height="imageDimensions[drapery12Url]?.height || 600"
           target="_blank"
           rel="noreferrer"
           class="portfolio-item-link"
@@ -352,8 +352,8 @@
 
         <a
           :href="valance14Url"
-          :data-pswp-width="1200"
-          :data-pswp-height="800"
+          :data-pswp-width="imageDimensions[valance14Url]?.width || 800"
+          :data-pswp-height="imageDimensions[valance14Url]?.height || 600"
           target="_blank"
           rel="noreferrer"
           class="portfolio-item-link"
@@ -386,8 +386,8 @@
 
         <a
           :href="drapery16Url"
-          :data-pswp-width="1200"
-          :data-pswp-height="800"
+          :data-pswp-width="imageDimensions[drapery16Url]?.width || 800"
+          :data-pswp-height="imageDimensions[drapery16Url]?.height || 600"
           target="_blank"
           rel="noreferrer"
           class="portfolio-item-link"
@@ -429,6 +429,7 @@ import 'photoswipe/style.css'
 
 const galleryID = ref('portfolio-gallery')
 const lightbox = ref(null)
+const imageDimensions = ref({})
 
 // Image URLs using proper URL construction
 const drapery1Url = new URL('@assets/draperies/drapery-1.jpg', import.meta.url).href
@@ -446,36 +447,57 @@ const valance6Url = new URL('@assets/valances/valance-6.jpg', import.meta.url).h
 const valance10Url = new URL('@assets/valances/valance-10.jpg', import.meta.url).href
 const valance14Url = new URL('@assets/valances/valance-14.jpg', import.meta.url).href
 
-onMounted(() => {
+// Function to preload image and get its dimensions
+const loadImageDimensions = (src) => {
+  return new Promise((resolve) => {
+    const img = new Image()
+    img.onload = () => {
+      resolve({ width: img.naturalWidth, height: img.naturalHeight })
+    }
+    img.onerror = () => {
+      resolve({ width: 800, height: 600 }) // fallback dimensions
+    }
+    img.src = src
+  })
+}
+
+// Preload all portfolio images to get their dimensions
+const preloadPortfolioImages = async () => {
+  const imageUrls = [
+    drapery1Url,
+    drapery5Url,
+    drapery8Url,
+    drapery12Url,
+    drapery16Url,
+    shutter1Url,
+    shutter3Url,
+    shutter5Url,
+    valance2Url,
+    valance6Url,
+    valance10Url,
+    valance14Url,
+  ]
+
+  const dimensions = {}
+
+  for (let i = 0; i < imageUrls.length; i++) {
+    const url = imageUrls[i]
+    dimensions[url] = await loadImageDimensions(url)
+  }
+
+  imageDimensions.value = dimensions
+}
+
+onMounted(async () => {
+  // Preload images to get their dimensions
+  await preloadPortfolioImages()
+
   // Initialize PhotoSwipe lightbox
   if (!lightbox.value) {
     lightbox.value = new PhotoSwipeLightbox({
       gallery: '#' + galleryID.value,
       children: 'a',
       pswpModule: () => import('photoswipe'),
-      paddingFn: () => {
-        return {
-          top: 40,
-          bottom: 40,
-          left: 40,
-          right: 40,
-        }
-      },
-      showHideAnimationType: 'fade',
-      showAnimationDuration: 0,
-      hideAnimationDuration: 0,
-      allowPanToNext: false,
-      allowMouseDrag: false,
-      allowTouchDrag: false,
-      closeOnVerticalDrag: false,
-      pinchToClose: false,
-      closeOnScroll: false,
-      imageClickAction: 'close',
-      tapAction: 'close',
-      doubleTapAction: 'zoom',
-      indexIndicatorSep: ' / ',
-      preloaderDelay: 2000,
-      easing: 'cubic-bezier(0.4, 0, 0.22, 1)',
     })
     lightbox.value.init()
   }
@@ -536,9 +558,7 @@ onUnmounted(() => {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  transition:
-    transform 0.3s ease,
-    object-fit 0.3s ease;
+  transition: transform 0.3s ease;
   padding: 1rem;
 }
 

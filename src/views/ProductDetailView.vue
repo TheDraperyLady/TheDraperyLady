@@ -1,6 +1,5 @@
 <template>
   <div class="elegant-home">
-    <DesignSwitcher />
     <section class="product-detail-section">
       <div class="container">
         <!-- Hero Section -->
@@ -71,8 +70,8 @@
               v-for="(image, index) in productDetails[productType]?.gallery"
               :key="index"
               :href="image.src"
-              :data-pswp-width="1200"
-              :data-pswp-height="800"
+              :data-pswp-width="imageDimensions[image.src]?.width || 800"
+              :data-pswp-height="imageDimensions[image.src]?.height || 600"
               target="_blank"
               rel="noreferrer"
               class="gallery-item-link"
@@ -142,7 +141,7 @@ import { computed, ref, onMounted, onUnmounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { productDetails } from '../data/productDetails'
 import { FontAwesomeIcon } from '../plugins/fontawesome'
-import DesignSwitcher from '../components/DesignSwitcher.vue'
+
 import PhotoSwipeLightbox from 'photoswipe/lightbox'
 import 'photoswipe/style.css'
 
@@ -150,6 +149,7 @@ const route = useRoute()
 const productType = computed(() => route.params.type)
 const galleryID = ref('product-gallery')
 const lightbox = ref(null)
+const imageDimensions = ref({})
 
 const scrollToGallery = () => {
   const gallerySection = document.getElementById('gallery')
@@ -158,36 +158,43 @@ const scrollToGallery = () => {
   }
 }
 
-onMounted(() => {
+// Function to preload image and get its dimensions
+const loadImageDimensions = (src) => {
+  return new Promise((resolve) => {
+    const img = new Image()
+    img.onload = () => {
+      resolve({ width: img.naturalWidth, height: img.naturalHeight })
+    }
+    img.onerror = () => {
+      resolve({ width: 800, height: 600 }) // fallback dimensions
+    }
+    img.src = src
+  })
+}
+
+// Preload all gallery images to get their dimensions
+const preloadGalleryImages = async () => {
+  const gallery = productDetails[productType.value]?.gallery || []
+  const dimensions = {}
+
+  for (let i = 0; i < gallery.length; i++) {
+    const image = gallery[i]
+    dimensions[image.src] = await loadImageDimensions(image.src)
+  }
+
+  imageDimensions.value = dimensions
+}
+
+onMounted(async () => {
+  // Preload images to get their dimensions
+  await preloadGalleryImages()
+
   // Initialize PhotoSwipe lightbox
   if (!lightbox.value) {
     lightbox.value = new PhotoSwipeLightbox({
       gallery: '#' + galleryID.value,
       children: 'a',
       pswpModule: () => import('photoswipe'),
-      paddingFn: () => {
-        return {
-          top: 40,
-          bottom: 40,
-          left: 40,
-          right: 40,
-        }
-      },
-      showHideAnimationType: 'fade',
-      showAnimationDuration: 0,
-      hideAnimationDuration: 0,
-      allowPanToNext: false,
-      allowMouseDrag: false,
-      allowTouchDrag: false,
-      closeOnVerticalDrag: false,
-      pinchToClose: false,
-      closeOnScroll: false,
-      imageClickAction: 'close',
-      tapAction: 'close',
-      doubleTapAction: 'zoom',
-      indexIndicatorSep: ' / ',
-      preloaderDelay: 2000,
-      easing: 'cubic-bezier(0.4, 0, 0.22, 1)',
     })
     lightbox.value.init()
   }
@@ -373,9 +380,7 @@ onUnmounted(() => {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  transition:
-    transform 0.3s ease,
-    object-fit 0.3s ease;
+  transition: transform 0.3s ease;
   padding: 1rem;
 }
 
