@@ -8,162 +8,27 @@
         </div>
 
         <div class="product-cards">
-          <!-- Draperies -->
-          <div class="product-section product-card" data-section="draperies">
+          <div
+            v-for="(product, type) in productDetails"
+            :key="type"
+            class="product-section product-card"
+            :data-section="type"
+          >
             <div class="product-image-container">
-              <img src="@/assets/service-4.webp" alt="Luxury Draperies" class="product-image" />
+              <img :src="product.mainImage" :alt="product.title" class="product-image" />
             </div>
             <div class="product-content">
               <div class="product-text">
-                <h3>Custom Draperies</h3>
-                <p>
-                  A wide variety of custom draperies are available - Pinch pleated draperies, rod
-                  pocket draperies and ripplefold draperies to name a few.
-                </p>
-                <div class="price">Timeless Elegance, Tailored to Your Vision</div>
+                <h3>{{ product.title }}</h3>
+                <p>{{ product.description }}</p>
+                <div class="lede">{{ product.lede }}</div>
               </div>
               <div class="product-actions">
                 <router-link
-                  :to="{ name: 'product-detail', params: { type: 'draperies' } }"
+                  :to="{ name: 'product-detail', params: { type: type } }"
                   class="secondary-btn"
                 >
-                  View Drapery Details
-                </router-link>
-              </div>
-            </div>
-          </div>
-
-          <!-- Shutters -->
-          <div class="product-section product-card" data-section="shutters">
-            <div class="product-image-container">
-              <img src="@/assets/service-1.webp" alt="Premium Shutters" class="product-image" />
-            </div>
-            <div class="product-content">
-              <div class="product-text">
-                <h3>Plantation Shutters</h3>
-                <p>
-                  Elevate your windows with plantation shutters that blend timeless sophistication
-                  with modern functionality. The perfect marriage of elegance and light control.
-                </p>
-                <div class="price">Classic Style Meets Modern Sophistication</div>
-              </div>
-              <div class="product-actions">
-                <router-link
-                  :to="{ name: 'product-detail', params: { type: 'shutters' } }"
-                  class="secondary-btn"
-                >
-                  View Shutter Details
-                </router-link>
-              </div>
-            </div>
-          </div>
-
-          <!-- Blinds -->
-          <div class="product-section product-card" data-section="blinds">
-            <div class="product-image-container">
-              <img src="@/assets/service-2.webp" alt="Custom Blinds" class="product-image" />
-            </div>
-            <div class="product-content">
-              <div class="product-text">
-                <h3>Custom Blinds</h3>
-                <p>
-                  Where precision meets style. Our designer blinds offer the perfect blend of form
-                  and function, with options to complement any interior vision.
-                </p>
-                <div class="price">Precision Engineering for Perfect Light Control</div>
-              </div>
-              <div class="product-actions">
-                <router-link
-                  :to="{ name: 'product-detail', params: { type: 'blinds' } }"
-                  class="secondary-btn"
-                >
-                  View Blind Details
-                </router-link>
-              </div>
-            </div>
-          </div>
-
-          <!-- Shades -->
-          <div class="product-section product-card" data-section="shades">
-            <div class="product-image-container">
-              <img src="@/assets/service-3.webp" alt="Custom Shades" class="product-image" />
-            </div>
-            <div class="product-content">
-              <div class="product-text">
-                <h3>Custom Shades</h3>
-                <p>
-                  Discover the art of light mastery with our luxury shades. From gentle filtering to
-                  total privacy, create your perfect ambiance with sophisticated style.
-                </p>
-                <div class="price">Effortless Elegance for Every Window</div>
-              </div>
-              <div class="product-actions">
-                <router-link
-                  :to="{ name: 'product-detail', params: { type: 'shades' } }"
-                  class="secondary-btn"
-                >
-                  View Shade Details
-                </router-link>
-              </div>
-            </div>
-          </div>
-
-          <!-- Valances -->
-          <div class="product-section product-card" data-section="valances">
-            <div class="product-image-container">
-              <img
-                src="@/assets/valances/valance-1.jpg"
-                alt="Custom Valances"
-                class="product-image"
-              />
-            </div>
-            <div class="product-content">
-              <div class="product-text">
-                <h3>Custom Valances</h3>
-                <p>
-                  Add a finishing touch to your windows with our custom valances. From classic swags
-                  to modern straight valances, our designs perfectly frame your windows while adding
-                  architectural interest.
-                </p>
-                <div class="price">Elegant Window Top Treatments</div>
-              </div>
-              <div class="product-actions">
-                <router-link
-                  :to="{ name: 'product-detail', params: { type: 'valances' } }"
-                  class="secondary-btn"
-                >
-                  View Valance Details
-                </router-link>
-              </div>
-            </div>
-          </div>
-
-          <!-- Hardware & Motorization -->
-          <div class="product-section product-card" data-section="accessories">
-            <div class="product-image-container">
-              <img
-                src="@/assets/motorization.webp"
-                alt="Hardware and Motorization"
-                class="product-image"
-              />
-            </div>
-            <div class="product-content">
-              <div class="product-text">
-                <h3>Accessories & Motorization</h3>
-                <p>
-                  Enhance your window treatments with our premium selection of hardware and smart
-                  motorization solutions. From decorative rods to automated controls, we offer
-                  everything to complete your perfect window design with both style and modern
-                  convenience.
-                </p>
-                <div class="price">Smart Solutions & Elegant Finishes</div>
-              </div>
-              <div class="product-actions">
-                <router-link
-                  :to="{ name: 'product-detail', params: { type: 'accessories' } }"
-                  class="secondary-btn"
-                >
-                  View Accessories & Motorization
+                  View {{ product.title }} Details
                 </router-link>
               </div>
             </div>
@@ -185,7 +50,9 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { productDetails } from '../data/productDetails'
+</script>
 
 <style scoped>
 @import '../assets/elegant-home.css';
@@ -261,7 +128,7 @@
   font-size: 1.1rem;
 }
 
-.price {
+.lede {
   color: var(--primary-color);
   font-weight: 600;
   font-size: 1.2rem;

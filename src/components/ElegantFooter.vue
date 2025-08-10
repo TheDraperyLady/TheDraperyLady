@@ -17,11 +17,13 @@
           </div>
           <div class="link-group">
             <h4>Products</h4>
-            <router-link to="/product/draperies">Custom Draperies</router-link>
-            <router-link to="/product/shutters">Premium Shutters</router-link>
-            <router-link to="/product/blinds">Designer Blinds</router-link>
-            <router-link to="/product/shades">Luxury Shades</router-link>
-            <router-link to="/product/motorization">Smart Motorization</router-link>
+            <router-link
+              v-for="(product, type) in productDetails"
+              :key="type"
+              :to="`/product/${type}`"
+            >
+              {{ product.title }}
+            </router-link>
           </div>
           <div class="link-group">
             <h4>Contact</h4>
@@ -42,6 +44,7 @@
 // Add this to make the component aware of the color scheme
 import { onMounted } from 'vue'
 import { useRoute } from 'vue-router'
+import { productDetails } from '../data/productDetails'
 
 const route = useRoute()
 

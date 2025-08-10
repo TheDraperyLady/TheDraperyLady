@@ -65,40 +65,10 @@
             <h2>Gallery</h2>
             <p>See Our {{ productDetails[productType]?.title }} in Action</p>
           </div>
-          <div :id="galleryID" class="gallery-grid">
-            <a
-              v-for="(image, index) in productDetails[productType]?.gallery"
-              :key="index"
-              :href="image.src"
-              :data-pswp-width="imageDimensions[image.src]?.width || 800"
-              :data-pswp-height="imageDimensions[image.src]?.height || 600"
-              target="_blank"
-              rel="noreferrer"
-              class="gallery-item-link"
-            >
-              <div class="gallery-item">
-                <img :src="image.src" :alt="image.alt" class="gallery-image" />
-                <div class="gallery-caption">{{ image.alt }}</div>
-                <div class="gallery-overlay">
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                </div>
-              </div>
-            </a>
-          </div>
+          <ImageGallery
+            :images="productDetails[productType]?.gallery || []"
+            gallery-id="product-gallery"
+          />
         </div>
 
         <!-- Options Section -->
@@ -137,19 +107,14 @@
 </template>
 
 <script setup>
-import { computed, ref, onMounted, onUnmounted } from 'vue'
+import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { productDetails } from '../data/productDetails'
 import { FontAwesomeIcon } from '../plugins/fontawesome'
-
-import PhotoSwipeLightbox from 'photoswipe/lightbox'
-import 'photoswipe/style.css'
+import ImageGallery from '../components/ImageGallery.vue'
 
 const route = useRoute()
 const productType = computed(() => route.params.type)
-const galleryID = ref('product-gallery')
-const lightbox = ref(null)
-const imageDimensions = ref({})
 
 const scrollToGallery = () => {
   const gallerySection = document.getElementById('gallery')
@@ -157,56 +122,6 @@ const scrollToGallery = () => {
     gallerySection.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
 }
-
-// Function to preload image and get its dimensions
-const loadImageDimensions = (src) => {
-  return new Promise((resolve) => {
-    const img = new Image()
-    img.onload = () => {
-      resolve({ width: img.naturalWidth, height: img.naturalHeight })
-    }
-    img.onerror = () => {
-      resolve({ width: 800, height: 600 }) // fallback dimensions
-    }
-    img.src = src
-  })
-}
-
-// Preload all gallery images to get their dimensions
-const preloadGalleryImages = async () => {
-  const gallery = productDetails[productType.value]?.gallery || []
-  const dimensions = {}
-
-  for (let i = 0; i < gallery.length; i++) {
-    const image = gallery[i]
-    dimensions[image.src] = await loadImageDimensions(image.src)
-  }
-
-  imageDimensions.value = dimensions
-}
-
-onMounted(async () => {
-  // Preload images to get their dimensions
-  await preloadGalleryImages()
-
-  // Initialize PhotoSwipe lightbox
-  if (!lightbox.value) {
-    lightbox.value = new PhotoSwipeLightbox({
-      gallery: '#' + galleryID.value,
-      children: 'a',
-      pswpModule: () => import('photoswipe'),
-    })
-    lightbox.value.init()
-  }
-})
-
-onUnmounted(() => {
-  // Clean up PhotoSwipe lightbox
-  if (lightbox.value) {
-    lightbox.value.destroy()
-    lightbox.value = null
-  }
-})
 </script>
 
 <style scoped>
@@ -342,100 +257,6 @@ onUnmounted(() => {
   border-radius: 30px;
 }
 
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: 2.5rem;
-  margin-top: 3rem;
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.gallery-item-link {
-  text-decoration: none;
-  color: inherit;
-  display: block;
-  cursor: pointer;
-}
-
-.gallery-item {
-  position: relative;
-  border-radius: 15px;
-  overflow: hidden;
-  aspect-ratio: 3/4;
-  background: white;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-}
-
-.gallery-item-link:hover .gallery-item {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-}
-
-.gallery-image {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  transition: transform 0.3s ease;
-  padding: 1rem;
-}
-
-.gallery-item-link:hover .gallery-image {
-  transform: scale(1.05);
-}
-
-.gallery-caption {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(transparent, rgba(44, 44, 44, 0.9));
-  color: white;
-  padding: 2rem 1.5rem;
-  font-size: 1.1rem;
-  text-align: center;
-  opacity: 0;
-  transform: translateY(100%);
-  transition: all 0.3s ease;
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
-  font-family: 'Crimson Text', 'Georgia', serif;
-  font-style: italic;
-  letter-spacing: 0.5px;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
-}
-
-.gallery-item-link:hover .gallery-caption {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.gallery-overlay {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: rgba(0, 0, 0, 0.7);
-  color: white;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-}
-
-.gallery-item-link:hover .gallery-overlay {
-  opacity: 1;
-}
-
 /* Options Section */
 .options-section {
   padding: 4rem 0;
@@ -495,18 +316,38 @@ onUnmounted(() => {
     grid-template-columns: 1fr;
   }
 
-  .gallery-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-    max-width: 100%;
+  /* Mobile button styling */
+  .cta-group .primary-btn {
+    font-size: 0.85rem;
+    padding: 0.5rem 1.25rem;
   }
 
-  .gallery-item {
-    aspect-ratio: 2/3;
+  .cta-group .secondary-btn {
+    font-size: 0.85rem;
+    padding: 0.5rem 1.25rem;
   }
 
-  .gallery-image {
-    padding: 0.5rem;
+  /* Reduce horizontal padding across the page */
+  .product-hero {
+    padding: 60px 20px;
+    margin: 1rem 0 3rem 0;
+  }
+
+  .gallery-section {
+    padding: 3rem 1rem;
+  }
+
+  .features-section {
+    padding: 3rem 0;
+  }
+
+  .options-section {
+    padding: 3rem 0;
+  }
+
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 }
 </style>

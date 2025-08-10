@@ -111,41 +111,13 @@
           <p>Comprehensive window treatment solutions for every home</p>
         </div>
         <div class="services-grid">
-          <div class="service-card">
+          <div v-for="(product, key) in firstFourProducts" :key="key" class="service-card">
             <div class="service-image-container">
-              <img src="../assets/service-4.webp" alt="Custom Draperies" class="service-image" />
+              <img :src="product.homePageImage" :alt="product.title" class="service-image" />
             </div>
             <div class="service-content">
-              <h3>Custom Draperies</h3>
-              <p>Elegant custom draperies tailored to your style and space</p>
-              <!-- <span class="price">Custom Pricing</span> -->
-            </div>
-          </div>
-          <div class="service-card">
-            <div class="service-image-container">
-              <img src="../assets/service-3.webp" alt="Premium Blinds" class="service-image" />
-            </div>
-            <div class="service-content">
-              <h3>Window Shades</h3>
-              <p>Versatile shades for modern window treatments</p>
-            </div>
-          </div>
-          <div class="service-card">
-            <div class="service-image-container">
-              <img src="../assets/service-2.webp" alt="Window Shades" class="service-image" />
-            </div>
-            <div class="service-content">
-              <h3>Premium Blinds</h3>
-              <p>High-quality blinds for light control and privacy</p>
-            </div>
-          </div>
-          <div class="service-card">
-            <div class="service-image-container">
-              <img src="../assets/service-1.webp" alt="Custom Shutters" class="service-image" />
-            </div>
-            <div class="service-content">
-              <h3>Plantation Shutters</h3>
-              <p>Timeless shutters for classic elegance</p>
+              <h3>{{ product.title }}</h3>
+              <p>{{ product.description }}</p>
             </div>
           </div>
         </div>
@@ -403,9 +375,19 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue'
+import { onMounted, computed } from 'vue'
 import ServiceArea from '../components/ServiceArea.vue'
 import PortfolioSection from '../components/PortfolioSection.vue'
+import { productDetails } from '../data/productDetails.js'
+
+// Get the first 4 products from productDetails
+const firstFourProducts = computed(() => {
+  const products = Object.entries(productDetails)
+  return products.slice(0, 4).reduce((acc, [key, product]) => {
+    acc[key] = product
+    return acc
+  }, {})
+})
 
 onMounted(() => {
   // Any other initialization if needed
