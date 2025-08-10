@@ -71,7 +71,11 @@
             >
           </div>
         </transition>
-        <router-link to="/articles" @mouseenter="handleNavEnter('articles')">
+        <router-link
+          to="/articles"
+          @mouseenter="handleNavEnter('articles')"
+          :class="{ 'router-link-active': isArticles }"
+        >
           Articles
         </router-link>
         <router-link to="/consultation" class="consultation-btn"> Book Consultation </router-link>
@@ -146,6 +150,18 @@ const isProducts = computed(() => {
   return result
 })
 
+const isArticles = computed(() => {
+  // Remove the base URL if present and check if it's an articles route
+  const path = route.path.replace('/TheDraperyLady', '')
+  const result = path.startsWith('/articles')
+  console.log('[Debug] isArticles computed:', {
+    originalPath: route.path,
+    cleanPath: path,
+    isArticles: result,
+  })
+  return result
+})
+
 const currentProductType = computed(() => {
   const path = route.path.replace('/TheDraperyLady', '')
   if (path.startsWith('/product/')) {
@@ -188,7 +204,7 @@ watch(
     })
     expandNav.value = true
     // Set initial active nav based on current route
-    activeNav.value = isHome.value ? 'home' : isProducts.value ? 'products' : null
+    activeNav.value = isHome.value ? 'home' : isProducts.value ? 'products' : isArticles.value ? 'articles' : null
     console.log('[Debug] Nav state after route change:', {
       expandNav: expandNav.value,
       activeNav: activeNav.value,
@@ -209,6 +225,8 @@ const handleNavEnter = (nav) => {
   // and collapse product details when hovering over Articles
   if ((isHome.value && nav !== 'home') || (isProducts.value && nav === 'articles')) {
     expandNav.value = false
+  } else if (isArticles.value && nav !== 'articles') {
+    expandNav.value = false
   } else {
     expandNav.value = true
   }
@@ -217,7 +235,7 @@ const handleNavEnter = (nav) => {
 const handleNavLeave = () => {
   expandNav.value = true
   // Reset to current page's nav
-  activeNav.value = isHome.value ? 'home' : isProducts.value ? 'products' : null
+  activeNav.value = isHome.value ? 'home' : isProducts.value ? 'products' : isArticles.value ? 'articles' : null
 }
 
 // Mobile menu functions
