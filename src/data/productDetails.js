@@ -204,7 +204,7 @@ export const productDetails = {
     description:
       'Experience superior light control with our designer blinds collection. From classic wood blinds to modern automated solutions, find the perfect match for your windows.',
     lede: 'Precision Engineering for Perfect Light Control',
-    mainImage: 'https://picsum.photos/seed/blinds/800/600',
+    mainImage: new URL('@assets/service-2.webp', import.meta.url).href,
     homePageImage: new URL('@assets/service-2.webp', import.meta.url).href,
     features: [
       {
@@ -266,7 +266,7 @@ export const productDetails = {
     description:
       'Discover our collection of luxury shades, combining style with functionality. From classic roman shades to modern cellular designs, find your perfect window covering.',
     lede: 'Effortless Elegance for Every Window',
-    mainImage: 'https://picsum.photos/seed/shades/800/600',
+    mainImage: new URL('@assets/service-3.webp', import.meta.url).href,
     homePageImage: new URL('@assets/service-3.webp', import.meta.url).href,
     features: [
       {
