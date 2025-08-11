@@ -54,14 +54,6 @@
               The training Christine received at the department stores provided the basis of her
               window covering design experience.
             </p>
-            <p class="about-description">
-              Eventually, Christine returned to the United States. In 1985, while attending college,
-              she sold ready-made draperies and blinds in a large department store to earn spending
-              money. She enjoyed working with window coverings so much that after she completed her
-              Bachelor of Arts, she moved into the department store's custom decorating department.
-              The training Christine received at the department stores provided the basis of her
-              window covering design experience.
-            </p>
             <div class="about-stats">
               <div class="stat-item">
                 <span class="stat-number">35+</span>

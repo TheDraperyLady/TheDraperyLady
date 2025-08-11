@@ -79,18 +79,23 @@ const formatDate = (dateString) => {
 
 .article-page {
   min-height: 100vh;
+  padding-top: 2rem;
 }
 
 .article-hero {
-  height: 400px;
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  border-radius: 12px;
   overflow: hidden;
-  position: relative;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  background: white;
 }
 
 .hero-image {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  display: block;
+  object-fit: contain;
 }
 
 .article-content-section {
@@ -245,7 +250,8 @@ const formatDate = (dateString) => {
 
 @media (max-width: 768px) {
   .article-hero {
-    height: 250px;
+    margin: 0 1rem 2rem;
+    border-radius: 8px;
   }
 
   .article-header h1 {
