@@ -77,5 +77,34 @@ articles.forEach((article) => {
   articleBySlug.set(article.slug, article)
 })
 
+// Utility function to resolve image URLs
+export const getImageUrl = (imagePath: string): string => {
+  console.log('getImageUrl called with:', imagePath)
+  try {
+    // If it's already a full URL, return it
+    if (imagePath.startsWith('http')) {
+      return imagePath
+    }
+
+    // Handle @assets alias by replacing it with a relative path
+    if (imagePath.startsWith('@assets/')) {
+      const assetPath = imagePath.replace('@assets/', '')
+      // Use relative path from the current page location
+      const relativePath = `../assets/${assetPath}`
+      console.log('Resolved relative path:', relativePath)
+      return relativePath
+    }
+
+    // For filenames (like 'San-Jose-blinds.webp'), construct the full path
+    const baseUrl = import.meta.env.BASE_URL || '/'
+    const fullPath = `${baseUrl}images/articles/${imagePath}`
+    console.log('Constructed full path:', fullPath)
+    return fullPath
+  } catch (error) {
+    console.error('Failed to load image:', imagePath, error)
+    return 'https://picsum.photos/seed/article/800/500'
+  }
+}
+
 export { articles, articleBySlug }
 export type { Article }

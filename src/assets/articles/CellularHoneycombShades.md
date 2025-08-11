@@ -1,7 +1,7 @@
 ---
 title: 'Cellular & Honeycomb Shades For Style & Light Control In San Jose'
 date: '2025-08-10'
-hero: '../assets/articles/images/cellular-honeycomb-shades-style-light-control-san-jose.webp'
+hero: 'cellular-honeycomb-shades-style-light-control-san-jose.webp'
 description: 'Discover top-of-the-line honeycomb shades that offer light control, privacy, and energy efficiency for your San Jose home. Quality and comfort guaranteed.'
 ---
 

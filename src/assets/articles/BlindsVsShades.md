@@ -1,7 +1,7 @@
 ---
 title: 'Which Are Better? Blinds Or Shades?'
 date: '2025-08-10'
-hero: '@assets/articles/images/San-Jose-blinds.webp'
+hero: 'San-Jose-blinds.webp'
 description: 'Compare blinds and shades to find the perfect window treatment for your San Jose home. Learn about differences, costs, and which option best suits your needs.'
 ---
 

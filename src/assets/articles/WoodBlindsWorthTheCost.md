@@ -1,7 +1,7 @@
 ---
 title: 'Why Wood Blinds Are More Than Worth the Initial Cost'
 date: '2025-08-10'
-hero: '../assets/articles/images/why-wood-blinds-are-worth-the-cost.webp'
+hero: 'why-wood-blinds-are-worth-the-cost.webp'
 description: 'Discover why real wood blinds are a smart investment for your San Jose home, offering style, durability, and low maintenance despite the higher initial cost.'
 ---
 

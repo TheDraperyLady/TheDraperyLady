@@ -621,7 +621,7 @@ const setupScrollObserver = (sectionSelector, linkPrefix) => {
 }
 
 .hamburger-btn.active .hamburger-line:nth-child(1) {
-  transform: rotate(45deg) translate(6px, 6px);
+  transform: rotate(45deg) translate(5px, 5px);
 }
 
 .hamburger-btn.active .hamburger-line:nth-child(2) {
@@ -629,7 +629,7 @@ const setupScrollObserver = (sectionSelector, linkPrefix) => {
 }
 
 .hamburger-btn.active .hamburger-line:nth-child(3) {
-  transform: rotate(-45deg) translate(6px, -6px);
+  transform: rotate(-45deg) translate(5px, -5px);
 }
 
 .mobile-menu {

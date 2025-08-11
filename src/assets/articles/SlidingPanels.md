@@ -1,7 +1,7 @@
 ---
 title: 'Sliding Panels vs. Other Window Treatments: Which Is Right for You?'
 date: '2025-08-10'
-hero: '../assets/articles/images/sliding-panels-vs-other-window-treatments-right-for-you.webp'
+hero: 'sliding-panels-vs-other-window-treatments-right-for-you.webp'
 description: 'Explore the benefits and drawbacks of sliding panels compared to traditional drapes, blinds, and other window coverings to make an informed decision for your home.'
 ---
 

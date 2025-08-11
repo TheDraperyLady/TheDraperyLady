@@ -1,7 +1,7 @@
 ---
 title: 'The Finishing Touch: How Custom Drapery Can Elevate Your Home'
 date: '2025-08-10'
-hero: '../assets/articles/images/finishing-touch-how-custom-drapery-can-elevate-your-home.webp'
+hero: 'finishing-touch-how-custom-drapery-can-elevate-your-home.webp'
 description: 'Discover how custom drapery can be the finishing touch that transforms your home from ordinary to extraordinary, offering both beauty and functionality.'
 ---
 

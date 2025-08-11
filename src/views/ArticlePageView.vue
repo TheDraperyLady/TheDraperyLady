@@ -50,7 +50,7 @@
 <script setup>
 import { computed } from 'vue'
 import { RouterLink } from 'vue-router'
-import { articleBySlug } from '../lib/articles'
+import { articleBySlug, getImageUrl } from '../lib/articles'
 
 const props = defineProps({
   slug: {
@@ -67,18 +67,6 @@ const formatDate = (dateString) => {
     month: 'long',
     day: 'numeric',
   })
-}
-
-const getImageUrl = (imagePath) => {
-  console.log('getImageUrl called with:', imagePath)
-  try {
-    const url = new URL(imagePath, import.meta.url).href
-    console.log('Resolved URL:', url)
-    return url
-  } catch (error) {
-    console.error('Failed to load image:', imagePath, error)
-    return 'https://picsum.photos/seed/article/800/500'
-  }
 }
 </script>
 

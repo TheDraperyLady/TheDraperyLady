@@ -64,7 +64,7 @@
 
 <script setup>
 import { RouterLink } from 'vue-router'
-import { articles } from '../lib/articles'
+import { articles, getImageUrl } from '../lib/articles'
 
 console.log('Articles loaded:', articles)
 console.log(
@@ -78,28 +78,6 @@ const formatDate = (dateString) => {
     month: 'long',
     day: 'numeric',
   })
-}
-
-// getImageUrl called with: @assets/articles/images/San-Jose-blinds.webp
-// ArticlesIndexView.vue:92 Resolved URL: http://localhost:5173/TheDraperyLady/src/views/@assets/articles/images/San-Jose-blinds.webp
-
-const getImageUrl = (imagePath) => {
-  console.log('getImageUrl called with:', imagePath)
-  console.log(typeof imagePath)
-  try {
-    // Handle @assets alias by replacing it with the correct path
-    let resolvedPath = imagePath
-    if (imagePath.startsWith('@assets/')) {
-      resolvedPath = imagePath.replace('@assets/', '../assets/')
-    }
-
-    const url = new URL(resolvedPath, import.meta.url).href
-    console.log('Resolved URL:', url)
-    return url
-  } catch (error) {
-    console.error('Failed to load image:', imagePath, error)
-    return 'https://picsum.photos/seed/article/800/500'
-  }
 }
 </script>
 

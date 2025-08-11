@@ -1,7 +1,7 @@
 ---
 title: 'Enhance Comfort and Energy Efficiency: The Benefits of Interior Solar Screens'
 date: '2025-08-10'
-hero: '../assets/articles/images/benefits-of-interior-solar-screens.webp'
+hero: 'benefits-of-interior-solar-screens.webp'
 description: 'Discover how interior solar screens can improve climate control, reduce glare, and enhance energy efficiency while protecting your home from harmful UV rays.'
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: '3 Compelling Reasons to Invest in Motorization for Your San Jose Home'
 date: '2025-08-10'
-hero: '../assets/articles/images/compelling-reasons-to-invest-in-motorization.webp'
+hero: 'compelling-reasons-to-invest-in-motorization.webp'
 description: "Discover how motorized window treatments can enhance your home's value, comfort, and safety while providing convenient control over light and privacy."
 ---
 
