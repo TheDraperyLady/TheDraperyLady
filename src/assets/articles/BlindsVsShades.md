@@ -1,8 +1,8 @@
 ---
-title: "Which Are Better? Blinds Or Shades?"
-date: "2025-08-10"
-hero: "../assets/articles/images/San-Jose-blinds.webp"
-description: "Compare blinds and shades to find the perfect window treatment for your San Jose home. Learn about differences, costs, and which option best suits your needs."
+title: 'Which Are Better? Blinds Or Shades?'
+date: '2025-08-10'
+hero: '@assets/articles/images/San-Jose-blinds.webp'
+description: 'Compare blinds and shades to find the perfect window treatment for your San Jose home. Learn about differences, costs, and which option best suits your needs.'
 ---
 
 # Which Are Better? Blinds Or Shades?
@@ -27,14 +27,14 @@ Blinds and shades are both great options for your windows, but the best choice r
 
 ### Key Differences Summary
 
-| Feature | Blinds | Shades |
-|---------|--------|--------|
-| **Light Control** | Excellent | Good |
-| **Energy Efficiency** | Better insulation | Less energy efficient |
-| **Cost** | Typically more expensive | Usually less expensive |
-| **Aesthetic** | More visible hardware | Better camouflage |
-| **Maintenance** | Easy to clean | May require more care |
-| **Versatility** | More style options | Limited style choices |
+| Feature               | Blinds                   | Shades                 |
+| --------------------- | ------------------------ | ---------------------- |
+| **Light Control**     | Excellent                | Good                   |
+| **Energy Efficiency** | Better insulation        | Less energy efficient  |
+| **Cost**              | Typically more expensive | Usually less expensive |
+| **Aesthetic**         | More visible hardware    | Better camouflage      |
+| **Maintenance**       | Easy to clean            | May require more care  |
+| **Versatility**       | More style options       | Limited style choices  |
 
 ### Expert Consultation Available
 

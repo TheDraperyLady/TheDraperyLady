@@ -1,8 +1,8 @@
 ---
-title: "Why Wood Blinds Are More Than Worth the Initial Cost"
-date: "2025-08-10"
-hero: "../assets/articles/images/why-wood-blinds-are-worth-the-cost.webp"
-description: "Discover why real wood blinds are a smart investment for your San Jose home, offering style, durability, and low maintenance despite the higher initial cost."
+title: 'Why Wood Blinds Are More Than Worth the Initial Cost'
+date: '2025-08-10'
+hero: '../assets/articles/images/why-wood-blinds-are-worth-the-cost.webp'
+description: 'Discover why real wood blinds are a smart investment for your San Jose home, offering style, durability, and low maintenance despite the higher initial cost.'
 ---
 
 # Why Wood Blinds Are More Than Worth the Initial Cost
@@ -34,15 +34,19 @@ Some window coverings just don't work in just any room, at least not as well as 
 ### Additional Benefits of Wood Blinds
 
 #### Durability and Longevity
+
 Unlike synthetic materials that may warp or fade over time, real wood blinds maintain their beauty and functionality for years. With proper care, they can last decades, making them a truly long-term investment.
 
 #### Natural Insulation
+
 Wood naturally provides better insulation than many other materials, helping to keep your home cooler in summer and warmer in winter. This can lead to energy savings over time.
 
 #### Timeless Appeal
+
 Wood blinds never go out of style. They complement both traditional and contemporary decor, ensuring your investment remains relevant regardless of changing design trends.
 
 #### Customization Options
+
 Wood blinds can be custom-stained or painted to match your exact color scheme, providing a truly personalized window treatment solution.
 
 ### Cost vs. Value Analysis

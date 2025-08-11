@@ -28,9 +28,7 @@
           </div>
 
           <div class="article-footer">
-            <RouterLink to="/articles" class="back-link">
-              ← Back to Articles
-            </RouterLink>
+            <RouterLink to="/articles" class="back-link"> ← Back to Articles </RouterLink>
           </div>
         </div>
       </section>
@@ -57,8 +55,8 @@ import { articleBySlug } from '../lib/articles'
 const props = defineProps({
   slug: {
     type: String,
-    required: true
-  }
+    required: true,
+  },
 })
 
 const article = computed(() => articleBySlug.get(props.slug))
@@ -67,7 +65,7 @@ const formatDate = (dateString) => {
   return new Date(dateString).toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
-    day: 'numeric'
+    day: 'numeric',
   })
 }
 
@@ -161,10 +159,18 @@ const getImageUrl = (imagePath) => {
   color: var(--text-dark);
 }
 
-.article-body :deep(h1) { font-size: 2rem; }
-.article-body :deep(h2) { font-size: 1.75rem; }
-.article-body :deep(h3) { font-size: 1.5rem; }
-.article-body :deep(h4) { font-size: 1.25rem; }
+.article-body :deep(h1) {
+  font-size: 2rem;
+}
+.article-body :deep(h2) {
+  font-size: 1.75rem;
+}
+.article-body :deep(h3) {
+  font-size: 1.5rem;
+}
+.article-body :deep(h4) {
+  font-size: 1.25rem;
+}
 
 .article-body :deep(p) {
   margin-bottom: 1.5rem;

@@ -52,11 +52,11 @@ export default defineConfig({
         md.renderer.rules.link_open = function (tokens, idx, options, env, self) {
           const token = tokens[idx]
           const href = token.attrs?.find(attr => attr[0] === 'href')?.[1]
-          
+
           if (href && (href.startsWith('/') || href.startsWith('#'))) {
             token.tag = 'SmartLink'
           }
-          
+
           return defaultRender(tokens, idx, options, env, self)
         }
       },

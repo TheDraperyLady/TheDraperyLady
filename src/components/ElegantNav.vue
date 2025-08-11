@@ -204,7 +204,13 @@ watch(
     })
     expandNav.value = true
     // Set initial active nav based on current route
-    activeNav.value = isHome.value ? 'home' : isProducts.value ? 'products' : isArticles.value ? 'articles' : null
+    activeNav.value = isHome.value
+      ? 'home'
+      : isProducts.value
+        ? 'products'
+        : isArticles.value
+          ? 'articles'
+          : null
     console.log('[Debug] Nav state after route change:', {
       expandNav: expandNav.value,
       activeNav: activeNav.value,
@@ -235,7 +241,13 @@ const handleNavEnter = (nav) => {
 const handleNavLeave = () => {
   expandNav.value = true
   // Reset to current page's nav
-  activeNav.value = isHome.value ? 'home' : isProducts.value ? 'products' : isArticles.value ? 'articles' : null
+  activeNav.value = isHome.value
+    ? 'home'
+    : isProducts.value
+      ? 'products'
+      : isArticles.value
+        ? 'articles'
+        : null
 }
 
 // Mobile menu functions

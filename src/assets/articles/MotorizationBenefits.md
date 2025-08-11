@@ -1,7 +1,7 @@
 ---
-title: "3 Compelling Reasons to Invest in Motorization for Your San Jose Home"
-date: "2025-08-10"
-hero: "../assets/articles/images/compelling-reasons-to-invest-in-motorization.webp"
+title: '3 Compelling Reasons to Invest in Motorization for Your San Jose Home'
+date: '2025-08-10'
+hero: '../assets/articles/images/compelling-reasons-to-invest-in-motorization.webp'
 description: "Discover how motorized window treatments can enhance your home's value, comfort, and safety while providing convenient control over light and privacy."
 ---
 
@@ -38,18 +38,21 @@ We provide consistently high-quality workmanship and customer service for every 
 At The Drapery Lady, we offer motorization solutions for all types of window treatments:
 
 #### Motorized Draperies
+
 - Remote control operation
 - Smart home integration
 - Scheduled automation
 - Voice control compatibility
 
 #### Motorized Shades and Blinds
+
 - Cordless operation for safety
 - Battery-powered options
 - Hardwired systems
 - Solar-powered alternatives
 
 #### Motorized Shutters
+
 - Automated louver control
 - Remote access
 - Weather-responsive systems

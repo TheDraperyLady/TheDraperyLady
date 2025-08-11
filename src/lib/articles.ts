@@ -24,11 +24,10 @@ const articles: Article[] = Object.entries(articleModules).map(([path, module]) 
     date: component.date,
     description: component.description,
     hero: component.hero,
-    slug: component.slug
+    slug: component.slug,
   }
 
   console.log('Extracted frontmatter:', frontmatter)
-
 
   // Fallback frontmatter if not extracted properly
   if (!frontmatter.title) {
@@ -54,7 +53,7 @@ const articles: Article[] = Object.entries(articleModules).map(([path, module]) 
     slug,
     component,
     frontmatter,
-    path
+    path,
   }
 })
 
@@ -74,7 +73,7 @@ articles.sort((a, b) => {
 
 // Create a Map for quick lookups
 const articleBySlug = new Map<string, Article>()
-articles.forEach(article => {
+articles.forEach((article) => {
   articleBySlug.set(article.slug, article)
 })
 

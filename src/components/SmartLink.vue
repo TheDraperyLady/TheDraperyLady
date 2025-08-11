@@ -14,8 +14,8 @@ import { RouterLink } from 'vue-router'
 const props = defineProps({
   href: {
     type: String,
-    required: true
-  }
+    required: true,
+  },
 })
 
 const isInternal = computed(() => {

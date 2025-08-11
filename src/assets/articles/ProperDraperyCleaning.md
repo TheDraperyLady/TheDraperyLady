@@ -1,8 +1,8 @@
 ---
-title: "The Proper Way to Clean Your Draperies and Keep Them Looking Great and Going Strong"
-date: "2025-08-10"
-hero: "../assets/articles/images/proper-way-to-clean-draperies.webp"
-description: "Learn the proper way to clean your draperies to maintain their beauty and longevity. Expert tips for different materials and professional cleaning advice."
+title: 'The Proper Way to Clean Your Draperies and Keep Them Looking Great and Going Strong'
+date: '2025-08-10'
+hero: '../assets/articles/images/proper-way-to-clean-draperies.webp'
+description: 'Learn the proper way to clean your draperies to maintain their beauty and longevity. Expert tips for different materials and professional cleaning advice.'
 ---
 
 # The Proper Way to Clean Your Draperies and Keep Them Looking Great and Going Strong

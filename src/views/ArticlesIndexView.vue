@@ -14,11 +14,7 @@
     <section class="articles-section">
       <div class="container">
         <div class="articles-grid">
-          <article
-            v-for="article in articles"
-            :key="article.slug"
-            class="article-card"
-          >
+          <article v-for="article in articles" :key="article.slug" class="article-card">
             <RouterLink :to="`/articles/${article.slug}`" class="article-link">
               <div class="article-image">
                 <img
@@ -44,9 +40,7 @@
                 <p v-if="article.frontmatter.description" class="article-excerpt">
                   {{ article.frontmatter.description }}
                 </p>
-                <p v-else class="article-excerpt">
-                  No description available
-                </p>
+                <p v-else class="article-excerpt">No description available</p>
                 <span class="read-more">Read More →</span>
               </div>
             </RouterLink>
@@ -73,20 +67,33 @@ import { RouterLink } from 'vue-router'
 import { articles } from '../lib/articles'
 
 console.log('Articles loaded:', articles)
-console.log('Articles frontmatter:', articles.map(a => ({ title: a.frontmatter.title, hero: a.frontmatter.hero })))
+console.log(
+  'Articles frontmatter:',
+  articles.map((a) => ({ title: a.frontmatter.title, hero: a.frontmatter.hero })),
+)
 
 const formatDate = (dateString) => {
   return new Date(dateString).toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
-    day: 'numeric'
+    day: 'numeric',
   })
 }
 
+// getImageUrl called with: @assets/articles/images/San-Jose-blinds.webp
+// ArticlesIndexView.vue:92 Resolved URL: http://localhost:5173/TheDraperyLady/src/views/@assets/articles/images/San-Jose-blinds.webp
+
 const getImageUrl = (imagePath) => {
   console.log('getImageUrl called with:', imagePath)
+  console.log(typeof imagePath)
   try {
-    const url = new URL(imagePath, import.meta.url).href
+    // Handle @assets alias by replacing it with the correct path
+    let resolvedPath = imagePath
+    if (imagePath.startsWith('@assets/')) {
+      resolvedPath = imagePath.replace('@assets/', '../assets/')
+    }
+
+    const url = new URL(resolvedPath, import.meta.url).href
     console.log('Resolved URL:', url)
     return url
   } catch (error) {
