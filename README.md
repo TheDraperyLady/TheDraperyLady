@@ -54,7 +54,7 @@ The website includes the following main sections:
 - **Products** (`/products`) - Comprehensive gallery of all window treatment categories
 - **Product Details** (`/product/:type`) - Detailed pages for each product category with galleries
 - **About** (`/about`) - Additional information about The Drapery Lady
-- **Articles** (`/articles`) - Educational content and design inspiration
+
 - **Consultation** (`/consultation`) - Professional consultation booking form
 
 ## 📁 Project Structure
@@ -66,7 +66,7 @@ src/
 │   ├── ProductsView.vue         # Product category overview
 │   ├── ProductDetailView.vue    # Individual product galleries
 │   ├── AboutView.vue            # About page
-│   ├── ArticlesView.vue         # Articles and blog content
+
 │   └── ConsultationView.vue     # Consultation booking form
 ├── components/
 │   ├── ElegantNav.vue           # Main navigation component
@@ -131,7 +131,7 @@ The website is fully responsive and optimized for all devices:
 ### Professional Features
 - **Consultation Booking** - Professional contact form for appointments
 - **Comprehensive Galleries** - High-quality images of completed projects
-- **Educational Content** - Articles section for design inspiration
+
 - **Service Area Information** - Coverage details for potential clients
 
 ## 🔧 Available Scripts

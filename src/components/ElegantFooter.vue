@@ -100,7 +100,7 @@ onMounted(() => {
 }
 
 .footer-brand .tagline {
-  color: var(--primary-color, #800020);
+  color: #c44569;
   font-size: 0.9rem;
   font-style: italic;
   letter-spacing: 2px;
@@ -125,7 +125,7 @@ onMounted(() => {
   font-weight: 600;
   margin-bottom: 1rem;
   letter-spacing: 1px;
-  color: var(--primary-color, #800020);
+  color: #c44569;
   font-family: 'Georgia', 'Times New Roman', serif;
 }
 

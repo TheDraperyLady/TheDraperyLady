@@ -71,13 +71,7 @@
             >
           </div>
         </transition>
-        <router-link
-          to="/articles"
-          @mouseenter="handleNavEnter('articles')"
-          :class="{ 'router-link-active': isArticles }"
-        >
-          Articles
-        </router-link>
+
         <router-link to="/consultation" class="consultation-btn"> Book Consultation </router-link>
       </div>
 
@@ -102,9 +96,7 @@
               <router-link to="/products" @click="closeMobileMenu" class="mobile-nav-link">
                 Products
               </router-link>
-              <router-link to="/articles" @click="closeMobileMenu" class="mobile-nav-link">
-                Articles
-              </router-link>
+
               <router-link
                 to="/consultation"
                 @click="closeMobileMenu"
@@ -150,17 +142,7 @@ const isProducts = computed(() => {
   return result
 })
 
-const isArticles = computed(() => {
-  // Remove the base URL if present and check if it's an articles route
-  const path = route.path.replace('/TheDraperyLady', '')
-  const result = path.startsWith('/articles')
-  console.log('[Debug] isArticles computed:', {
-    originalPath: route.path,
-    cleanPath: path,
-    isArticles: result,
-  })
-  return result
-})
+
 
 const currentProductType = computed(() => {
   const path = route.path.replace('/TheDraperyLady', '')
@@ -208,9 +190,7 @@ watch(
       ? 'home'
       : isProducts.value
         ? 'products'
-        : isArticles.value
-          ? 'articles'
-          : null
+        : null
     console.log('[Debug] Nav state after route change:', {
       expandNav: expandNav.value,
       activeNav: activeNav.value,
@@ -228,10 +208,7 @@ const handleNavEnter = (nav) => {
   })
   activeNav.value = nav
   // Collapse on home page when hovering over non-home items
-  // and collapse product details when hovering over Articles
-  if ((isHome.value && nav !== 'home') || (isProducts.value && nav === 'articles')) {
-    expandNav.value = false
-  } else if (isArticles.value && nav !== 'articles') {
+  if (isHome.value && nav !== 'home') {
     expandNav.value = false
   } else {
     expandNav.value = true
@@ -245,9 +222,7 @@ const handleNavLeave = () => {
     ? 'home'
     : isProducts.value
       ? 'products'
-      : isArticles.value
-        ? 'articles'
-        : null
+      : null
 }
 
 // Mobile menu functions

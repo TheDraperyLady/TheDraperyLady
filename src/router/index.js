@@ -31,17 +31,6 @@ const router = createRouter({
       component: ElegantHomeView,
     },
     {
-      path: '/articles',
-      name: 'articles',
-      component: () => import('../views/ArticlesIndexView.vue'),
-    },
-    {
-      path: '/articles/:slug',
-      name: 'article',
-      component: () => import('../views/ArticlePageView.vue'),
-      props: true,
-    },
-    {
       path: '/about',
       name: 'about',
       // route level code-splitting
