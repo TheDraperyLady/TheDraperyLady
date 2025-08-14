@@ -2,17 +2,18 @@
   <div class="elegant-home">
     <section class="services-section">
       <div class="container">
-        <div class="section-header">
+        <div class="section-header animate-on-scroll fade-in">
           <h2>Our Premium Products</h2>
           <p>Elevate Your Space with Elegant Window Treatments</p>
         </div>
 
         <div class="product-cards">
           <div
-            v-for="(product, type) in productDetails"
+            v-for="(product, type, index) in productDetails"
             :key="type"
-            class="product-section product-card"
+            class="product-section product-card animate-on-scroll slide-in-up"
             :data-section="type"
+            :style="{ animationDelay: `${index * 0.15}s` }"
           >
             <div class="product-image-container">
               <img :src="product.mainImage" :alt="product.title" class="product-image" />
@@ -38,7 +39,7 @@
     </section>
 
     <!-- Consultation CTA -->
-    <section class="consultation-cta">
+    <section class="consultation-cta animate-on-scroll fade-in">
       <div class="container">
         <div class="cta-content">
           <h2>Find Your Perfect Window Treatment</h2>
@@ -51,11 +52,108 @@
 </template>
 
 <script setup>
+import { onMounted } from 'vue'
 import { productDetails } from '../data/productDetails'
+
+onMounted(() => {
+  // Initialize scroll animations
+  initScrollAnimations()
+})
+
+const initScrollAnimations = () => {
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate')
+      }
+    })
+  }, observerOptions)
+
+  // Observe all elements with animate-on-scroll class
+  const animatedElements = document.querySelectorAll('.animate-on-scroll')
+  animatedElements.forEach(el => observer.observe(el))
+}
 </script>
 
 <style scoped>
 @import '../assets/elegant-home.css';
+
+/* Animation Classes */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.animate-on-scroll.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Slide animations */
+.slide-in-up {
+  transform: translateY(50px);
+}
+
+.slide-in-up.animate {
+  transform: translateY(0);
+}
+
+/* Fade in */
+.fade-in {
+  transform: translateY(20px);
+}
+
+.fade-in.animate {
+  transform: translateY(0);
+}
+
+/* Enhanced hover effects */
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.08);
+}
+
+/* Smooth transitions for all interactive elements */
+.product-card,
+.product-image {
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Enhanced button animations */
+.primary-btn,
+.secondary-btn {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  overflow: hidden;
+}
+
+.primary-btn:hover,
+.secondary-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.primary-btn:active,
+.secondary-btn:active {
+  transform: translateY(0);
+}
+
+/* Responsive animations */
+@media (max-width: 768px) {
+  .animate-on-scroll {
+    transition-duration: 0.6s;
+  }
+}
 
 .elegant-home {
   padding-top: 100px; /* Account for fixed navigation */
@@ -84,11 +182,6 @@ import { productDetails } from '../data/productDetails'
   min-height: 400px;
 }
 
-.product-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
-}
-
 .product-image-container {
   height: 100%;
   background: linear-gradient(135deg, var(--background-light) 0%, var(--background-lighter) 100%);
@@ -101,10 +194,6 @@ import { productDetails } from '../data/productDetails'
   height: 100%;
   object-fit: cover;
   transition: transform 0.3s ease;
-}
-
-.product-card:hover .product-image {
-  transform: scale(1.05);
 }
 
 .product-content {

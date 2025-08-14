@@ -2,21 +2,21 @@
   <div class="elegant-home">
     <section class="consultation-page">
       <div class="container">
-        <div class="section-header">
+        <div class="section-header animate-on-scroll fade-in">
           <h2>Schedule Your Free Consultation</h2>
           <p>Transform Your Space with Expert Guidance</p>
         </div>
 
         <div class="consultation-content">
           <div class="consultation-info">
-            <div class="info-card">
+            <div class="info-card animate-on-scroll slide-in-left">
               <h3>Call Us Directly</h3>
               <p>Speak with our design experts right away:</p>
               <a href="tel:4089811874" class="phone-number">(408) 981-1874</a>
               <p class="availability">Available Monday - Friday: 9 AM - 6 PM PST</p>
             </div>
 
-            <div class="info-card">
+            <div class="info-card animate-on-scroll slide-in-left" style="animation-delay: 0.2s">
               <h3>Why Choose a Consultation?</h3>
               <ul class="benefits-list">
                 <li>Expert design advice tailored to your space</li>
@@ -28,35 +28,35 @@
             </div>
           </div>
 
-          <div class="consultation-form-container">
+          <div class="consultation-form-container animate-on-scroll slide-in-right">
             <h3>Request a Consultation</h3>
             <form action="https://formspree.io/f/mjkoaygw" method="POST" class="consultation-form">
-              <div class="form-group">
+              <div class="form-group animate-on-scroll fade-in-delay">
                 <label for="name">Full Name</label>
                 <input type="text" id="name" name="name" required />
               </div>
 
-              <div class="form-group">
+              <div class="form-group animate-on-scroll fade-in-delay" style="animation-delay: 0.1s">
                 <label for="email">Email Address</label>
                 <input type="email" id="email" name="email" required />
               </div>
 
-              <div class="form-group">
+              <div class="form-group animate-on-scroll fade-in-delay" style="animation-delay: 0.2s">
                 <label for="phone">Phone Number</label>
                 <input type="tel" id="phone" name="phone" required />
               </div>
 
-              <div class="form-group">
+              <div class="form-group animate-on-scroll fade-in-delay" style="animation-delay: 0.3s">
                 <label for="address">Property Address</label>
                 <input type="text" id="address" name="address" required />
               </div>
 
-              <div class="form-group">
+              <div class="form-group animate-on-scroll fade-in-delay" style="animation-delay: 0.4s">
                 <label for="project">Tell Us About Your Project</label>
                 <textarea id="project" name="project" rows="4" required></textarea>
               </div>
 
-              <div class="form-group">
+              <div class="form-group animate-on-scroll fade-in-delay" style="animation-delay: 0.5s">
                 <label for="preferred-time">Preferred Consultation Time</label>
                 <select id="preferred-time" name="preferred-time" required>
                   <option value="">Select a time...</option>
@@ -66,7 +66,7 @@
                 </select>
               </div>
 
-              <button type="submit" class="primary-btn">Submit Request</button>
+              <button type="submit" class="primary-btn animate-on-scroll fade-in-delay" style="animation-delay: 0.6s">Submit Request</button>
             </form>
           </div>
         </div>
@@ -75,10 +75,153 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { onMounted } from 'vue'
+
+onMounted(() => {
+  // Initialize scroll animations
+  initScrollAnimations()
+})
+
+const initScrollAnimations = () => {
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate')
+      }
+    })
+  }, observerOptions)
+
+  // Observe all elements with animate-on-scroll class
+  const animatedElements = document.querySelectorAll('.animate-on-scroll')
+  animatedElements.forEach(el => observer.observe(el))
+}
+</script>
 
 <style scoped>
 @import '../assets/elegant-home.css';
+
+/* Animation Classes */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.animate-on-scroll.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Slide animations */
+.slide-in-left {
+  transform: translateX(-50px);
+}
+
+.slide-in-left.animate {
+  transform: translateX(0);
+}
+
+.slide-in-right {
+  transform: translateX(50px);
+}
+
+.slide-in-right.animate {
+  transform: translateX(0);
+}
+
+/* Fade in with delay */
+.fade-in-delay {
+  transition-delay: 0.3s;
+}
+
+/* Enhanced hover effects */
+.info-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+}
+
+.consultation-form-container:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+}
+
+/* Form field focus animations */
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Smooth transitions for all interactive elements */
+.info-card,
+.consultation-form-container,
+.form-group input,
+.form-group select,
+.form-group textarea {
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Enhanced button animations */
+.primary-btn {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  overflow: hidden;
+}
+
+.primary-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.primary-btn:active {
+  transform: translateY(0);
+}
+
+/* Phone number hover effect */
+.phone-number:hover {
+  transform: translateY(-3px);
+  color: var(--secondary-color);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Benefits list item animations */
+.benefits-list li {
+  transition: all 0.3s ease;
+}
+
+.benefits-list li:hover {
+  transform: translateX(5px);
+  color: var(--primary-color);
+}
+
+.benefits-list li:hover::before {
+  background: var(--secondary-color);
+  transform: scale(1.2);
+}
+
+/* Responsive animations */
+@media (max-width: 768px) {
+  .animate-on-scroll {
+    transition-duration: 0.6s;
+  }
+  
+  .slide-in-left,
+  .slide-in-right {
+    transform: translateY(30px);
+  }
+  
+  .slide-in-left.animate,
+  .slide-in-right.animate {
+    transform: translateY(0);
+  }
+}
 
 .elegant-home {
   padding-top: 100px; /* Account for fixed navigation */
@@ -127,11 +270,6 @@
   transition: all 0.3s ease;
 }
 
-.phone-number:hover {
-  transform: translateY(-2px);
-  color: var(--secondary-color);
-}
-
 .availability {
   color: var(--text-light);
   font-style: italic;
@@ -160,6 +298,7 @@
   height: 8px;
   border-radius: 50%;
   background: var(--primary-color);
+  transition: all 0.3s ease;
 }
 
 .consultation-form-container {

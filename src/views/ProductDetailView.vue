@@ -3,9 +3,9 @@
     <section class="product-detail-section">
       <div class="container">
         <!-- Hero Section -->
-        <div class="product-hero">
+        <div class="product-hero animate-on-scroll fade-in">
           <div class="product-hero-content">
-            <div class="product-hero-text">
+            <div class="product-hero-text animate-on-scroll slide-in-left">
               <h1>{{ productDetails[productType]?.title || 'Product Details' }}</h1>
               <p class="hero-subtitle">
                 {{ productDetails[productType]?.subtitle || 'Elegant Window Treatments' }}
@@ -13,14 +13,14 @@
               <p class="hero-description">
                 {{ productDetails[productType]?.description || 'Loading product details...' }}
               </p>
-              <div class="cta-group">
+              <div class="cta-group animate-on-scroll fade-in-delay">
                 <router-link to="/consultation" class="primary-btn"
                   >Schedule Consultation</router-link
                 >
                 <button class="secondary-btn" @click="scrollToGallery">View Gallery</button>
               </div>
             </div>
-            <div class="product-hero-visual">
+            <div class="product-hero-visual animate-on-scroll slide-in-right">
               <div class="elegant-frame">
                 <img
                   :src="productDetails[productType]?.mainImage"
@@ -40,7 +40,7 @@
           "
           class="features-section"
         >
-          <div class="section-header">
+          <div class="section-header animate-on-scroll fade-in">
             <h2>Key Features</h2>
             <p>What Makes Our {{ productDetails[productType]?.title }} Special</p>
           </div>
@@ -48,7 +48,8 @@
             <div
               v-for="(feature, index) in productDetails[productType]?.features"
               :key="index"
-              class="feature-card"
+              class="feature-card animate-on-scroll slide-in-up"
+              :style="{ animationDelay: `${index * 0.1}s` }"
             >
               <div class="feature-icon">
                 <FontAwesomeIcon :icon="['fas', feature.icon]" size="2x" />
@@ -61,19 +62,21 @@
 
         <!-- Gallery Section -->
         <div id="gallery" class="gallery-section">
-          <div class="section-header">
+          <div class="section-header animate-on-scroll fade-in">
             <h2>Gallery</h2>
             <p>See Our {{ productDetails[productType]?.title }} in Action</p>
           </div>
-          <ImageGallery
-            :images="productDetails[productType]?.gallery || []"
-            gallery-id="product-gallery"
-          />
+          <div class="gallery-container animate-on-scroll fade-in-delay">
+            <ImageGallery
+              :images="productDetails[productType]?.gallery || []"
+              gallery-id="product-gallery"
+            />
+          </div>
         </div>
 
         <!-- Options Section -->
         <div class="options-section">
-          <div class="section-header">
+          <div class="section-header animate-on-scroll fade-in">
             <h2>Available Options</h2>
             <p>Customize to Your Preferences</p>
           </div>
@@ -81,7 +84,8 @@
             <div
               v-for="(option, index) in productDetails[productType]?.options"
               :key="index"
-              class="option-card"
+              class="option-card animate-on-scroll slide-in-up"
+              :style="{ animationDelay: `${index * 0.1}s` }"
             >
               <h3>{{ option.category }}</h3>
               <ul>
@@ -94,7 +98,7 @@
     </section>
 
     <!-- Consultation CTA -->
-    <section class="consultation-cta">
+    <section class="consultation-cta animate-on-scroll fade-in">
       <div class="container">
         <div class="cta-content">
           <h2>Ready to Transform Your Space?</h2>
@@ -107,7 +111,7 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { productDetails } from '../data/productDetails'
 import { FontAwesomeIcon } from '../plugins/fontawesome'
@@ -115,6 +119,30 @@ import ImageGallery from '../components/ImageGallery.vue'
 
 const route = useRoute()
 const productType = computed(() => route.params.type)
+
+onMounted(() => {
+  // Initialize scroll animations
+  initScrollAnimations()
+})
+
+const initScrollAnimations = () => {
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate')
+      }
+    })
+  }, observerOptions)
+
+  // Observe all elements with animate-on-scroll class
+  const animatedElements = document.querySelectorAll('.animate-on-scroll')
+  animatedElements.forEach(el => observer.observe(el))
+}
 
 const scrollToGallery = () => {
   const gallerySection = document.getElementById('gallery')
@@ -126,6 +154,120 @@ const scrollToGallery = () => {
 
 <style scoped>
 @import '../assets/elegant-home.css';
+
+/* Animation Classes */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.animate-on-scroll.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Slide animations */
+.slide-in-left {
+  transform: translateX(-50px);
+}
+
+.slide-in-left.animate {
+  transform: translateX(0);
+}
+
+.slide-in-right {
+  transform: translateX(50px);
+}
+
+.slide-in-right.animate {
+  transform: translateX(0);
+}
+
+.slide-in-up {
+  transform: translateY(50px);
+}
+
+.slide-in-up.animate {
+  transform: translateY(0);
+}
+
+/* Fade in with delay */
+.fade-in-delay {
+  transition-delay: 0.3s;
+}
+
+/* Hero section specific animations */
+.product-hero .product-hero-text {
+  transition-delay: 0.2s;
+}
+
+.product-hero .product-hero-visual {
+  transition-delay: 0.4s;
+}
+
+.product-hero .cta-group {
+  transition-delay: 0.6s;
+}
+
+/* Enhanced hover effects */
+.feature-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+.option-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.elegant-frame:hover {
+  transform: scale(1.02);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+}
+
+/* Smooth transitions for all interactive elements */
+.feature-card,
+.option-card,
+.elegant-frame {
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Enhanced button animations */
+.primary-btn,
+.secondary-btn {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  overflow: hidden;
+}
+
+.primary-btn:hover,
+.secondary-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.primary-btn:active,
+.secondary-btn:active {
+  transform: translateY(0);
+}
+
+/* Responsive animations */
+@media (max-width: 768px) {
+  .animate-on-scroll {
+    transition-duration: 0.6s;
+  }
+  
+  .slide-in-left,
+  .slide-in-right {
+    transform: translateY(30px);
+  }
+  
+  .slide-in-left.animate,
+  .slide-in-right.animate {
+    transform: translateY(0);
+  }
+}
 
 .product-detail-section {
   padding-top: 120px; /* Account for fixed navigation */
@@ -220,11 +362,6 @@ const scrollToGallery = () => {
   transition: all 0.3s ease;
 }
 
-.feature-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-}
-
 .feature-icon {
   width: 60px;
   height: 60px;
@@ -255,6 +392,10 @@ const scrollToGallery = () => {
   padding: 4rem 2rem;
   background: linear-gradient(135deg, var(--background-light) 0%, var(--background-lighter) 100%);
   border-radius: 30px;
+}
+
+.gallery-container {
+  margin-top: 2rem;
 }
 
 /* Options Section */

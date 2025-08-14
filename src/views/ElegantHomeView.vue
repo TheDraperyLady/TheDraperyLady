@@ -1,24 +1,24 @@
 <template>
   <div class="elegant-home">
     <!-- Hero Section -->
-    <section id="home" class="hero">
+    <section id="home" class="hero animate-on-scroll fade-in">
       <div class="hero-background">
         <div class="ornate-pattern"></div>
       </div>
       <div class="hero-content">
-        <div class="hero-text">
+        <div class="hero-text animate-on-scroll slide-in-left">
           <h1>Classic, Simple, Elegant</h1>
           <p class="hero-subtitle">Exquisite custom drapery</p>
           <p class="hero-description">
             Each piece is a testament to timeless beauty, meticulously crafted to transform your
             houses into homes.
           </p>
-          <div class="cta-group">
+          <div class="cta-group animate-on-scroll fade-in-delay">
             <router-link to="/consultation" class="primary-btn">Book Your Consultation</router-link>
             <button class="secondary-btn" @click="scrollToPortfolio">View Portfolio</button>
           </div>
         </div>
-        <div class="hero-visual">
+        <div class="hero-visual animate-on-scroll slide-in-right">
           <div class="elegant-frame">
             <img src="../assets/banner-2.webp" alt="Luxurious Drapery" class="hero-image" />
           </div>
@@ -30,7 +30,7 @@
     <section id="about" class="about-section">
       <div class="container">
         <div class="about-content">
-          <div class="about-text">
+          <div class="about-text animate-on-scroll slide-in-left">
             <h2>Meet The Drapery Lady</h2>
             <h3>Christine St. Clair</h3>
             <p class="about-intro">
@@ -54,20 +54,20 @@
               The training Christine received at the department stores provided the basis of her
               window covering design experience.
             </p>
-            <div class="about-stats">
-              <div class="stat-item">
+            <div class="about-stats animate-on-scroll fade-in-delay">
+              <div class="stat-item animate-on-scroll scale-in">
                 <span class="stat-number">35+</span>
                 <span class="stat-label">Years Experience</span>
               </div>
-              <div class="stat-item">
+              <div class="stat-item animate-on-scroll scale-in">
                 <span class="stat-number">500+</span>
                 <span class="stat-label">Happy Clients</span>
               </div>
-              <div class="stat-item">
+              <div class="stat-item animate-on-scroll scale-in">
                 <span class="stat-number">1,000+</span>
                 <span class="stat-label">Custom Pieces</span>
               </div>
-              <div class="stat-item anniversary-stat">
+              <div class="stat-item anniversary-stat animate-on-scroll scale-in">
                 <div class="anniversary-badge-inline">
                   <img
                     src="../assets/15-year-business-anniversary-drapery-lady.webp"
@@ -82,7 +82,7 @@
               </div>
             </div>
           </div>
-          <div class="about-visual">
+          <div class="about-visual animate-on-scroll slide-in-right">
             <div class="about-image-frame">
               <img
                 src="../assets/Christine St. Clair.jpg"
@@ -98,12 +98,12 @@
     <!-- Services Section -->
     <section id="services" class="services-section">
       <div class="container">
-        <div class="section-header">
+        <div class="section-header animate-on-scroll fade-in">
           <h2>Our Services</h2>
           <p>Comprehensive window treatment solutions for every home</p>
         </div>
         <div class="services-grid">
-          <div v-for="(product, key) in firstFourProducts" :key="key" class="service-card">
+          <div v-for="(product, key, index) in firstFourProducts" :key="key" class="service-card animate-on-scroll slide-in-up" :style="{ animationDelay: `${index * 0.1}s` }">
             <div class="service-image-container">
               <img :src="product.homePageImage" :alt="product.title" class="service-image" />
             </div>
@@ -114,7 +114,7 @@
           </div>
         </div>
 
-        <div class="text-center" style="margin-top: 3rem">
+        <div class="text-center animate-on-scroll fade-in-delay" style="margin-top: 3rem">
           <router-link to="/products" class="primary-btn">View All Products</router-link>
         </div>
 
@@ -181,7 +181,7 @@
       </div>
 
       <!-- Service Area Component -->
-      <div class="service-area-container">
+      <div class="service-area-container animate-on-scroll fade-in-delay">
         <ServiceArea />
       </div>
     </section>
@@ -192,12 +192,12 @@
     <!-- Testimonials Section -->
     <section id="testimonials" class="testimonials">
       <div class="container">
-        <div class="section-header">
+        <div class="section-header animate-on-scroll fade-in">
           <h2>Client Testimonials</h2>
           <p>What our distinguished clients have to say</p>
         </div>
         <div class="testimonials-grid">
-          <div class="testimonial-card">
+          <div class="testimonial-card animate-on-scroll slide-in-up">
             <div class="star-rating">
               <span class="star">★</span>
               <span class="star">★</span>
@@ -222,7 +222,7 @@
               <!-- <span>Manor House Estate</span> -->
             </div>
           </div>
-          <div class="testimonial-card">
+          <div class="testimonial-card animate-on-scroll slide-in-up" style="animation-delay: 0.1s">
             <div class="star-rating">
               <span class="star">★</span>
               <span class="star">★</span>
@@ -245,7 +245,7 @@
               <!-- <span>Heritage Villa</span> -->
             </div>
           </div>
-          <div class="testimonial-card">
+          <div class="testimonial-card animate-on-scroll slide-in-up" style="animation-delay: 0.2s">
             <div class="star-rating">
               <span class="star">★</span>
               <span class="star">★</span>
@@ -279,32 +279,32 @@
     <!-- FAQ Section -->
     <section id="faq" class="faq-section">
       <div class="container">
-        <div class="section-header">
+        <div class="section-header animate-on-scroll fade-in">
           <h2>Frequently Asked Questions</h2>
         </div>
         <div class="faq-list">
-          <div class="faq-item">
+          <div class="faq-item animate-on-scroll slide-in-left">
             <h3 class="faq-question">How Long Does The Consultation Take?</h3>
             <p class="faq-answer">
               The average consultation lasts 2 hours. Larger homes usually require longer
               consultations.
             </p>
           </div>
-          <div class="faq-item">
+          <div class="faq-item animate-on-scroll slide-in-right">
             <h3 class="faq-question">Where Are Your Draperies Made?</h3>
             <p class="faq-answer">
               Draperies, valances and Roman shades are fabricated in California.
             </p>
           </div>
-          <div class="faq-item">
+          <div class="faq-item animate-on-scroll slide-in-left">
             <h3 class="faq-question">Where Are Your Blinds, Shades and Shutters Made?</h3>
             <p class="faq-answer">They are made in the U.S.A., Mexico and China.</p>
           </div>
-          <div class="faq-item">
+          <div class="faq-item animate-on-scroll slide-in-right">
             <h3 class="faq-question">I have my fabric. Will you work with my own fabric?</h3>
             <p class="faq-answer">In most cases we can work with your own fabric.</p>
           </div>
-          <div class="faq-item">
+          <div class="faq-item animate-on-scroll slide-in-left">
             <h3 class="faq-question">
               How long does it take to have custom window treatments made?
             </h3>
@@ -327,7 +327,7 @@
               </li>
             </ul>
           </div>
-          <div class="faq-item">
+          <div class="faq-item animate-on-scroll slide-in-right">
             <h3 class="faq-question">
               What is the difference between ready–made draperies and custom made draperies?
             </h3>
@@ -340,7 +340,7 @@
               standards that are used in making custom draperies and window treatments as well.
             </p>
           </div>
-          <div class="faq-item">
+          <div class="faq-item animate-on-scroll slide-in-left">
             <h3 class="faq-question">Who does your installation?</h3>
             <p class="faq-answer">
               The installation is done by professional installers who are licensed, bonded and
@@ -352,7 +352,7 @@
     </section>
 
     <!-- Consultation CTA -->
-    <section id="contact" class="consultation-cta">
+    <section id="contact" class="consultation-cta animate-on-scroll fade-in">
       <div class="container">
         <div class="cta-content">
           <h2>Begin Your Transformation</h2>
@@ -382,8 +382,28 @@ const firstFourProducts = computed(() => {
 })
 
 onMounted(() => {
-  // Any other initialization if needed
+  // Initialize scroll animations
+  initScrollAnimations()
 })
+
+const initScrollAnimations = () => {
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate')
+      }
+    })
+  }, observerOptions)
+
+  // Observe all elements with animate-on-scroll class
+  const animatedElements = document.querySelectorAll('.animate-on-scroll')
+  animatedElements.forEach(el => observer.observe(el))
+}
 
 const scrollToPortfolio = () => {
   const portfolioSection = document.getElementById('portfolio')
@@ -398,6 +418,181 @@ const scrollToPortfolio = () => {
 
 <style scoped>
 @import '../assets/elegant-home.css';
+
+/* Animation Classes */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.animate-on-scroll.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Slide animations */
+.slide-in-left {
+  transform: translateX(-50px);
+}
+
+.slide-in-left.animate {
+  transform: translateX(0);
+}
+
+.slide-in-right {
+  transform: translateX(50px);
+}
+
+.slide-in-right.animate {
+  transform: translateX(0);
+}
+
+.slide-in-up {
+  transform: translateY(50px);
+}
+
+.slide-in-up.animate {
+  transform: translateY(0);
+}
+
+/* Scale animation */
+.scale-in {
+  transform: scale(0.8);
+}
+
+.scale-in.animate {
+  transform: scale(1);
+}
+
+/* Fade in with delay */
+.fade-in-delay {
+  transition-delay: 0.3s;
+}
+
+/* Hero section specific animations */
+.hero .hero-text {
+  transition-delay: 0.2s;
+}
+
+.hero .hero-visual {
+  transition-delay: 0.4s;
+}
+
+.hero .cta-group {
+  transition-delay: 0.6s;
+}
+
+/* About section animations */
+.about-section .about-text {
+  transition-delay: 0.1s;
+}
+
+.about-section .about-visual {
+  transition-delay: 0.3s;
+}
+
+.about-stats .stat-item {
+  transition-delay: 0.1s;
+}
+
+.about-stats .stat-item:nth-child(2) {
+  transition-delay: 0.2s;
+}
+
+.about-stats .stat-item:nth-child(3) {
+  transition-delay: 0.3s;
+}
+
+.about-stats .stat-item:nth-child(4) {
+  transition-delay: 0.4s;
+}
+
+/* Services grid animations */
+.services-grid .service-card {
+  transition-delay: 0.1s;
+}
+
+/* Testimonials staggered animation */
+.testimonials-grid .testimonial-card:nth-child(2) {
+  transition-delay: 0.1s;
+}
+
+.testimonials-grid .testimonial-card:nth-child(3) {
+  transition-delay: 0.2s;
+}
+
+/* FAQ alternating animations */
+.faq-list .faq-item:nth-child(even) {
+  transition-delay: 0.1s;
+}
+
+/* Hover effects for interactive elements */
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+.testimonial-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+}
+
+.faq-item:hover {
+  transform: translateX(5px);
+}
+
+/* Smooth transitions for all interactive elements */
+.service-card,
+.testimonial-card,
+.faq-item {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Enhanced button animations */
+.primary-btn,
+.secondary-btn {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  overflow: hidden;
+}
+
+.primary-btn:hover,
+.secondary-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.primary-btn:active,
+.secondary-btn:active {
+  transform: translateY(0);
+}
+
+/* Stat items hover effect */
+.stat-item {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.stat-item:hover {
+  transform: scale(1.05);
+}
+
+/* Responsive animations */
+@media (max-width: 768px) {
+  .animate-on-scroll {
+    transition-duration: 0.6s;
+  }
+  
+  .slide-in-left,
+  .slide-in-right {
+    transform: translateY(30px);
+  }
+  
+  .slide-in-left.animate,
+  .slide-in-right.animate {
+    transform: translateY(0);
+  }
+}
 
 .service-area-container {
   margin-top: 60px;
