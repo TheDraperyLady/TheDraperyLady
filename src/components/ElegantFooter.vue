@@ -6,6 +6,32 @@
           <img src="../assets/TDL_logo.png" alt="The Drapery Lady" class="footer-logo" />
           <h3>The Drapery Lady</h3>
           <p class="tagline">Classic, Simple and Elegant</p>
+          <div class="social-media">
+            <a
+              href="https://www.facebook.com/thedraperylady"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-btn facebook"
+            >
+              <FontAwesomeIcon :icon="['fab', 'facebook-f']" />
+            </a>
+            <a
+              href="https://www.instagram.com/thedraperylady"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-btn instagram"
+            >
+              <FontAwesomeIcon :icon="['fab', 'instagram']" />
+            </a>
+            <a
+              href="https://www.houzz.com/professionals/drapery-window-treatments/thedraperylady"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-btn houzz"
+            >
+              <FontAwesomeIcon :icon="['fas', 'home']" />
+            </a>
+          </div>
         </div>
         <div class="footer-links">
           <div class="link-group">
@@ -45,6 +71,7 @@
 import { onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { productDetails } from '../data/productDetails'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 const route = useRoute()
 
@@ -114,6 +141,71 @@ onMounted(() => {
   line-height: 1.6;
 }
 
+.footer-brand .social-media {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.footer-brand .social-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #333;
+  color: white;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.footer-brand .social-btn:hover {
+  background-color: #ba3146;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.footer-brand .social-btn.facebook {
+  background-color: #3b5998;
+}
+
+.footer-brand .social-btn.facebook:hover {
+  background-color: #4c70ba;
+}
+
+.footer-brand .social-btn.instagram {
+  background: linear-gradient(
+    45deg,
+    #f09433 0%,
+    #e6683c 25%,
+    #dc2743 50%,
+    #cc2366 75%,
+    #bc1888 100%
+  );
+}
+
+.footer-brand .social-btn.instagram:hover {
+  background: linear-gradient(
+    45deg,
+    #f5a742 0%,
+    #ea7a4a 25%,
+    #e23a5a 50%,
+    #d42a7a 75%,
+    #c425a0 100%
+  );
+}
+
+.footer-brand .social-btn.houzz {
+  background-color: #76c2af;
+}
+
+.footer-brand .social-btn.houzz:hover {
+  background-color: #8dd4c1;
+}
+
 .footer-links {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -170,6 +262,17 @@ onMounted(() => {
   .footer-brand {
     align-items: center;
     text-align: center;
+  }
+
+  .footer-brand .social-media {
+    justify-content: center;
+    margin-top: 1.5rem;
+  }
+
+  .footer-brand .social-btn {
+    width: 45px;
+    height: 45px;
+    font-size: 1.1rem;
   }
 
   .link-group {

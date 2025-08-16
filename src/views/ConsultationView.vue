@@ -30,7 +30,13 @@
 
           <div class="consultation-form-container animate-on-scroll slide-in-right">
             <h3>Request a Consultation</h3>
-            <form action="https://formspree.io/f/mjkoaygw" method="POST" class="consultation-form">
+            <form
+              action="https://formkeep.com/f/4b94c176d477"
+              accept-charset="UTF-8"
+              enctype="multipart/form-data"
+              method="POST"
+              class="consultation-form"
+            >
               <div class="form-group animate-on-scroll fade-in-delay">
                 <label for="name">Full Name</label>
                 <input type="text" id="name" name="name" required />
@@ -66,7 +72,13 @@
                 </select>
               </div>
 
-              <button type="submit" class="primary-btn animate-on-scroll fade-in-delay" style="animation-delay: 0.6s">Submit Request</button>
+              <button
+                type="submit"
+                class="primary-btn animate-on-scroll fade-in-delay"
+                style="animation-delay: 0.6s"
+              >
+                Submit Request
+              </button>
             </form>
           </div>
         </div>
@@ -86,11 +98,11 @@ onMounted(() => {
 const initScrollAnimations = () => {
   const observerOptions = {
     threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
+    rootMargin: '0px 0px -50px 0px',
   }
 
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
+    entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add('animate')
       }
@@ -99,7 +111,7 @@ const initScrollAnimations = () => {
 
   // Observe all elements with animate-on-scroll class
   const animatedElements = document.querySelectorAll('.animate-on-scroll')
-  animatedElements.forEach(el => observer.observe(el))
+  animatedElements.forEach((el) => observer.observe(el))
 }
 </script>
 
@@ -211,12 +223,12 @@ const initScrollAnimations = () => {
   .animate-on-scroll {
     transition-duration: 0.6s;
   }
-  
+
   .slide-in-left,
   .slide-in-right {
     transform: translateY(30px);
   }
-  
+
   .slide-in-left.animate,
   .slide-in-right.animate {
     transform: translateY(0);

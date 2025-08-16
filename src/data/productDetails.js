@@ -25,7 +25,7 @@ export const productDetails = {
       'A wide variety of custom draperies are available - Pinch pleated draperies,  rod pocket draperies and ripplefold draperies to name a few.',
     lede: 'Timeless Elegance, Tailored to Your Vision',
     mainImage: new URL('@assets/draperies/drapery-11.jpg', import.meta.url).href,
-    homePageImage: new URL('@assets/service-4.webp', import.meta.url).href,
+    homePageImage: new URL('@assets/draperies/drapery-4.jpg', import.meta.url).href,
     features: [
       commonFeatures.customDesign,
       {
@@ -39,7 +39,7 @@ export const productDetails = {
     options: [
       {
         category: 'Fabric Types',
-        items: ['Silk', 'Linen', 'Velvet', 'Cotton Blend', 'Polyester Blend'],
+        items: ['Silk', 'Linens & Casements', 'Velvet', 'Prints', 'Jacquards & Damasks'],
       },
       {
         category: 'Styles',
@@ -47,7 +47,13 @@ export const productDetails = {
       },
       {
         category: 'Hardware Options',
-        items: ['Decorative Rods', 'Traverse Rods', 'Motorized Tracks', 'Tiebacks', 'Holdbacks'],
+        items: [
+          'Decorative Rods',
+          'Traverse Rods',
+          'Motorized Tracks',
+          'Custom Wrought Iron',
+          'Special Shapes - Arches, Bays & Bow Window Hardware',
+        ],
       },
     ],
     gallery: [
@@ -149,8 +155,8 @@ export const productDetails = {
     description:
       'Add a touch of timeless elegance to your home with our premium shutters. Crafted from the finest materials, our shutters provide both beauty and functionality.',
     lede: 'Classic Style Meets Modern Sophistication',
-    mainImage: new URL('@assets/shutters/shutter-1.jpg', import.meta.url).href,
-    homePageImage: new URL('@assets/service-1.webp', import.meta.url).href,
+    mainImage: new URL('@assets/shutters/shutter-6.jpg', import.meta.url).href,
+    homePageImage: new URL('@assets/shutters/shutter-6.jpg', import.meta.url).href,
     options: [
       {
         category: 'Materials',
@@ -196,6 +202,41 @@ export const productDetails = {
         title: 'Cornice with Shutters',
         description: 'Combined treatment design',
       },
+      {
+        src: new URL('@assets/shutters/shutter-6.jpg', import.meta.url).href,
+        alt: 'Bedroom Plantation Shutters with Mountain View',
+        title: 'Bedroom Shutters',
+        description:
+          'Elegant bedroom window treatment with scenic views featuring Norman Woodlore Composite Shutters',
+      },
+      {
+        src: new URL('@assets/shutters/shutter-7.jpg', import.meta.url).href,
+        alt: 'Dining Room Plantation Shutters',
+        title: 'Dining Room Shutters',
+        description:
+          'Classic plantation shutters in dining area featuring Norman Woodlore Composite Shutters',
+      },
+      {
+        src: new URL('@assets/shutters/shutter-8.jpg', import.meta.url).href,
+        alt: 'Bathroom Plantation Shutters with Bathtub',
+        title: 'Bathroom Shutters',
+        description:
+          'Luxurious bathroom with arched window shutters featuring Norman Woodlore Composite Shutters',
+      },
+      {
+        src: new URL('@assets/shutters/shutter-9.jpg', import.meta.url).href,
+        alt: 'Living Room Plantation Shutters',
+        title: 'Living Room Shutters',
+        description:
+          'Modern living room with plantation shutters featuring Norman Woodlore Composite Shutters',
+      },
+      {
+        src: new URL('@assets/shutters/shutter-10.jpg', import.meta.url).href,
+        alt: 'Vaulted Ceiling Plantation Shutters',
+        title: 'Vaulted Ceiling Shutters',
+        description:
+          'Custom triangular plantation shutters in vaulted ceiling room featuring Norman Woodlore Composite Shutters',
+      },
     ],
   },
   blinds: {
@@ -204,8 +245,8 @@ export const productDetails = {
     description:
       'Experience superior light control with our designer blinds collection. From classic wood blinds to modern automated solutions, find the perfect match for your windows.',
     lede: 'Precision Engineering for Perfect Light Control',
-    mainImage: new URL('@assets/service-2.webp', import.meta.url).href,
-    homePageImage: new URL('@assets/service-2.webp', import.meta.url).href,
+    mainImage: new URL('@assets/blinds/blinds-1.jpg', import.meta.url).href,
+    homePageImage: new URL('@assets/blinds/blinds-1.jpg', import.meta.url).href,
     features: [
       {
         title: 'Versatile Design',
@@ -240,22 +281,25 @@ export const productDetails = {
     ],
     gallery: [
       {
-        src: 'https://picsum.photos/seed/blinds1/600/400',
-        alt: 'Wood Blinds Installation',
-        title: 'Wood Blinds',
-        description: 'Classic wood blind installation',
+        src: new URL('@assets/blinds/blinds-1.jpg', import.meta.url).href,
+        alt: 'Dining Room with Norman Honeycomb Blinds',
+        title: 'Dining Room Honeycomb Blinds',
+        description:
+          'Modern dining room featuring Norman Honeycomb Blinds with top-down/bottom-up operation',
       },
       {
-        src: 'https://picsum.photos/seed/blinds2/600/400',
-        alt: 'Motorized Blinds',
-        title: 'Motorized Blinds',
-        description: 'Smart home integration',
+        src: new URL('@assets/blinds/blinds-2.jpg', import.meta.url).href,
+        alt: 'Living Room with Norman Cordless Blinds',
+        title: 'Living Room Cordless Blinds',
+        description:
+          'Elegant living room featuring Norman Cordless Blinds for enhanced safety and convenience',
       },
       {
-        src: 'https://picsum.photos/seed/blinds3/600/400',
-        alt: 'Modern Vertical Blinds',
-        title: 'Vertical Blinds',
-        description: 'Modern vertical design',
+        src: new URL('@assets/blinds/blinds-3.jpg', import.meta.url).href,
+        alt: 'Bedroom with Norman Citylight Blinds',
+        title: 'Citylight Blinds',
+        description:
+          'Modern kitchen featuring Norman Citylight Blinds for optimal privacy and light control',
       },
     ],
   },
@@ -266,8 +310,8 @@ export const productDetails = {
     description:
       'Discover our collection of luxury shades, combining style with functionality. From classic roman shades to modern cellular designs, find your perfect window covering.',
     lede: 'Effortless Elegance for Every Window',
-    mainImage: new URL('@assets/service-3.webp', import.meta.url).href,
-    homePageImage: new URL('@assets/service-3.webp', import.meta.url).href,
+    mainImage: new URL('@assets/shades/shades-1.jpg', import.meta.url).href,
+    homePageImage: new URL('@assets/shades/shades-1.jpg', import.meta.url).href,
     features: [
       {
         title: 'Custom Design',
@@ -301,31 +345,50 @@ export const productDetails = {
       },
       {
         category: 'Operating Systems',
-        items: ['Cordless', 'Motorized', 'Smart Home', 'Traditional Cord'],
+        items: ['Cordless', 'Motorized', 'Continuous Cord Loop', 'Smart Release'],
       },
       {
         category: 'Light Control',
-        items: ['Sheer', 'Light Filtering', 'Room Darkening', 'Blackout'],
+        items: ['Sheer', 'Light Filtering', 'Room Darkening', 'Dim Out'],
       },
     ],
     gallery: [
       {
-        src: 'https://picsum.photos/seed/shade1/600/400',
-        alt: 'Roman Shade Installation',
-        title: 'Roman Shades',
-        description: 'Classic roman shade design',
+        src: new URL('@assets/shades/shades-1.jpg', import.meta.url).href,
+        alt: 'Home Office with Norman PerfectSheer Shadings',
+        title: 'Home Office Shadings',
+        description: 'Modern home office featuring Norman PerfectSheer Shadings',
       },
       {
-        src: 'https://picsum.photos/seed/shade2/600/400',
-        alt: 'Cellular Shade Detail',
-        title: 'Cellular Shades',
-        description: 'Energy-efficient cellular design',
+        src: new URL('@assets/shades/shades-2.jpg', import.meta.url).href,
+        alt: 'Living Room with Norman PerfectSheer Shadings',
+        title: 'Living Room Shadings',
+        description: 'Bright living room with Norman PerfectSheer Shadings and indoor plants',
       },
       {
-        src: 'https://picsum.photos/seed/shade3/600/400',
-        alt: 'Motorized Shade Operation',
-        title: 'Motorized Shades',
-        description: 'Automated shade operation',
+        src: new URL('@assets/shades/shades-3.jpg', import.meta.url).href,
+        alt: 'Modern Living Room with Norman Roman Shades',
+        title: 'Modern Living Room Roman Shades',
+        description: 'Elegant living room featuring Norman Roman Shades with geometric pattern',
+      },
+      {
+        src: new URL('@assets/shades/shades-4.jpg', import.meta.url).href,
+        alt: 'Dining Room with Norman Roman Shades',
+        title: 'Dining Room Roman Shades',
+        description: 'Sophisticated dining area with Norman Roman Shades',
+      },
+      {
+        src: new URL('@assets/shades/shades-5.jpg', import.meta.url).href,
+        alt: 'Kitchen with Norman Roman Shades',
+        title: 'Kitchen Roman Shades',
+        description: 'Modern kitchen featuring Norman Roman Shades with grey finish',
+      },
+      {
+        src: new URL('@assets/shades/shades-6.jpg', import.meta.url).href,
+        alt: 'Living Room with Norman SmartDrape Sheer Shades',
+        title: 'Living Room SmartDrape Shades',
+        description:
+          'Modern living space featuring Norman SmartDrape Sheer Shades with vertical design',
       },
     ],
   },
@@ -354,15 +417,16 @@ export const productDetails = {
     options: [
       {
         category: 'Valance Styles',
-        items: ['Box Pleated', 'Swag and Cascade', 'Straight', 'Balloon', 'Scalloped'],
-      },
-      {
-        category: 'Fabric Options',
-        items: ['Silk', 'Linen', 'Cotton', 'Velvet', 'Designer Prints'],
-      },
-      {
-        category: 'Mounting Options',
-        items: ['Board Mounted', 'Rod Pocket', 'Decorative Hardware', 'Hidden Mounts'],
+        items: [
+          'Cornices',
+          'Inverted Box Pleat',
+          'Swags & Cascades',
+          'Mock Roman Valances',
+          'Pleated Valances',
+          'Continental Valances',
+          'Rod Pocket Valances',
+          'Arched Valances',
+        ],
       },
     ],
     gallery: [
@@ -515,12 +579,6 @@ export const productDetails = {
     ],
     gallery: [
       {
-        src: new URL('@assets/accessories/accessory-1.jpg', import.meta.url).href,
-        alt: 'Bay Window Accessories',
-        title: 'Bay Window Accessories',
-        description: 'Complete accessory package',
-      },
-      {
         src: new URL('@assets/accessories/accessory-2.jpg', import.meta.url).href,
         alt: 'Bay Window Cornice and Accessories',
         title: 'Cornice and Accessories',
@@ -540,8 +598,8 @@ export const productDetails = {
       },
       {
         src: new URL('@assets/accessories/accessory-5.jpg', import.meta.url).href,
-        alt: 'Premium Hardware',
-        title: 'Premium Hardware',
+        alt: 'Custom Pillows and Bedding',
+        title: 'Custom Pillows and Bedding',
         description: 'High-quality accessories',
       },
       {

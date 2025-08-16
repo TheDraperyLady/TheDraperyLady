@@ -21,6 +21,9 @@
             <li>Sunnyvale</li>
             <li>Menlo Park</li>
           </ul>
+          <div class="contact-note">
+            <p>Is your location not on the list? Just give us a call!</p>
+          </div>
         </div>
       </div>
     </div>
@@ -240,6 +243,22 @@ onMounted(() => {
 
 .service-areas li:last-child {
   border-bottom: none;
+}
+
+.contact-note {
+  margin-top: 24px;
+  padding: 16px;
+  background: #800020;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.contact-note p {
+  color: white;
+  font-size: 1rem;
+  margin: 0;
+  font-style: italic;
+  font-family: 'Georgia', 'Times New Roman', serif;
 }
 
 @media (max-width: 900px) {

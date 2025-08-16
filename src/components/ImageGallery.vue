@@ -179,13 +179,18 @@ onUnmounted(() => {
 
 <style scoped>
 .image-gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: 2.5rem;
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 2rem !important;
   margin-top: 3rem;
-  max-width: 1200px;
+  max-width: 1400px;
   margin-left: auto;
   margin-right: auto;
+}
+
+/* Override any conflicting portfolio-grid styles */
+.portfolio-section .image-gallery {
+  grid-template-columns: repeat(3, 1fr) !important;
 }
 
 .gallery-item-link {

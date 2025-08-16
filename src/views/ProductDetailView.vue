@@ -44,10 +44,10 @@
             <h2>Key Features</h2>
             <p>What Makes Our {{ productDetails[productType]?.title }} Special</p>
           </div>
-          <div class="features-grid">
+          <div class="features-grid" :key="`features-${productType}`">
             <div
               v-for="(feature, index) in productDetails[productType]?.features"
-              :key="index"
+              :key="`${productType}-feature-${index}`"
               class="feature-card animate-on-scroll slide-in-up"
               :style="{ animationDelay: `${index * 0.1}s` }"
             >
@@ -66,7 +66,10 @@
             <h2>Gallery</h2>
             <p>See Our {{ productDetails[productType]?.title }} in Action</p>
           </div>
-          <div class="gallery-container animate-on-scroll fade-in-delay">
+          <div
+            class="gallery-container animate-on-scroll fade-in-delay"
+            :key="`gallery-${productType}`"
+          >
             <ImageGallery
               :images="productDetails[productType]?.gallery || []"
               gallery-id="product-gallery"
@@ -80,10 +83,10 @@
             <h2>Available Options</h2>
             <p>Customize to Your Preferences</p>
           </div>
-          <div class="options-grid">
+          <div class="options-grid" :key="productType">
             <div
               v-for="(option, index) in productDetails[productType]?.options"
-              :key="index"
+              :key="`${productType}-${index}`"
               class="option-card animate-on-scroll slide-in-up"
               :style="{ animationDelay: `${index * 0.1}s` }"
             >
@@ -111,7 +114,7 @@
 </template>
 
 <script setup>
-import { computed, onMounted } from 'vue'
+import { computed, onMounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { productDetails } from '../data/productDetails'
 import { FontAwesomeIcon } from '../plugins/fontawesome'
@@ -125,14 +128,22 @@ onMounted(() => {
   initScrollAnimations()
 })
 
+// Watch for route changes to re-initialize animations
+watch(productType, () => {
+  // Small delay to ensure DOM is updated
+  setTimeout(() => {
+    initScrollAnimations()
+  }, 100)
+})
+
 const initScrollAnimations = () => {
   const observerOptions = {
     threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
+    rootMargin: '0px 0px -50px 0px',
   }
 
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
+    entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add('animate')
       }
@@ -141,7 +152,7 @@ const initScrollAnimations = () => {
 
   // Observe all elements with animate-on-scroll class
   const animatedElements = document.querySelectorAll('.animate-on-scroll')
-  animatedElements.forEach(el => observer.observe(el))
+  animatedElements.forEach((el) => observer.observe(el))
 }
 
 const scrollToGallery = () => {
@@ -257,12 +268,12 @@ const scrollToGallery = () => {
   .animate-on-scroll {
     transition-duration: 0.6s;
   }
-  
+
   .slide-in-left,
   .slide-in-right {
     transform: translateY(30px);
   }
-  
+
   .slide-in-left.animate,
   .slide-in-right.animate {
     transform: translateY(0);
@@ -410,6 +421,18 @@ const scrollToGallery = () => {
   margin-top: 3rem;
 }
 
+/* Ensure multiple options display in columns */
+.options-grid .option-card {
+  min-width: 250px;
+}
+
+/* Special styling for single option (like valances) */
+.options-grid .option-card:only-child {
+  max-width: none;
+  margin: 0;
+  grid-column: 1 / -1;
+}
+
 .option-card {
   background: white;
   padding: 2rem;
@@ -455,6 +478,13 @@ const scrollToGallery = () => {
   .features-grid,
   .options-grid {
     grid-template-columns: 1fr;
+  }
+
+  /* Ensure single option card is properly sized on mobile */
+  .options-grid .option-card:only-child {
+    max-width: none;
+    margin: 0;
+    grid-column: 1 / -1;
   }
 
   /* Mobile button styling */

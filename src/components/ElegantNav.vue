@@ -142,8 +142,6 @@ const isProducts = computed(() => {
   return result
 })
 
-
-
 const currentProductType = computed(() => {
   const path = route.path.replace('/TheDraperyLady', '')
   if (path.startsWith('/product/')) {
@@ -186,11 +184,7 @@ watch(
     })
     expandNav.value = true
     // Set initial active nav based on current route
-    activeNav.value = isHome.value
-      ? 'home'
-      : isProducts.value
-        ? 'products'
-        : null
+    activeNav.value = isHome.value ? 'home' : isProducts.value ? 'products' : null
     console.log('[Debug] Nav state after route change:', {
       expandNav: expandNav.value,
       activeNav: activeNav.value,
@@ -218,11 +212,7 @@ const handleNavEnter = (nav) => {
 const handleNavLeave = () => {
   expandNav.value = true
   // Reset to current page's nav
-  activeNav.value = isHome.value
-    ? 'home'
-    : isProducts.value
-      ? 'products'
-      : null
+  activeNav.value = isHome.value ? 'home' : isProducts.value ? 'products' : null
 }
 
 // Mobile menu functions

@@ -34,22 +34,97 @@ const portfolioImages = [
     description: 'Ripplefold Patterned Sheers',
   },
   {
-    src: new URL('@assets/shutters/shutter-1.jpg', import.meta.url).href,
-    alt: 'Plantation Shutters',
-    title: 'Classic Shutter',
-    description: 'Bay Window Shutters',
+    src: new URL('@assets/shutters/shutter-6.jpg', import.meta.url).href,
+    alt: 'Bedroom Plantation Shutters with Mountain View',
+    title: 'Bedroom Shutters',
+    description:
+      'Elegant bedroom window treatment with scenic views featuring Norman Woodlore Composite Shutters',
   },
   {
-    src: new URL('@assets/shutters/shutter-3.jpg', import.meta.url).href,
-    alt: 'Custom Wood Shutters',
-    title: 'Premium Shutter',
-    description: 'Bypass Shutters on a Patio Door',
+    src: new URL('@assets/shutters/shutter-7.jpg', import.meta.url).href,
+    alt: 'Dining Room Plantation Shutters',
+    title: 'Dining Room Shutters',
+    description:
+      'Classic plantation shutters in dining area featuring Norman Woodlore Composite Shutters',
   },
   {
-    src: new URL('@assets/shutters/shutter-5.jpg', import.meta.url).href,
-    alt: 'Interior Shutters',
-    title: 'Interior Shutter',
-    description: 'Bay Window Cornice Drapes & Shutters',
+    src: new URL('@assets/shutters/shutter-8.jpg', import.meta.url).href,
+    alt: 'Bathroom Plantation Shutters with Bathtub',
+    title: 'Bathroom Shutters',
+    description:
+      'Luxurious bathroom with arched window shutters featuring Norman Woodlore Composite Shutters',
+  },
+  {
+    src: new URL('@assets/shutters/shutter-9.jpg', import.meta.url).href,
+    alt: 'Living Room Plantation Shutters',
+    title: 'Living Room Shutters',
+    description:
+      'Modern living room with plantation shutters featuring Norman Woodlore Composite Shutters',
+  },
+  {
+    src: new URL('@assets/shutters/shutter-10.jpg', import.meta.url).href,
+    alt: 'Vaulted Ceiling Plantation Shutters',
+    title: 'Vaulted Ceiling Shutters',
+    description:
+      'Custom triangular plantation shutters in vaulted ceiling room featuring Norman Woodlore Composite Shutters',
+  },
+  {
+    src: new URL('@assets/shades/shades-1.jpg', import.meta.url).href,
+    alt: 'Home Office with Norman PerfectSheer Shadings',
+    title: 'Home Office Shadings',
+    description: 'Modern home office featuring Norman PerfectSheer Shadings',
+  },
+  {
+    src: new URL('@assets/shades/shades-2.jpg', import.meta.url).href,
+    alt: 'Living Room with Norman PerfectSheer Shadings',
+    title: 'Living Room Shadings',
+    description: 'Bright living room with Norman PerfectSheer Shadings and indoor plants',
+  },
+  {
+    src: new URL('@assets/shades/shades-3.jpg', import.meta.url).href,
+    alt: 'Modern Living Room with Norman Roman Shades',
+    title: 'Modern Living Room Roman Shades',
+    description: 'Elegant living room featuring Norman Roman Shades with geometric pattern',
+  },
+  {
+    src: new URL('@assets/shades/shades-4.jpg', import.meta.url).href,
+    alt: 'Dining Room with Norman Roman Shades',
+    title: 'Dining Room Roman Shades',
+    description: 'Sophisticated dining area with Norman Roman Shades',
+  },
+  {
+    src: new URL('@assets/shades/shades-5.jpg', import.meta.url).href,
+    alt: 'Kitchen with Norman Roman Shades',
+    title: 'Kitchen Roman Shades',
+    description: 'Modern kitchen featuring Norman Roman Shades with grey finish',
+  },
+  {
+    src: new URL('@assets/shades/shades-6.jpg', import.meta.url).href,
+    alt: 'Living Room with Norman SmartDrape Sheer Shades',
+    title: 'Living Room SmartDrape Shades',
+    description:
+      'Modern living space featuring Norman SmartDrape Sheer Shades with vertical design',
+  },
+  {
+    src: new URL('@assets/blinds/blinds-1.jpg', import.meta.url).href,
+    alt: 'Dining Room with Norman Honeycomb Blinds',
+    title: 'Dining Room Honeycomb Blinds',
+    description:
+      'Modern dining room featuring Norman Honeycomb Blinds with top-down/bottom-up operation',
+  },
+  {
+    src: new URL('@assets/blinds/blinds-2.jpg', import.meta.url).href,
+    alt: 'Living Room with Norman Cordless Blinds',
+    title: 'Living Room Cordless Blinds',
+    description:
+      'Elegant living room featuring Norman Cordless Blinds for enhanced safety and convenience',
+  },
+  {
+    src: new URL('@assets/blinds/blinds-3.jpg', import.meta.url).href,
+    alt: 'Bedroom with Norman Citylight Blinds',
+    title: 'Citylight Blinds',
+    description:
+      'Modern kitchen featuring Norman Citylight Blinds for optimal privacy and light control',
   },
   {
     src: new URL('@assets/valances/valance-2.jpg', import.meta.url).href,

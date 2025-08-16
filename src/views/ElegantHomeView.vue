@@ -54,6 +54,14 @@
               The training Christine received at the department stores provided the basis of her
               window covering design experience.
             </p>
+            <div class="norman-logo-section animate-on-scroll fade-in-delay">
+              <p class="norman-text">Authorized Dealer</p>
+              <img
+                src="../assets/Norman Logo.webp"
+                alt="Norman Window Fashions"
+                class="norman-logo"
+              />
+            </div>
             <div class="about-stats animate-on-scroll fade-in-delay">
               <div class="stat-item animate-on-scroll scale-in">
                 <span class="stat-number">35+</span>
@@ -103,7 +111,12 @@
           <p>Comprehensive window treatment solutions for every home</p>
         </div>
         <div class="services-grid">
-          <div v-for="(product, key, index) in firstFourProducts" :key="key" class="service-card animate-on-scroll slide-in-up" :style="{ animationDelay: `${index * 0.1}s` }">
+          <div
+            v-for="(product, key, index) in firstFourProducts"
+            :key="key"
+            class="service-card animate-on-scroll slide-in-up"
+            :style="{ animationDelay: `${index * 0.1}s` }"
+          >
             <div class="service-image-container">
               <img :src="product.homePageImage" :alt="product.title" class="service-image" />
             </div>
@@ -389,11 +402,11 @@ onMounted(() => {
 const initScrollAnimations = () => {
   const observerOptions = {
     threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
+    rootMargin: '0px 0px -50px 0px',
   }
 
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
+    entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add('animate')
       }
@@ -402,7 +415,7 @@ const initScrollAnimations = () => {
 
   // Observe all elements with animate-on-scroll class
   const animatedElements = document.querySelectorAll('.animate-on-scroll')
-  animatedElements.forEach(el => observer.observe(el))
+  animatedElements.forEach((el) => observer.observe(el))
 }
 
 const scrollToPortfolio = () => {
@@ -577,20 +590,62 @@ const scrollToPortfolio = () => {
   transform: scale(1.05);
 }
 
+/* Norman Logo Section */
+.norman-logo-section {
+  text-align: center;
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: white;
+  border-radius: 12px;
+  border: 1px solid rgba(128, 0, 32, 0.1);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+}
+
+.norman-text {
+  font-size: 0.9rem;
+  color: #800020;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  font-family: 'Georgia', 'Times New Roman', serif;
+}
+
+.norman-logo {
+  max-width: 200px;
+  height: auto;
+  filter: grayscale(0);
+  transition: all 0.3s ease;
+}
+
+.norman-logo:hover {
+  filter: grayscale(0) brightness(1.1);
+  transform: scale(1.02);
+}
+
 /* Responsive animations */
 @media (max-width: 768px) {
   .animate-on-scroll {
     transition-duration: 0.6s;
   }
-  
+
   .slide-in-left,
   .slide-in-right {
     transform: translateY(30px);
   }
-  
+
   .slide-in-left.animate,
   .slide-in-right.animate {
     transform: translateY(0);
+  }
+
+  .norman-logo {
+    max-width: 150px;
+  }
+
+  .norman-logo-section {
+    margin: 1.5rem 0;
+    padding: 1rem;
   }
 }
 
