@@ -127,6 +127,31 @@
           </div>
         </div>
 
+        <!-- Commercial Services Card -->
+        <div class="commercial-services-card animate-on-scroll fade-in-delay">
+          <div class="commercial-card-content">
+            <div class="commercial-icon">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3 21H21V3H3V21ZM5 5H19V19H5V5Z" fill="#800020"/>
+                <path d="M7 7H17V9H7V7ZM7 11H17V13H7V11ZM7 15H13V17H7V15Z" fill="#800020"/>
+              </svg>
+            </div>
+            <div class="commercial-text">
+              <h3>Commercial Window Coverings</h3>
+              <p>Professional window treatment solutions for offices, hotels, restaurants, and commercial spaces. We bring the same level of craftsmanship and attention to detail to every commercial project.</p>
+              <div class="commercial-features">
+                <span class="feature-tag">Corporate Offices</span>
+                <span class="feature-tag">Hospitality</span>
+                <span class="feature-tag">Retail Spaces</span>
+                <span class="feature-tag">Healthcare</span>
+              </div>
+            </div>
+            <div class="commercial-cta">
+              <router-link to="/consultation" class="secondary-btn">Commercial Consultation</router-link>
+            </div>
+          </div>
+        </div>
+
         <div class="text-center animate-on-scroll fade-in-delay" style="margin-top: 3rem">
           <router-link to="/products" class="primary-btn">View All Products</router-link>
         </div>
@@ -581,6 +606,97 @@ const scrollToPortfolio = () => {
   transform: translateY(0);
 }
 
+/* Commercial Services Card */
+.commercial-services-card {
+  margin: 4rem auto 2rem auto;
+  max-width: 900px;
+  background: linear-gradient(135deg, #faf8f6 0%, #fff 100%);
+  border: 1px solid rgba(128, 0, 32, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.commercial-services-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12);
+  border-color: rgba(128, 0, 32, 0.2);
+}
+
+.commercial-card-content {
+  display: flex;
+  align-items: center;
+  padding: 2.5rem;
+  gap: 2rem;
+}
+
+.commercial-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  background: rgba(128, 0, 32, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(128, 0, 32, 0.1);
+}
+
+.commercial-text {
+  flex: 1;
+}
+
+.commercial-text h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #800020;
+  margin: 0 0 0.75rem 0;
+  font-family: 'Georgia', 'Times New Roman', serif;
+}
+
+.commercial-text p {
+  font-size: 1.05rem;
+  color: #3d2b1f;
+  line-height: 1.6;
+  margin: 0 0 1.25rem 0;
+}
+
+.commercial-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.feature-tag {
+  background: rgba(128, 0, 32, 0.08);
+  color: #800020;
+  padding: 0.375rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: 1px solid rgba(128, 0, 32, 0.15);
+  transition: all 0.3s ease;
+}
+
+.feature-tag:hover {
+  background: rgba(128, 0, 32, 0.12);
+  transform: translateY(-1px);
+}
+
+.commercial-cta {
+  flex-shrink: 0;
+}
+
+.commercial-cta .secondary-btn {
+  white-space: nowrap;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
 /* Stat items hover effect */
 .stat-item {
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -646,6 +762,50 @@ const scrollToPortfolio = () => {
   .norman-logo-section {
     margin: 1.5rem 0;
     padding: 1rem;
+  }
+
+  /* Commercial Services Card Mobile Styles */
+  .commercial-services-card {
+    margin: 2rem auto 1rem auto;
+  }
+
+  .commercial-card-content {
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem 1.5rem;
+    gap: 1.5rem;
+  }
+
+  .commercial-icon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .commercial-icon svg {
+    width: 36px;
+    height: 36px;
+  }
+
+  .commercial-text h3 {
+    font-size: 1.25rem;
+  }
+
+  .commercial-text p {
+    font-size: 1rem;
+  }
+
+  .commercial-features {
+    justify-content: center;
+  }
+
+  .feature-tag {
+    font-size: 0.8rem;
+    padding: 0.25rem 0.5rem;
+  }
+
+  .commercial-cta .secondary-btn {
+    width: 100%;
+    max-width: 250px;
   }
 }
 

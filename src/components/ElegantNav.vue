@@ -11,14 +11,11 @@
       <!-- Desktop Navigation -->
       <div class="nav-links desktop-nav" @mouseleave="handleNavLeave">
         <router-link to="/" @mouseenter="handleNavEnter('home')"> Home </router-link>
-        <transition name="expand">
+        <transition name="expand" mode="out-in">
           <div
+            v-if="isHome && expandNav && activeNav === 'home'"
+            key="home-links"
             class="section-links"
-            v-show="
-              !isNavigating &&
-              isHome &&
-              (isInitialMount ? isHome : expandNav && activeNav === 'home')
-            "
           >
             <a href="#about">About</a>
             <a href="#services">Services</a>
@@ -30,14 +27,11 @@
         <router-link to="/products" @mouseenter="handleNavEnter('products')">
           Products
         </router-link>
-        <transition name="expand">
+        <transition name="expand" mode="out-in">
           <div
+            v-if="(isProducts || currentProductType) && expandNav"
+            key="product-links"
             class="section-links"
-            v-show="
-              !isNavigating &&
-              (isProducts || currentProductType) &&
-              (isInitialMount ? isProducts || currentProductType : expandNav)
-            "
           >
             <router-link
               :to="{ name: 'product-detail', params: { type: 'draperies' } }"
@@ -118,6 +112,11 @@ import { useRoute, useRouter } from 'vue-router'
 
 const route = useRoute()
 const router = useRouter()
+
+// Guard for click handler to prevent duplicates
+const hasClickHandler = ref(false)
+let boundSmoothScroll = null
+
 const isHome = computed(() => {
   // Remove the base URL if present and check if it's the home route
   const path = route.path.replace('/TheDraperyLady', '')
@@ -162,16 +161,10 @@ watch(currentProductType, (newType) => {
 
 const expandNav = ref(true)
 const activeNav = ref(null)
-const isInitialMount = ref(true) // Add flag to track initial mount
-const isNavigating = ref(true) // Add flag to track initial navigation
 const isMobileMenuOpen = ref(false) // Mobile menu state
 let currentObserver = null // Declare observer reference before watch
 
-// Wait for initial navigation to complete
-router.isReady().then(() => {
-  console.log('[Debug] Router ready, current route:', route.path)
-  isNavigating.value = false
-})
+
 
 // Reset expansion state when route changes
 watch(
@@ -213,6 +206,7 @@ const handleNavLeave = () => {
   expandNav.value = true
   // Reset to current page's nav
   activeNav.value = isHome.value ? 'home' : isProducts.value ? 'products' : null
+  
 }
 
 // Mobile menu functions
@@ -226,7 +220,7 @@ const closeMobileMenu = () => {
 
 // Watch for route changes to set up observers after view updates
 watch(
-  [route, isNavigating],
+  route,
   () => {
     // Clean up existing observer
     if (currentObserver) {
@@ -234,8 +228,6 @@ watch(
       currentObserver.disconnect()
       currentObserver = null
     }
-
-    if (isNavigating.value) return // Skip setup while navigating
 
     // Wait for view to update before setting up observers
     setTimeout(() => {
@@ -247,24 +239,15 @@ watch(
       }
     }, 100)
   },
-  { immediate: true },
 )
 
-// Clean up observers when component unmounts
-
 onMounted(() => {
-  // Initial setup
+  // Initial setup - only call setupScrollObserver here, not in the watch with immediate: true
   if (isHome.value) {
     setupScrollObserver('section[id]', '#')
   } else if (isProducts.value) {
     setupScrollObserver('.product-section', '/products/')
   }
-
-  // Reset initial mount flag after a brief delay
-  setTimeout(() => {
-    console.log('[Debug] Resetting initial mount flag')
-    isInitialMount.value = false
-  }, 100)
 })
 
 const setupScrollObserver = (sectionSelector, linkPrefix) => {
@@ -287,8 +270,9 @@ const setupScrollObserver = (sectionSelector, linkPrefix) => {
 
     let intersectingEntries = new Map()
 
+    // Simplified observer options with fewer thresholds
     const observerOptions = {
-      threshold: Array.from({ length: 11 }, (_, i) => i / 10),
+      threshold: [0, 0.25, 0.5, 0.75, 1],
       rootMargin: '-100px 0px -100px 0px',
     }
 
@@ -343,53 +327,64 @@ const setupScrollObserver = (sectionSelector, linkPrefix) => {
     })
   }, 100) // End of setTimeout
 
-  // Handle smooth scrolling
-  const handleSmoothScroll = (e) => {
-    const link = e.target.closest(`a[href^="${linkPrefix}"]`)
-    if (!link) return
+  // Guard the event listener so it's attached only once
+  if (!hasClickHandler.value) {
+    boundSmoothScroll = (e) => {
+      const link = e.target.closest(`a[href^="${linkPrefix}"]`)
+      if (!link) return
 
-    const href = link.getAttribute('href')
-    if (!href) return
+      const href = link.getAttribute('href')
+      if (!href) return
 
-    // If it's a hash link on the same page
-    if (href.startsWith('#')) {
-      const targetId = href.substring(1)
-      const targetSection = document.getElementById(targetId)
+      // If it's a hash link on the same page
+      if (href.startsWith('#')) {
+        const targetId = href.substring(1)
+        const targetSection = document.getElementById(targetId)
 
-      if (targetSection) {
+        if (targetSection) {
+          e.preventDefault()
+          targetSection.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+          })
+          // Adjust for fixed header
+          window.scrollBy(0, -100)
+        }
+      }
+      // For product sections
+      else if (isProducts.value && href.startsWith('/products/')) {
         e.preventDefault()
-        targetSection.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start',
-        })
-        // Adjust for fixed header
-        window.scrollBy(0, -100)
-      }
-    }
-    // For product sections
-    else if (isProducts.value && href.startsWith('/products/')) {
-      e.preventDefault()
-      const targetId = href.replace('/products/', '')
-      const targetSection = document.querySelector(`[data-section="${targetId}"]`)
+        const targetId = href.replace('/products/', '')
+        const targetSection = document.querySelector(`[data-section="${targetId}"]`)
 
-      if (targetSection) {
-        targetSection.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start',
-        })
-        // Adjust for fixed header
-        window.scrollBy(0, -100)
+        if (targetSection) {
+          targetSection.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+          })
+          // Adjust for fixed header
+          window.scrollBy(0, -100)
+        }
       }
     }
+    document.addEventListener('click', boundSmoothScroll, { passive: false })
+    hasClickHandler.value = true
   }
-
-  document.addEventListener('click', handleSmoothScroll)
-
-  // Clean up event listener when component unmounts
-  onUnmounted(() => {
-    document.removeEventListener('click', handleSmoothScroll)
-  })
 }
+
+// Clean up event listener when component unmounts
+onUnmounted(() => {
+  if (hasClickHandler.value && boundSmoothScroll) {
+    document.removeEventListener('click', boundSmoothScroll)
+    hasClickHandler.value = false
+  }
+  
+  // Clean up observer
+  if (currentObserver) {
+    currentObserver.disconnect()
+    currentObserver = null
+  }
+})
 </script>
 
 <style scoped>
@@ -480,10 +475,11 @@ const setupScrollObserver = (sectionSelector, linkPrefix) => {
   overflow: hidden;
 }
 
-/* Transition classes */
+/* Transition classes with 0.1 second delay */
 .expand-enter-active {
   transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   max-width: 800px;
+  transition-delay: 0.1s;
 }
 
 .expand-leave-active {

@@ -245,8 +245,8 @@ export const productDetails = {
     description:
       'Experience superior light control with our designer blinds collection. From classic wood blinds to modern automated solutions, find the perfect match for your windows.',
     lede: 'Precision Engineering for Perfect Light Control',
-    mainImage: new URL('@assets/blinds/blinds-1.jpg', import.meta.url).href,
-    homePageImage: new URL('@assets/blinds/blinds-1.jpg', import.meta.url).href,
+    mainImage: new URL('@assets/blinds/blinds-2.jpg', import.meta.url).href,
+    homePageImage: new URL('@assets/blinds/blinds-2.jpg', import.meta.url).href,
     features: [
       {
         title: 'Versatile Design',
@@ -280,13 +280,6 @@ export const productDetails = {
       },
     ],
     gallery: [
-      {
-        src: new URL('@assets/blinds/blinds-1.jpg', import.meta.url).href,
-        alt: 'Dining Room with Norman Honeycomb Blinds',
-        title: 'Dining Room Honeycomb Blinds',
-        description:
-          'Modern dining room featuring Norman Honeycomb Blinds with top-down/bottom-up operation',
-      },
       {
         src: new URL('@assets/blinds/blinds-2.jpg', import.meta.url).href,
         alt: 'Living Room with Norman Cordless Blinds',
@@ -390,6 +383,48 @@ export const productDetails = {
         description:
           'Modern living space featuring Norman SmartDrape Sheer Shades with vertical design',
       },
+      {
+        src: new URL('@assets/shades/shades-7.jpg', import.meta.url).href,
+        alt: 'Dining Room with Norman Honeycomb Shades',
+        title: 'Dining Room Honeycomb Shades',
+        description:
+          'Bright dining room featuring Norman Honeycomb Shades with top-down/bottom-up operation',
+      },
+      {
+        src: new URL('@assets/shades/shades-8.jpg', import.meta.url).href,
+        alt: 'Bedroom with Norman Vertical Honeycomb Shades',
+        title: 'Vertical Honeycomb Shades',
+        description:
+          'Neutral vertical honeycomb shades providing privacy and light control in bedroom',
+      },
+      {
+        src: new URL('@assets/shades/shades-9.jpg', import.meta.url).href,
+        alt: 'Window with Norman PerfectSheer Shadings',
+        title: 'PerfectSheer Shadings',
+        description:
+          'Horizontal zebra shades with alternating opaque and sheer bands for versatile light control',
+      },
+      {
+        src: new URL('@assets/shades/shades-10.jpg', import.meta.url).href,
+        alt: 'Window with Norman SmartDrape Vertical Sheer Shadings',
+        title: 'SmartDrape Vertical Sheer Shadings',
+        description:
+          'Elegant vertical sheer shadings providing soft light diffusion and privacy',
+      },
+      {
+        src: new URL('@assets/shades/shades-11.jpg', import.meta.url).href,
+        alt: 'Window with Norman SmartDrape Vertical Sheer Shadings',
+        title: 'SmartDrape Vertical Sheer Shadings',
+        description:
+          'Modern vertical sheer shadings offering sophisticated light control',
+      },
+      {
+        src: new URL('@assets/shades/shades-12.jpg', import.meta.url).href,
+        alt: 'Living Room with Norman Roman Shades',
+        title: 'Roman Shades',
+        description:
+          'Classic Roman shades with soft horizontal folds in traditional living room setting',
+      },
     ],
   },
   valances: {
@@ -430,6 +465,12 @@ export const productDetails = {
       },
     ],
     gallery: [
+      {
+        src: new URL('@assets/valances/valance-17.jpg', import.meta.url).href,
+        alt: 'Seafoam Green Print Valance',
+        title: 'Seafoam Green Print Valance',
+        description: 'Beautiful seafoam green print valance with elegant design',
+      },
       {
         src: new URL('@assets/valances/valance-1.jpg', import.meta.url).href,
         alt: 'Arched Continental Valance',
@@ -513,6 +554,18 @@ export const productDetails = {
         alt: 'Classic Valance Design',
         title: 'Classic Design',
         description: 'Timeless valance style',
+      },
+      {
+        src: new URL('@assets/valances/valance-15.jpg', import.meta.url).href,
+        alt: 'Kitchen with Geometric Pattern Mock Roman Valance',
+        title: 'Mock Roman Valance',
+        description: 'Kitchen window with geometric pattern mock Roman valance featuring orange and brown design',
+      },
+      {
+        src: new URL('@assets/valances/valance-16.jpg', import.meta.url).href,
+        alt: 'Kitchen with Botanical Pattern Mock Roman Valance',
+        title: 'Botanical Mock Roman Valance',
+        description: 'Kitchen window with mock Roman valance featuring botanical pattern and decorative tassel trim',
       },
     ],
   },

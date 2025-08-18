@@ -8,7 +8,7 @@
           <p class="tagline">Classic, Simple and Elegant</p>
           <div class="social-media">
             <a
-              href="https://www.facebook.com/thedraperylady"
+              href="https://www.facebook.com/TheDraperyLady/"
               target="_blank"
               rel="noopener noreferrer"
               class="social-btn facebook"
@@ -16,7 +16,7 @@
               <FontAwesomeIcon :icon="['fab', 'facebook-f']" />
             </a>
             <a
-              href="https://www.instagram.com/thedraperylady"
+              href="https://www.instagram.com/thedraperylady580/"
               target="_blank"
               rel="noopener noreferrer"
               class="social-btn instagram"
@@ -24,7 +24,7 @@
               <FontAwesomeIcon :icon="['fab', 'instagram']" />
             </a>
             <a
-              href="https://www.houzz.com/professionals/drapery-window-treatments/thedraperylady"
+              href="https://www.houzz.com/pro/tdl580/the-drapery-lady"
               target="_blank"
               rel="noopener noreferrer"
               class="social-btn houzz"
