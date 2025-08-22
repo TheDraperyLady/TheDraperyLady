@@ -105,13 +105,7 @@ const portfolioImages = [
     description:
       'Modern living space featuring Norman SmartDrape Sheer Shades with vertical design',
   },
-  {
-    src: new URL('@assets/blinds/blinds-1.jpg', import.meta.url).href,
-    alt: 'Dining Room with Norman Honeycomb Blinds',
-    title: 'Dining Room Honeycomb Blinds',
-    description:
-      'Modern dining room featuring Norman Honeycomb Blinds with top-down/bottom-up operation',
-  },
+
   {
     src: new URL('@assets/blinds/blinds-2.jpg', import.meta.url).href,
     alt: 'Living Room with Norman Cordless Blinds',
@@ -161,6 +155,20 @@ const portfolioImages = [
     alt: 'Formal Draperies',
     title: 'Formal Drapery',
     description: 'Two-Fold Banded Over Draperies',
+  },
+  {
+    src: new URL('@assets/shades/shades-13.jpg', import.meta.url).href,
+    alt: 'Sunroom with Rust Colored Ceiling Shades',
+    title: 'Sunroom Ceiling Shades',
+    description:
+      'Extensive system of rust-colored fabric shades covering a glass ceiling in a bright sunroom',
+  },
+  {
+    src: new URL('@assets/shades/shades-14.jpg', import.meta.url).href,
+    alt: 'Conference Room with Black Sunscreens',
+    title: 'Conference Room Sunscreens',
+    description:
+      'Modern conference room with dark semi-transparent roller shades providing optimal light control and privacy',
   },
 ]
 </script>

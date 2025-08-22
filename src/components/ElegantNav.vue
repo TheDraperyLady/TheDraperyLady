@@ -164,8 +164,6 @@ const activeNav = ref(null)
 const isMobileMenuOpen = ref(false) // Mobile menu state
 let currentObserver = null // Declare observer reference before watch
 
-
-
 // Reset expansion state when route changes
 watch(
   route,
@@ -206,7 +204,6 @@ const handleNavLeave = () => {
   expandNav.value = true
   // Reset to current page's nav
   activeNav.value = isHome.value ? 'home' : isProducts.value ? 'products' : null
-  
 }
 
 // Mobile menu functions
@@ -219,27 +216,24 @@ const closeMobileMenu = () => {
 }
 
 // Watch for route changes to set up observers after view updates
-watch(
-  route,
-  () => {
-    // Clean up existing observer
-    if (currentObserver) {
-      console.log('[Debug] Cleaning up observer')
-      currentObserver.disconnect()
-      currentObserver = null
-    }
+watch(route, () => {
+  // Clean up existing observer
+  if (currentObserver) {
+    console.log('[Debug] Cleaning up observer')
+    currentObserver.disconnect()
+    currentObserver = null
+  }
 
-    // Wait for view to update before setting up observers
-    setTimeout(() => {
-      if (isHome.value) {
-        setupScrollObserver('section[id]', '#')
-      } else if (isProducts.value && !currentProductType.value) {
-        // Only set up product section observer on the products listing page
-        setupScrollObserver('.product-section', '/products/')
-      }
-    }, 100)
-  },
-)
+  // Wait for view to update before setting up observers
+  setTimeout(() => {
+    if (isHome.value) {
+      setupScrollObserver('section[id]', '#')
+    } else if (isProducts.value && !currentProductType.value) {
+      // Only set up product section observer on the products listing page
+      setupScrollObserver('.product-section', '/products/')
+    }
+  }, 100)
+})
 
 onMounted(() => {
   // Initial setup - only call setupScrollObserver here, not in the watch with immediate: true
@@ -378,7 +372,7 @@ onUnmounted(() => {
     document.removeEventListener('click', boundSmoothScroll)
     hasClickHandler.value = false
   }
-  
+
   // Clean up observer
   if (currentObserver) {
     currentObserver.disconnect()

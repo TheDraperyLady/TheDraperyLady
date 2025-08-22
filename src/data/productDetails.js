@@ -408,15 +408,13 @@ export const productDetails = {
         src: new URL('@assets/shades/shades-10.jpg', import.meta.url).href,
         alt: 'Window with Norman SmartDrape Vertical Sheer Shadings',
         title: 'SmartDrape Vertical Sheer Shadings',
-        description:
-          'Elegant vertical sheer shadings providing soft light diffusion and privacy',
+        description: 'Elegant vertical sheer shadings providing soft light diffusion and privacy',
       },
       {
         src: new URL('@assets/shades/shades-11.jpg', import.meta.url).href,
         alt: 'Window with Norman SmartDrape Vertical Sheer Shadings',
         title: 'SmartDrape Vertical Sheer Shadings',
-        description:
-          'Modern vertical sheer shadings offering sophisticated light control',
+        description: 'Modern vertical sheer shadings offering sophisticated light control',
       },
       {
         src: new URL('@assets/shades/shades-12.jpg', import.meta.url).href,
@@ -424,6 +422,20 @@ export const productDetails = {
         title: 'Roman Shades',
         description:
           'Classic Roman shades with soft horizontal folds in traditional living room setting',
+      },
+      {
+        src: new URL('@assets/shades/shades-13.jpg', import.meta.url).href,
+        alt: 'Sunroom with Rust Colored Ceiling Shades',
+        title: 'Sunroom Ceiling Shades',
+        description:
+          'Extensive system of rust-colored fabric shades covering a glass ceiling in a bright sunroom',
+      },
+      {
+        src: new URL('@assets/shades/shades-14.jpg', import.meta.url).href,
+        alt: 'Conference Room with Black Sunscreens',
+        title: 'Conference Room Sunscreens',
+        description:
+          'Modern conference room with dark semi-transparent roller shades providing optimal light control and privacy',
       },
     ],
   },
@@ -559,13 +571,15 @@ export const productDetails = {
         src: new URL('@assets/valances/valance-15.jpg', import.meta.url).href,
         alt: 'Kitchen with Geometric Pattern Mock Roman Valance',
         title: 'Mock Roman Valance',
-        description: 'Kitchen window with geometric pattern mock Roman valance featuring orange and brown design',
+        description:
+          'Kitchen window with geometric pattern mock Roman valance featuring orange and brown design',
       },
       {
         src: new URL('@assets/valances/valance-16.jpg', import.meta.url).href,
         alt: 'Kitchen with Botanical Pattern Mock Roman Valance',
         title: 'Botanical Mock Roman Valance',
-        description: 'Kitchen window with mock Roman valance featuring botanical pattern and decorative tassel trim',
+        description:
+          'Kitchen window with mock Roman valance featuring botanical pattern and decorative tassel trim',
       },
     ],
   },
@@ -580,19 +594,9 @@ export const productDetails = {
     homePageImage: new URL('@assets/service-1.webp', import.meta.url).href,
     features: [
       {
-        title: 'Premium Hardware',
-        description: 'High-quality materials and finishes for lasting beauty',
-        icon: 'gem',
-      },
-      {
         title: 'Smart Integration',
         description: 'Advanced motorization with smart home compatibility',
         icon: 'house-signal',
-      },
-      {
-        title: 'Custom Finishes',
-        description: 'Various finishes to complement your decor',
-        icon: 'paint-brush',
       },
       {
         title: 'Convenience & Safety',
@@ -602,10 +606,6 @@ export const productDetails = {
     ],
     options: [
       {
-        category: 'Hardware Types',
-        items: ['Decorative Rods', 'Finials', 'Brackets', 'Holdbacks', 'Motorized Tracks'],
-      },
-      {
         category: 'Smart Features',
         items: [
           'Smartphone Control',
@@ -614,10 +614,6 @@ export const productDetails = {
           'Remote Control',
           'Scene Programming',
         ],
-      },
-      {
-        category: 'Finishes & Styles',
-        items: ['Antique Brass', 'Brushed Nickel', 'Oil-Rubbed Bronze', 'Matte Black', 'Chrome'],
       },
       {
         category: 'Smart Systems',
@@ -660,6 +656,18 @@ export const productDetails = {
         alt: 'Decorative Elements',
         title: 'Decorative Elements',
         description: 'Elegant finishing touches',
+      },
+      {
+        src: new URL('@assets/accessories/accessory-7.jpg', import.meta.url).href,
+        alt: 'Norman SmartDial Remote Control',
+        title: 'Norman SmartDial Remote Control',
+        description: 'Advanced remote control for motorized window treatments',
+      },
+      {
+        src: new URL('@assets/accessories/accessory-8.jpg', import.meta.url).href,
+        alt: 'Cat on Custom Bedding with Paisley Pattern',
+        title: 'Custom Bedding with Paisley Pattern',
+        description: 'Elegant custom bedding featuring intricate grey and cream paisley design',
       },
     ],
   },

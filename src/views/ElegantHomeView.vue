@@ -131,14 +131,24 @@
         <div class="commercial-services-card animate-on-scroll fade-in-delay">
           <div class="commercial-card-content">
             <div class="commercial-icon">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M3 21H21V3H3V21ZM5 5H19V19H5V5Z" fill="#800020"/>
-                <path d="M7 7H17V9H7V7ZM7 11H17V13H7V11ZM7 15H13V17H7V15Z" fill="#800020"/>
+              <svg
+                width="48"
+                height="48"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M3 21H21V3H3V21ZM5 5H19V19H5V5Z" fill="#800020" />
+                <path d="M7 7H17V9H7V7ZM7 11H17V13H7V11ZM7 15H13V17H7V15Z" fill="#800020" />
               </svg>
             </div>
             <div class="commercial-text">
               <h3>Commercial Window Coverings</h3>
-              <p>Professional window treatment solutions for offices, hotels, restaurants, and commercial spaces. We bring the same level of craftsmanship and attention to detail to every commercial project.</p>
+              <p>
+                Professional window treatment solutions for offices, hotels, restaurants, and
+                commercial spaces. We bring the same level of craftsmanship and attention to detail
+                to every commercial project.
+              </p>
               <div class="commercial-features">
                 <span class="feature-tag">Corporate Offices</span>
                 <span class="feature-tag">Hospitality</span>
@@ -147,7 +157,9 @@
               </div>
             </div>
             <div class="commercial-cta">
-              <router-link to="/consultation" class="secondary-btn">Commercial Consultation</router-link>
+              <router-link to="/consultation" class="secondary-btn"
+                >Commercial Consultation</router-link
+              >
             </div>
           </div>
         </div>
@@ -695,6 +707,7 @@ const scrollToPortfolio = () => {
   font-size: 0.95rem;
   font-weight: 600;
   letter-spacing: 0.5px;
+  text-decoration: none;
 }
 
 /* Stat items hover effect */
