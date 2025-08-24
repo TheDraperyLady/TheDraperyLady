@@ -63,19 +63,19 @@
               />
             </div>
             <div class="about-stats animate-on-scroll fade-in-delay">
-              <div class="stat-item animate-on-scroll scale-in">
+              <div class="stat-item animate-on-scroll">
                 <span class="stat-number">35+</span>
                 <span class="stat-label">Years Experience</span>
               </div>
-              <div class="stat-item animate-on-scroll scale-in">
+              <div class="stat-item animate-on-scroll">
                 <span class="stat-number">500+</span>
                 <span class="stat-label">Happy Clients</span>
               </div>
-              <div class="stat-item animate-on-scroll scale-in">
+              <div class="stat-item animate-on-scroll">
                 <span class="stat-number">1,000+</span>
                 <span class="stat-label">Custom Pieces</span>
               </div>
-              <div class="stat-item anniversary-stat animate-on-scroll scale-in">
+              <div class="stat-item anniversary-stat animate-on-scroll">
                 <div class="anniversary-badge-inline">
                   <img
                     src="../assets/15-year-business-anniversary-drapery-lady.webp"
@@ -710,13 +710,9 @@ const scrollToPortfolio = () => {
   text-decoration: none;
 }
 
-/* Stat items hover effect */
+/* Stat items - no hover effect */
 .stat-item {
-  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.stat-item:hover {
-  transform: scale(1.05);
+  /* Removed hover behavior as requested */
 }
 
 /* Norman Logo Section */
