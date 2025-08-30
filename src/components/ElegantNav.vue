@@ -260,7 +260,15 @@ const setupScrollObserver = (sectionSelector, linkPrefix) => {
   // Wait for sections to be available in the DOM
   setTimeout(() => {
     const sections = document.querySelectorAll(sectionSelector)
-    if (!sections.length) return // Exit if no sections found
+    console.log('[Debug] Found sections:', sections.length, 'sections')
+    sections.forEach((section, index) => {
+      console.log(`[Debug] Section ${index}:`, section.id || section.dataset.section)
+    })
+    
+    if (!sections.length) {
+      console.log('[Debug] No sections found, exiting')
+      return // Exit if no sections found
+    }
 
     let intersectingEntries = new Map()
 
@@ -317,9 +325,10 @@ const setupScrollObserver = (sectionSelector, linkPrefix) => {
       if (section) {
         // Make sure section exists
         currentObserver.observe(section)
+        console.log('[Debug] Observing section:', section.id || section.dataset.section)
       }
     })
-  }, 100) // End of setTimeout
+  }, 300) // Increased timeout to ensure DOM is ready
 
   // Guard the event listener so it's attached only once
   if (!hasClickHandler.value) {
@@ -330,19 +339,50 @@ const setupScrollObserver = (sectionSelector, linkPrefix) => {
       const href = link.getAttribute('href')
       if (!href) return
 
+      console.log('[Debug] Clicked link:', href)
+
       // If it's a hash link on the same page
       if (href.startsWith('#')) {
         const targetId = href.substring(1)
         const targetSection = document.getElementById(targetId)
 
+        console.log('[Debug] Looking for section with ID:', targetId)
+        console.log('[Debug] Found section:', targetSection)
+
         if (targetSection) {
           e.preventDefault()
-          targetSection.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start',
-          })
-          // Adjust for fixed header
-          window.scrollBy(0, -100)
+          console.log('[Debug] Scrolling to section:', targetId)
+          
+          // Get the target position
+          const targetPosition = targetSection.offsetTop - 100 // Adjust for fixed header
+          console.log('[Debug] Target position:', targetPosition)
+          console.log('[Debug] Current scroll position:', window.pageYOffset)
+          
+          // Use a more reliable smooth scrolling approach
+          const startPosition = window.pageYOffset
+          const distance = targetPosition - startPosition
+          const duration = 800 // milliseconds
+          let start = null
+          
+          function animation(currentTime) {
+            if (start === null) start = currentTime
+            const timeElapsed = currentTime - start
+            const run = ease(timeElapsed, startPosition, distance, duration)
+            window.scrollTo(0, run)
+            if (timeElapsed < duration) requestAnimationFrame(animation)
+          }
+          
+          // Easing function for smooth animation
+          function ease(t, b, c, d) {
+            t /= d / 2
+            if (t < 1) return c / 2 * t * t + b
+            t--
+            return -c / 2 * (t * (t - 2) - 1) + b
+          }
+          
+          requestAnimationFrame(animation)
+        } else {
+          console.log('[Debug] Section not found:', targetId)
         }
       }
       // For product sections
@@ -352,17 +392,38 @@ const setupScrollObserver = (sectionSelector, linkPrefix) => {
         const targetSection = document.querySelector(`[data-section="${targetId}"]`)
 
         if (targetSection) {
-          targetSection.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start',
-          })
-          // Adjust for fixed header
-          window.scrollBy(0, -100)
+          // Get the target position
+          const targetPosition = targetSection.offsetTop - 100 // Adjust for fixed header
+          
+          // Use the same smooth scrolling approach
+          const startPosition = window.pageYOffset
+          const distance = targetPosition - startPosition
+          const duration = 800 // milliseconds
+          let start = null
+          
+          function animation(currentTime) {
+            if (start === null) start = currentTime
+            const timeElapsed = currentTime - start
+            const run = ease(timeElapsed, startPosition, distance, duration)
+            window.scrollTo(0, run)
+            if (timeElapsed < duration) requestAnimationFrame(animation)
+          }
+          
+          // Easing function for smooth animation
+          function ease(t, b, c, d) {
+            t /= d / 2
+            if (t < 1) return c / 2 * t * t + b
+            t--
+            return -c / 2 * (t * (t - 2) - 1) + b
+          }
+          
+          requestAnimationFrame(animation)
         }
       }
     }
     document.addEventListener('click', boundSmoothScroll, { passive: false })
     hasClickHandler.value = true
+    console.log('[Debug] Click handler attached')
   }
 }
 
