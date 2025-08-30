@@ -116,12 +116,38 @@
 <script setup>
 import { computed, onMounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
+import { useHead } from '@unhead/vue'
 import { productDetails } from '../data/productDetails'
 import { FontAwesomeIcon } from '../plugins/fontawesome'
 import ImageGallery from '../components/ImageGallery.vue'
 
-const route = useRoute()
-const productType = computed(() => route.params.type)
+// Dynamic SEO head management based on product type
+const product = computed(() => productDetails[productType.value])
+useHead(() => ({
+  title: product.value ? `${product.value.title} - Custom Window Treatments | The Drapery Lady` : 'Product Details - The Drapery Lady',
+  meta: [
+    {
+      name: 'description',
+      content: product.value ? `${product.value.description} Expert custom ${product.value.title.toLowerCase()} in San Jose, CA.` : 'Custom window treatments by The Drapery Lady.',
+    },
+    {
+      name: 'keywords',
+      content: product.value ? `custom ${product.value.title.toLowerCase()}, window treatments, ${product.value.title.toLowerCase()}, San Jose, CA, The Drapery Lady` : 'custom window treatments, drapery, blinds, shades, shutters',
+    },
+    {
+      property: 'og:title',
+      content: product.value ? `${product.value.title} - The Drapery Lady` : 'Custom Window Treatments',
+    },
+    {
+      property: 'og:description',
+      content: product.value ? product.value.description : 'Custom window treatments by The Drapery Lady.',
+    },
+    {
+      property: 'og:type',
+      content: 'website',
+    },
+  ],
+}))
 
 onMounted(() => {
   // Initialize scroll animations

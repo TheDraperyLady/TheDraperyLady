@@ -418,9 +418,37 @@
 
 <script setup>
 import { onMounted, computed } from 'vue'
+import { useHead } from '@unhead/vue'
 import ServiceArea from '../components/ServiceArea.vue'
 import PortfolioSection from '../components/PortfolioSection.vue'
 import { productDetails } from '../data/productDetails.js'
+
+// SEO head management
+useHead({
+  title: 'The Drapery Lady | Custom Window Treatments & Drapery | San Jose, CA',
+  meta: [
+    {
+      name: 'description',
+      content: 'The Drapery Lady offers custom drapery, blinds, shades, and shutters in San Jose, CA. 35+ years of experience creating elegant window treatments for your home.',
+    },
+    {
+      name: 'keywords',
+      content: 'custom drapery, window treatments, blinds, shades, shutters, San Jose, CA, The Drapery Lady, Christine St. Clair',
+    },
+    {
+      property: 'og:title',
+      content: 'The Drapery Lady | Custom Window Treatments',
+    },
+    {
+      property: 'og:description',
+      content: 'Custom drapery, blinds, shades, and shutters in San Jose, CA. 35+ years of experience.',
+    },
+    {
+      property: 'og:type',
+      content: 'website',
+    },
+  ],
+})
 
 // Get the first 4 products from productDetails
 const firstFourProducts = computed(() => {

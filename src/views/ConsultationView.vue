@@ -89,6 +89,34 @@
 
 <script setup>
 import { onMounted } from 'vue'
+import { useHead } from '@unhead/vue'
+
+// SEO head management
+useHead({
+  title: 'Free Consultation - The Drapery Lady | Custom Window Treatments',
+  meta: [
+    {
+      name: 'description',
+      content: 'Schedule your free consultation with The Drapery Lady. Expert design advice, personalized recommendations, and precise measurements for your custom window treatments.',
+    },
+    {
+      name: 'keywords',
+      content: 'drapery consultation, window treatment consultation, custom drapery, blinds consultation, shades consultation, free consultation',
+    },
+    {
+      property: 'og:title',
+      content: 'Free Consultation - The Drapery Lady',
+    },
+    {
+      property: 'og:description',
+      content: 'Schedule your free consultation with The Drapery Lady. Expert design advice and personalized recommendations.',
+    },
+    {
+      property: 'og:type',
+      content: 'website',
+    },
+  ],
+})
 
 onMounted(() => {
   // Initialize scroll animations

@@ -1,9 +1,10 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory, createMemoryHistory } from 'vue-router'
 import ElegantHomeView from '../views/ElegantHomeView.vue'
 import ProductsView from '../views/ProductsView.vue'
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  // Use memory history for SSR, web history for client
+  history: import.meta.env.SSR ? createMemoryHistory() : createWebHistory(),
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
       return savedPosition

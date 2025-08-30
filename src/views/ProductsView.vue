@@ -53,7 +53,35 @@
 
 <script setup>
 import { onMounted } from 'vue'
+import { useHead } from '@unhead/vue'
 import { productDetails } from '../data/productDetails'
+
+// SEO head management
+useHead({
+  title: 'Our Products - Custom Drapery, Blinds, Shades & Shutters | The Drapery Lady',
+  meta: [
+    {
+      name: 'description',
+      content: 'Explore our premium window treatments including custom drapery, blinds, shades, and shutters. Expert craftsmanship and elegant designs for your home.',
+    },
+    {
+      name: 'keywords',
+      content: 'custom drapery, blinds, shades, shutters, window treatments, premium drapery, custom blinds',
+    },
+    {
+      property: 'og:title',
+      content: 'Our Products - Custom Window Treatments',
+    },
+    {
+      property: 'og:description',
+      content: 'Premium custom drapery, blinds, shades, and shutters for your home.',
+    },
+    {
+      property: 'og:type',
+      content: 'website',
+    },
+  ],
+})
 
 onMounted(() => {
   // Initialize scroll animations

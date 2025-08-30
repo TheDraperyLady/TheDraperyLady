@@ -1,3 +1,87 @@
+// Import all assets directly for better SSG compatibility
+// Draperies
+import drapery1 from '../assets/draperies/drapery-1.jpg'
+import drapery2 from '../assets/draperies/drapery-2.jpg'
+import drapery3 from '../assets/draperies/drapery-3.jpg'
+import drapery4 from '../assets/draperies/drapery-4.jpg'
+import drapery5 from '../assets/draperies/drapery-5.jpg'
+import drapery6 from '../assets/draperies/drapery-6.jpg'
+import drapery7 from '../assets/draperies/drapery-7.jpg'
+import drapery8 from '../assets/draperies/drapery-8.jpg'
+import drapery9 from '../assets/draperies/drapery-9.jpg'
+import drapery10 from '../assets/draperies/drapery-10.jpg'
+import drapery11 from '../assets/draperies/drapery-11.jpg'
+import drapery12 from '../assets/draperies/drapery-12.jpg'
+import drapery13 from '../assets/draperies/drapery-13.jpg'
+import drapery14 from '../assets/draperies/drapery-14.jpg'
+import drapery15 from '../assets/draperies/drapery-15.jpg'
+import drapery16 from '../assets/draperies/drapery-16.jpg'
+
+// Shutters
+import shutter1 from '../assets/shutters/shutter-1.jpg'
+import shutter2 from '../assets/shutters/shutter-2.jpg'
+import shutter3 from '../assets/shutters/shutter-3.jpg'
+import shutter4 from '../assets/shutters/shutter-4.jpg'
+import shutter5 from '../assets/shutters/shutter-5.jpg'
+import shutter6 from '../assets/shutters/shutter-6.jpg'
+import shutter7 from '../assets/shutters/shutter-7.jpg'
+import shutter8 from '../assets/shutters/shutter-8.jpg'
+import shutter9 from '../assets/shutters/shutter-9.jpg'
+import shutter10 from '../assets/shutters/shutter-10.jpg'
+
+// Blinds
+import blinds2 from '../assets/blinds/blinds-2.jpg'
+import blinds3 from '../assets/blinds/blinds-3.jpg'
+
+// Shades
+import shades1 from '../assets/shades/shades-1.jpg'
+import shades2 from '../assets/shades/shades-2.jpg'
+import shades3 from '../assets/shades/shades-3.jpg'
+import shades4 from '../assets/shades/shades-4.jpg'
+import shades5 from '../assets/shades/shades-5.jpg'
+import shades6 from '../assets/shades/shades-6.jpg'
+import shades7 from '../assets/shades/shades-7.jpg'
+import shades8 from '../assets/shades/shades-8.jpg'
+import shades9 from '../assets/shades/shades-9.jpg'
+import shades10 from '../assets/shades/shades-10.jpg'
+import shades11 from '../assets/shades/shades-11.jpg'
+import shades12 from '../assets/shades/shades-12.jpg'
+import shades13 from '../assets/shades/shades-13.jpg'
+import shades14 from '../assets/shades/shades-14.jpg'
+
+// Valances
+import valance1 from '../assets/valances/valance-1.jpg'
+import valance2 from '../assets/valances/valance-2.jpg'
+import valance3 from '../assets/valances/valance-3.jpg'
+import valance4 from '../assets/valances/valance-4.jpg'
+import valance5 from '../assets/valances/valance-5.jpg'
+import valance6 from '../assets/valances/valance-6.jpg'
+import valance7 from '../assets/valances/valance-7.jpg'
+import valance8 from '../assets/valances/valance-8.jpg'
+import valance9 from '../assets/valances/valance-9.jpg'
+import valance10 from '../assets/valances/valance-10.jpg'
+import valance11 from '../assets/valances/valance-11.jpg'
+import valance12 from '../assets/valances/valance-12.jpg'
+import valance13 from '../assets/valances/valance-13.jpg'
+import valance14 from '../assets/valances/valance-14.jpg'
+import valance15 from '../assets/valances/valance-15.jpg'
+import valance16 from '../assets/valances/valance-16.jpg'
+import valance17 from '../assets/valances/valance-17.jpg'
+
+// Accessories
+import accessory1 from '../assets/accessories/accessory-1.jpg'
+import accessory2 from '../assets/accessories/accessory-2.jpg'
+import accessory3 from '../assets/accessories/accessory-3.jpg'
+import accessory4 from '../assets/accessories/accessory-4.jpg'
+import accessory5 from '../assets/accessories/accessory-5.jpg'
+import accessory6 from '../assets/accessories/accessory-6.jpg'
+import accessory7 from '../assets/accessories/accessory-7.jpg'
+import accessory8 from '../assets/accessories/accessory-8.jpg'
+
+// Services
+import service1 from '../assets/service-1.webp'
+import service4 from '../assets/service-4.webp'
+
 // Common features that most products share
 const commonFeatures = {
   customDesign: {
@@ -24,8 +108,8 @@ export const productDetails = {
     description:
       'A wide variety of custom draperies are available - Pinch pleated draperies,  rod pocket draperies and ripplefold draperies to name a few.',
     lede: 'Timeless Elegance, Tailored to Your Vision',
-    mainImage: new URL('@assets/draperies/drapery-11.jpg', import.meta.url).href,
-    homePageImage: new URL('@assets/draperies/drapery-4.jpg', import.meta.url).href,
+    mainImage: drapery11,
+    homePageImage: drapery4,
     features: [
       commonFeatures.customDesign,
       {
@@ -58,91 +142,91 @@ export const productDetails = {
     ],
     gallery: [
       {
-        src: new URL('@assets/draperies/drapery-2.jpg', import.meta.url).href,
+        src: drapery2,
         alt: 'Arched Draperies in Bathroom',
         title: 'Arched Draperies',
         description: 'Elegant bathroom window treatment',
       },
       {
-        src: new URL('@assets/draperies/drapery-3.jpg', import.meta.url).href,
+        src: drapery3,
         alt: 'Bay Window Cornice Drapes and Shutters',
         title: 'Bay Window Treatment',
         description: 'Combined draperies and shutters',
       },
       {
-        src: new URL('@assets/draperies/drapery-4.jpg', import.meta.url).href,
+        src: drapery4,
         alt: 'Classic Home Drapery',
         title: 'Classic Drapery',
         description: 'Timeless elegance for any home',
       },
       {
-        src: new URL('@assets/draperies/drapery-5.jpg', import.meta.url).href,
+        src: drapery5,
         alt: 'Long Ripplefold Draperies',
         title: 'Ripplefold Draperies',
         description: 'Smooth, modern drapery style',
       },
       {
-        src: new URL('@assets/draperies/drapery-6.jpg', import.meta.url).href,
+        src: drapery6,
         alt: 'Custom Drapery Installation',
         title: 'Custom Installation',
         description: 'Professional drapery installation',
       },
       {
-        src: new URL('@assets/draperies/drapery-7.jpg', import.meta.url).href,
+        src: drapery7,
         alt: 'Elegant Panel Draperies',
         title: 'Panel Draperies',
         description: 'Sophisticated panel design',
       },
       {
-        src: new URL('@assets/draperies/drapery-8.jpg', import.meta.url).href,
+        src: drapery8,
         alt: 'Ripplefold Patterned Sheers',
         title: 'Patterned Sheers',
         description: 'Beautiful patterned sheer fabric',
       },
       {
-        src: new URL('@assets/draperies/drapery-9.jpg', import.meta.url).href,
+        src: drapery9,
         alt: 'Ripplefold Sheer Draperies',
         title: 'Sheer Draperies',
         description: 'Light and airy sheer treatment',
       },
       {
-        src: new URL('@assets/draperies/drapery-10.jpg', import.meta.url).href,
+        src: drapery10,
         alt: 'Sheer Side Panels on Bay Window',
         title: 'Sheer Side Panels',
         description: 'Elegant bay window treatment',
       },
       {
-        src: new URL('@assets/draperies/drapery-1.jpg', import.meta.url).href,
+        src: drapery1,
         alt: 'Angled Draperies on Wrought Iron',
         title: 'Angled Draperies',
         description: 'Custom angled installation',
       },
       {
-        src: new URL('@assets/draperies/drapery-12.jpg', import.meta.url).href,
+        src: drapery12,
         alt: 'Periwinkle Print Draperies',
         title: 'Periwinkle Print',
         description: 'Beautiful printed fabric design',
       },
       {
-        src: new URL('@assets/draperies/drapery-13.jpg', import.meta.url).href,
+        src: drapery13,
         alt: 'Cornice and Side Panels',
         title: 'Cornice Design',
         description: 'Elegant cornice with panels',
       },
       {
-        src: new URL('@assets/draperies/drapery-14.jpg', import.meta.url).href,
+        src: drapery14,
         alt: 'Custom Window Treatment Design',
         title: 'Custom Design',
         description: 'Personalized window treatment',
       },
       {
-        src: new URL('@assets/draperies/drapery-15.jpg', import.meta.url).href,
+        src: drapery15,
         alt: 'French Returns Sliding Glass Door',
         title: 'French Returns',
         description: 'Sliding glass door treatment',
       },
       {
-        src: new URL('@assets/draperies/drapery-16.jpg', import.meta.url).href,
+        src: drapery16,
         alt: 'Two Fold Banded Over Draperies',
         title: 'Banded Draperies',
         description: 'Two-fold banded design',
@@ -155,8 +239,8 @@ export const productDetails = {
     description:
       'Add a touch of timeless elegance to your home with our premium shutters. Crafted from the finest materials, our shutters provide both beauty and functionality.',
     lede: 'Classic Style Meets Modern Sophistication',
-    mainImage: new URL('@assets/shutters/shutter-6.jpg', import.meta.url).href,
-    homePageImage: new URL('@assets/shutters/shutter-6.jpg', import.meta.url).href,
+    mainImage: shutter6,
+    homePageImage: shutter6,
     options: [
       {
         category: 'Materials',
@@ -173,65 +257,65 @@ export const productDetails = {
     ],
     gallery: [
       {
-        src: new URL('@assets/shutters/shutter-1.jpg', import.meta.url).href,
+        src: shutter1,
         alt: 'Bay Window Shutters',
         title: 'Bay Window Shutters',
         description: 'Classic plantation shutters',
       },
       {
-        src: new URL('@assets/shutters/shutter-2.jpg', import.meta.url).href,
+        src: shutter2,
         alt: 'Round Window Shutters',
         title: 'Round Window Shutters',
         description: 'Custom shaped shutters',
       },
       {
-        src: new URL('@assets/shutters/shutter-3.jpg', import.meta.url).href,
+        src: shutter3,
         alt: 'Bypass Shutters on Patio Door',
         title: 'Bypass Shutters',
         description: 'Patio door installation',
       },
       {
-        src: new URL('@assets/shutters/shutter-4.jpg', import.meta.url).href,
+        src: shutter4,
         alt: 'Front Window Shutters',
         title: 'Front Window Shutters',
         description: 'Exterior window treatment',
       },
       {
-        src: new URL('@assets/shutters/shutter-5.jpg', import.meta.url).href,
+        src: shutter5,
         alt: 'Bay Window Cornice with Shutters',
         title: 'Cornice with Shutters',
         description: 'Combined treatment design',
       },
       {
-        src: new URL('@assets/shutters/shutter-6.jpg', import.meta.url).href,
+        src: shutter6,
         alt: 'Bedroom Plantation Shutters with Mountain View',
         title: 'Bedroom Shutters',
         description:
           'Elegant bedroom window treatment with scenic views featuring Norman Woodlore Composite Shutters',
       },
       {
-        src: new URL('@assets/shutters/shutter-7.jpg', import.meta.url).href,
+        src: shutter7,
         alt: 'Dining Room Plantation Shutters',
         title: 'Dining Room Shutters',
         description:
           'Classic plantation shutters in dining area featuring Norman Woodlore Composite Shutters',
       },
       {
-        src: new URL('@assets/shutters/shutter-8.jpg', import.meta.url).href,
+        src: shutter8,
         alt: 'Bathroom Plantation Shutters with Bathtub',
         title: 'Bathroom Shutters',
         description:
           'Luxurious bathroom with arched window shutters featuring Norman Woodlore Composite Shutters',
       },
       {
-        src: new URL('@assets/shutters/shutter-9.jpg', import.meta.url).href,
+        src: shutter9,
         alt: 'Living Room Plantation Shutters',
         title: 'Living Room Shutters',
         description:
           'Modern living room with plantation shutters featuring Norman Woodlore Composite Shutters',
       },
       {
-        src: new URL('@assets/shutters/shutter-10.jpg', import.meta.url).href,
+        src: shutter10,
         alt: 'Vaulted Ceiling Plantation Shutters',
         title: 'Vaulted Ceiling Shutters',
         description:
@@ -245,8 +329,8 @@ export const productDetails = {
     description:
       'Experience superior light control with our designer blinds collection. From classic wood blinds to modern automated solutions, find the perfect match for your windows.',
     lede: 'Precision Engineering for Perfect Light Control',
-    mainImage: new URL('@assets/blinds/blinds-2.jpg', import.meta.url).href,
-    homePageImage: new URL('@assets/blinds/blinds-2.jpg', import.meta.url).href,
+    mainImage: blinds2,
+    homePageImage: blinds2,
     features: [
       {
         title: 'Versatile Design',
@@ -281,14 +365,14 @@ export const productDetails = {
     ],
     gallery: [
       {
-        src: new URL('@assets/blinds/blinds-2.jpg', import.meta.url).href,
+        src: blinds2,
         alt: 'Living Room with Norman Cordless Blinds',
         title: 'Living Room Cordless Blinds',
         description:
           'Elegant living room featuring Norman Cordless Blinds for enhanced safety and convenience',
       },
       {
-        src: new URL('@assets/blinds/blinds-3.jpg', import.meta.url).href,
+        src: blinds3,
         alt: 'Bedroom with Norman Citylight Blinds',
         title: 'Citylight Blinds',
         description:
@@ -303,8 +387,8 @@ export const productDetails = {
     description:
       'Discover our collection of luxury shades, combining style with functionality. From classic roman shades to modern cellular designs, find your perfect window covering.',
     lede: 'Effortless Elegance for Every Window',
-    mainImage: new URL('@assets/shades/shades-1.jpg', import.meta.url).href,
-    homePageImage: new URL('@assets/shades/shades-1.jpg', import.meta.url).href,
+    mainImage: shades1,
+    homePageImage: shades1,
     features: [
       {
         title: 'Custom Design',
@@ -347,91 +431,91 @@ export const productDetails = {
     ],
     gallery: [
       {
-        src: new URL('@assets/shades/shades-1.jpg', import.meta.url).href,
+        src: shades1,
         alt: 'Home Office with Norman PerfectSheer Shadings',
         title: 'Home Office Shadings',
         description: 'Modern home office featuring Norman PerfectSheer Shadings',
       },
       {
-        src: new URL('@assets/shades/shades-2.jpg', import.meta.url).href,
+        src: shades2,
         alt: 'Living Room with Norman PerfectSheer Shadings',
         title: 'Living Room Shadings',
         description: 'Bright living room with Norman PerfectSheer Shadings and indoor plants',
       },
       {
-        src: new URL('@assets/shades/shades-3.jpg', import.meta.url).href,
+        src: shades3,
         alt: 'Modern Living Room with Norman Roman Shades',
         title: 'Modern Living Room Roman Shades',
         description: 'Elegant living room featuring Norman Roman Shades with geometric pattern',
       },
       {
-        src: new URL('@assets/shades/shades-4.jpg', import.meta.url).href,
+        src: shades4,
         alt: 'Dining Room with Norman Roman Shades',
         title: 'Dining Room Roman Shades',
         description: 'Sophisticated dining area with Norman Roman Shades',
       },
       {
-        src: new URL('@assets/shades/shades-5.jpg', import.meta.url).href,
+        src: shades5,
         alt: 'Kitchen with Norman Roman Shades',
         title: 'Kitchen Roman Shades',
         description: 'Modern kitchen featuring Norman Roman Shades with grey finish',
       },
       {
-        src: new URL('@assets/shades/shades-6.jpg', import.meta.url).href,
+        src: shades6,
         alt: 'Living Room with Norman SmartDrape Sheer Shades',
         title: 'Living Room SmartDrape Shades',
         description:
           'Modern living space featuring Norman SmartDrape Sheer Shades with vertical design',
       },
       {
-        src: new URL('@assets/shades/shades-7.jpg', import.meta.url).href,
+        src: shades7,
         alt: 'Dining Room with Norman Honeycomb Shades',
         title: 'Dining Room Honeycomb Shades',
         description:
           'Bright dining room featuring Norman Honeycomb Shades with top-down/bottom-up operation',
       },
       {
-        src: new URL('@assets/shades/shades-8.jpg', import.meta.url).href,
+        src: shades8,
         alt: 'Bedroom with Norman Vertical Honeycomb Shades',
         title: 'Vertical Honeycomb Shades',
         description:
           'Neutral vertical honeycomb shades providing privacy and light control in bedroom',
       },
       {
-        src: new URL('@assets/shades/shades-9.jpg', import.meta.url).href,
+        src: shades9,
         alt: 'Window with Norman PerfectSheer Shadings',
         title: 'PerfectSheer Shadings',
         description:
           'Horizontal zebra shades with alternating opaque and sheer bands for versatile light control',
       },
       {
-        src: new URL('@assets/shades/shades-10.jpg', import.meta.url).href,
+        src: shades10,
         alt: 'Window with Norman SmartDrape Vertical Sheer Shadings',
         title: 'SmartDrape Vertical Sheer Shadings',
         description: 'Elegant vertical sheer shadings providing soft light diffusion and privacy',
       },
       {
-        src: new URL('@assets/shades/shades-11.jpg', import.meta.url).href,
+        src: shades11,
         alt: 'Window with Norman SmartDrape Vertical Sheer Shadings',
         title: 'SmartDrape Vertical Sheer Shadings',
         description: 'Modern vertical sheer shadings offering sophisticated light control',
       },
       {
-        src: new URL('@assets/shades/shades-12.jpg', import.meta.url).href,
+        src: shades12,
         alt: 'Living Room with Norman Roman Shades',
         title: 'Roman Shades',
         description:
           'Classic Roman shades with soft horizontal folds in traditional living room setting',
       },
       {
-        src: new URL('@assets/shades/shades-13.jpg', import.meta.url).href,
+        src: shades13,
         alt: 'Sunroom with Rust Colored Ceiling Shades',
         title: 'Sunroom Ceiling Shades',
         description:
           'Extensive system of rust-colored fabric shades covering a glass ceiling in a bright sunroom',
       },
       {
-        src: new URL('@assets/shades/shades-14.jpg', import.meta.url).href,
+        src: shades14,
         alt: 'Conference Room with Black Sunscreens',
         title: 'Conference Room Sunscreens',
         description:
@@ -445,8 +529,8 @@ export const productDetails = {
     description:
       'Add a finishing touch to your windows with our custom valances. From classic swags to modern straight valances, our designs perfectly frame your windows while adding architectural interest.',
     lede: 'Elegant Window Top Treatments',
-    mainImage: new URL('@assets/valances/valance-1.jpg', import.meta.url).href,
-    homePageImage: new URL('@assets/service-4.webp', import.meta.url).href,
+    mainImage: valance1,
+    homePageImage: service4,
     features: [
       commonFeatures.customDesign,
       {
@@ -478,104 +562,104 @@ export const productDetails = {
     ],
     gallery: [
       {
-        src: new URL('@assets/valances/valance-17.jpg', import.meta.url).href,
+        src: valance17,
         alt: 'Seafoam Green Print Valance',
         title: 'Seafoam Green Print Valance',
         description: 'Beautiful seafoam green print valance with elegant design',
       },
       {
-        src: new URL('@assets/valances/valance-1.jpg', import.meta.url).href,
+        src: valance1,
         alt: 'Arched Continental Valance',
         title: 'Arched Continental Valance',
         description: 'Elegant arched design',
       },
       {
-        src: new URL('@assets/valances/valance-2.jpg', import.meta.url).href,
+        src: valance2,
         alt: 'Arched Continental with Honeycomb Shade',
         title: 'Combined Treatment',
         description: 'Valance with honeycomb shade',
       },
       {
-        src: new URL('@assets/valances/valance-3.jpg', import.meta.url).href,
+        src: valance3,
         alt: 'Balloon Valances',
         title: 'Balloon Valances',
         description: 'Soft, billowing design',
       },
       {
-        src: new URL('@assets/valances/valance-4.jpg', import.meta.url).href,
+        src: valance4,
         alt: 'Box Pleated Valance on Bay Window',
         title: 'Box Pleated Valance',
         description: 'Structured pleated design',
       },
       {
-        src: new URL('@assets/valances/valance-5.jpg', import.meta.url).href,
+        src: valance5,
         alt: 'Contemporary Kitchen Valance',
         title: 'Kitchen Valance',
         description: 'Modern kitchen treatment',
       },
       {
-        src: new URL('@assets/valances/valance-6.jpg', import.meta.url).href,
+        src: valance6,
         alt: 'Cornice on Small Window',
         title: 'Small Window Cornice',
         description: 'Perfect for petite windows',
       },
       {
-        src: new URL('@assets/valances/valance-7.jpg', import.meta.url).href,
+        src: valance7,
         alt: 'Cornice over Sliding Glass Door',
         title: 'Sliding Door Cornice',
         description: 'Elegant door treatment',
       },
       {
-        src: new URL('@assets/valances/valance-8.jpg', import.meta.url).href,
+        src: valance8,
         alt: 'Dining Room Silk Swags',
         title: 'Silk Swags',
         description: 'Luxurious silk treatment',
       },
       {
-        src: new URL('@assets/valances/valance-9.jpg', import.meta.url).href,
+        src: valance9,
         alt: 'Hexagon Valances',
         title: 'Hexagon Valances',
         description: 'Unique geometric design',
       },
       {
-        src: new URL('@assets/valances/valance-10.jpg', import.meta.url).href,
+        src: valance10,
         alt: 'Custom Valance Design',
         title: 'Custom Design',
         description: 'Personalized valance creation',
       },
       {
-        src: new URL('@assets/valances/valance-11.jpg', import.meta.url).href,
+        src: valance11,
         alt: 'Elegant Window Treatment',
         title: 'Elegant Treatment',
         description: 'Sophisticated window styling',
       },
       {
-        src: new URL('@assets/valances/valance-12.jpg', import.meta.url).href,
+        src: valance12,
         alt: 'Kitchen Cornice',
         title: 'Kitchen Cornice',
         description: 'Functional kitchen styling',
       },
       {
-        src: new URL('@assets/valances/valance-13.jpg', import.meta.url).href,
+        src: valance13,
         alt: 'Living Room Cornice with Side Panels and Silhouette',
         title: 'Living Room Treatment',
         description: 'Complete living room design',
       },
       {
-        src: new URL('@assets/valances/valance-14.jpg', import.meta.url).href,
+        src: valance14,
         alt: 'Classic Valance Design',
         title: 'Classic Design',
         description: 'Timeless valance style',
       },
       {
-        src: new URL('@assets/valances/valance-15.jpg', import.meta.url).href,
+        src: valance15,
         alt: 'Kitchen with Geometric Pattern Mock Roman Valance',
         title: 'Mock Roman Valance',
         description:
           'Kitchen window with geometric pattern mock Roman valance featuring orange and brown design',
       },
       {
-        src: new URL('@assets/valances/valance-16.jpg', import.meta.url).href,
+        src: valance16,
         alt: 'Kitchen with Botanical Pattern Mock Roman Valance',
         title: 'Botanical Mock Roman Valance',
         description:
@@ -590,8 +674,8 @@ export const productDetails = {
     description:
       'Enhance your window treatments with our premium selection of hardware and smart motorization solutions. From decorative rods to automated controls, we offer everything to complete your perfect window design.',
     lede: 'Smart Solutions & Elegant Finishes',
-    mainImage: new URL('@assets/accessories/accessory-1.jpg', import.meta.url).href,
-    homePageImage: new URL('@assets/service-1.webp', import.meta.url).href,
+    mainImage: accessory1,
+    homePageImage: service1,
     features: [
       {
         title: 'Smart Integration',
@@ -628,43 +712,43 @@ export const productDetails = {
     ],
     gallery: [
       {
-        src: new URL('@assets/accessories/accessory-2.jpg', import.meta.url).href,
+        src: accessory2,
         alt: 'Bay Window Cornice and Accessories',
         title: 'Cornice and Accessories',
         description: 'Coordinated design elements',
       },
       {
-        src: new URL('@assets/accessories/accessory-3.jpg', import.meta.url).href,
+        src: accessory3,
         alt: 'Custom Quilted Bedspread',
         title: 'Custom Bedspread',
         description: 'Luxurious quilted design',
       },
       {
-        src: new URL('@assets/accessories/accessory-4.jpg', import.meta.url).href,
+        src: accessory4,
         alt: 'Window Seat Cushions',
         title: 'Window Seat Cushions',
         description: 'Comfortable seating solution',
       },
       {
-        src: new URL('@assets/accessories/accessory-5.jpg', import.meta.url).href,
+        src: accessory5,
         alt: 'Custom Pillows and Bedding',
         title: 'Custom Pillows and Bedding',
         description: 'High-quality accessories',
       },
       {
-        src: new URL('@assets/accessories/accessory-6.jpg', import.meta.url).href,
+        src: accessory6,
         alt: 'Decorative Elements',
         title: 'Decorative Elements',
         description: 'Elegant finishing touches',
       },
       {
-        src: new URL('@assets/accessories/accessory-7.jpg', import.meta.url).href,
+        src: accessory7,
         alt: 'Norman SmartDial Remote Control',
         title: 'Norman SmartDial Remote Control',
         description: 'Advanced remote control for motorized window treatments',
       },
       {
-        src: new URL('@assets/accessories/accessory-8.jpg', import.meta.url).href,
+        src: accessory8,
         alt: 'Cat on Custom Bedding with Paisley Pattern',
         title: 'Custom Bedding with Paisley Pattern',
         description: 'Elegant custom bedding featuring intricate grey and cream paisley design',
