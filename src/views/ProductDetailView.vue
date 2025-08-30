@@ -121,6 +121,9 @@ import { productDetails } from '../data/productDetails'
 import { FontAwesomeIcon } from '../plugins/fontawesome'
 import ImageGallery from '../components/ImageGallery.vue'
 
+const route = useRoute()
+const productType = computed(() => route.params.type)
+
 // Dynamic SEO head management based on product type
 const product = computed(() => productDetails[productType.value])
 useHead(() => ({

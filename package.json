@@ -9,7 +9,7 @@
     "preview": "vite preview --host",
     "lint": "eslint . --fix",
     "format": "prettier --write src/",
-    "deploy": "npm run build && gh-pages -d dist"
+    "deploy": "npm run build && gh-pages -d dist --branch deployment/cloudflare-pages"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^7.0.0",
