@@ -1,5 +1,19 @@
 @import './base.css';
 
+/* Prevent scroll restoration and force scroll to top */
+html {
+  scroll-behavior: auto;
+}
+
+body {
+  scroll-behavior: auto;
+}
+
+/* Force scroll to top on route changes */
+#app {
+  scroll-behavior: auto;
+}
+
 #app {
   max-width: 1280px;
   margin: 0 auto;

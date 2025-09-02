@@ -8,8 +8,7 @@
     "build": "vite-ssg build",
     "preview": "vite preview --host",
     "lint": "eslint . --fix",
-    "format": "prettier --write src/",
-    "deploy": "npm run build && gh-pages -d dist --branch deployment/cloudflare-pages"
+    "format": "prettier --write src/"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^7.0.0",

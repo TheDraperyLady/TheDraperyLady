@@ -127,23 +127,33 @@ const productType = computed(() => route.params.type)
 // Dynamic SEO head management based on product type
 const product = computed(() => productDetails[productType.value])
 useHead(() => ({
-  title: product.value ? `${product.value.title} - Custom Window Treatments | The Drapery Lady` : 'Product Details - The Drapery Lady',
+  title: product.value
+    ? `${product.value.title} - Custom Window Treatments | The Drapery Lady`
+    : 'Product Details - The Drapery Lady',
   meta: [
     {
       name: 'description',
-      content: product.value ? `${product.value.description} Expert custom ${product.value.title.toLowerCase()} in San Jose, CA.` : 'Custom window treatments by The Drapery Lady.',
+      content: product.value
+        ? `${product.value.description} Expert custom ${product.value.title.toLowerCase()} in San Jose, CA.`
+        : 'Custom window treatments by The Drapery Lady.',
     },
     {
       name: 'keywords',
-      content: product.value ? `custom ${product.value.title.toLowerCase()}, window treatments, ${product.value.title.toLowerCase()}, San Jose, CA, The Drapery Lady` : 'custom window treatments, drapery, blinds, shades, shutters',
+      content: product.value
+        ? `custom ${product.value.title.toLowerCase()}, window treatments, ${product.value.title.toLowerCase()}, San Jose, CA, The Drapery Lady`
+        : 'custom window treatments, drapery, blinds, shades, shutters',
     },
     {
       property: 'og:title',
-      content: product.value ? `${product.value.title} - The Drapery Lady` : 'Custom Window Treatments',
+      content: product.value
+        ? `${product.value.title} - The Drapery Lady`
+        : 'Custom Window Treatments',
     },
     {
       property: 'og:description',
-      content: product.value ? product.value.description : 'Custom window treatments by The Drapery Lady.',
+      content: product.value
+        ? product.value.description
+        : 'Custom window treatments by The Drapery Lady.',
     },
     {
       property: 'og:type',

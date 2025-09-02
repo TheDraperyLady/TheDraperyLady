@@ -14,7 +14,7 @@ export const createApp = ViteSSG(
   ({ app, router: ssgRouter, routes, isClient, initialState }) => {
     // Register global components
     app.component('SmartLink', SmartLink)
-    
+
     // Install plugins etc.
     // The router is automatically installed by ViteSSG
     // We can access the router instance via ssgRouter if needed

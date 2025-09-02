@@ -3,7 +3,7 @@
     <section class="consultation-page">
       <div class="container">
         <div class="section-header animate-on-scroll fade-in">
-          <h2>Schedule Your Free Consultation</h2>
+          <h2>Schedule Your Consultation</h2>
           <p>Transform Your Space with Expert Guidance</p>
         </div>
 
@@ -93,23 +93,26 @@ import { useHead } from '@unhead/vue'
 
 // SEO head management
 useHead({
-  title: 'Free Consultation - The Drapery Lady | Custom Window Treatments',
+  title: 'Consultation - The Drapery Lady | Custom Window Treatments',
   meta: [
     {
       name: 'description',
-      content: 'Schedule your free consultation with The Drapery Lady. Expert design advice, personalized recommendations, and precise measurements for your custom window treatments.',
+      content:
+        'Schedule your consultation with The Drapery Lady. Expert design advice, personalized recommendations, and precise measurements for your custom window treatments.',
     },
     {
       name: 'keywords',
-      content: 'drapery consultation, window treatment consultation, custom drapery, blinds consultation, shades consultation, free consultation',
+      content:
+        'drapery consultation, window treatment consultation, custom drapery, blinds consultation, shades consultation, consultation',
     },
     {
       property: 'og:title',
-      content: 'Free Consultation - The Drapery Lady',
+      content: 'Consultation - The Drapery Lady',
     },
     {
       property: 'og:description',
-      content: 'Schedule your free consultation with The Drapery Lady. Expert design advice and personalized recommendations.',
+      content:
+        'Schedule your consultation with The Drapery Lady. Expert design advice and personalized recommendations.',
     },
     {
       property: 'og:type',

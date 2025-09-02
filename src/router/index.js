@@ -6,19 +6,13 @@ const router = createRouter({
   // Use memory history for SSR, web history for client
   history: import.meta.env.SSR ? createMemoryHistory() : createWebHistory(),
   scrollBehavior(to, from, savedPosition) {
-    if (savedPosition) {
-      return savedPosition
+    // Always scroll to top when navigating between pages
+    // This prevents scroll position from being preserved
+    // Use instant behavior to prevent smooth scrolling
+    return {
+      top: 0,
+      behavior: 'instant',
     }
-
-    if (to.hash) {
-      return {
-        el: to.hash,
-        behavior: 'smooth',
-        top: 100, // Offset for fixed header
-      }
-    }
-
-    return { top: 0 }
   },
   routes: [
     {
@@ -50,6 +44,18 @@ const router = createRouter({
       component: () => import('../views/ProductDetailView.vue'),
     },
   ],
+})
+
+// Global navigation guard to force scroll to top
+router.beforeEach((to, from, next) => {
+  // Force scroll to top on every navigation
+  if (typeof window !== 'undefined') {
+    // Use multiple methods to ensure scroll reset
+    window.scrollTo(0, 0)
+    document.documentElement.scrollTop = 0
+    document.body.scrollTop = 0
+  }
+  next()
 })
 
 export default router

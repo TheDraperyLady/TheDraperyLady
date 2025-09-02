@@ -1,7 +1,22 @@
 <script setup>
-import { RouterView } from 'vue-router'
+import { RouterView, useRoute } from 'vue-router'
+import { watch } from 'vue'
 import ElegantFooter from './components/ElegantFooter.vue'
 import ElegantNav from './components/ElegantNav.vue'
+
+const route = useRoute()
+
+// Watch for route changes and force scroll to top
+watch(
+  () => route.path,
+  () => {
+    // Force scroll to top on every route change
+    if (typeof window !== 'undefined') {
+      window.scrollTo(0, 0)
+    }
+  },
+  { immediate: true },
+)
 </script>
 
 <template>

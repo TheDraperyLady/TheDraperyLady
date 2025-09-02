@@ -43,7 +43,7 @@
       <div class="container">
         <div class="cta-content">
           <h2>Find Your Perfect Window Treatment</h2>
-          <p>Schedule a free consultation with our design experts</p>
+          <p>Schedule a consultation with our design experts</p>
           <router-link to="/consultation" class="primary-btn">Book Consultation</router-link>
         </div>
       </div>
@@ -62,11 +62,13 @@ useHead({
   meta: [
     {
       name: 'description',
-      content: 'Explore our premium window treatments including custom drapery, blinds, shades, and shutters. Expert craftsmanship and elegant designs for your home.',
+      content:
+        'Explore our premium window treatments including custom drapery, blinds, shades, and shutters. Expert craftsmanship and elegant designs for your home.',
     },
     {
       name: 'keywords',
-      content: 'custom drapery, blinds, shades, shutters, window treatments, premium drapery, custom blinds',
+      content:
+        'custom drapery, blinds, shades, shutters, window treatments, premium drapery, custom blinds',
     },
     {
       property: 'og:title',

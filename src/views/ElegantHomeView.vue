@@ -429,11 +429,13 @@ useHead({
   meta: [
     {
       name: 'description',
-      content: 'The Drapery Lady offers custom drapery, blinds, shades, and shutters in San Jose, CA. 35+ years of experience creating elegant window treatments for your home.',
+      content:
+        'The Drapery Lady offers custom drapery, blinds, shades, and shutters in San Jose, CA. 35+ years of experience creating elegant window treatments for your home.',
     },
     {
       name: 'keywords',
-      content: 'custom drapery, window treatments, blinds, shades, shutters, San Jose, CA, The Drapery Lady, Christine St. Clair',
+      content:
+        'custom drapery, window treatments, blinds, shades, shutters, San Jose, CA, The Drapery Lady, Christine St. Clair',
     },
     {
       property: 'og:title',
@@ -441,7 +443,8 @@ useHead({
     },
     {
       property: 'og:description',
-      content: 'Custom drapery, blinds, shades, and shutters in San Jose, CA. 35+ years of experience.',
+      content:
+        'Custom drapery, blinds, shades, and shutters in San Jose, CA. 35+ years of experience.',
     },
     {
       property: 'og:type',
