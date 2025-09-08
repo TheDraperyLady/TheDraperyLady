@@ -72,7 +72,7 @@ useHead({
     },
     {
       property: 'og:title',
-      content: 'Our Products - Custom Window Treatments',
+      content: 'Our Products - Custom Window Treatments | The Drapery Lady',
     },
     {
       property: 'og:description',
@@ -81,6 +81,34 @@ useHead({
     {
       property: 'og:type',
       content: 'website',
+    },
+    {
+      property: 'og:url',
+      content: 'https://draperylady.net/products',
+    },
+    {
+      property: 'og:image',
+      content: 'https://draperylady.net/src/assets/TDL_logo.png',
+    },
+    {
+      property: 'og:site_name',
+      content: 'The Drapery Lady',
+    },
+    {
+      name: 'twitter:card',
+      content: 'summary_large_image',
+    },
+    {
+      name: 'twitter:title',
+      content: 'Our Products - Custom Window Treatments',
+    },
+    {
+      name: 'twitter:description',
+      content: 'Premium custom drapery, blinds, shades, and shutters for your home.',
+    },
+    {
+      name: 'twitter:image',
+      content: 'https://draperylady.net/src/assets/TDL_logo.png',
     },
   ],
 })

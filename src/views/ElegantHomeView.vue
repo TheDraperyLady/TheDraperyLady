@@ -439,16 +439,44 @@ useHead({
     },
     {
       property: 'og:title',
-      content: 'The Drapery Lady | Custom Window Treatments',
+      content: 'The Drapery Lady | Custom Window Treatments & Drapery',
     },
     {
       property: 'og:description',
       content:
-        'Custom drapery, blinds, shades, and shutters in San Jose, CA. 35+ years of experience.',
+        'Custom drapery, blinds, shades, and shutters in San Jose, CA. 35+ years of experience creating elegant window treatments for your home.',
     },
     {
       property: 'og:type',
       content: 'website',
+    },
+    {
+      property: 'og:url',
+      content: 'https://draperylady.net',
+    },
+    {
+      property: 'og:image',
+      content: 'https://draperylady.net/src/assets/TDL_logo.png',
+    },
+    {
+      property: 'og:site_name',
+      content: 'The Drapery Lady',
+    },
+    {
+      name: 'twitter:card',
+      content: 'summary_large_image',
+    },
+    {
+      name: 'twitter:title',
+      content: 'The Drapery Lady | Custom Window Treatments',
+    },
+    {
+      name: 'twitter:description',
+      content: 'Custom drapery and window treatments in San Jose, CA. 35+ years of experience.',
+    },
+    {
+      name: 'twitter:image',
+      content: 'https://draperylady.net/src/assets/TDL_logo.png',
     },
   ],
 })

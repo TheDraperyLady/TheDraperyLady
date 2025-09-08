@@ -107,16 +107,45 @@ useHead({
     },
     {
       property: 'og:title',
-      content: 'Consultation - The Drapery Lady',
+      content: 'Consultation - The Drapery Lady | Custom Window Treatments',
     },
     {
       property: 'og:description',
       content:
-        'Schedule your consultation with The Drapery Lady. Expert design advice and personalized recommendations.',
+        'Schedule your consultation with The Drapery Lady. Expert design advice, personalized recommendations, and precise measurements for your custom window treatments.',
     },
     {
       property: 'og:type',
       content: 'website',
+    },
+    {
+      property: 'og:url',
+      content: 'https://draperylady.net/consultation',
+    },
+    {
+      property: 'og:image',
+      content: 'https://draperylady.net/src/assets/TDL_logo.png',
+    },
+    {
+      property: 'og:site_name',
+      content: 'The Drapery Lady',
+    },
+    {
+      name: 'twitter:card',
+      content: 'summary_large_image',
+    },
+    {
+      name: 'twitter:title',
+      content: 'Consultation - The Drapery Lady',
+    },
+    {
+      name: 'twitter:description',
+      content:
+        'Schedule your consultation with The Drapery Lady. Expert design advice and personalized recommendations.',
+    },
+    {
+      name: 'twitter:image',
+      content: 'https://draperylady.net/src/assets/TDL_logo.png',
     },
   ],
 })

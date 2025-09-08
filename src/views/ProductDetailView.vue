@@ -126,52 +126,164 @@ const productType = computed(() => route.params.type)
 
 // Dynamic SEO head management based on product type
 const product = computed(() => productDetails[productType.value])
-useHead(() => ({
-  title: product.value
-    ? `${product.value.title} - Custom Window Treatments | The Drapery Lady`
-    : 'Product Details - The Drapery Lady',
-  meta: [
-    {
-      name: 'description',
-      content: product.value
-        ? `${product.value.description} Expert custom ${product.value.title.toLowerCase()} in San Jose, CA.`
-        : 'Custom window treatments by The Drapery Lady.',
-    },
-    {
-      name: 'keywords',
-      content: product.value
-        ? `custom ${product.value.title.toLowerCase()}, window treatments, ${product.value.title.toLowerCase()}, San Jose, CA, The Drapery Lady`
-        : 'custom window treatments, drapery, blinds, shades, shutters',
-    },
-    {
-      property: 'og:title',
-      content: product.value
-        ? `${product.value.title} - The Drapery Lady`
-        : 'Custom Window Treatments',
-    },
-    {
-      property: 'og:description',
-      content: product.value
-        ? product.value.description
-        : 'Custom window treatments by The Drapery Lady.',
-    },
-    {
-      property: 'og:type',
-      content: 'website',
-    },
-  ],
-}))
+
+// Debug logging for product data
+console.log('ProductDetailView Debug:', {
+  productType: productType.value,
+  product: product.value,
+  hasProduct: !!product.value,
+  productTitle: product.value?.title,
+  productDescription: product.value?.description,
+  productMainImage: product.value?.mainImage,
+  allProductTypes: Object.keys(productDetails)
+})
+
+useHead(() => {
+  const headData = {
+    title: product.value
+      ? `${product.value.title} - Custom Window Treatments | The Drapery Lady`
+      : 'Product Details - The Drapery Lady',
+    meta: [
+      {
+        name: 'description',
+        content: product.value
+          ? `${product.value.description} Expert custom ${product.value.title.toLowerCase()} in San Jose, CA.`
+          : 'Custom window treatments by The Drapery Lady.',
+      },
+      {
+        name: 'keywords',
+        content: product.value
+          ? `custom ${product.value.title.toLowerCase()}, window treatments, ${product.value.title.toLowerCase()}, San Jose, CA, The Drapery Lady`
+          : 'custom window treatments, drapery, blinds, shades, shutters',
+      },
+      {
+        property: 'og:title',
+        content: product.value
+          ? `${product.value.title} - Custom Window Treatments | The Drapery Lady`
+          : 'Custom Window Treatments | The Drapery Lady',
+      },
+      {
+        property: 'og:description',
+        content: product.value
+          ? `${product.value.description} Expert custom ${product.value.title.toLowerCase()} in San Jose, CA.`
+          : 'Custom window treatments by The Drapery Lady.',
+      },
+      {
+        property: 'og:type',
+        content: 'website',
+      },
+      {
+        property: 'og:url',
+        content: product.value
+          ? `https://draperylady.net/products/${productType.value}`
+          : 'https://draperylady.net/products',
+      },
+      {
+        property: 'og:image',
+        content: product.value
+          ? `https://draperylady.net${product.value.mainImage}`
+          : 'https://draperylady.net/src/assets/TDL_logo.png',
+      },
+      {
+        property: 'og:site_name',
+        content: 'The Drapery Lady',
+      },
+      {
+        name: 'twitter:card',
+        content: 'summary_large_image',
+      },
+      {
+        name: 'twitter:title',
+        content: product.value
+          ? `${product.value.title} - The Drapery Lady`
+          : 'Custom Window Treatments',
+      },
+      {
+        name: 'twitter:description',
+        content: product.value
+          ? product.value.description
+          : 'Custom window treatments by The Drapery Lady.',
+      },
+      {
+        name: 'twitter:image',
+        content: product.value
+          ? `https://draperylady.net${product.value.mainImage}`
+          : 'https://draperylady.net/src/assets/TDL_logo.png',
+      },
+    ],
+  }
+  
+  // Debug logging for generated head data
+  console.log('useHead Debug - Generated head data:', headData)
+  console.log('useHead Debug - OG Title:', headData.meta.find(m => m.property === 'og:title')?.content)
+  console.log('useHead Debug - OG Description:', headData.meta.find(m => m.property === 'og:description')?.content)
+  console.log('useHead Debug - OG Image:', headData.meta.find(m => m.property === 'og:image')?.content)
+  console.log('useHead Debug - OG URL:', headData.meta.find(m => m.property === 'og:url')?.content)
+  console.log('useHead Debug - Twitter Title:', headData.meta.find(m => m.name === 'twitter:title')?.content)
+  console.log('useHead Debug - Twitter Image:', headData.meta.find(m => m.name === 'twitter:image')?.content)
+  
+  return headData
+})
 
 onMounted(() => {
   // Initialize scroll animations
   initScrollAnimations()
+  
+  // Debug: Check what meta tags are actually in the DOM
+  setTimeout(() => {
+    console.log('DOM Debug - Checking meta tags in document head:')
+    const ogTitle = document.querySelector('meta[property="og:title"]')
+    const ogDescription = document.querySelector('meta[property="og:description"]')
+    const ogImage = document.querySelector('meta[property="og:image"]')
+    const ogUrl = document.querySelector('meta[property="og:url"]')
+    const twitterTitle = document.querySelector('meta[name="twitter:title"]')
+    const twitterImage = document.querySelector('meta[name="twitter:image"]')
+    const pageTitle = document.querySelector('title')
+    
+    console.log('DOM Debug - Page title:', pageTitle?.textContent)
+    console.log('DOM Debug - OG Title:', ogTitle?.getAttribute('content'))
+    console.log('DOM Debug - OG Description:', ogDescription?.getAttribute('content'))
+    console.log('DOM Debug - OG Image:', ogImage?.getAttribute('content'))
+    console.log('DOM Debug - OG URL:', ogUrl?.getAttribute('content'))
+    console.log('DOM Debug - Twitter Title:', twitterTitle?.getAttribute('content'))
+    console.log('DOM Debug - Twitter Image:', twitterImage?.getAttribute('content'))
+    
+    // Check if there are multiple og:title tags
+    const allOgTitles = document.querySelectorAll('meta[property="og:title"]')
+    console.log('DOM Debug - Number of og:title tags:', allOgTitles.length)
+    allOgTitles.forEach((tag, index) => {
+      console.log(`DOM Debug - og:title ${index + 1}:`, tag.getAttribute('content'))
+    })
+    
+    // Check for duplicate meta tags
+    const allMetaTags = document.querySelectorAll('meta')
+    const ogTags = Array.from(allMetaTags).filter(tag => 
+      tag.getAttribute('property')?.startsWith('og:') || 
+      tag.getAttribute('name')?.startsWith('twitter:')
+    )
+    console.log('DOM Debug - All OpenGraph/Twitter meta tags:', ogTags.map(tag => ({
+      property: tag.getAttribute('property'),
+      name: tag.getAttribute('name'),
+      content: tag.getAttribute('content')
+    })))
+  }, 100)
 })
 
 // Watch for route changes to re-initialize animations
-watch(productType, () => {
+watch(productType, (newType, oldType) => {
+  console.log('Route change detected:', { oldType, newType })
+  console.log('New product data:', productDetails[newType])
+  
   // Small delay to ensure DOM is updated
   setTimeout(() => {
     initScrollAnimations()
+    
+    // Debug: Check meta tags after route change
+    console.log('After route change - DOM meta tags:')
+    const ogTitle = document.querySelector('meta[property="og:title"]')
+    const ogImage = document.querySelector('meta[property="og:image"]')
+    console.log('Route change - OG Title:', ogTitle?.getAttribute('content'))
+    console.log('Route change - OG Image:', ogImage?.getAttribute('content'))
   }, 100)
 })
 
