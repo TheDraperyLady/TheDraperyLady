@@ -670,7 +670,7 @@ export const productDetails = {
 
   accessories: {
     title: 'Accessories & Motorization',
-    subtitle: 'Smart Solutions & Elegant Finishes',
+    subtitle: 'Modern Motorization with Stylish Finishes',
     description:
       'Enhance your window treatments with our premium selection of hardware and smart motorization solutions. From decorative rods to automated controls, we offer everything to complete your perfect window design.',
     lede: 'Smart Solutions & Elegant Finishes',
@@ -693,7 +693,6 @@ export const productDetails = {
         category: 'Smart Features',
         items: [
           'Smartphone Control',
-          'Voice Commands',
           'Scheduled Operation',
           'Remote Control',
           'Scene Programming',
@@ -705,7 +704,6 @@ export const productDetails = {
           'Amazon Alexa',
           'Google Home',
           'Apple HomeKit',
-          'Samsung SmartThings',
           'Custom Integration',
         ],
       },
