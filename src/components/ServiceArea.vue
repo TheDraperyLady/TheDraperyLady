@@ -53,24 +53,11 @@ const initMap = () => {
     { name: 'Fremont', lat: 37.5485, lng: -122.0085 },
   ]
 
-  // Define service area boundaries following city outlines with padding
-  const serviceAreaBoundaries = [
-    { lat: 37.5785, lng: -122.2105 }, // Start beyond Menlo Park
-    { lat: 37.5885, lng: -122.0485 }, // Curve towards Fremont
-    { lat: 37.5785, lng: -121.9785 }, // Beyond Fremont
-    { lat: 37.4891, lng: -121.8305 }, // Northeast curve
-    { lat: 37.424, lng: -121.7481 }, // East of San Jose
-    { lat: 37.3087, lng: -121.726 }, // Southeast curve
-    { lat: 37.1974, lng: -121.7764 }, // South of Evergreen
-    { lat: 37.1874, lng: -121.8584 }, // South San Jose
-    { lat: 37.1974, lng: -121.9469 }, // South of Almaden
-    { lat: 37.2238, lng: -122.053 }, // Southwest curve
-    { lat: 37.2938, lng: -122.083 }, // Beyond Saratoga
-    { lat: 37.3552, lng: -122.1461 }, // Curve towards Los Altos
-    { lat: 37.4152, lng: -122.1761 }, // Beyond Los Altos
-    { lat: 37.4749, lng: -122.1905 }, // Curve towards Menlo Park
-    { lat: 37.5785, lng: -122.2105 }, // Back to start
-  ]
+  // Calculate center point and radius for circular service area
+  // Center point calculated to encompass all service cities
+  const serviceAreaCenter = { lat: 37.35, lng: -121.95 }
+  // Radius in kilometers to cover all service areas with some padding
+  const serviceAreaRadius = 25 // approximately 15.5 miles
 
   map = new google.maps.Map(mapRef.value, {
     center: { lat: 37.3382, lng: -121.95 }, // Centered on San Jose
@@ -94,9 +81,10 @@ const initMap = () => {
     ],
   })
 
-  // Create a polygon for the service area
-  const serviceAreaPolygon = new google.maps.Polygon({
-    paths: serviceAreaBoundaries,
+  // Create a circle for the service area
+  const serviceAreaCircle = new google.maps.Circle({
+    center: serviceAreaCenter,
+    radius: serviceAreaRadius * 1000, // Convert km to meters
     strokeColor: '#800020',
     strokeOpacity: 0.8,
     strokeWeight: 3,

@@ -163,14 +163,14 @@ useHead(() => ({
     {
       property: 'og:url',
       content: product.value
-        ? `https://draperylady.net/products/${productType.value}`
-        : 'https://draperylady.net/products',
+        ? `https://draperylady.tanuj.xyz/products/${productType.value}`
+        : 'https://draperylady.tanuj.xyz/products',
     },
     {
       property: 'og:image',
       content: product.value
-        ? `https://draperylady.net${product.value.mainImage}`
-        : 'https://draperylady.net/src/assets/TDL_logo.png',
+        ? product.value.mainImage
+        : 'https://draperylady.tanuj.xyz/TDL_logo.png',
     },
     {
       property: 'og:site_name',
@@ -195,8 +195,8 @@ useHead(() => ({
     {
       name: 'twitter:image',
       content: product.value
-        ? `https://draperylady.net${product.value.mainImage}`
-        : 'https://draperylady.net/src/assets/TDL_logo.png',
+        ? product.value.mainImage
+        : 'https://draperylady.tanuj.xyz/TDL_logo.png',
     },
   ],
 }))
