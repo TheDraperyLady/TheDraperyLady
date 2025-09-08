@@ -143,8 +143,8 @@ const portfolioImages = [
   },
   {
     src: `${BASE_URL}/draperies/drapery-12.jpg`,
-    alt: 'Living Room Draperies',
-    title: 'Living Room Drapery',
+    alt: 'Bedroom Draperies',
+    title: 'Bedroom Drapery',
     description: 'Peri-Winkle Print',
   },
   {
