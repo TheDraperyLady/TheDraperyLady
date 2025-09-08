@@ -214,13 +214,13 @@ useHead(() => {
   }
   
   // Debug logging for generated head data
-  console.log('useHead Debug - Generated head data:', headData)
-  console.log('useHead Debug - OG Title:', headData.meta.find(m => m.property === 'og:title')?.content)
-  console.log('useHead Debug - OG Description:', headData.meta.find(m => m.property === 'og:description')?.content)
-  console.log('useHead Debug - OG Image:', headData.meta.find(m => m.property === 'og:image')?.content)
-  console.log('useHead Debug - OG URL:', headData.meta.find(m => m.property === 'og:url')?.content)
-  console.log('useHead Debug - Twitter Title:', headData.meta.find(m => m.name === 'twitter:title')?.content)
-  console.log('useHead Debug - Twitter Image:', headData.meta.find(m => m.name === 'twitter:image')?.content)
+  // console.log('useHead Debug - Generated head data:', headData)
+  // console.log('useHead Debug - OG Title:', headData.meta.find(m => m.property === 'og:title')?.content)
+  // console.log('useHead Debug - OG Description:', headData.meta.find(m => m.property === 'og:description')?.content)
+  // console.log('useHead Debug - OG Image:', headData.meta.find(m => m.property === 'og:image')?.content)
+  // console.log('useHead Debug - OG URL:', headData.meta.find(m => m.property === 'og:url')?.content)
+  // console.log('useHead Debug - Twitter Title:', headData.meta.find(m => m.name === 'twitter:title')?.content)
+  // console.log('useHead Debug - Twitter Image:', headData.meta.find(m => m.name === 'twitter:image')?.content)
   
   return headData
 })
