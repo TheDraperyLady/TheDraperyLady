@@ -118,7 +118,7 @@
             :style="{ animationDelay: `${index * 0.1}s` }"
           >
             <div class="service-image-container">
-              <img :src="product.homePageImage" :alt="product.title" class="service-image" />
+              <img :src="imagePresets.serviceCard(product.homePageImage)" :alt="product.title" class="service-image" />
             </div>
             <div class="service-content">
               <h3>{{ product.title }}</h3>
@@ -422,6 +422,7 @@ import { useHead } from '@unhead/vue'
 import ServiceArea from '../components/ServiceArea.vue'
 import PortfolioSection from '../components/PortfolioSection.vue'
 import { productDetails } from '../data/productDetails.js'
+import { imagePresets } from '../utils/imageOptimization.js'
 
 // SEO head management
 useHead({

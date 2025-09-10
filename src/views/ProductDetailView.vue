@@ -23,7 +23,7 @@
             <div class="product-hero-visual animate-on-scroll slide-in-right">
               <div class="elegant-frame">
                 <img
-                  :src="productDetails[productType]?.mainImage"
+                  :src="imagePresets.elegantFrame(productDetails[productType]?.mainImage)"
                   :alt="productDetails[productType]?.title"
                   class="hero-image"
                 />
@@ -120,6 +120,7 @@ import { useHead } from '@unhead/vue'
 import { productDetails } from '../data/productDetails'
 import { FontAwesomeIcon } from '../plugins/fontawesome'
 import ImageGallery from '../components/ImageGallery.vue'
+import { imagePresets } from '../utils/imageOptimization.js'
 
 const route = useRoute()
 const productType = computed(() => route.params.type)

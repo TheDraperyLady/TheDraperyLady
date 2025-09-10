@@ -635,6 +635,12 @@ export const productDetails = {
         description: 'Coordinated design elements',
       },
       {
+        src: `${BASE_URL}/accessories/accessory-2.jpg`,
+        alt: 'Bay Window Cornice and Accessories',
+        title: 'Cornice and Accessories',
+        description: 'Coordinated design elements',
+      },
+      {
         src: `${BASE_URL}/accessories/accessory-3.jpg`,
         alt: 'Custom Quilted Bedspread',
         title: 'Custom Bedspread',

@@ -16,7 +16,7 @@
             :style="{ animationDelay: `${index * 0.15}s` }"
           >
             <div class="product-image-container">
-              <img :src="product.mainImage" :alt="product.title" class="product-image" />
+              <img :src="imagePresets.product(product.mainImage)" :alt="product.title" class="product-image" />
             </div>
             <div class="product-content">
               <div class="product-text">
@@ -55,6 +55,7 @@
 import { onMounted } from 'vue'
 import { useHead } from '@unhead/vue'
 import { productDetails } from '../data/productDetails'
+import { imagePresets } from '../utils/imageOptimization.js'
 
 // SEO head management
 useHead({
