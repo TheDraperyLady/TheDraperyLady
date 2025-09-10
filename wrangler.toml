@@ -1,5 +1,4 @@
 name = "the-drapery-lady"
 compatibility_date = "2025-01-09"
 
-# Optional but handy if you want `wrangler pages dev` to auto-pick output dir:
 pages_build_output_dir = "./dist"
