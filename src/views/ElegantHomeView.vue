@@ -118,7 +118,11 @@
             :style="{ animationDelay: `${index * 0.1}s` }"
           >
             <div class="service-image-container">
-              <img :src="imagePresets.serviceCard(product.homePageImage)" :alt="product.title" class="service-image" />
+              <img
+                :src="imagePresets.serviceCard(product.homePageImage)"
+                :alt="product.title"
+                class="service-image"
+              />
             </div>
             <div class="service-content">
               <h3>{{ product.title }}</h3>
@@ -497,18 +501,21 @@ const firstFourProducts = computed(() => {
 onMounted(() => {
   // Initialize scroll animations
   initScrollAnimations()
-  
+
   // Handle hash navigation on page load
   handleHashNavigation()
 })
 
 // Watch for route changes to handle hash navigation
-watch(() => route.hash, (newHash) => {
-  if (newHash) {
-    console.log('Route hash changed:', newHash)
-    handleHashNavigation()
-  }
-})
+watch(
+  () => route.hash,
+  (newHash) => {
+    if (newHash) {
+      console.log('Route hash changed:', newHash)
+      handleHashNavigation()
+    }
+  },
+)
 
 // Handle hash navigation when page loads with a hash
 const handleHashNavigation = () => {

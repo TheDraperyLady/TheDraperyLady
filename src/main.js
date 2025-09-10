@@ -27,7 +27,7 @@ export const createApp = ViteSSG(
 // Export the includedRoutes function for vite-ssg
 export async function includedRoutes(paths, routes) {
   // Add dynamic product routes
-  const productRoutes = productTypes.map(type => `/product/${type}`)
+  const productRoutes = productTypes.map((type) => `/product/${type}`)
   const allPaths = [...productRoutes]
   return allPaths
 }

@@ -66,10 +66,7 @@
             <h2>Gallery</h2>
             <p>See Our {{ productDetails[productType]?.title }} in Action</p>
           </div>
-          <div
-            class="gallery-container"
-            :key="`gallery-${productType}`"
-          >
+          <div class="gallery-container" :key="`gallery-${productType}`">
             <ImageGallery
               :images="productDetails[productType]?.gallery || []"
               gallery-id="product-gallery"

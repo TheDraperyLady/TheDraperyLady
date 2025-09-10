@@ -610,21 +610,11 @@ export const productDetails = {
     options: [
       {
         category: 'Smart Features',
-        items: [
-          'Smartphone Control',
-          'Scheduled Operation',
-          'Remote Control',
-          'Scene Programming',
-        ],
+        items: ['Smartphone Control', 'Scheduled Operation', 'Remote Control', 'Scene Programming'],
       },
       {
         category: 'Smart Systems',
-        items: [
-          'Amazon Alexa',
-          'Google Home',
-          'Apple HomeKit',
-          'Custom Integration',
-        ],
+        items: ['Amazon Alexa', 'Google Home', 'Apple HomeKit', 'Custom Integration'],
       },
     ],
     gallery: [

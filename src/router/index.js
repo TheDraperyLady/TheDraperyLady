@@ -16,12 +16,12 @@ const router = createRouter({
         top: 80, // Offset for fixed header if you have one
       }
     }
-    
+
     // Handle saved position (back/forward navigation)
     if (savedPosition) {
       return savedPosition
     }
-    
+
     // Default: scroll to top for page navigation
     return {
       top: 0,
@@ -48,6 +48,11 @@ const router = createRouter({
       path: '/product/:type',
       name: 'product-detail',
       component: () => import('../views/ProductDetailView.vue'),
+    },
+    {
+      path: '/thank-you',
+      name: 'thank-you',
+      component: () => import('../views/ThankYouView.vue'),
     },
   ],
 })

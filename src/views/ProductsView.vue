@@ -16,7 +16,11 @@
             :style="{ animationDelay: `${index * 0.15}s` }"
           >
             <div class="product-image-container">
-              <img :src="imagePresets.product(product.mainImage)" :alt="product.title" class="product-image" />
+              <img
+                :src="imagePresets.product(product.mainImage)"
+                :alt="product.title"
+                class="product-image"
+              />
             </div>
             <div class="product-content">
               <div class="product-text">

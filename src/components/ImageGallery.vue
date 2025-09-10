@@ -17,7 +17,11 @@
     >
       <div class="gallery-item">
         <img :src="image.src" :alt="image.alt" class="gallery-image" />
-        <div class="gallery-caption" :class="{ 'caption-visible': visibleCaptions[index] }" v-if="!isMobile">
+        <div
+          class="gallery-caption"
+          :class="{ 'caption-visible': visibleCaptions[index] }"
+          v-if="!isMobile"
+        >
           <h3 v-if="image.title">{{ image.title }}</h3>
           <p v-if="image.description">{{ image.description }}</p>
         </div>
@@ -137,7 +141,7 @@ const initIntersectionObserver = () => {
 // Handle window resize to reinitialize observer
 const handleResize = () => {
   checkMobile()
-  
+
   if (observer.value) {
     observer.value.disconnect()
     observer.value = null
@@ -149,7 +153,7 @@ const handleResize = () => {
 onMounted(async () => {
   // Check if mobile on mount
   checkMobile()
-  
+
   // Preload images to get their dimensions
   await preloadGalleryImages()
 
