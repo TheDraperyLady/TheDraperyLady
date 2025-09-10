@@ -31,11 +31,10 @@
           <div class="consultation-form-container animate-on-scroll slide-in-right">
             <h3>Request a Consultation</h3>
             <form
-              action="https://formkeep.com/f/4b94c176d477"
-              accept-charset="UTF-8"
-              enctype="multipart/form-data"
+              action="/api/submit"
               method="POST"
               class="consultation-form"
+              @submit="handleSubmit"
             >
               <div class="form-group animate-on-scroll fade-in-delay">
                 <label for="name">Full Name</label>
@@ -76,10 +75,21 @@
                 type="submit"
                 class="primary-btn animate-on-scroll fade-in-delay"
                 style="animation-delay: 0.6s"
+                :disabled="isSubmitting"
               >
-                Submit Request
+                {{ isSubmitting ? 'Submitting...' : 'Submit Request' }}
               </button>
             </form>
+            
+            <!-- Success Message -->
+            <div v-if="submitMessage" class="form-message success-message">
+              {{ submitMessage }}
+            </div>
+            
+            <!-- Error Message -->
+            <div v-if="submitError" class="form-message error-message">
+              {{ submitError }}
+            </div>
           </div>
         </div>
       </div>
@@ -88,7 +98,7 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
 import { useHead } from '@unhead/vue'
 
 // SEO head management
@@ -150,6 +160,11 @@ useHead({
   ],
 })
 
+// Form state
+const isSubmitting = ref(false)
+const submitMessage = ref('')
+const submitError = ref('')
+
 onMounted(() => {
   // Initialize scroll animations
   initScrollAnimations()
@@ -172,6 +187,48 @@ const initScrollAnimations = () => {
   // Observe all elements with animate-on-scroll class
   const animatedElements = document.querySelectorAll('.animate-on-scroll')
   animatedElements.forEach((el) => observer.observe(el))
+}
+
+const handleSubmit = async (event) => {
+  event.preventDefault()
+  
+  if (isSubmitting.value) return
+  
+  isSubmitting.value = true
+  submitMessage.value = ''
+  submitError.value = ''
+  
+  try {
+    const form = event.target
+    const formData = new FormData(form)
+    
+    // Add form type identifier for the backend
+    formData.append('_form', 'consultation')
+    
+    const response = await fetch('/api/submit', {
+      method: 'POST',
+      body: formData
+    })
+    
+    if (response.ok) {
+      // Get the redirect URL from the response
+      const redirectUrl = response.headers.get('Location')
+      if (redirectUrl) {
+        // Redirect to thank you page
+        window.location.href = redirectUrl
+      } else {
+        submitMessage.value = 'Thank you! Your consultation request has been submitted successfully.'
+        form.reset()
+      }
+    } else {
+      const errorText = await response.text()
+      submitError.value = `Submission failed: ${errorText}`
+    }
+  } catch (error) {
+    submitError.value = `Network error: ${error.message}`
+  } finally {
+    isSubmitting.value = false
+  }
 }
 </script>
 
@@ -447,6 +504,50 @@ const initScrollAnimations = () => {
 .primary-btn {
   margin-top: 1rem;
   width: 100%;
+}
+
+.primary-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.primary-btn:disabled:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+/* Form Messages */
+.form-message {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 8px;
+  font-weight: 500;
+  text-align: center;
+  animation: slideIn 0.3s ease-out;
+}
+
+.success-message {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.error-message {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (max-width: 768px) {
