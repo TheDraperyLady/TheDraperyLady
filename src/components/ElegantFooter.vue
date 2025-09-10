@@ -36,10 +36,9 @@
         <div class="footer-links">
           <div class="link-group">
             <h4>Services</h4>
-            <router-link to="/#about">About Christine</router-link>
+            <a href="#" @click.prevent="navigateToSection('about')">About Christine</a>
             <router-link to="/products">Our Products</router-link>
-            <router-link to="/#portfolio">Portfolio</router-link>
-            <router-link to="/#testimonials">Testimonials</router-link>
+            <a href="#" @click.prevent="navigateToSection('portfolio')">Portfolio</a>
           </div>
           <div class="link-group">
             <h4>Products</h4>
@@ -57,6 +56,12 @@
             <a href="mailto:christine@draperylady.net">christine@draperylady.net</a>
             <router-link to="/consultation">Schedule Consultation</router-link>
           </div>
+          <div class="link-group">
+            <h4>Help</h4>
+            <a href="#" @click.prevent="navigateToSection('faq')">FAQ</a>
+            <a href="#" @click.prevent="navigateToSection('about')">About Us</a>
+            <a href="#" @click.prevent="navigateToSection('testimonials')">Reviews</a>
+          </div>
         </div>
       </div>
       <div class="footer-bottom">
@@ -69,11 +74,12 @@
 <script setup>
 // Add this to make the component aware of the color scheme
 import { onMounted } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { productDetails } from '../data/productDetails'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 const route = useRoute()
+const router = useRouter()
 
 onMounted(() => {
   // Add the elegant-home class to the footer to inherit color scheme
@@ -82,6 +88,23 @@ onMounted(() => {
     footer.classList.add('elegant-home')
   }
 })
+
+// Function to handle navigation with scroll to section
+const navigateToSection = (sectionId) => {
+  // If we're already on the home page, just scroll to the section
+  if (route.path === '/') {
+    const element = document.getElementById(sectionId)
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      })
+    }
+  } else {
+    // If we're on a different page, navigate to home with hash
+    router.push(`/#${sectionId}`)
+  }
+}
 </script>
 
 <style scoped>
@@ -208,7 +231,7 @@ onMounted(() => {
 
 .footer-links {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
 }
 
@@ -228,6 +251,7 @@ onMounted(() => {
   margin-bottom: 0.5rem;
   transition: color 0.3s ease;
   font-size: 0.9rem;
+  cursor: pointer;
 }
 
 .link-group a:hover {
@@ -243,6 +267,13 @@ onMounted(() => {
 }
 
 /* Responsive Design */
+@media (max-width: 1024px) {
+  .footer-links {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
 @media (max-width: 768px) {
   .footer-content {
     grid-template-columns: 1fr;
