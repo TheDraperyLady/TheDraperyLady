@@ -417,12 +417,15 @@
 </template>
 
 <script setup>
-import { onMounted, computed } from 'vue'
+import { onMounted, computed, nextTick, watch } from 'vue'
 import { useHead } from '@unhead/vue'
+import { useRoute } from 'vue-router'
 import ServiceArea from '../components/ServiceArea.vue'
 import PortfolioSection from '../components/PortfolioSection.vue'
 import { productDetails } from '../data/productDetails.js'
 import { imagePresets } from '../utils/imageOptimization.js'
+
+const route = useRoute()
 
 // SEO head management
 useHead({
@@ -494,7 +497,39 @@ const firstFourProducts = computed(() => {
 onMounted(() => {
   // Initialize scroll animations
   initScrollAnimations()
+  
+  // Handle hash navigation on page load
+  handleHashNavigation()
 })
+
+// Watch for route changes to handle hash navigation
+watch(() => route.hash, (newHash) => {
+  if (newHash) {
+    console.log('Route hash changed:', newHash)
+    handleHashNavigation()
+  }
+})
+
+// Handle hash navigation when page loads with a hash
+const handleHashNavigation = () => {
+  // Use nextTick to ensure DOM is fully rendered
+  nextTick(() => {
+    const hash = window.location.hash
+    if (hash) {
+      console.log('Handling hash navigation:', hash)
+      const element = document.querySelector(hash)
+      if (element) {
+        // Small delay to ensure all content is loaded
+        setTimeout(() => {
+          element.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+          })
+        }, 100)
+      }
+    }
+  })
+}
 
 const initScrollAnimations = () => {
   const observerOptions = {
