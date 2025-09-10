@@ -1,7 +1,5 @@
 name = "the-drapery-lady"
 compatibility_date = "2025-01-09"
 
-[assets]
-directory = "./dist/"
-not_found_handling = "single-page-application"
-
+# Optional but handy if you want `wrangler pages dev` to auto-pick output dir:
+pages_build_output_dir = "./dist"
