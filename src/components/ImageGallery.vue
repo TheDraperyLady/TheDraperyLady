@@ -122,7 +122,7 @@ const initIntersectionObserver = () => {
     },
     {
       threshold: 0.3, // Trigger when 30% of the element is visible
-      rootMargin: '0px 0px -50px 0px', // Trigger slightly before element is fully in view
+      rootMargin: '0px 0px 100px 0px', // Trigger slightly before element is fully in view
     },
   )
 
