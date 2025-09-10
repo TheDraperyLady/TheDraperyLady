@@ -25,7 +25,7 @@
           <h1>Thank You!</h1>
           <p class="thank-you-message">
             Your consultation request has been submitted successfully. We'll get back to you within
-            24 hours to schedule your personalized consultation.
+            48 hours to schedule your personalized consultation.
           </p>
 
           <div class="next-steps">
@@ -43,7 +43,7 @@
                 <div class="step-content">
                   <strong>We'll contact you</strong>
                   <p>
-                    Within 24 hours, we'll call you to discuss your project and schedule a
+                    Within 48 hours, we'll reach out to discuss your project and schedule a
                     convenient time.
                   </p>
                 </div>
@@ -53,7 +53,7 @@
                 <div class="step-content">
                   <strong>We'll visit your space</strong>
                   <p>
-                    We'll come to your home for precise measurements and personalized
+                    If you're within our service area, we'll come to your home for precise measurements and personalized
                     recommendations.
                   </p>
                 </div>
