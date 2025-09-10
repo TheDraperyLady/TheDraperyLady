@@ -14,7 +14,7 @@
 import ImageGallery from './ImageGallery.vue'
 
 // CDN Base URL - configurable for different environments
-const BASE_URL = 'https://draperylady.tanuj.xyz'
+const BASE_URL = 'https://cdn.draperylady.net'
 
 // Portfolio images data
 const portfolioImages = [

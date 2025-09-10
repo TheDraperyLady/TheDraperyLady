@@ -1,5 +1,5 @@
 // CDN Base URL - configurable for different environments
-const BASE_URL = 'https://draperylady.tanuj.xyz'
+const BASE_URL = 'https://cdn.draperylady.net'
 
 // Common features that most products share
 const commonFeatures = {
