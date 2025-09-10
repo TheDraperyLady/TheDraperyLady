@@ -62,12 +62,12 @@
 
         <!-- Gallery Section -->
         <div id="gallery" class="gallery-section">
-          <div class="section-header animate-on-scroll fade-in">
+          <div class="section-header">
             <h2>Gallery</h2>
             <p>See Our {{ productDetails[productType]?.title }} in Action</p>
           </div>
           <div
-            class="gallery-container animate-on-scroll fade-in-delay"
+            class="gallery-container"
             :key="`gallery-${productType}`"
           >
             <ImageGallery

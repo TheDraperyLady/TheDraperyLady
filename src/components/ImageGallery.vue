@@ -17,7 +17,7 @@
     >
       <div class="gallery-item">
         <img :src="image.src" :alt="image.alt" class="gallery-image" />
-        <div class="gallery-caption" :class="{ 'caption-visible': visibleCaptions[index] }">
+        <div class="gallery-caption" :class="{ 'caption-visible': visibleCaptions[index] }" v-if="!isMobile">
           <h3 v-if="image.title">{{ image.title }}</h3>
           <p v-if="image.description">{{ image.description }}</p>
         </div>
@@ -65,6 +65,7 @@ const imageDimensions = ref({})
 const galleryRefs = ref([])
 const visibleCaptions = ref({})
 const observer = ref(null)
+const isMobile = ref(false)
 
 // Function to preload image and get its dimensions
 const loadImageDimensions = (src) => {
@@ -92,10 +93,15 @@ const preloadGalleryImages = async () => {
   imageDimensions.value = dimensions
 }
 
-// Initialize intersection observer for mobile caption animations
+// Check if device is mobile
+const checkMobile = () => {
+  isMobile.value = window.innerWidth <= 768
+}
+
+// Initialize intersection observer for desktop caption animations
 const initIntersectionObserver = () => {
-  // Only enable on mobile devices
-  if (window.innerWidth > 768) return
+  // Only enable on desktop devices
+  if (isMobile.value) return
 
   observer.value = new IntersectionObserver(
     (entries) => {
@@ -130,6 +136,8 @@ const initIntersectionObserver = () => {
 
 // Handle window resize to reinitialize observer
 const handleResize = () => {
+  checkMobile()
+  
   if (observer.value) {
     observer.value.disconnect()
     observer.value = null
@@ -139,6 +147,9 @@ const handleResize = () => {
 }
 
 onMounted(async () => {
+  // Check if mobile on mount
+  checkMobile()
+  
   // Preload images to get their dimensions
   await preloadGalleryImages()
 
@@ -152,7 +163,7 @@ onMounted(async () => {
     lightbox.value.init()
   }
 
-  // Initialize intersection observer for mobile
+  // Initialize intersection observer for desktop
   initIntersectionObserver()
 
   // Add resize listener
@@ -193,6 +204,19 @@ onUnmounted(() => {
   grid-template-columns: repeat(3, 1fr) !important;
 }
 
+/* Ensure mobile styles override portfolio styles */
+@media (max-width: 768px) {
+  .portfolio-section .image-gallery {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolio-section .image-gallery {
+    grid-template-columns: 1fr !important;
+  }
+}
+
 .gallery-item-link {
   text-decoration: none;
   color: inherit;
@@ -208,25 +232,25 @@ onUnmounted(() => {
   background: white;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
+    transform 0.2s ease-out,
+    box-shadow 0.2s ease-out;
 }
 
 .gallery-item-link:hover .gallery-item {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
 }
 
 .gallery-image {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  transition: transform 0.3s ease;
+  transition: transform 0.2s ease-out;
   padding: 1rem;
 }
 
 .gallery-item-link:hover .gallery-image {
-  transform: scale(1.05);
+  transform: scale(1.02);
 }
 
 .gallery-caption {
@@ -240,8 +264,8 @@ onUnmounted(() => {
   font-size: 1.1rem;
   text-align: center;
   opacity: 0;
-  transform: translateY(100%);
-  transition: all 0.3s ease;
+  transform: translateY(20px);
+  transition: all 0.2s ease-out;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
   font-family: 'Crimson Text', 'Georgia', serif;
@@ -286,7 +310,7 @@ onUnmounted(() => {
   align-items: center;
   justify-content: center;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.2s ease-out;
   pointer-events: none;
 }
 
@@ -296,40 +320,64 @@ onUnmounted(() => {
 
 @media (max-width: 768px) {
   .image-gallery {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1rem;
     max-width: 100%;
+    padding: 0 1rem;
+    margin-top: 2rem;
   }
 
   .gallery-item {
-    aspect-ratio: 2/3;
+    aspect-ratio: 1/1;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
   }
 
   .gallery-image {
-    padding: 0.5rem;
+    padding: 0.75rem;
+    object-fit: cover;
   }
 
-  /* Mobile-specific caption behavior */
-  .gallery-caption {
-    opacity: 0;
-    transform: translateY(100%);
-    transition: all 0.5s ease;
+  .gallery-overlay {
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.6);
   }
 
-  /* Show caption when scrolled into view on mobile */
-  .gallery-caption.caption-visible {
-    opacity: 1;
-    transform: translateY(0);
+  .gallery-overlay svg {
+    width: 20px;
+    height: 20px;
   }
 
-  /* Disable hover effects on mobile since we're using scroll-based animations */
-  .gallery-item-link:hover .gallery-caption {
-    opacity: 0;
-    transform: translateY(100%);
+  /* Disable hover effects on mobile */
+  .gallery-item-link:hover .gallery-item {
+    transform: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  }
+
+  .gallery-item-link:hover .gallery-image {
+    transform: none;
   }
 
   .gallery-item-link:hover .gallery-overlay {
     opacity: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .image-gallery {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem;
+    padding: 0 0.5rem;
+  }
+
+  .gallery-item {
+    aspect-ratio: 4/5;
+    border-radius: 10px;
+  }
+
+  .gallery-image {
+    padding: 1rem;
   }
 }
 </style>
