@@ -487,6 +487,20 @@ useHead({
       content: 'https://draperylady.net/src/assets/TDL_logo.png',
     },
   ],
+  script: [
+    {
+      src: 'https://www.googletagmanager.com/gtag/js?id=G-XL29Z0GCWW',
+      async: true,
+    },
+    {
+      innerHTML: `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XL29Z0GCWW');
+      `,
+    },
+  ],
 })
 
 // Get the first 4 products from productDetails
