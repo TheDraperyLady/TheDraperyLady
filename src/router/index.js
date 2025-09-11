@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory, createMemoryHistory } from 'vue-router'
 import ElegantHomeView from '../views/ElegantHomeView.vue'
 import ProductsView from '../views/ProductsView.vue'
+import NotFoundView from '../views/NotFoundView.vue'
 
 const router = createRouter({
   // Use memory history for SSR, web history for client
@@ -53,6 +54,11 @@ const router = createRouter({
       path: '/thank-you',
       name: 'thank-you',
       component: () => import('../views/ThankYouView.vue'),
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'not-found',
+      component: NotFoundView,
     },
   ],
 })
