@@ -16,7 +16,7 @@
       "
     >
       <div class="gallery-item">
-        <img :src="image.src" :alt="image.alt" class="gallery-image" />
+        <img :src="image.src" :alt="image.alt" loading="lazy" class="gallery-image" />
         <div
           class="gallery-caption"
           :class="{ 'caption-visible': visibleCaptions[index] }"
