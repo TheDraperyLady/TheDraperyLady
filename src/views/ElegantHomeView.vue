@@ -260,19 +260,16 @@
               <span class="star">★</span>
             </div>
             <p>
-              I have found Christine St. Clair (aka: The Drapery Lady) to be very knowledgeable and
-              helpful with my needs for window coverings as well as other coordinating accessories.
-              She has made draperies with a coordinating bedspread and pillows for me that are
-              absolutely beautiful! I have also had her make some shutters and shades in other rooms
-              of my home. I am so happy with all the work Christine has done for me. She has
-              seamlessly taken my projects from the beginning to end with ease. I have found her
-              installer Joe wonderful as well. The two of them are real pros with a great deal of
-              experience and knowledge. I look forward to working with The Drapery Lady again on my
-              next home project. Do yourself a favor and give Christine a try. You'll be happy you
-              did!
+              Dear Christine,
+              
+              We want to extend our sincere thanks to you, Oscar, and your installation team for the excellent job you did installing our shutters. The finished result has truly enhanced the look of our Temple.
+              
+              Your professionalism throughout the entire process—from consultation to installation—made everything smooth and stress-free. It was a pleasure working with you. You take pride in your craft and delivered on your promises.
+              
+              We are extremely pleased with the result and will not hesitate to recommend your services to others. Thank you again for making this project such a success.
             </p>
             <div class="client-info">
-              <h4>Kitty W</h4>
+              <h4>Kaiyo & Zareen M.</h4>
               <!-- <span>Manor House Estate</span> -->
             </div>
           </div>
