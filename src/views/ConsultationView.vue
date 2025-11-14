@@ -53,11 +53,27 @@
               </div>
 
               <div class="form-group animate-on-scroll fade-in-delay" style="animation-delay: 0.3s">
-                <label for="address">Property Address</label>
-                <input type="text" id="address" name="address" required />
+                <label for="street-address">Street Address</label>
+                <input type="text" id="street-address" name="street-address" autocomplete="street-address" required />
+              </div>
+
+              <div class="form-row animate-on-scroll fade-in-delay" style="animation-delay: 0.35s">
+                <div class="form-group">
+                  <label for="city">City</label>
+                  <input type="text" id="city" name="city" autocomplete="address-level2" required />
+                </div>
+                <div class="form-group">
+                  <label for="state">State</label>
+                  <input type="text" id="state" name="state" maxlength="2" autocomplete="address-level1" required />
+                </div>
               </div>
 
               <div class="form-group animate-on-scroll fade-in-delay" style="animation-delay: 0.4s">
+                <label for="zip">Zip Code</label>
+                <input type="text" id="zip" name="zip" inputmode="numeric" pattern="\\d{5}" autocomplete="postal-code" required />
+              </div>
+
+              <div class="form-group animate-on-scroll fade-in-delay" style="animation-delay: 0.45s">
                 <label for="project">Tell Us About Your Project</label>
                 <textarea id="project" name="project" rows="4" required></textarea>
               </div>
@@ -77,11 +93,13 @@
 
               <!-- Form identifier -->
               <input type="hidden" name="_form" value="consultation" />
+              <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response" />
 
               <button
                 type="submit"
                 class="primary-btn animate-on-scroll fade-in-delay"
                 style="animation-delay: 0.6s"
+                @click.prevent="handleSubmit"
               >
                 Submit Request
               </button>
@@ -96,6 +114,11 @@
 <script setup>
 import { onMounted, ref } from 'vue'
 import { useHead } from '@unhead/vue'
+
+// reCAPTCHA v3 site key
+const RECAPTCHA_SITE_KEY = '6LfoAA0sAAAAABmZsPkpQC2nzw5inoduN6UH3Kjy'
+
+const recaptchaReady = ref(false)
 
 // SEO head management
 useHead({
@@ -167,13 +190,65 @@ useHead({
         gtag('config', 'G-XL29Z0GCWW');
       `,
     },
+    {
+      src: `https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}`,
+      async: true,
+      defer: true,
+    },
   ],
 })
 
 onMounted(() => {
   // Initialize scroll animations
   initScrollAnimations()
+
+  // Wait for reCAPTCHA v3 to finish loading
+  waitForRecaptcha()
 })
+
+const waitForRecaptcha = () => {
+  if (window.grecaptcha && window.grecaptcha.ready) {
+    window.grecaptcha.ready(() => {
+      recaptchaReady.value = true
+    })
+  } else {
+    setTimeout(waitForRecaptcha, 300)
+  }
+}
+
+const executeRecaptcha = (action = 'consultation_submit') =>
+  new Promise((resolve, reject) => {
+    if (!window.grecaptcha || !recaptchaReady.value) {
+      reject(new Error('reCAPTCHA is still loading. Please try again.'))
+      return
+    }
+
+    window.grecaptcha
+      .execute(RECAPTCHA_SITE_KEY, { action })
+      .then(resolve)
+      .catch(reject)
+  })
+
+const handleSubmit = (event) => {
+  event.preventDefault()
+  const form = event.target.closest('form')
+  if (!form) {
+    return
+  }
+
+  executeRecaptcha('consultation_submit')
+    .then((token) => {
+      const tokenInput = document.getElementById('g-recaptcha-response')
+      if (tokenInput) {
+        tokenInput.value = token
+      }
+      form.submit()
+    })
+    .catch((error) => {
+      console.error(error)
+      alert('reCAPTCHA is not ready yet. Please wait a moment and try again.')
+    })
+}
 
 const initScrollAnimations = () => {
   const observerOptions = {
@@ -420,6 +495,15 @@ const initScrollAnimations = () => {
   gap: 0.5rem;
 }
 
+.form-row {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.form-row .form-group {
+  flex: 1;
+}
+
 .form-group label {
   color: var(--text-dark);
   font-weight: 600;
@@ -506,6 +590,11 @@ const initScrollAnimations = () => {
 
   .phone-number {
     font-size: 1.8rem;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 1rem;
   }
 }
 </style>
