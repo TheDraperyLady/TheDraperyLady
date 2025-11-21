@@ -39,48 +39,48 @@
             >
               <div class="form-group animate-on-scroll fade-in-delay">
                 <label for="name">Full Name</label>
-                <input type="text" id="name" name="name" required />
+                <input type="text" id="name" name="name" required @blur="validateField" />
               </div>
 
               <div class="form-group animate-on-scroll fade-in-delay" style="animation-delay: 0.1s">
                 <label for="email">Email Address</label>
-                <input type="email" id="email" name="email" required />
+                <input type="email" id="email" name="email" required @blur="validateField" />
               </div>
 
               <div class="form-group animate-on-scroll fade-in-delay" style="animation-delay: 0.2s">
                 <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone" required />
+                <input type="tel" id="phone" name="phone" required @blur="validateField" />
               </div>
 
               <div class="form-group animate-on-scroll fade-in-delay" style="animation-delay: 0.3s">
                 <label for="street-address">Street Address</label>
-                <input type="text" id="street-address" name="street-address" autocomplete="street-address" required />
+                <input type="text" id="street-address" name="street-address" autocomplete="street-address" required @blur="validateField" />
               </div>
 
               <div class="form-row animate-on-scroll fade-in-delay" style="animation-delay: 0.35s">
                 <div class="form-group">
                   <label for="city">City</label>
-                  <input type="text" id="city" name="city" autocomplete="address-level2" required />
+                  <input type="text" id="city" name="city" autocomplete="address-level2" required @blur="validateField" />
                 </div>
                 <div class="form-group">
                   <label for="state">State</label>
-                  <input type="text" id="state" name="state" maxlength="2" autocomplete="address-level1" required />
+                  <input type="text" id="state" name="state" maxlength="2" autocomplete="address-level1" required @blur="validateField" />
                 </div>
               </div>
 
               <div class="form-group animate-on-scroll fade-in-delay" style="animation-delay: 0.4s">
                 <label for="zip">Zip Code</label>
-                <input type="text" id="zip" name="zip" inputmode="numeric" pattern="\\d{5}" autocomplete="postal-code" required />
+                <input type="text" id="zip" name="zip" inputmode="numeric" autocomplete="postal-code" required @blur="validateField" />
               </div>
 
               <div class="form-group animate-on-scroll fade-in-delay" style="animation-delay: 0.45s">
                 <label for="project">Tell Us About Your Project</label>
-                <textarea id="project" name="project" rows="4" required></textarea>
+                <textarea id="project" name="project" rows="4" required @blur="validateField"></textarea>
               </div>
 
               <div class="form-group animate-on-scroll fade-in-delay" style="animation-delay: 0.5s">
                 <label for="preferred-time">Preferred Consultation Time</label>
-                <select id="preferred-time" name="preferred-time" required>
+                <select id="preferred-time" name="preferred-time" required @blur="validateField">
                   <option value="">Select a time...</option>
                   <option value="morning">Morning (9 AM - 12 PM)</option>
                   <option value="afternoon">Afternoon (12 PM - 3 PM)</option>
@@ -93,7 +93,11 @@
 
               <!-- Form identifier -->
               <input type="hidden" name="_form" value="consultation" />
-              <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response" />
+
+              <!-- reCAPTCHA v2 widget -->
+              <div class="form-group animate-on-scroll fade-in-delay" style="animation-delay: 0.55s">
+                <div id="recaptcha-container" class="recaptcha-container"></div>
+              </div>
 
               <button
                 type="submit"
@@ -115,10 +119,11 @@
 import { onMounted, ref } from 'vue'
 import { useHead } from '@unhead/vue'
 
-// reCAPTCHA v3 site key
-const RECAPTCHA_SITE_KEY = '6LfoAA0sAAAAABmZsPkpQC2nzw5inoduN6UH3Kjy'
+// reCAPTCHA v2 site key
+const RECAPTCHA_SITE_KEY = '6LeJehQsAAAAAIJ2YNa4R4EaAV0P1YH4ZVTGk_JA'
 
-const recaptchaReady = ref(false)
+const recaptchaWidgetId = ref(null)
+const recaptchaLoaded = ref(false)
 
 // SEO head management
 useHead({
@@ -191,9 +196,19 @@ useHead({
       `,
     },
     {
-      src: `https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}`,
+      src: 'https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoad&render=explicit',
       async: true,
       defer: true,
+    },
+    {
+      innerHTML: `
+        window.onRecaptchaLoad = function() {
+          window.recaptchaLoaded = true;
+          if (window.initRecaptchaV2) {
+            window.initRecaptchaV2();
+          }
+        };
+      `,
     },
   ],
 })
@@ -202,52 +217,163 @@ onMounted(() => {
   // Initialize scroll animations
   initScrollAnimations()
 
-  // Wait for reCAPTCHA v3 to finish loading
-  waitForRecaptcha()
+  // Initialize reCAPTCHA v2 widget
+  window.initRecaptchaV2 = initRecaptcha
+  if (window.recaptchaLoaded) {
+    initRecaptcha()
+  }
 })
 
-const waitForRecaptcha = () => {
-  if (window.grecaptcha && window.grecaptcha.ready) {
-    window.grecaptcha.ready(() => {
-      recaptchaReady.value = true
-    })
-  } else {
-    setTimeout(waitForRecaptcha, 300)
+const initRecaptcha = () => {
+  if (typeof window.grecaptcha === 'undefined' || !window.grecaptcha.render) {
+    // Wait a bit and try again if grecaptcha isn't loaded yet
+    setTimeout(() => {
+      if (window.grecaptcha && window.grecaptcha.render) {
+        renderRecaptcha()
+      }
+    }, 500)
+    return
   }
+  renderRecaptcha()
 }
 
-const executeRecaptcha = (action = 'consultation_submit') =>
-  new Promise((resolve, reject) => {
-    if (!window.grecaptcha || !recaptchaReady.value) {
-      reject(new Error('reCAPTCHA is still loading. Please try again.'))
-      return
-    }
+const renderRecaptcha = () => {
+  const container = document.getElementById('recaptcha-container')
+  if (!container || recaptchaWidgetId.value !== null) {
+    return
+  }
 
-    window.grecaptcha
-      .execute(RECAPTCHA_SITE_KEY, { action })
-      .then(resolve)
-      .catch(reject)
-  })
+  try {
+    recaptchaWidgetId.value = window.grecaptcha.render('recaptcha-container', {
+      sitekey: RECAPTCHA_SITE_KEY,
+      callback: (response) => {
+        // reCAPTCHA completed - response token is automatically added to form
+        console.log('reCAPTCHA verified successfully')
+      },
+      'expired-callback': () => {
+        // reCAPTCHA expired - user needs to complete it again
+        console.log('reCAPTCHA expired')
+      },
+      'error-callback': () => {
+        // Error occurred
+        console.error('reCAPTCHA error occurred')
+      },
+    })
+    recaptchaLoaded.value = true
+  } catch (error) {
+    console.error('reCAPTCHA initialization error:', error)
+  }
+}
 
 const handleSubmit = (event) => {
   event.preventDefault()
   const form = event.target.closest('form')
   if (!form) {
-    return
+    return false
   }
 
-  executeRecaptcha('consultation_submit')
-    .then((token) => {
-      const tokenInput = document.getElementById('g-recaptcha-response')
-      if (tokenInput) {
-        tokenInput.value = token
+  // Clear previous validation errors
+  form.querySelectorAll('.field-error').forEach((el) => el.remove())
+  form.querySelectorAll('.invalid').forEach((el) => el.classList.remove('invalid'))
+
+  // Get all required fields
+  const requiredFields = form.querySelectorAll('[required]')
+  let isValid = true
+  let firstInvalidField = null
+
+  // Validate each required field
+  requiredFields.forEach((field) => {
+    // Skip hidden fields (honeypot, hidden inputs)
+    if (field.type === 'hidden' || field.classList.contains('honeypot')) {
+      return
+    }
+
+    const fieldValue = field.value.trim()
+    const isEmpty = fieldValue === ''
+    const fieldName = field.name || field.id
+    const label = form.querySelector(`label[for="${field.id}"]`)?.textContent || fieldName
+
+    // Check if field is empty or invalid
+    if (isEmpty || !field.checkValidity()) {
+      isValid = false
+      
+      // Add invalid class for styling
+      field.classList.add('invalid')
+
+      // Create error message
+      const errorMessage = document.createElement('span')
+      errorMessage.className = 'field-error'
+      errorMessage.textContent = `${label || 'This field'} is required.`
+
+      // Insert error message after the field
+      field.parentElement.appendChild(errorMessage)
+
+      // Store first invalid field for focus
+      if (!firstInvalidField) {
+        firstInvalidField = field
       }
-      form.submit()
-    })
-    .catch((error) => {
-      console.error(error)
-      alert('reCAPTCHA is not ready yet. Please wait a moment and try again.')
-    })
+    }
+  })
+
+  // Check if reCAPTCHA has been completed
+  const recaptchaResponse = form.querySelector('textarea[name="g-recaptcha-response"]')
+  if (!recaptchaResponse || !recaptchaResponse.value) {
+    isValid = false
+    const recaptchaContainer = form.querySelector('.recaptcha-container')
+    if (recaptchaContainer && !recaptchaContainer.querySelector('.field-error')) {
+      const errorMessage = document.createElement('span')
+      errorMessage.className = 'field-error'
+      errorMessage.textContent = 'Please complete the "I\'m not a robot" verification.'
+      recaptchaContainer.parentElement.appendChild(errorMessage)
+    }
+  }
+
+  // If validation failed, focus first invalid field and prevent submission
+  if (!isValid) {
+    if (firstInvalidField) {
+      firstInvalidField.focus()
+      firstInvalidField.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    }
+    return false
+  }
+
+  // All validations passed - submit the form
+  form.submit()
+}
+
+const validateField = (event) => {
+  const field = event.target
+  console.log(field.value)
+
+  const fieldValue = field.value.trim()
+  const isEmpty = fieldValue === ''
+  const isInvalid = isEmpty || !field.checkValidity()
+
+  // Remove existing error message for this field
+  const fieldGroup = field.closest('.form-group')
+  if (fieldGroup) {
+    const existingError = fieldGroup.querySelector('.field-error')
+    if (existingError) {
+      existingError.remove()
+    }
+  }
+
+  // Update field validity
+  if (isInvalid) {
+    field.classList.add('invalid')
+    const fieldName = field.name || field.id
+    const label = document.querySelector(`label[for="${field.id}"]`)?.textContent || fieldName
+    
+    const errorMessage = document.createElement('span')
+    errorMessage.className = 'field-error'
+    errorMessage.textContent = `${label || 'This field'} is required.`
+    
+    if (fieldGroup) {
+      fieldGroup.appendChild(errorMessage)
+    }
+  } else {
+    field.classList.remove('invalid')
+  }
 }
 
 const initScrollAnimations = () => {
@@ -543,6 +669,42 @@ const initScrollAnimations = () => {
   box-shadow: 0 0 0 2px var(--border-color);
 }
 
+/* Invalid field styling */
+.form-group input.invalid,
+.form-group select.invalid,
+.form-group textarea.invalid {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.2);
+}
+
+.form-group input.invalid:focus,
+.form-group select.invalid:focus,
+.form-group textarea.invalid:focus {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.3);
+}
+
+/* Error message styling */
+.field-error {
+  display: block;
+  color: #dc3545;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+  font-weight: 500;
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .form-group textarea {
   resize: vertical;
   min-height: 120px;
@@ -572,6 +734,20 @@ const initScrollAnimations = () => {
   height: 1px;
   opacity: 0;
   pointer-events: none;
+}
+
+/* reCAPTCHA container */
+.recaptcha-container {
+  display: flex;
+  justify-content: flex-start;
+  margin: 1rem 0;
+}
+
+@media (max-width: 768px) {
+  .recaptcha-container {
+    transform: scale(0.85);
+    transform-origin: 0 0;
+  }
 }
 
 @media (max-width: 768px) {
