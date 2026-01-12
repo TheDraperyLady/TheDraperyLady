@@ -726,16 +726,20 @@ onUnmounted(() => {
 /* Mobile responsive styles */
 @media (max-width: 768px) {
   .nav-container {
-    justify-content: space-between;
-    align-items: center;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 0 !important;
   }
 
   .desktop-nav {
-    display: none;
+    display: none !important;
   }
 
   .mobile-nav {
-    display: block;
+    display: flex !important;
+    align-items: center;
   }
 
   .logo {
