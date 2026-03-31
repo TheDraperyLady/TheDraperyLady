@@ -159,7 +159,7 @@ import { onBeforeUnmount, onMounted, ref } from 'vue'
 import { useHead } from '@unhead/vue'
 
 const FORM_ACTION =
-  'https://development-form-relay.tanujsiripurapu.workers.dev/thedraperylady/submit'
+  'https://forms.tanuj.xyz/thedraperylady/submit'
 
 const siteKey = import.meta.env.VITE_TURNSTILE_SITE_KEY
 
