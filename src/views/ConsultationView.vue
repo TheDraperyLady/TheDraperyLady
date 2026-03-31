@@ -31,11 +31,12 @@
           <div class="consultation-form-container animate-on-scroll slide-in-right">
             <h3>Request a Consultation</h3>
             <form
-              action="https://forms.tanuj.xyz/thedraperylady/submit"
+              class="consultation-form"
+              :action="FORM_ACTION"
               method="post"
               enctype="application/x-www-form-urlencoded"
               target="_self"
-              class="consultation-form"
+              @submit.prevent="handleSubmit"
             >
               <div class="form-group animate-on-scroll fade-in-delay">
                 <label for="name">Full Name</label>
@@ -54,23 +55,53 @@
 
               <div class="form-group animate-on-scroll fade-in-delay" style="animation-delay: 0.3s">
                 <label for="street-address">Street Address</label>
-                <input type="text" id="street-address" name="street-address" autocomplete="street-address" required @blur="validateField" />
+                <input
+                  type="text"
+                  id="street-address"
+                  name="street-address"
+                  autocomplete="street-address"
+                  required
+                  @blur="validateField"
+                />
               </div>
 
               <div class="form-row animate-on-scroll fade-in-delay" style="animation-delay: 0.35s">
                 <div class="form-group">
                   <label for="city">City</label>
-                  <input type="text" id="city" name="city" autocomplete="address-level2" required @blur="validateField" />
+                  <input
+                    type="text"
+                    id="city"
+                    name="city"
+                    autocomplete="address-level2"
+                    required
+                    @blur="validateField"
+                  />
                 </div>
                 <div class="form-group">
                   <label for="state">State</label>
-                  <input type="text" id="state" name="state" maxlength="2" autocomplete="address-level1" required @blur="validateField" />
+                  <input
+                    type="text"
+                    id="state"
+                    name="state"
+                    maxlength="2"
+                    autocomplete="address-level1"
+                    required
+                    @blur="validateField"
+                  />
                 </div>
               </div>
 
               <div class="form-group animate-on-scroll fade-in-delay" style="animation-delay: 0.4s">
                 <label for="zip">Zip Code</label>
-                <input type="text" id="zip" name="zip" inputmode="numeric" autocomplete="postal-code" required @blur="validateField" />
+                <input
+                  type="text"
+                  id="zip"
+                  name="zip"
+                  inputmode="numeric"
+                  autocomplete="postal-code"
+                  required
+                  @blur="validateField"
+                />
               </div>
 
               <div class="form-group animate-on-scroll fade-in-delay" style="animation-delay: 0.45s">
@@ -94,18 +125,26 @@
               <!-- Form identifier -->
               <input type="hidden" name="_form" value="consultation" />
 
-              <!-- reCAPTCHA v2 widget -->
-              <div class="form-group animate-on-scroll fade-in-delay" style="animation-delay: 0.55s">
-                <div id="recaptcha-container" class="recaptcha-container"></div>
+              <div
+                v-if="siteKey"
+                class="form-group animate-on-scroll fade-in-delay"
+                style="animation-delay: 0.55s"
+              >
+                <div id="turnstile-container" class="turnstile-container"></div>
               </div>
+
+              <p v-if="submitError" class="banner err" role="alert">{{ submitError }}</p>
+              <p v-if="submitOk" class="banner ok" role="status">
+                Thank you—your consultation request was sent.
+              </p>
 
               <button
                 type="submit"
                 class="primary-btn animate-on-scroll fade-in-delay"
                 style="animation-delay: 0.6s"
-                @click.prevent="handleSubmit"
+                :disabled="submitting || (siteKey && (!turnstileReady || turnstileLoadFailed))"
               >
-                Submit Request
+                {{ submitting ? 'Submitting…' : 'Submit Request' }}
               </button>
             </form>
           </div>
@@ -115,15 +154,24 @@
   </div>
 </template>
 
-<script setup>
-import { onMounted, ref } from 'vue'
+<script setup lang="ts">
+import { onBeforeUnmount, onMounted, ref } from 'vue'
 import { useHead } from '@unhead/vue'
 
-// reCAPTCHA v2 site key
-const RECAPTCHA_SITE_KEY = '6LeJehQsAAAAAIJ2YNa4R4EaAV0P1YH4ZVTGk_JA'
+const FORM_ACTION =
+  'https://development-form-relay.tanujsiripurapu.workers.dev/thedraperylady/submit'
 
-const recaptchaWidgetId = ref(null)
-const recaptchaLoaded = ref(false)
+const siteKey = import.meta.env.VITE_TURNSTILE_SITE_KEY
+
+const submitting = ref(false)
+const submitError = ref('')
+const submitOk = ref(false)
+
+const turnstileToken = ref('')
+let widgetId: string | undefined
+
+const turnstileReady = ref(false)
+const turnstileLoadFailed = ref(false)
 
 // SEO head management
 useHead({
@@ -195,95 +243,98 @@ useHead({
         gtag('config', 'G-XL29Z0GCWW');
       `,
     },
-    {
-      src: 'https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoad&render=explicit',
-      async: true,
-      defer: true,
-    },
-    {
-      innerHTML: `
-        window.onRecaptchaLoad = function() {
-          window.recaptchaLoaded = true;
-          if (window.initRecaptchaV2) {
-            window.initRecaptchaV2();
-          }
-        };
-      `,
-    },
   ],
 })
 
-onMounted(() => {
-  // Initialize scroll animations
-  initScrollAnimations()
-
-  // Initialize reCAPTCHA v2 widget
-  window.initRecaptchaV2 = initRecaptcha
-  if (window.recaptchaLoaded) {
-    initRecaptcha()
-  }
-})
-
-const initRecaptcha = () => {
-  if (typeof window.grecaptcha === 'undefined' || !window.grecaptcha.render) {
-    // Wait a bit and try again if grecaptcha isn't loaded yet
-    setTimeout(() => {
-      if (window.grecaptcha && window.grecaptcha.render) {
-        renderRecaptcha()
-      }
-    }, 500)
-    return
-  }
-  renderRecaptcha()
+function loadTurnstileScript(): Promise<void> {
+  if (window.turnstile) return Promise.resolve()
+  return new Promise<void>((resolve, reject) => {
+    const prev = window.onTurnstileLoad
+    window.onTurnstileLoad = () => {
+      prev?.()
+      resolve()
+    }
+    const s = document.createElement('script')
+    s.src =
+      'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=onTurnstileLoad'
+    s.async = true
+    s.defer = true
+    s.onerror = () => reject(new Error('Turnstile script failed to load'))
+    document.head.appendChild(s)
+  })
 }
 
-const renderRecaptcha = () => {
-  const container = document.getElementById('recaptcha-container')
-  if (!container || recaptchaWidgetId.value !== null) {
+onMounted(async () => {
+  initScrollAnimations()
+
+  if (!siteKey) {
+    console.warn(
+      '[ConsultationView] VITE_TURNSTILE_SITE_KEY is not set; Turnstile verification is disabled.',
+    )
+    turnstileReady.value = true
     return
   }
 
   try {
-    recaptchaWidgetId.value = window.grecaptcha.render('recaptcha-container', {
-      sitekey: RECAPTCHA_SITE_KEY,
-      callback: (response) => {
-        // reCAPTCHA completed - response token is automatically added to form
-        console.log('reCAPTCHA verified successfully')
-      },
-      'expired-callback': () => {
-        // reCAPTCHA expired - user needs to complete it again
-        console.log('reCAPTCHA expired')
-      },
-      'error-callback': () => {
-        // Error occurred
-        console.error('reCAPTCHA error occurred')
-      },
-    })
-    recaptchaLoaded.value = true
-  } catch (error) {
-    console.error('reCAPTCHA initialization error:', error)
+    await loadTurnstileScript()
+    const container = document.getElementById('turnstile-container')
+    if (container && window.turnstile) {
+      widgetId = window.turnstile.render(container, {
+        sitekey: siteKey,
+        appearance: 'always',
+        size: 'flexible',
+        callback: (token: string) => {
+          turnstileToken.value = token
+        },
+        'expired-callback': () => {
+          turnstileToken.value = ''
+        },
+        'error-callback': () => {
+          turnstileToken.value = ''
+          submitError.value = 'Verification failed. Please refresh the page or try again.'
+        },
+      })
+    }
+    turnstileReady.value = true
+  } catch (e) {
+    console.error(e)
+    turnstileLoadFailed.value = true
+    submitError.value = 'Verification widget could not load. Please refresh the page or call us.'
   }
-}
+})
 
-const handleSubmit = (event) => {
-  event.preventDefault()
-  const form = event.target.closest('form')
-  if (!form) {
-    return false
+onBeforeUnmount(() => {
+  if (window.turnstile && widgetId !== undefined) {
+    window.turnstile.remove(widgetId)
   }
+})
+
+const handleSubmit = (event: Event) => {
+  event.preventDefault()
+  submitError.value = ''
+  submitOk.value = false
+
+  const target = event.target as HTMLElement | null
+  const form = target?.closest('form')
+  if (!form) return
 
   // Clear previous validation errors
   form.querySelectorAll('.field-error').forEach((el) => el.remove())
   form.querySelectorAll('.invalid').forEach((el) => el.classList.remove('invalid'))
 
-  // Get all required fields
-  const requiredFields = form.querySelectorAll('[required]')
-  let isValid = true
-  let firstInvalidField = null
+  const hp = form.querySelector<HTMLInputElement>('input[name="_hp"]')
+  if (hp?.value) {
+    return
+  }
 
-  // Validate each required field
-  requiredFields.forEach((field) => {
-    // Skip hidden fields (honeypot, hidden inputs)
+  // Get all required fields
+  const requiredFields = form.querySelectorAll<HTMLElement>('[required]')
+  let isValid = true
+  let firstInvalidField: HTMLElement | null = null
+
+  requiredFields.forEach((fieldEl) => {
+    const field = fieldEl as HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+
     if (field.type === 'hidden' || field.classList.contains('honeypot')) {
       return
     }
@@ -291,65 +342,94 @@ const handleSubmit = (event) => {
     const fieldValue = field.value.trim()
     const isEmpty = fieldValue === ''
     const fieldName = field.name || field.id
-    const label = form.querySelector(`label[for="${field.id}"]`)?.textContent || fieldName
+    const label =
+      form.querySelector<HTMLLabelElement>(`label[for="${field.id}"]`)?.textContent || fieldName
 
-    // Check if field is empty or invalid
     if (isEmpty || !field.checkValidity()) {
       isValid = false
-      
-      // Add invalid class for styling
       field.classList.add('invalid')
 
-      // Create error message
       const errorMessage = document.createElement('span')
       errorMessage.className = 'field-error'
       errorMessage.textContent = `${label || 'This field'} is required.`
 
-      // Insert error message after the field
-      field.parentElement.appendChild(errorMessage)
+      field.parentElement?.appendChild(errorMessage)
 
-      // Store first invalid field for focus
       if (!firstInvalidField) {
         firstInvalidField = field
       }
     }
   })
 
-  // Check if reCAPTCHA has been completed
-  const recaptchaResponse = form.querySelector('textarea[name="g-recaptcha-response"]')
-  if (!recaptchaResponse || !recaptchaResponse.value) {
-    isValid = false
-    const recaptchaContainer = form.querySelector('.recaptcha-container')
-    if (recaptchaContainer && !recaptchaContainer.querySelector('.field-error')) {
-      const errorMessage = document.createElement('span')
-      errorMessage.className = 'field-error'
-      errorMessage.textContent = 'Please complete the "I\'m not a robot" verification.'
-      recaptchaContainer.parentElement.appendChild(errorMessage)
-    }
-  }
-
-  // If validation failed, focus first invalid field and prevent submission
   if (!isValid) {
-    if (firstInvalidField) {
+    if (firstInvalidField instanceof HTMLElement) {
       firstInvalidField.focus()
       firstInvalidField.scrollIntoView({ behavior: 'smooth', block: 'center' })
     }
-    return false
+    return
   }
 
-  // All validations passed - submit the form
-  form.submit()
+  if (siteKey && !turnstileToken.value) {
+    submitError.value = 'Please complete the verification challenge.'
+    return
+  }
+
+  const params = new URLSearchParams()
+  const fd = new FormData(form)
+  for (const [key, val] of fd.entries()) {
+    if (typeof val === 'string') params.append(key, val)
+  }
+  if (turnstileToken.value) {
+    params.append('cf-turnstile-response', turnstileToken.value)
+  }
+
+  submitting.value = true
+
+  fetch(FORM_ACTION, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: params.toString(),
+    redirect: 'manual',
+  })
+    .then((res) => {
+      if (res.status >= 400) throw new Error(`HTTP ${res.status}`)
+      const success =
+        res.type === 'opaqueredirect' ||
+        res.ok ||
+        res.status === 301 ||
+        res.status === 302 ||
+        res.status === 303 ||
+        res.status === 307 ||
+        res.status === 308
+      if (!success) throw new Error(`HTTP ${res.status}`)
+
+      submitOk.value = true
+      ;(form as HTMLFormElement).reset()
+      form.querySelectorAll('.field-error').forEach((el) => el.remove())
+      form.querySelectorAll('.invalid').forEach((el) => el.classList.remove('invalid'))
+
+      turnstileToken.value = ''
+      if (window.turnstile && widgetId !== undefined) {
+        window.turnstile.reset(widgetId)
+      }
+    })
+    .catch((err) => {
+      console.error(err)
+      submitError.value =
+        'We could not send your request. Please try again or call (408) 981-1874.'
+    })
+    .finally(() => {
+      submitting.value = false
+    })
 }
 
-const validateField = (event) => {
-  const field = event.target
-  console.log(field.value)
+const validateField = (event: Event) => {
+  const field = event.target as HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
 
   const fieldValue = field.value.trim()
   const isEmpty = fieldValue === ''
   const isInvalid = isEmpty || !field.checkValidity()
 
-  // Remove existing error message for this field
   const fieldGroup = field.closest('.form-group')
   if (fieldGroup) {
     const existingError = fieldGroup.querySelector('.field-error')
@@ -358,16 +438,17 @@ const validateField = (event) => {
     }
   }
 
-  // Update field validity
   if (isInvalid) {
     field.classList.add('invalid')
     const fieldName = field.name || field.id
-    const label = document.querySelector(`label[for="${field.id}"]`)?.textContent || fieldName
-    
+    const label =
+      document.querySelector<HTMLLabelElement>(`label[for="${field.id}"]`)?.textContent ||
+      fieldName
+
     const errorMessage = document.createElement('span')
     errorMessage.className = 'field-error'
     errorMessage.textContent = `${label || 'This field'} is required.`
-    
+
     if (fieldGroup) {
       fieldGroup.appendChild(errorMessage)
     }
@@ -736,18 +817,8 @@ const initScrollAnimations = () => {
   pointer-events: none;
 }
 
-/* reCAPTCHA container */
-.recaptcha-container {
-  display: flex;
-  justify-content: flex-start;
+.turnstile-container {
   margin: 1rem 0;
-}
-
-@media (max-width: 768px) {
-  .recaptcha-container {
-    transform: scale(0.85);
-    transform-origin: 0 0;
-  }
 }
 
 @media (max-width: 768px) {
