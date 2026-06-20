@@ -112,23 +112,25 @@ jobs:
             setOutput('agent_url', agentUrl);
             await commentOnIssue(`Cursor Cloud Agent started: ${agentUrl}`);
 
-            const prompt = `You are implementing a website change request from Patchline.
-
-Read the GitHub issue below in full. Follow every constraint listed in its
-"Constraints for the agent" section. Make the smallest possible diff.
-
-Open exactly one pull request against ${startingRef}. The PR title must start
-with "[client-request]" and the PR body must include "Closes #${issueNumber}".
-
-If the request is ambiguous, do not guess. Leave a final response explaining
-the clarification needed so this workflow can report it on the issue.
-
-Issue title:
-${issueTitle}
-
-Issue body:
-${issueBody}
-`;
+            const prompt = [
+              'You are implementing a website change request from Patchline.',
+              '',
+              'Read the GitHub issue below in full. Follow every constraint listed in its',
+              '"Constraints for the agent" section. Make the smallest possible diff.',
+              '',
+              `Open exactly one pull request against ${startingRef}. The PR title must start`,
+              `with "[client-request]" and the PR body must include "Closes #${issueNumber}".`,
+              '',
+              'If the request is ambiguous, do not guess. Leave a final response explaining',
+              'the clarification needed so this workflow can report it on the issue.',
+              '',
+              'Issue title:',
+              issueTitle,
+              '',
+              'Issue body:',
+              issueBody,
+              '',
+            ].join('\n');
 
             const run = await agent.send(prompt);
             setOutput('run_id', run.id);
@@ -165,8 +167,8 @@ ${issueBody}
           PR_URLS: ${{ steps.cursor.outputs.pr_urls }}
         with:
           script: |
-            const agentUrl = process.env.AGENT_URL;
-            const prUrls = process.env.PR_URLS.split('\n').filter(Boolean);
+            const agentUrl = process.env.AGENT_URL || '';
+            const prUrls = (process.env.PR_URLS || '').split('\n').filter(Boolean);
             await github.rest.issues.createComment({
               owner: context.repo.owner,
               repo:  context.repo.repo,
@@ -199,8 +201,8 @@ ${issueBody}
               name: 'agent-running',
             }).catch(() => {});
 
-            const agentUrl = process.env.AGENT_URL;
-            const finalMessage = process.env.FINAL_MESSAGE.trim();
+            const agentUrl = process.env.AGENT_URL || '';
+            const finalMessage = (process.env.FINAL_MESSAGE || '').trim();
             const body = [
               'Cursor Cloud Agent run failed, was cancelled, or completed without opening a PR.',
               agentUrl ? `Cursor agent: ${agentUrl}` : null,
