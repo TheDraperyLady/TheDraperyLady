@@ -34,25 +34,22 @@
             <h2>Meet The Drapery Lady</h2>
             <h3>Christine St. Clair</h3>
             <p class="about-intro">
-              Christine St. Clair is the daughter of an international businessman, who grew up in
-              several different countries on three different continents of the world. It was
-              commonplace for Christine to select fabrics from the local markets and take them to
-              her seamstress to sew her clothing and home goods. In 1996, Christine was employed by
-              one of San Jose's oldest drapery and shutter houses where she worked her way up to
-              lead designer. It was here that she received the majority of her experience designing
-              and selling all types of custom draperies, blinds, shades, and shutters for commercial
-              establishments and some of Silicon Valley's finest homes. After eleven years, it was
-              time that the student left the master and ventured out on her own into the next phase
-              of her career. In June of 2009, Christine opened her own business as "The Drapery
-              Lady."
+              Christine St. Clair is the daughter of an international businessman and grew up in
+              several different countries across three continents. It was commonplace for Christine
+              to select fabrics from local markets and work with seamstresses to create her own
+              clothing and home goods. In 1985, while attending college, she sold ready-made
+              draperies and blinds at a large department store. She enjoyed the work so much that
+              after completing her Bachelor of Arts, she moved into the store's custom decorating
+              department. The training she received there provided the foundation for her career in
+              window covering design.
             </p>
             <p class="about-description">
-              Eventually, Christine returned to the United States. In 1985, while attending college,
-              she sold ready-made draperies and blinds in a large department store to earn spending
-              money. She enjoyed working with window coverings so much that after she completed her
-              Bachelor of Arts, she moved into the department store's custom decorating department.
-              The training Christine received at the department stores provided the basis of her
-              window covering design experience.
+              In 1996, Christine joined one of San Jose's oldest drapery and shutter houses, where
+              she eventually became the lead designer. During her tenure, she gained extensive
+              experience designing and selling custom draperies, blinds, shades, and shutters for
+              both commercial establishments and some of Silicon Valley's finest homes. In June
+              2009, after eleven years with the firm, she launched her own business, "The Drapery
+              Lady."
             </p>
             <div class="norman-logo-section animate-on-scroll fade-in-delay">
               <p class="norman-text">Authorized Dealer</p>
