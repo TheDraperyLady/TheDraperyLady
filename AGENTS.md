@@ -1,0 +1,40 @@
+# AGENTS.md - Patchline coding agent rules
+
+This repo is an SMB website managed by patchline-worker. A coding agent is
+invoked when a maintainer adds `approve-for-cursor` to a Patchline issue. The
+issue body is the source of truth.
+
+## Hard Rules
+
+- Make the smallest possible diff to satisfy the issue. One PR, one logical
+  change.
+- Prefer structured content files over component/template edits.
+- Do not edit dependencies, lockfiles, CI, deployment config, secrets, or agent
+  config unless the issue explicitly asks for a setup change.
+- If the request is ambiguous, comment on the issue asking for clarification
+  instead of guessing.
+
+## Editable Areas
+
+Customize this list per repo:
+
+- `src/content/**` - site-wide copy, phone, email, address, hours
+- `src/data/**` - structured lists and records
+- `src/pages/**` - page-level content files, if used
+- `public/images/**` - images
+- `public/files/**` - PDFs and downloads
+
+## PR Conventions
+
+- Title: `[client-request] <short summary>`
+- Body must include `Closes #<issue-number>`
+- Include a short summary of changed files and any ambiguity encountered.
+
+## Cursor Cloud Agents
+
+- Patchline starts Cursor from GitHub Actions and links the Cursor dashboard
+  run back to the issue.
+- Cursor runs in a cloud VM and opens the PR itself. Keep the diff limited to
+  the issue's allowed paths even if other files are available in the checkout.
+- If no PR can be opened safely, explain the blocker in the final response so
+  the workflow can mark the issue `blocked`.

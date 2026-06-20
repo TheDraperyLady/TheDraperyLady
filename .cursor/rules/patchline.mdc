@@ -1,0 +1,21 @@
+---
+description: Patchline website change request guardrails
+alwaysApply: true
+---
+
+# Patchline Guardrails
+
+This repo receives small website edits from Patchline issues. The issue body is
+the source of truth for the requested change, allowed paths, attachments, and PR
+requirements.
+
+- Make the smallest possible diff. One request should become one logical PR.
+- Prefer structured content files over component/template edits.
+- Stay inside the issue's allowed paths unless the issue explicitly authorizes a
+  setup or wiring change.
+- Do not edit dependencies, lockfiles, CI, deployment config, secrets, or agent
+  config for normal content requests.
+- If the request is ambiguous, stop and explain the specific clarification
+  needed instead of guessing.
+- PR titles must start with `[client-request]`; PR bodies must include
+  `Closes #<issue-number>`.
